@@ -1,3 +1,8 @@
+
+# own
+.DS_Store
+philo
+.vscode
 # Prerequisites
 *.d
 
@@ -50,3 +55,14 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+1.txt
+2.txt
+scale for project
+.idea/
+.idea
+minishell
+1.sh
+12.txt
+linux_make
+script.sh
