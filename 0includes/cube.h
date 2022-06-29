@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/29 18:55:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/29 19:02:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@
 #define OX_WINDOW 1920
 #define OY_WINDOW 1080
 #define TITLE_WINDOW "CUBE"
-
-
-
 
 /* COLOURS */
 /* It follows the TRGB format. 
