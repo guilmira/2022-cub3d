@@ -69,7 +69,7 @@ typedef struct s_program
 	/* ----- GUILLE ---- */
 	t_data *image;
 	
-	/* ----- KIRAM ---- */
+	/* ----- KIRIAM ---- */
 
 	/* ----- SHARED ---- */
 
