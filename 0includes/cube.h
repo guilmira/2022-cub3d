@@ -75,7 +75,7 @@ typedef struct s_program
 	/* ----- GUILLE ---- */
 	
 	
-	/* ----- KIRAM ---- */
+	/* ----- KIRIAM ---- */
 
 
 
