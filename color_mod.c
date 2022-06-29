@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/29 16:24:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:46:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ and RGB values range from 0 to 255, we can perfectly fit a integer (as an int is
  *  0000 0011 (so i want 3 units of green out of 255.)
  * Since green is stored in the third byte, it has to become:
  * 0000 0000   0000 0000   0000 0011   0000 0000
- * So the offset is 8.
-*/
+ * So the offset is 8. */
 int trgb_translate(int t, int red, int green, int blue)
 {
 	int result;

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/29 16:32:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/29 18:55:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,18 @@
 #include <stdlib.h>
 #include <mlx.h>
 
-
+/* LIBFT */
+# include "../libft_submodule/0includes/libft.h"
 //-lm man man 3 math ALL functions allowed
 
 /* ------------------------ DEFINES ------------------------ */
 /* WINDOW SIZE */
 //size of window: 1920x1080p
+/* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 #define OX_WINDOW 1920
 #define OY_WINDOW 1080
 #define TITLE_WINDOW "CUBE"
+
 
 
 
@@ -66,21 +69,25 @@ typedef struct s_data
 
 typedef struct s_program
 {
+	/* ----- SHARED ---- */
+	void *mlx;
+	void *mlx_window;
 	/* ----- GUILLE ---- */
-	t_data *image;
+	
 	
 	/* ----- KIRAM ---- */
 
-	/* ----- SHARED ---- */
 
 
 }				t_prog;
 
 
 /* ------------------------ PROTOTYPES ------------------------ */
-int		trgb_translate(int t, int red, int green, int blue);
-int		get_opposite(int colour_code);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int			trgb_translate(int t, int red, int green, int blue);
+int			get_opposite(int colour_code);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		init_window(t_prog *game, t_vector window_dimensions);
+t_vector	get_window_dimensions(t_vector dimensions);
 
 /* ------------------------ ERROR MESSAGES ------------------------ */
 
