@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 11:30:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 12:07:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,34 @@
 
 /* ------------------------ INCLUDES ------------------------ */
 /* LIBS */
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <mlx.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <mlx.h>
 
 /* LIBFT */
 # include "../libft_submodule/0includes/libft.h"
 //-lm man man 3 math ALL functions allowed
 
-/* ------------------------ DEFINES ------------------------ */
+/* ------------------------ MOD DEFINES ------------------------ */
 /* WINDOW SIZE */
 //size of window: 1920x1080p
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
-#define OX_WINDOW 1920
-#define OY_WINDOW 1080
-#define TITLE_WINDOW "CUBE"
-
-/* COLOURS */
-/* It follows the TRGB format. 
-Binary 0000 0000 		1111 1111
-Hexa  0x00			0x  F 	 F
-Decimal 0				255				 
-Think that 1111 is 15, so F in hexa. 
-Also T, stands for transparency. */
-#define RED_PURE 0x00FF0000
-#define GREEN_PURE 0x0000FF00
-#define BLUE_PURE 0x000000FF
+# define OX_WINDOW 1920
+# define OY_WINDOW 1080
+# define TITLE_WINDOW "CUBE"
 
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation. */
-typedef struct	s_vector
+typedef struct s_vector
 {
 	int	x;
 	int	y;
 }				t_vector;
 
-/** PURPOSE : struct that stores image data. Coordinates are
- * necessary when working with sprites. */
+/** PURPOSE : struct that stores image data.
+ * Coordinates might not be necessary. */
 typedef struct s_data
 {
 	void		*img;
@@ -74,20 +63,22 @@ typedef struct s_program
 	
 	/* ----- KIRIAM ---- */
 
-
-
 }				t_prog;
 
-
 /* ------------------------ ENUMS ------------------------ */
-
-enum
+enum e_hook_events
 {
 	TEST_EVENT,
-	KEYDOWN_EVENT = 2,
-	DESTROY_EVENT = 17
+	DESTROY_EVENT	= 17
 };
-
+enum e_hook_keys
+{
+	LEFT_KEY	= 0,
+	DOWN_KEY	= 1,
+	RIGHT_KEY	= 2,
+	UP_KEY		= 13,
+	ESCAPE_KEY	= 53
+};
 /* ------------------------ PROTOTYPES ------------------------ */
 /* MAP PARSER */
 
@@ -105,9 +96,28 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		clean_exit(t_prog *game);
 void		ft_shutdown(char *error_msg, t_prog *game);
 
+/* LOOP */
+void		hooks_and_loops(t_prog *game);
+
+//To remove from here eventually
+void		ft_leaks(void);
+
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
 # define EX1	"No memory available for allocation.\n"
 # define EX2	"Could not generate new window.\n"
+
+/* ------------------------ STANDARD DEFINES ------------------------ */
+
+/* COLOURS */
+/* It follows the TRGB format. 
+Binary 0000 0000 		1111 1111
+Hexa  0x00			0x  F 	 F
+Decimal 0				255				 
+Think that 1111 is 15, so F in hexa. 
+Also T, stands for transparency. */
+# define RED_PURE 0x00FF0000
+# define GREEN_PURE 0x0000FF00
+# define BLUE_PURE 0x000000FF
 
 #endif

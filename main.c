@@ -6,20 +6,15 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 11:08:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 12:03:30 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
-void ft_leaks(void)
-{
-	system("leaks -quiet cube");
-}
-
 /** PURPOSE : Describe CUBE.
  * 1. Define structure of program. */
-int main(void)
+int	main(void)
 {
 	t_prog		*game;
 	t_vector	window_dimensions;
@@ -32,14 +27,15 @@ int main(void)
 	if (!game)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
-	//parser();
 	init_game(game);
+	//parser();
+	//input_management();
 	init_window(game, window_dimensions);
 	/* --------------------------------------------------------------- */
-	
 	//trace_rays();
 	//create_images();
 	//detect_hooks();
+	
 	t_data image;
 
 	image.img = mlx_new_image(game->mlx, OX_WINDOW, OX_WINDOW);
@@ -52,7 +48,7 @@ int main(void)
 
 	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
 	/* --------------------------------------------------------------- */
-	
-	mlx_loop(game->mlx);
+	hooks_and_loops(game);
+	clean_exit(game);
 	return (0);
 }
