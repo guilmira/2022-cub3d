@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 13:13:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 20:14:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct s_program
 	void	*mlx_window;
 	char	**map;
 	/* ----- GUILLE ---- */
-	char *str;
 	
 	/* ----- KIRIAM ---- */
 	int		file;
