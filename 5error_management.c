@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 15:24:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:37:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	clean_exit(t_prog *game)
 {
 	clear_window(game);
 	clear_memory(game);
-	//exit(0);
+	exit(0);
 }
 
 /** PURPOSE : Neat program shut. Call if error.
