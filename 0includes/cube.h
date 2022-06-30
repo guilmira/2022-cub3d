@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/29 19:02:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 11:30:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,35 @@ typedef struct s_program
 }				t_prog;
 
 
+/* ------------------------ ENUMS ------------------------ */
+
+enum
+{
+	TEST_EVENT,
+	KEYDOWN_EVENT = 2,
+	DESTROY_EVENT = 17
+};
+
 /* ------------------------ PROTOTYPES ------------------------ */
-int			trgb_translate(int t, int red, int green, int blue);
-int			get_opposite(int colour_code);
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+/* MAP PARSER */
+
+/* STRUCT INIT */
+void		init_game(t_prog *game);
 void		init_window(t_prog *game, t_vector window_dimensions);
 t_vector	get_window_dimensions(t_vector dimensions);
 
-/* ------------------------ ERROR MESSAGES ------------------------ */
+/* IMAGE TREATMENT */
+int			trgb_translate(int t, int red, int green, int blue);
+int			get_opposite(int colour_code);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
+/* CLEAR MEMORY */
+void		clean_exit(t_prog *game);
+void		ft_shutdown(char *error_msg, t_prog *game);
+
+/* ------------------------ ERROR MESSAGES ------------------------ */
+# define EX		"Error.\n"
+# define EX1	"No memory available for allocation.\n"
+# define EX2	"Could not generate new window.\n"
 
 #endif

@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/06/29 18:51:08 by guilmira         ###   ########.fr        #
+#    Updated: 2022/06/30 11:25:47 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,10 @@ LIB			= $(LIB_DIR)/libft.a
 INCLUDES	= -I ./0includes -I ./libft_submodule/0includes
 INCLUDES_LIBX	= -lmlx -framework OpenGL -framework AppKit
 #--------------------------------------------------------------------------------------------------------------SOURCES
-SRCS		=	main.c color_mod.c image_mod.c \
-				1control_window.c			
+SRCS		=	main.c						\
+				1control_window.c			\
+				2color_mod.c 3image_mod.c 	\
+				4error_management.c		
 OBJ		=		$(SRCS:.c=.o)
 #--------------------------------------------------------------------------------------------------------------RULES
 RM = rm -rf

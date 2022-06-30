@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/29 19:01:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 11:08:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,7 @@ void ft_leaks(void)
 	system("leaks -quiet cube");
 }
 
-/** PURPOSE : init 42minilibx and set pointers to NULL.
- * 1. mlx_returns a pointer (void *). A lot of the library functions
- * need it in order to work.
- * 2. Inits the rest of the variables within the struct. */
-void	init_game(t_prog *game)
-{
-	game->mlx = mlx_init();//genera 3 root leaks at exit. Hay que actualizar a la nueba MLX
-	if (!game->mlx)
-		//hacer un shutdown;
-	game->mlx_window = NULL;
-	
-}
-
-/** PURPOSE : init 42minilibx, open window, and load an image.
+/** PURPOSE : Describe CUBE.
  * 1. Define structure of program. */
 int main(void)
 {
@@ -43,14 +30,16 @@ int main(void)
 	atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
-		ft_shut("Malloc error\n");
+		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	//parser();
 	init_game(game);
 	init_window(game, window_dimensions);
 	/* --------------------------------------------------------------- */
 	
-	//esto puede ser create images
+	//trace_rays();
+	//create_images();
+	//detect_hooks();
 	t_data image;
 
 	image.img = mlx_new_image(game->mlx, OX_WINDOW, OX_WINDOW);
