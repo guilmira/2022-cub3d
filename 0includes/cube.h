@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 12:07:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:13:56 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_program
 	void	*mlx_window;
 	char	**map;
 	/* ----- GUILLE ---- */
-	
+	char *str;
 	
 	/* ----- KIRIAM ---- */
 	int		file;
@@ -106,8 +106,8 @@ void		ft_leaks(void);
 
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
-# define EX1	"No memory available for allocation.\n"
-# define EX2	"Could not generate new window.\n"
+# define EX1	"Error.\nNo memory available for allocation.\n"
+# define EX2	"Error.\nCould not generate new window.\n"
 
 /* ------------------------ STANDARD DEFINES ------------------------ */
 

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 12:03:15 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 15:37:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	clear_memory(t_prog *game)
 	if (game)
 	{
 		//Free all allocated memory (access by pointers);
-
 		free(game);
 	}
 }

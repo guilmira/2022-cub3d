@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/06/30 11:52:33 by guilmira         ###   ########.fr        #
+#    Updated: 2022/06/30 16:17:45 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,12 @@ NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
 #--------------------------------------------------------------------------------------------------------------LIBS
-LIB_DIR		= libft_submodule
-LIB			= $(LIB_DIR)/libft.a
-INCLUDES	= -I ./0includes -I ./libft_submodule/0includes
-INCLUDES_LIBX	= -lmlx -framework OpenGL -framework AppKit
+LIB_DIR			= libft_submodule
+LIB				= $(LIB_DIR)/libft.a
+MLX_DIR			= minilibx_opengl_20191021
+MLX				= $(MLX_DIR)/libmlx.a
+INCLUDES		= -I ./0includes -I ./libft_submodule/0includes -I minilibx_opengl_20191021
+FLAGS_MLX	= -framework OpenGL -framework AppKit -L minilibx_opengl_20191021
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	main.c						\
 				1init_variables.c			\
@@ -28,10 +30,8 @@ SRCS		=	main.c						\
 				6hooks.c	
 OBJ		=		$(SRCS:.c=.o)
 #--------------------------------------------------------------------------------------------------------------RULES
-RM = rm -rf
-
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 OBJ_DIR = objs/
 
@@ -41,31 +41,40 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 VPATH = 0srcs
-all: $(LIB) $(NAME)
+all: $(LIB) $(MLX) $(NAME)
 
 $(LIB):
 	@make -C $(LIB_DIR)
 
-$(NAME): $(OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIB) $(INCLUDES_LIBX) -o $(NAME)
+$(MLX):
+	@make -C $(MLX_DIR)
+
+#minilibx_opengl_20191021/libmlx.a -lm -lz  //if having problems, insert this line before the -o
+$(NAME): $(OBJS) $(LIB) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX) $(LIB) $(MLX) -o $(NAME)
 	@echo $(GREEN) "$(NAME) compiled" $(NONE)
 
 exe: $(NAME)
 	./$(NAME)
 
+#----------------------------------------------------------------------------------------------------CLEANING RULES
+RM = rm -rf
+
 clean:
 	@$(RM) $(OBJS)
 	@make clean -C $(LIB_DIR)
+	@make clean -C $(MLX_DIR)
+
 
 fclean: clean
 	@$(RM) $(NAME)
 	@make fclean -C $(LIB_DIR)
+	@make clean -C $(MLX_DIR)
 
 re: fclean all
 
 norm:
 	norminette $(SRCS)
-#pasar solo a carpetas correspondientes
 
 .PHONY: all clean fclean re norm
 #--------------------------------------------------------------------------------------------------------------FORMAT

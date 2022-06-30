@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 12:03:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:17:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@ int	main(void)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
+
 	parser(game, argc, argv);
 	//input_management();
+
 	init_window(game, window_dimensions);
+
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//create_images();
 	//detect_hooks();
-	
 	t_data image;
 
 	image.img = mlx_new_image(game->mlx, OX_WINDOW, OX_WINDOW);
