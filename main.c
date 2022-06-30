@@ -28,7 +28,7 @@ int	main(void)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
-	//parser();
+	parser(game, argc, argv);
 	//input_management();
 	init_window(game, window_dimensions);
 	/* --------------------------------------------------------------- */

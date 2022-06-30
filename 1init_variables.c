@@ -23,5 +23,6 @@ void	init_game(t_prog *game)
 	if (!game->mlx)
 		ft_shutdown("MLX could not be initialized\n", game);
 	//INIT all pointers to NULL, variables to zero.
-	//game->whatever_ptr = NULL;
+	game->map = NULL;
+	game->file = 0;
 }

@@ -56,13 +56,14 @@ typedef struct s_data
 typedef struct s_program
 {
 	/* ----- SHARED ---- */
-	void *mlx;
-	void *mlx_window;
+	void	*mlx;
+	void	*mlx_window;
+	char	**map;
 	/* ----- GUILLE ---- */
 	
 	
 	/* ----- KIRIAM ---- */
-
+	int		file;
 }				t_prog;
 
 /* ------------------------ ENUMS ------------------------ */
@@ -81,6 +82,7 @@ enum e_hook_keys
 };
 /* ------------------------ PROTOTYPES ------------------------ */
 /* MAP PARSER */
+void		parser(t_prog *game, int ac, char **av);
 
 /* STRUCT INIT */
 void		init_game(t_prog *game);
