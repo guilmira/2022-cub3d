@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/06/30 11:52:33 by guilmira         ###   ########.fr        #
+#    Updated: 2022/06/30 15:11:31 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,10 @@ CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
 #--------------------------------------------------------------------------------------------------------------LIBS
 LIB_DIR		= libft_submodule
 LIB			= $(LIB_DIR)/libft.a
-INCLUDES	= -I ./0includes -I ./libft_submodule/0includes
-INCLUDES_LIBX	= -lmlx -framework OpenGL -framework AppKit
+INCLUDES	= -I ./0includes -I ./libft_submodule/0includes -I minilibx_opengl_20191021
+INCLUDES_LIBX	= -framework OpenGL -framework AppKit -L minilibx_opengl_20191021
+
+
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	main.c						\
 				1init_variables.c			\
@@ -31,7 +33,7 @@ OBJ		=		$(SRCS:.c=.o)
 RM = rm -rf
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 OBJ_DIR = objs/
 
@@ -47,7 +49,7 @@ $(LIB):
 	@make -C $(LIB_DIR)
 
 $(NAME): $(OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIB) $(INCLUDES_LIBX) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIB) $(INCLUDES_LIBX) $(MLX_ARGS) minilibx_opengl_20191021/libmlx.a -lm -lz -o $(NAME)
 	@echo $(GREEN) "$(NAME) compiled" $(NONE)
 
 exe: $(NAME)
