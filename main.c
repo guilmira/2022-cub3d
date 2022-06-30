@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 19:25:11 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/06/30 19:38:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,18 @@ void	draw_grid(t_prog *game)
 {
 	t_data image;
 
-	image.img = mlx_new_image(game->mlx, OX_WINDOW, OX_WINDOW);
-
+	image.img = mlx_new_image(game->mlx, OX_WINDOW, OY_WINDOW);
 	image.addr = mlx_get_data_addr\
 	(image.img, &image.bits_per_pixel, &image.line_length, &image.endian);
 
-	for (int i = 500; i < 1915; i++)
-		my_mlx_pixel_put(&image, i, 501, get_opposite( trgb_translate(0, 150, 150, 0)));
 
+	for (int nb = 0; nb < 10; nb++)
+	{
+		for (int j = 0; j < OY_WINDOW; j++)
+		my_mlx_pixel_put(&image, ( nb * (OX_WINDOW /10) ), j, trgb_translate(0, 255, 255, 255));
+		for (int i = 0; i < OX_WINDOW; i++)
+		my_mlx_pixel_put(&image, i, ( nb * (OY_WINDOW /10) ), trgb_translate(0, 255, 255, 255));
+	}
 	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
 }
 
