@@ -6,32 +6,30 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 20:49:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 12:09:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
-void	draw_grid(t_prog *game)
+//->
+void	draw_grid(t_data *image, t_prog *game)
 {
-	t_data image;
+	
 
-	image.img = mlx_new_image(game->mlx, OX_WINDOW, OY_WINDOW);
-	image.addr = mlx_get_data_addr\
-	(image.img, &image.bits_per_pixel, &image.line_length, &image.endian);
-
-
+	image->img = mlx_new_image(game->mlx, OX_WINDOW, OY_WINDOW);
+	image->addr = mlx_get_data_addr\
+	(image->img, image->bits_per_pixel, image->line_length, image->endian);
 	for (int nb = 0; nb < 10; nb++)
 	{
 		for (int j = 0; j < OY_WINDOW; j++)
-			my_mlx_pixel_put(&image, ( nb * (OX_WINDOW /10) ), j, trgb_translate(0, 255, 255, 255));
+			my_mlx_pixel_put(image, ( nb * (OX_WINDOW /10) ), j, trgb_translate(0, 255, 255, 255));
 		for (int i = 0; i < OX_WINDOW; i++)
-			my_mlx_pixel_put(&image, i, ( nb * (OY_WINDOW /10) ), trgb_translate(0, 255, 255, 255));
+			my_mlx_pixel_put(image, i, ( nb * (OY_WINDOW /10) ), trgb_translate(0, 255, 255, 255));
 	}
-	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
 }
 
-void draw_line(t_data *image, int limit, int slope, int n)
+/* void draw_line(t_data *image, int limit, int slope, int n)
 {	
 	int y;
 
@@ -41,9 +39,9 @@ void draw_line(t_data *image, int limit, int slope, int n)
 		my_mlx_pixel_put(image, x + n , y, trgb_translate(0, 0, 0, 255));
 		my_mlx_pixel_put(image, limit - (x + n) , y, trgb_translate(0, 0, 0, 255));
 	}
-}
+} */
 
-void	draw_arrow(t_prog *game, int x, int y, int size)
+/* void	draw_arrow(t_prog *game, int x, int y, int size)
 {
 	t_data image;
 	int height_image;
@@ -62,9 +60,32 @@ void	draw_arrow(t_prog *game, int x, int y, int size)
 
 	my_mlx_pixel_put(&image, width_image / 2 , height_image / 2, trgb_translate(0, 0, 255, 0));
 	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, x - size, y - size);
+} */
+
+int coor(int y)
+{
+	return (OY_WINDOW - y);
 }
 
 
+void draw_player_position(t_data *image, t_prog *game)
+{
+	my_mlx_pixel_put(&image, 0, coor(5), trgb_translate(0, 0, 255, 0));
+
+}
+
+
+void draw_image(t_prog *game)
+{
+	t_data image;
+
+	draw_grid(&image, game);
+	draw_player_position(&image, game);
+
+	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
+
+	//draw_arrow(&image, game, 500, 520, 80);
+}
 
 /** PURPOSE : Describe CUBE.
  * 1. Define structure of program. */
@@ -93,8 +114,8 @@ int	main(void)
 	//create_images();
 	//detect_hooks();
 
-	draw_grid(game);
-	draw_arrow(game, 500, 520, 80);
+	draw_image(game);
+	
 	
 	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);
