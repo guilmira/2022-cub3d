@@ -6,13 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 18:40:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:47:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
-#define VISION_ANGLE 160
+#define VISION_ANGLE 90
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
@@ -34,7 +34,6 @@ static void draw_line(t_data *image, float x_limit, float y_limit, float x_origi
 	{
 		x = i;
 		y = ft_line(slope, x, ordinate);
-		printf("%f y %f\n", x, y);
 		if (x + x_origin >= x_limit) //hit cube wall
 			break ;
 		if (y + y_origin >= y_limit || y + y_origin <= 0)
