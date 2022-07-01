@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 15:46:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:02:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
+# define OX_DIV 10
+# define OY_DIV 10
+# define OX_UNIT OX_WINDOW / OX_DIV
+# define OY_UNIT OY_WINDOW / OY_DIV
+
 # define TITLE_WINDOW "CUBE"
 
 /* ------------------------ STRUCTS ------------------------ */
@@ -108,7 +113,7 @@ void		hooks_and_loops(t_prog *game);
 void draw_player_position(t_data *image, int x, int y, t_prog *game);
 
 /* TOOLS */
-int coor(int y);
+float coor(float y);
 float degree_to_radian(float degree);
 float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(t_data *image, int x, int y, int base, int height);

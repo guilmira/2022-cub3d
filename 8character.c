@@ -6,38 +6,34 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 16:37:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:21:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
-#define VISION_ANGLE 80
+#define VISION_ANGLE 90
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
-	x_size = 50,
-	y_size = 50
+	x_size = 25,
+	y_size = 25
 };
 
-static void draw_line(t_data *image, float x_limit, float y_limit, float x_origin, float y_origin, float slope)
+static void draw_line(t_data *image, float x_limit, float y_limit, float x_origin, float y_origin, float slope, float ordinate)
 {
 	float y;
-	int i;
-	int x;
-	float ordinate;
-
-	ordinate = y_origin - slope * x_origin;
-	printf("this %f\n", ordinate);
-
+	float i;
+	float x;
+	
 	i = -1;
 	while (++i < OX_WINDOW)
 	{
-		x = x_origin + i;
+		x = i;
 		y = ft_line(slope, x, ordinate);
 		if (x + x_origin >= x_limit || y + y_origin >= y_limit ) //hit cube wall
 			break ;
-		my_mlx_pixel_put(image, x, coor(y), trgb_translate(0, 0, 0, 255));
+		my_mlx_pixel_put(image, x + x_origin, coor(y + y_origin), trgb_translate(0, 0, 0, 255));
 	}
 }
 
@@ -54,7 +50,7 @@ static void draw_direction(t_data *image, int x, int y)
 	}
 }
 
-/*  acos(x), asin(x), and atan(x) return the inverse cosine, inverse sine and inverse tangent of x, respectively.  Note that the result is an angle
+/* acos(x), asin(x), and atan(x) return the inverse cosine, inverse sine and inverse tangent of x, respectively.  Note that the result is an angle
 in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sign chosen according to the quadrant of (x,y). */
 
 /** PURPOSE : Draw field of vision.
@@ -62,25 +58,28 @@ in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sig
  * 2. Side vectors depending of angle of vision. */
 static void draw_vision(t_data *image, int x, int y, float aperture)
 {
-
 	float theta;
 	float slope;
+	float ordinate;
 
+	if (aperture > 180)
+		return ;
 	theta = 90 - (aperture / 2);
 	slope = tan(degree_to_radian(theta)); //probar con field of vision de 45
+	ordinate = 0;
 	draw_direction(image, x, y);
-	printf("%f\n", degree_to_radian(theta));
+	draw_line(image, OX_WINDOW, OY_WINDOW, x, y, slope, ordinate);
+	draw_line(image, OX_WINDOW, OY_WINDOW, x, y, -slope, ordinate);
+	
 
-	printf("%f\n", slope);
-	draw_line(image, OX_WINDOW, OY_WINDOW, x, y, slope);
 }
 
 /** PURPOSE : Draw player with its vision. */
 void draw_player_position(t_data *image, int x, int y, t_prog *game)
 {
 	draw_rectangle(image, x, y, 5, 5);
-	draw_centered_rectangle(image, 150, 150, x_size, y_size);
-	draw_vision(image, 150, 150, VISION_ANGLE);
+	draw_centered_rectangle(image, OX_UNIT, OY_UNIT, x_size, y_size);
+	draw_vision(image, OX_UNIT, OY_UNIT, VISION_ANGLE);
 	if (0)
 		ft_shutdown(EX, game);
 }

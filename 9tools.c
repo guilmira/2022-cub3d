@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 16:10:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 17:33:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /** PURPOSE : Position corrector.
  * The -1 avoids seg fault at screen limit (0, 0). */
-int coor(int y)
+float coor(float y)
 {
 	return (OY_WINDOW - y - 1);
 }

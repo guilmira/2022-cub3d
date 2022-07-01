@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 15:41:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:00:19 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	draw_grid(t_data *image, t_prog *game)
 	for (int nb = 0; nb < 10; nb++)
 	{
 		for (int j = 0; j < OY_WINDOW; j++)
-			my_mlx_pixel_put(image, ( nb * (OX_WINDOW /10) ), j, trgb_translate(0, 255, 255, 255));
+			my_mlx_pixel_put(image, ( nb * (OX_WINDOW / OX_DIV) ), j, trgb_translate(0, 255, 255, 255));
 		for (int i = 0; i < OX_WINDOW; i++)
-			my_mlx_pixel_put(image, i, ( nb * (OY_WINDOW /10) ), trgb_translate(0, 255, 255, 255));
+			my_mlx_pixel_put(image, i, ( nb * (OY_WINDOW / OY_DIV) ), trgb_translate(0, 255, 255, 255));
 	}
 	if (0)
 		ft_shutdown(EX, game);
