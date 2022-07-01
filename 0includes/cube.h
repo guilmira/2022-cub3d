@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 20:14:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 15:46:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <mlx.h>
-
+# include <math.h>
 /* LIBFT */
 # include "../libft_submodule/0includes/libft.h"
 //-lm man man 3 math ALL functions allowed
@@ -79,6 +79,10 @@ enum e_hook_keys
 	UP_KEY		= 13,
 	ESCAPE_KEY	= 53
 };
+
+/* ------------------------ DIMENSIONS OF CUBE ------------------------ */
+
+
 /* ------------------------ PROTOTYPES ------------------------ */
 /* MAP PARSER */
 void		parser(t_prog *game, int ac, char **av);
@@ -91,7 +95,7 @@ t_vector	get_window_dimensions(t_vector dimensions);
 /* IMAGE TREATMENT */
 int			trgb_translate(int t, int red, int green, int blue);
 int			get_opposite(int colour_code);
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		my_mlx_pixel_put(t_data *image, int x, int y, int color);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
@@ -99,6 +103,17 @@ void		ft_shutdown(char *error_msg, t_prog *game);
 
 /* LOOP */
 void		hooks_and_loops(t_prog *game);
+
+/* PLAYER */
+void draw_player_position(t_data *image, int x, int y, t_prog *game);
+
+/* TOOLS */
+int coor(int y);
+float degree_to_radian(float degree);
+float ft_line(float slope, float x, float ordinate);
+void draw_rectangle(t_data *image, int x, int y, int base, int height);
+void draw_centered_rectangle(t_data *image, int x, int y, int base, int height);
+
 
 //To remove from here eventually
 void		ft_leaks(void);

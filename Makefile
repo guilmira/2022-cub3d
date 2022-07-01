@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/06/30 16:17:45 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/01 15:36:42 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS		=	main.c						\
 				2control_window.c			\
 				3color_mod.c 4image_mod.c 	\
 				5error_management.c			\
-				6hooks.c	
+				6hooks.c	\
+				8character.c 9tools.c
 OBJ		=		$(SRCS:.c=.o)
 #--------------------------------------------------------------------------------------------------------------RULES
 %.o: %.c
@@ -35,12 +36,14 @@ OBJ		=		$(SRCS:.c=.o)
 
 OBJ_DIR = objs/
 
+//SRC_DIR = srcs/
+
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ))
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-VPATH = 0srcs
+//VPATH = 0srcs
 all: $(LIB) $(MLX) $(NAME)
 
 $(LIB):

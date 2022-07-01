@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 12:47:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 13:07:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ equivalent to 0x00FF0000 */
 
 int	get_transparent(int colour_code)
 {
-	return ((colour_code >> 24) & 0xFF000000);
+	return ((colour_code & 0xFF000000) >> 24);
 }
 
 int	get_red(int colour_code)
 {
-	return ((colour_code >> 24) & 0x00FF0000);
+	return ((colour_code & 0x00FF0000) >> 16);
 }
 
 int	get_green(int colour_code)
 {
-	return ((colour_code >> 24) & 0x000FF00);
+	return ((colour_code & 0x0000FF00) >> 8);
 }
 
 int	get_blue(int colour_code)
 {
-	return ((colour_code >> 24) & 0x000000FF);
+	return ((colour_code) & 0x000000FF);
 }
 
 int	get_opposite(int colour_code)
