@@ -6,13 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 18:47:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:57:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
-#define VISION_ANGLE 90
+#define VISION_ANGLE 140
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
