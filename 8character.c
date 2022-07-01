@@ -6,13 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 18:21:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/01 18:40:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
-#define VISION_ANGLE 90
+#define VISION_ANGLE 160
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
@@ -20,6 +20,9 @@ enum player_size
 	y_size = 25
 };
 
+/** PURPOSE : Draw a straight line.
+ * 1. Uses equation of line y = mx + n.
+ * 2. Recalculates coordinates appropiatly. */
 static void draw_line(t_data *image, float x_limit, float y_limit, float x_origin, float y_origin, float slope, float ordinate)
 {
 	float y;
@@ -31,13 +34,19 @@ static void draw_line(t_data *image, float x_limit, float y_limit, float x_origi
 	{
 		x = i;
 		y = ft_line(slope, x, ordinate);
-		if (x + x_origin >= x_limit || y + y_origin >= y_limit ) //hit cube wall
+		printf("%f y %f\n", x, y);
+		if (x + x_origin >= x_limit) //hit cube wall
+			break ;
+		if (y + y_origin >= y_limit || y + y_origin <= 0)
 			break ;
 		my_mlx_pixel_put(image, x + x_origin, coor(y + y_origin), trgb_translate(0, 0, 0, 255));
 	}
 }
 
-static void draw_direction(t_data *image, int x, int y)
+/** PURPOSE : Draw field of vision.
+ * 1. Straight forward direction from point of origin.
+ * 2. Side vectors depending of angle of vision. */
+void draw_direction_vertical(t_data *image, int x, int y)
 {
 	int j;
 
@@ -67,19 +76,18 @@ static void draw_vision(t_data *image, int x, int y, float aperture)
 	theta = 90 - (aperture / 2);
 	slope = tan(degree_to_radian(theta)); //probar con field of vision de 45
 	ordinate = 0;
-	draw_direction(image, x, y);
+	//draw_direction_vertical(image, x, y);
+	draw_line(image, OX_WINDOW, OY_WINDOW, x, y, 0, ordinate);
 	draw_line(image, OX_WINDOW, OY_WINDOW, x, y, slope, ordinate);
 	draw_line(image, OX_WINDOW, OY_WINDOW, x, y, -slope, ordinate);
-	
-
 }
 
 /** PURPOSE : Draw player with its vision. */
-void draw_player_position(t_data *image, int x, int y, t_prog *game)
+void draw_player_position(t_data *image, int pos_x, int pos_y, t_prog *game)
 {
-	draw_rectangle(image, x, y, 5, 5);
-	draw_centered_rectangle(image, OX_UNIT, OY_UNIT, x_size, y_size);
-	draw_vision(image, OX_UNIT, OY_UNIT, VISION_ANGLE);
+	//draw_rectangle(image, x, y, 5, 5);
+	draw_centered_rectangle(image, pos_x, pos_y, x_size, y_size);
+	draw_vision(image, pos_x, pos_y, VISION_ANGLE);
 	if (0)
 		ft_shutdown(EX, game);
 }
