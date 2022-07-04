@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 08:15:33 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 10:20:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 10:33:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,9 @@ static t_unit_vec get_unit_vector(t_vector vec)
 void draw_vec_recursive(t_vector_adv *vec_adv, t_data *image, float x_pixel, float y_pixel)
 {
 
-	if (x_pixel <= vec_adv->unit_vec.x + vec_adv->x_origin \
-	&& y_pixel <= vec_adv->unit_vec.y + vec_adv->y_origin)
-	{
-		//convierte a int al representar
+	if (x_pixel <= vec_adv->x_origin \
+	&& y_pixel <= vec_adv->y_origin)
 		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), vec_adv->colour_code);
-	
-	}
 	else
 	{
 		draw_vec_recursive(vec_adv, image, x_pixel - vec_adv->unit_vec.x, y_pixel - vec_adv->unit_vec.y);
@@ -82,13 +78,12 @@ void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 
 	x_pixel = x_origin + vec_adv.x;
 	y_pixel = y_origin + vec_adv.y;
-	draw_vec_recursive(&vec_adv, image, x_pixel, y_pixel);
-	printf("RECURSIVE:  \n");
-
+	//draw_vec_recursive(&vec_adv, image, x_pixel, y_pixel);printf("RECURSIVE:  \n");
+	//double the time .000054 vs 0.000026
 
 //NOT recursive = measure times and final GRAPH RESULT.
-	
-	/* int counter;
+
+	int counter;
 	t_unit_vec v;
 	
 	v = get_unit_vector(vec);
@@ -101,7 +96,7 @@ void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), trgb_translate(0, 0, 200, 0));
 		x_pixel += v.x;
 		y_pixel += v.y;
-	} */
+	}
 
 
 	clock_t end = clock();
