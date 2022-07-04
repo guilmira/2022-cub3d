@@ -6,13 +6,15 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 08:15:33 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 11:30:11 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:20:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
 #include <time.h>
+
+//TODO, poner una con
 
 /** PURPOSE : Draw vector on screen.
  * Assuming position of player as a coordinate (0, 0).
@@ -42,6 +44,8 @@ void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), colour_code);
 		x_pixel += unit_vec.x;
 		y_pixel += unit_vec.y;
+		if (x_pixel >= OX_WINDOW || y_pixel >= OY_WINDOW)
+			break ;
 	}
 	
 	clock_t end = clock();

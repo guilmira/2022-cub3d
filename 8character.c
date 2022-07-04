@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 12:16:34 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:23:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ enum player_size
 	x_size = 25,
 	y_size = 25
 };
-
-
 
 static int	collision_condition(int x, int y, int condition_x, int condition_y)
 {
@@ -65,9 +63,9 @@ static void draw_vision(t_data *image, int pos_x, int pos_y, float aperture)
 	aperture = 0;
 	
 	direction = cast_straight(pos_x, pos_y);
-	direction.x = 150;
-	direction.y = 150;
 	draw_vector(image, direction, pos_x, pos_y);
+	direction.x = 700;//ver que pasa ahi
+	direction.x = 400;//ver que pasa ahi
 	direction = rotate_vector(direction, 43);
 	printf("h %i y %i\n", direction.x, direction.y);
 	draw_vector(image, direction, pos_x, pos_y);
