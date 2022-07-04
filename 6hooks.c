@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 11:40:37 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 12:03:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 06:30:39 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ static int	movement_character(int key, t_prog *game)
 	return (0);
 }
 
-/** PURPOSE : execute main routine of program */
+/** PURPOSE : execute main routine of program.
+ * mlx_loop and mlx_loop_hook will tried to be executed a total
+ * of 60 times pers second. Therefore 60 fps. */
 void	hooks_and_loops(t_prog *game)
 {
 	mlx_key_hook(game->mlx_window, movement_character, game);

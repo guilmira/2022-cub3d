@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 18:02:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 06:31:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@
 
 /* ------------------------ STRUCTS ------------------------ */
 
-/** PURPOSE : struct of a vector, 2D representation. */
+/** PURPOSE : struct of a vector, 2D representation.
+ * Origin is assumed at axis origin. */
 typedef struct s_vector
 {
 	int	x;
