@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 06:31:15 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 08:17:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ t_vector	get_window_dimensions(t_vector dimensions);
 int			trgb_translate(int t, int red, int green, int blue);
 int			get_opposite(int colour_code);
 void		my_mlx_pixel_put(t_data *image, int x, int y, int color);
+
+/* VECTOR TREATMENT */
+void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
