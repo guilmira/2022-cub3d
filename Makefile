@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/04 08:59:56 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/04 10:37:17 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FLAGS_MLX	= -framework OpenGL -framework AppKit -L minilibx_opengl_20191021
 SRCS		=	main.c						\
 				1init_variables.c			\
 				2control_window.c			\
-				3vectors.c \
+				3vectors.c 3vector_tools.c \
 				3color_mod.c 4image_mod.c 	\
 				5error_management.c			\
 				6hooks.c	\

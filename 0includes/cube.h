@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 10:17:32 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 11:40:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,7 @@ typedef struct s_unit_vec
 	float	y;
 }				t_unit_vec;
 
-/** PURPOSE : vector. */
-typedef struct s_vector_adv
-{
-	int			x;
-	int			x_origin;
-	int			y;
-	int			y_origin;
-	int			module;
-	int			colour_code;
-	t_unit_vec	unit_vec;
-}				t_vector_adv;
+
 
 /** PURPOSE : struct that stores image data.
  * Coordinates might not be necessary. */
@@ -125,6 +115,11 @@ void		my_mlx_pixel_put(t_data *image, int x, int y, int color);
 
 /* VECTOR TREATMENT */
 void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin);
+
+/* VECTOR TOOLS */
+double get_module(t_vector vec);
+t_unit_vec get_unit_vector(t_vector vec);
+
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
