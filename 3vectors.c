@@ -6,11 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 08:15:33 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 09:47:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 10:20:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
+
+#include <time.h>
 
 float get_module(t_vector vec)
 {
@@ -38,19 +40,17 @@ static t_unit_vec get_unit_vector(t_vector vec)
 void draw_vec_recursive(t_vector_adv *vec_adv, t_data *image, float x_pixel, float y_pixel)
 {
 
-	if (x_pixel <= vec_adv->unit_vec.x && y_pixel <= vec_adv->unit_vec.y)
+	if (x_pixel <= vec_adv->unit_vec.x + vec_adv->x_origin \
+	&& y_pixel <= vec_adv->unit_vec.y + vec_adv->y_origin)
 	{
-		printf("here : %f y %f \n", x_pixel, y_pixel);
-		//convierto a in al representar
+		//convierte a int al representar
 		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), vec_adv->colour_code);
 	
 	}
 	else
 	{
-		printf("here : %f y %f \n", x_pixel, y_pixel);
 		draw_vec_recursive(vec_adv, image, x_pixel - vec_adv->unit_vec.x, y_pixel - vec_adv->unit_vec.y);
 		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), vec_adv->colour_code);
-
 	}
 }
 
@@ -63,29 +63,50 @@ void draw_vec_recursive(t_vector_adv *vec_adv, t_data *image, float x_pixel, flo
  * (unit_Vector + unit_Vector) repeated the module.  */
 void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 {
-
-	int				x_pixel;
-	int				y_pixel;
-	t_vector_adv	vec_adv;
+	float				x_pixel;
+	float				y_pixel;
+	t_vector_adv		vec_adv;
 
 
 	vec_adv.x = vec.x;
 	vec_adv.y = vec.y;
+	vec_adv.x_origin = x_origin;
+	vec_adv.y_origin = y_origin;
 	vec_adv.module = get_module(vec);
 	vec_adv.colour_code = trgb_translate(0, 200, 0, 0);
 	vec_adv.unit_vec = get_unit_vector(vec);
 	
+
+	double time_spent = 0.0;
+    clock_t begin = clock();
+
 	x_pixel = x_origin + vec_adv.x;
 	y_pixel = y_origin + vec_adv.y;
 	draw_vec_recursive(&vec_adv, image, x_pixel, y_pixel);
+	printf("RECURSIVE:  \n");
 
-	/* while (++counter < module_vec)
+
+//NOT recursive = measure times and final GRAPH RESULT.
+	
+	/* int counter;
+	t_unit_vec v;
+	
+	v = get_unit_vector(vec);
+	counter = get_module(vec);
+	x_pixel = x_origin + v.x;
+	y_pixel = y_origin + v.y;
+	printf("NOT RECURSIVE:  \n");
+	while (--counter > 0)
 	{
-		x_pixel = x_origin + i;
-		y_pixel = coor(y_origin + j);
-		my_mlx_pixel_put(image, x_origin, y_pixel, trgb_translate(0, 200, 0, 0));
+		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), trgb_translate(0, 0, 200, 0));
+		x_pixel += v.x;
+		y_pixel += v.y;
 	} */
-	return ;
+
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+	printf("The elapsed time is %f seconds\n", time_spent);
 }
 
 /** ¿Why not draw the line by using the ecuation of the line (y = mx + n)
