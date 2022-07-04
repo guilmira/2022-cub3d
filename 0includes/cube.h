@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 08:17:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 09:22:56 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,24 @@ typedef struct s_vector
 	int	x;
 	int	y;
 }				t_vector;
+
+/** PURPOSE : struct of a vector, 2D representation.
+ * Origin is assumed at axis origin. */
+typedef struct s_unit_vec
+{
+	float	x;
+	float	y;
+}				t_unit_vec;
+
+/** PURPOSE : vector. */
+typedef struct s_vector_adv
+{
+	int			x;
+	int			y;
+	int			module;
+	int			colour_code;
+	t_unit_vec	unit_vec;
+}				t_vector_adv;
 
 /** PURPOSE : struct that stores image data.
  * Coordinates might not be necessary. */

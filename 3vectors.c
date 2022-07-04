@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 08:15:33 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 08:32:41 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 09:47:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ float get_module(t_vector vec)
 }
 
 
-static t_vector unit_vector(t_vector vec)
+static t_unit_vec get_unit_vector(t_vector vec)
 {
-	t_vector unit_vec;
-	int module;
+	t_unit_vec	unit_vec;
+	float			module;
 
 	module = get_module(vec);
 	if (!module)
@@ -33,6 +33,26 @@ static t_vector unit_vector(t_vector vec)
 	return (unit_vec);
 }
 
+/** PURPOSE : Draw vector recursive.
+ * Must be passed by reference to make program faster.  */
+void draw_vec_recursive(t_vector_adv *vec_adv, t_data *image, float x_pixel, float y_pixel)
+{
+
+	if (x_pixel <= vec_adv->unit_vec.x && y_pixel <= vec_adv->unit_vec.y)
+	{
+		printf("here : %f y %f \n", x_pixel, y_pixel);
+		//convierto a in al representar
+		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), vec_adv->colour_code);
+	
+	}
+	else
+	{
+		printf("here : %f y %f \n", x_pixel, y_pixel);
+		draw_vec_recursive(vec_adv, image, x_pixel - vec_adv->unit_vec.x, y_pixel - vec_adv->unit_vec.y);
+		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), vec_adv->colour_code);
+
+	}
+}
 
 /** PURPOSE : Draw vector on screen.
  * Assuming position of player as a coordiante (0, 0).
@@ -43,26 +63,31 @@ static t_vector unit_vector(t_vector vec)
  * (unit_Vector + unit_Vector) repeated the module.  */
 void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 {
-	float		module_vec;
-	t_vector	unit_vec;
-	int			counter;
-	int x_pixel;
-	int y_pixel;
 
-	counter = -1;
-	unit_vec = unit_vector(vec);
-	module_vec = get_module(vec);
-	printf("here %i\n", unit_vec.y);
+	int				x_pixel;
+	int				y_pixel;
+	t_vector_adv	vec_adv;
 
-	while (++counter < module_vec)
+
+	vec_adv.x = vec.x;
+	vec_adv.y = vec.y;
+	vec_adv.module = get_module(vec);
+	vec_adv.colour_code = trgb_translate(0, 200, 0, 0);
+	vec_adv.unit_vec = get_unit_vector(vec);
+	
+	x_pixel = x_origin + vec_adv.x;
+	y_pixel = y_origin + vec_adv.y;
+	draw_vec_recursive(&vec_adv, image, x_pixel, y_pixel);
+
+	/* while (++counter < module_vec)
 	{
 		x_pixel = x_origin + i;
 		y_pixel = coor(y_origin + j);
 		my_mlx_pixel_put(image, x_origin, y_pixel, trgb_translate(0, 200, 0, 0));
-	}
+	} */
 	return ;
 }
 
-/** ¿Why no draw the line by using the ecuation of the line (y = mx + n)
+/** ¿Why not draw the line by using the ecuation of the line (y = mx + n)
  * As we are working with pixels, it will result in free spaces in the pixel map.
  * On th other hand, working with unitary vectors, will yield a continous line. */
