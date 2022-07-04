@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 11:40:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:03:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin);
 /* VECTOR TOOLS */
 double get_module(t_vector vec);
 t_unit_vec get_unit_vector(t_vector vec);
+t_vector rotate_vector(t_vector vec, int angle);
 
 
 /* CLEAR MEMORY */

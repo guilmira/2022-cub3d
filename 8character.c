@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 11:39:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:16:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,15 @@ static void draw_vision(t_data *image, int pos_x, int pos_y, float aperture)
 	aperture = 0;
 	
 	direction = cast_straight(pos_x, pos_y);
-	direction.x = -100;
-	direction.y = -30;
+	direction.x = 150;
+	direction.y = 150;
+	draw_vector(image, direction, pos_x, pos_y);
+	direction = rotate_vector(direction, 43);
+	printf("h %i y %i\n", direction.x, direction.y);
+	draw_vector(image, direction, pos_x, pos_y);
+	direction = rotate_vector(direction, -90);
 	draw_vector(image, direction, pos_x, pos_y);
 
-	printf("termina\n");
 }
 
 

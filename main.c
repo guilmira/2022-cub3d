@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 09:40:34 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:16:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void draw_image(t_prog *game)
 
 	build_image_parameters(&image, game);
 	draw_grid(&image, game);
-	draw_player_position(&image, OX_UNIT, OY_UNIT, game);
+	draw_player_position(&image, 2 * OX_UNIT, 2 * OY_UNIT, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
 
 	//draw_arrow(&image, game, 500, 520, 80);
