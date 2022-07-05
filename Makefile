@@ -50,6 +50,11 @@ all: $(LIB) $(MLX) $(NAME)
 %.o: %.c
 	$(CC) $(CFLAGS) -I ./MLX42/include/MLX42 $(HEADER) -c $< -o $@
 
+#Create a main.c file, include MLX42/MLX42.h, compile with -ldl -lglfw , make sure to also do -I <include_path>.
+
+linux: $(OBJS) $(LIB) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) -ldl -lglfw $(LIB) $(MLX) -o $(NAME)
+
 $(LIB):
 	@make -C $(LIB_DIR)
 
