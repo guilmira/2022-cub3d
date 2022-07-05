@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 11:42:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:38:19 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <mlx.h>
+//# include <mlx.h>
+# include "MLX42.h"
 # include <math.h>
 # include <fcntl.h>
 /* LIBFT */

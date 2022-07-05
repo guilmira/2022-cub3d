@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/05 15:00:01 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/05 15:47:39 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,11 @@ CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
 HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule
 LIB				= $(LIB_DIR)/libft.a
-MLX_DIR			= minilibx_opengl_20191021
-MLX				= $(MLX_DIR)/libmlx.a
-INCLUDES		= -I./libft_submodule/0includes -Iminilibx_opengl_20191021
-FLAGS_MLX		= -framework OpenGL -framework AppKit -L minilibx_opengl_20191021
-
-
+MLX_DIR			= ./MLX42
+MLX				= $(MLX_DIR)/libmlx42.a
+INCLUDES		= -I./libft_submodule/0includes -I ./MLX42/include/MLX42
+FLAGS_MLX		= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+#--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./0sources
 FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_variables.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c)
@@ -34,8 +33,6 @@ FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c)
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				character.c)
-
-
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	$(FOLDER0)\
 				$(FOLDER1)\
@@ -51,7 +48,7 @@ OBJS		=	$(SRCS:.c=.o)
 all: $(LIB) $(MLX) $(NAME)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
+	$(CC) $(CFLAGS) -I ./MLX42/include/MLX42 $(HEADER) -c $< -o $@
 
 $(LIB):
 	@make -C $(LIB_DIR)
@@ -59,7 +56,6 @@ $(LIB):
 $(MLX):
 	@make -C $(MLX_DIR)
 
-#minilibx_opengl_20191021/libmlx.a -lm -lz  //if having problems, insert this line before the -o
 $(NAME): $(OBJS) $(LIB) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX) $(LIB) $(MLX) -o $(NAME)
 	@echo $(GREEN) "$(NAME) compiled" $(NONE)
