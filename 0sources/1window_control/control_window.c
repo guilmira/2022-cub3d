@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2control_window.c                                  :+:      :+:    :+:   */
+/*   control_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 14:23:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 15:37:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:27:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0includes/cube.h"
+#include "cube.h"
 
 /** PURPOSE : its necesary because clean_exit returns void. */
 static int	ft_destroy(t_prog *game)

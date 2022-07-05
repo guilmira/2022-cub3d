@@ -6,11 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 16:31:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/29 16:32:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:47:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0includes/cube.h"
+#include "cube.h"
 
 /** PURPOSE : We pass the image as a poiinter to data.
  * Data has the location (first address in memory) of the space allocated for the image. 

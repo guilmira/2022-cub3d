@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5error_management.c                                :+:      :+:    :+:   */
+/*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 11:41:14 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:43:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0includes/cube.h"
+#include "cube.h"
 
 /** PURPOSE : Close window if exists. */
 static void	clear_window(t_prog *game)

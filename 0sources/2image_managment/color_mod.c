@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3color_mod.c                                       :+:      :+:    :+:   */
+/*   color_mod.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 13:07:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:47:31 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0includes/cube.h"
+#include "cube.h"
 
 /* Since each byte contains 2^8 = 256 values (1 byte = 8 bits), 
 and RGB values range from 0 to 255, 

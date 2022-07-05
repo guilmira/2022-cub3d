@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   6hooks.c                                           :+:      :+:    :+:   */
+/*   hooks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0includes/cube.h"
+#include "cube.h"
 
 /** PURPOSE : manage esc key and normal mov (in the future). */
 static int	movement_character(int key, t_prog *game)

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1init_variables.c                                  :+:      :+:    :+:   */
+/*   init_variables.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 11:33:53 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 12:06:01 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/05 14:18:40 by guilmira          #+#    #+#             */
+/*   Updated: 2022/07/05 14:19:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "0includes/cube.h"
+#include "cube.h"
 
 /** PURPOSE : init 42minilibx and set pointers to NULL.
  * 1. mlx_returns a pointer (void *). 
