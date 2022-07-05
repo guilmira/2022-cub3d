@@ -1,3 +1,6 @@
 [submodule "libft_submodule"]
 	path = libft_submodule
 	url = https://github.com/GuilleMira/libft_submodule.git
+[submodule "MLX42"]
+	path = MLX42
+	url = https://github.com/codam-coding-college/MLX42.git
