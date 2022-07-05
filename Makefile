@@ -6,20 +6,21 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/05 14:53:04 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/05 15:00:01 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -I ./0includes #-g -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
 #--------------------------------------------------------------------------------------------------------------LIBS
+HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule
 LIB				= $(LIB_DIR)/libft.a
 MLX_DIR			= minilibx_opengl_20191021
 MLX				= $(MLX_DIR)/libmlx.a
-INCLUDES		= -I./0includes -I./libft_submodule/0includes -Iminilibx_opengl_20191021
+INCLUDES		= -I./libft_submodule/0includes -Iminilibx_opengl_20191021
 FLAGS_MLX		= -framework OpenGL -framework AppKit -L minilibx_opengl_20191021
 
 
@@ -47,8 +48,10 @@ SRCS		=	$(FOLDER0)\
 				$(FOLDER7)
 OBJS		=	$(SRCS:.c=.o)
 #--------------------------------------------------------------------------------------------------------------RULES
-
 all: $(LIB) $(MLX) $(NAME)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
 $(LIB):
 	@make -C $(LIB_DIR)
