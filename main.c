@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 11:37:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:57:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void draw_image(t_prog *game)
 
 /** PURPOSE : Describe CUBE.
  * 1. Define structure of program. */
-int	main(int argc, char **argv)
+//int	main(int argc, char **argv)
+int	main(void)
 {
 	t_prog		*game;
 	t_vector	window_dimensions;
@@ -68,7 +69,7 @@ int	main(int argc, char **argv)
 	/* --------------------------------------------------------------- */
 	init_game(game);
 
-	parser(game, argc, argv);
+	//parser(game, argc, argv);
 	//input_management();
 
 	init_window(game, window_dimensions);

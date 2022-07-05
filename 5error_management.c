@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/06/30 15:37:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:41:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,25 @@ static void	clear_window(t_prog *game)
 }
 
 /** PURPOSE : Frees allocated memory in program. */
-static void	clear_memory(t_prog *game)
+static void clear_memory(t_prog *game)
 {
-	if (game)
-	{
-		//Free all allocated memory (access by pointers);
-		free(game);
-	}
+    if (game)
+    {
+        //Free all allocated memory (access by pointers);
+        if (game->map)
+            freemat(game->map);
+        if (game->NO)
+            free(game->NO);
+        if (game->SO)
+            free(game->SO);
+        if (game->WE)
+            free(game->WE);
+        if (game->EA)
+            free(game->EA);
+        free(game);
+    }
 }
+
 
 /** PURPOSE : Neat program exit. Call at the end.
  * 1. Close window if exists.
@@ -55,4 +66,14 @@ void	ft_shutdown(char *error_msg, t_prog *game)
 void	ft_leaks(void)
 {
 	system("leaks -quiet cube");
+}
+
+void    freemat(char **mat)
+{
+    int i;
+
+    i = -1;
+    while (mat[++i])
+        free(mat[i]);
+    free(mat);
 }

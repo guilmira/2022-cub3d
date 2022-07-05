@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 11:19:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:42:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include <math.h>
+# include <fcntl.h>
 /* LIBFT */
 # include "../libft_submodule/0includes/libft.h"
 //-lm man man 3 math ALL functions allowed
@@ -69,15 +70,24 @@ typedef struct s_data
 
 typedef struct s_program
 {
-	/* ----- SHARED ---- */
-	void	*mlx;
-	void	*mlx_window;
-	char	**map;
-	/* ----- GUILLE ---- */
-	
-	/* ----- KIRIAM ---- */
-	int		file;
-}				t_prog;
+    /* ----- SHARED ---- */
+    void    *mlx;
+    void    *mlx_window;
+    char    **map;
+    /*---- MAP_INFO ----*/
+    char    *NO;
+    char    *SO;
+    char    *WE;
+    char    *EA;
+    int     sky_clr;
+    int     floor_clr;
+    /* ----- GUILLE ---- */
+    char *str;
+    
+    /* ----- KIRIAM ---- */
+    int     file;
+}               t_prog;
+
 
 /* ------------------------ ENUMS ------------------------ */
 enum e_hook_events
@@ -123,6 +133,7 @@ t_vector rotate_vector(t_vector vec, int angle);
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
 void		ft_shutdown(char *error_msg, t_prog *game);
+void		freemat(char **mat);
 
 /* LOOP */
 void		hooks_and_loops(t_prog *game);

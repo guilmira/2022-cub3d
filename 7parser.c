@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/07/05 11:36:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:43:32 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	ext_err(t_prog *game, char *av)
 
 void	fill_lst(t_prog *game, t_list **aux_lst);
 int		parselst(t_prog *game, t_list *aux_lst);
+void	printlist(t_list *list);
 
 int map_prep(t_prog *game)
 {
