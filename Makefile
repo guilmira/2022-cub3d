@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/04 10:37:17 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/05 11:37:50 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS		=	main.c						\
 				3color_mod.c 4image_mod.c 	\
 				5error_management.c			\
 				6hooks.c	\
+				7parser.c \
 				8character.c 9tools.c
 OBJ		=		$(SRCS:.c=.o)
 #--------------------------------------------------------------------------------------------------------------RULES
