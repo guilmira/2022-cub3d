@@ -6,13 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 12:23:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:23:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
-#define VISION_ANGLE 140 //con esto
+#define VISION_ANGLE 140
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
@@ -20,6 +20,7 @@ enum player_size
 	y_size = 25
 };
 
+/** PURPOSE : Boolean used to stop casting of vector. */
 static int	collision_condition(int x, int y, int condition_x, int condition_y)
 {
 	if (x >= condition_x)
@@ -67,7 +68,6 @@ static void draw_vision(t_data *image, int pos_x, int pos_y, float aperture)
 	direction.x = 700;//ver que pasa ahi
 	direction.x = 400;//ver que pasa ahi
 	direction = rotate_vector(direction, 43);
-	printf("h %i y %i\n", direction.x, direction.y);
 	draw_vector(image, direction, pos_x, pos_y);
 	direction = rotate_vector(direction, -90);
 	draw_vector(image, direction, pos_x, pos_y);
@@ -75,11 +75,13 @@ static void draw_vision(t_data *image, int pos_x, int pos_y, float aperture)
 }
 
 
-/** PURPOSE : Draw player with its vision. */
+/** PURPOSE : Draw player with its field of vision. 
+ * 1. Requires player position.
+ * 2. From (x, y) coordinates, rays will be casted as vectors. */
 void draw_player_position(t_data *image, int pos_x, int pos_y, t_prog *game)
 {
+	if (pos_x < 0 || pos_y < 0)
+		ft_shutdown(EX, game);
 	draw_centered_rectangle(image, pos_x, pos_y, x_size, y_size);
 	draw_vision(image, pos_x, pos_y, VISION_ANGLE);
-	if (0)
-		ft_shutdown(EX, game);
 }

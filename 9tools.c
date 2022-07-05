@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/01 17:33:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:20:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 /** PURPOSE : Position corrector.
  * The -1 avoids seg fault at screen limit (0, 0). */
-float coor(float y)
+double coor(double y)
 {
+	if (y < 0)
+		ft_senderror("Invalid y coordinate.\n");
 	return (OY_WINDOW - y - 1);
 }
 
@@ -33,7 +35,8 @@ float ft_line(float slope, float x, float ordinate)
 	return (slope * x + ordinate);
 }
 
-/** PURPOSE : Base times height */
+/** PURPOSE : Base times height.
+ * Its starting point will be the lefmost inferior corner. */
 void draw_rectangle(t_data *image, int x, int y, int base, int height)
 {
 	
@@ -52,18 +55,19 @@ void draw_rectangle(t_data *image, int x, int y, int base, int height)
 	}
 }
 
-/** PURPOSE : Base times height */
+/** PURPOSE : Base times height.
+ * 1. Requires dimensions and position of origin. */
 void draw_centered_rectangle(t_data *image, int x, int y, int base, int height)
 {
 	int i;
 	int j;
 
-	x = x - base / 2;
-	y = y - height / 2;
 	if (x < 0 || y < 0)
 		return ;
 	i = -1;
 	j = -1;
+	y = y - height / 2;
+	x = x - base / 2;
 	while (++j < height)
 	{
 		while (++i < base)

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 08:15:33 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 12:20:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:24:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <time.h>
 
-//TODO, poner una con
+//TODO, poner una condicion de collison
 
 /** PURPOSE : Draw vector on screen.
  * Assuming position of player as a coordinate (0, 0).
@@ -28,6 +28,8 @@ void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 	double	y_pixel;
 	double	counter;
 	int		colour_code;
+
+	printf("hola\n");
 
 	double time_spent = 0.0;	
     clock_t begin = clock();
@@ -53,6 +55,7 @@ void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 	printf("The elapsed time is %f seconds\n", time_spent);
 }
 
-/** ¿Why not draw the line by using the ecuation of the line (y = mx + n)
+/** ADDITIONAL NOTES
+ * ¿Why not draw the line by using the ecuation of the line (y = mx + n)
  * As we are working with pixels, it will result in free spaces in the pixel map.
  * On th other hand, working with unitary vectors, will yield a continous line. */

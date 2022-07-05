@@ -6,12 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 12:16:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:14:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "0includes/cube.h"
 
+/** PURPOSE : Scale a 2D grid. */
 void	draw_grid(t_data *image, t_prog *game)
 {
 	for (int nb = 0; nb < 10; nb++)
@@ -25,9 +26,10 @@ void	draw_grid(t_data *image, t_prog *game)
 		ft_shutdown(EX, game);
 }
 
-/** PURPOSE : Build basic image parameters
- * 1. Creates image of given size
- * 2. Once the size of the image is */
+/** PURPOSE : Build basic image parameters.
+ * 1. Creates image of given size.
+ * 2. Once the size of the image is defined, get_data
+ * assigns bits per pixel, line lenght and endian. */
 void build_image_parameters(t_data *image, t_prog *game)
 {
 	image->img = mlx_new_image(game->mlx, OX_WINDOW, OY_WINDOW);
@@ -35,6 +37,10 @@ void build_image_parameters(t_data *image, t_prog *game)
 	(image->img, &image->bits_per_pixel, &image->line_length, &image->endian);
 }
 
+/** PURPOSE : Draw 2D image.
+ * 1. Obtain parameters by defining image size.
+ * 2. Draw grid.
+ * 3. Draw player position + its field of vision. */
 void draw_image(t_prog *game)
 {
 	t_data image;
@@ -43,8 +49,6 @@ void draw_image(t_prog *game)
 	draw_grid(&image, game);
 	draw_player_position(&image, 2 * OX_UNIT, 2 * OY_UNIT, game);
 	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
-
-	//draw_arrow(&image, game, 500, 520, 80);
 }
 
 /** PURPOSE : Describe CUBE.

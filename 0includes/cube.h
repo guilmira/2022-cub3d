@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/04 12:03:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/05 11:19:40 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ typedef struct s_unit_vec
 	float	x;
 	float	y;
 }				t_unit_vec;
-
-
 
 /** PURPOSE : struct that stores image data.
  * Coordinates might not be necessary. */
@@ -133,7 +131,7 @@ void		hooks_and_loops(t_prog *game);
 void draw_player_position(t_data *image, int x, int y, t_prog *game);
 
 /* TOOLS */
-float coor(float y);
+double coor(double y);
 float degree_to_radian(float degree);
 float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(t_data *image, int x, int y, int base, int height);
