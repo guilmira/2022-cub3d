@@ -22,12 +22,11 @@
  * 1. First, unit vector (vector unitario is calulated). 
  * 2. As the unit of the grid is the pixel, to obtaing the line:
  * (unit_Vector + unit_Vector) repeated n module times.  */
-void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
+void draw_vector(mlx_image_t *image, t_vector vec, int x_origin, int y_origin)
 {
 	double	x_pixel;
 	double	y_pixel;
 	double	counter;
-	int		colour_code;
 
 	printf("hola\n");
 
@@ -37,13 +36,13 @@ void draw_vector(t_data *image, t_vector vec, int x_origin, int y_origin)
 	t_unit_vec	unit_vec;
 
 	counter = get_module(vec);
-	colour_code = trgb_translate(0, 150, 0, 0);
 	unit_vec = get_unit_vector(vec);
 	x_pixel = x_origin + unit_vec.x;
 	y_pixel = y_origin + unit_vec.y;
 	while (--counter > 0)
 	{	
-		my_mlx_pixel_put(image, x_pixel, coor(y_pixel), colour_code);
+		//my_mlx_pixel_put(image, x_pixel, coor(y_pixel), colour_code);
+		mlx_put_pixel(image, x_pixel, coor(y_pixel), RED);
 		x_pixel += unit_vec.x;
 		y_pixel += unit_vec.y;
 		if (x_pixel >= OX_WINDOW || y_pixel >= OY_WINDOW)

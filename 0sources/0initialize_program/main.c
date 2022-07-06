@@ -5,74 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 14:07:33 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 14:07:50 by guilmira         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 10:39:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 11:57:41 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
+/*   Updated: 2022/07/06 16:45:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : Scale a 2D grid. */
-void	draw_grid(t_data *image, t_prog *game)
-{
-	for (int nb = 0; nb < 10; nb++)
-	{
-		for (int j = 0; j < OY_WINDOW; j++)
-			my_mlx_pixel_put(image, ( nb * (OX_WINDOW / OX_DIV) ), j, trgb_translate(0, 255, 255, 255));
-		for (int i = 0; i < OX_WINDOW; i++)
-			my_mlx_pixel_put(image, i, ( nb * (OY_WINDOW / OY_DIV) ), trgb_translate(0, 255, 255, 255));
-	}
-	if (0)
-		ft_shutdown(EX, game);
-}
+/* Notas guille: 
+TODOs en el code. Intentar reducir al minimo.
+*/
 
-/** PURPOSE : Build basic image parameters.
- * 1. Creates image of given size.
- * 2. Once the size of the image is defined, get_data
- * assigns bits per pixel, line lenght and endian. */
-void build_image_parameters(t_data *image, t_prog *game)
-{
-	image->img = mlx_new_image(game->mlx, OX_WINDOW, OY_WINDOW);
-	image->addr = mlx_get_data_addr\
-	(image->img, &image->bits_per_pixel, &image->line_length, &image->endian);
-}
-
-/** PURPOSE : Draw 2D image.
- * 1. Obtain parameters by defining image size.
- * 2. Draw grid.
- * 3. Draw player position + its field of vision. */
-void draw_image(t_prog *game)
-{
-	t_data image;
-
-	build_image_parameters(&image, game);
-	draw_grid(&image, game);
-	draw_player_position(&image, 2 * OX_UNIT, 2 * OY_UNIT, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
-}
-
-/** PURPOSE : Describe CUBE.
- * 1. Define structure of program. */
+/** PURPOSE : CUB3 uses 
+ * 1. make exe.
+ * 2. ./cube + [map_name.cub] */
 //int	main(int argc, char **argv)
 int	main(void)
 {
 	t_prog		*game;
-	t_vector	window_dimensions;
 
-	window_dimensions.x = OX_WINDOW;
-	window_dimensions.y = OY_WINDOW;
 	/* --------------------------------------------------------------- */
 	atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
@@ -80,20 +31,13 @@ int	main(void)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
-
 	//parser(game, argc, argv);
 	//input_management();
-
-	init_window(game, window_dimensions);
-
+	main_image_framework(game, OX_WINDOW, OY_WINDOW);
+	secd_image_framework(game);
 	/* --------------------------------------------------------------- */
 	//trace_rays();
-	//create_images();
-	//detect_hooks();
-
-	draw_image(game);
-	
-	
+	//virtualize_3D();
 	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);
 	clean_exit(game);

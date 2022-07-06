@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 14:44:39 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/06 15:39:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ float ft_line(float slope, float x, float ordinate)
 
 /** PURPOSE : Base times height.
  * Its starting point will be the lefmost inferior corner. */
-void draw_rectangle(t_data *image, int x, int y, int base, int height)
+void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height)
 {
 	
 	int i;
@@ -50,14 +50,14 @@ void draw_rectangle(t_data *image, int x, int y, int base, int height)
 	while (++j < height)
 	{
 		while (++i < base)
-			my_mlx_pixel_put(image, x + i, coor(y + j), trgb_translate(0, 0, 255, 0));
+			mlx_put_pixel(image, x + i, coor(y + j), BLUE);
 		i = -1;
 	}
 }
 
 /** PURPOSE : Base times height.
  * 1. Requires dimensions and position of origin. */
-void draw_centered_rectangle(t_data *image, int x, int y, int base, int height)
+void draw_centered_rectangle(mlx_image_t *image, int x, int y, int base, int height)
 {
 	int i;
 	int j;
@@ -71,7 +71,7 @@ void draw_centered_rectangle(t_data *image, int x, int y, int base, int height)
 	while (++j < height)
 	{
 		while (++i < base)
-			my_mlx_pixel_put(image, x + i, coor(y + j), trgb_translate(0, 0, 255, 0));
+			mlx_put_pixel(image, x + i, coor(y + j), GREEN);
 		i = -1;
 	}
 }

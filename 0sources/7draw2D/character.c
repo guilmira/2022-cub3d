@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 14:49:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:44:30 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sig
 /** PURPOSE : Draw field of vision.
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. */
-static void draw_vision(t_data *image, int pos_x, int pos_y, float aperture)
+static void draw_vision(mlx_image_t *image, int pos_x, int pos_y, float aperture)
 {
 	t_vector	direction;
 
@@ -66,7 +66,8 @@ static void draw_vision(t_data *image, int pos_x, int pos_y, float aperture)
 	direction = cast_straight(pos_x, pos_y);
 	draw_vector(image, direction, pos_x, pos_y);
 	direction.x = 700;//ver que pasa ahi
-	direction.x = 400;//ver que pasa ahi
+	direction.x = 400;//ver que pasa ahi //ES UN ERROR. NO DEBERIA CRUZAR.
+	//ABSTRAER BIEN LOS BOUNDRY CONDITION PARA QUE NO SALGA DEL DIBUJO
 	direction = rotate_vector(direction, 43);
 	draw_vector(image, direction, pos_x, pos_y);
 	direction = rotate_vector(direction, -90);
@@ -74,14 +75,13 @@ static void draw_vision(t_data *image, int pos_x, int pos_y, float aperture)
 
 }
 
-
 /** PURPOSE : Draw player with its field of vision. 
- * 1. Requires player position.
+ * 1. Requires player coordinates.
  * 2. From (x, y) coordinates, rays will be casted as vectors. */
-void draw_player_position(t_data *image, int pos_x, int pos_y, t_prog *game)
+void draw_player_position(mlx_image_t *image, int pos_x, int pos_y, t_prog *game)
 {
 	if (pos_x < 0 || pos_y < 0)
 		ft_shutdown(EX, game);
-	draw_centered_rectangle(image, pos_x, pos_y, x_size, y_size);
+	draw_centered_rectangle(image, pos_x, pos_y, x_size, y_size); //TODO, no esta centrando exacto
 	draw_vision(image, pos_x, pos_y, VISION_ANGLE);
 }

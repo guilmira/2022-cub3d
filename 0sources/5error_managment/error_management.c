@@ -6,39 +6,46 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 14:43:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/06 15:28:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Close window if exists. */
-static void	clear_window(t_prog *game)
+/* static void	clear_window(t_prog *game)
 {
 	if (game->mlx_window)
 		mlx_destroy_window(game->mlx, game->mlx_window);
-}
+} */
 
 /** PURPOSE : Frees allocated memory in program. */
 static void clear_memory(t_prog *game)
 {
-    if (game)
-    {
-        //Free all allocated memory (access by pointers);
-        if (game->map)
-            freemat(game->map);
-        if (game->NO)
-            free(game->NO);
-        if (game->SO)
-            free(game->SO);
-        if (game->WE)
-            free(game->WE);
-        if (game->EA)
-            free(game->EA);
-        free(game);
+	if (game)
+	{
+		if (game->map)
+			freemat(game->map);
+		if (game->NO)
+			free(game->NO);
+		if (game->SO)
+			free(game->SO);
+		if (game->WE)
+			free(game->WE);
+		if (game->EA)
+			free(game->EA);
+		free(game);
     }
 }
 
+void	clear_images(t_prog *game)
+{
+	int	i;
+
+	i = -1;
+	while (game->image[++i])
+		mlx_delete_image(game->mlx, game->image[i]);
+}
 
 /** PURPOSE : Neat program exit. Call at the end.
  * 1. Close window if exists.
@@ -46,8 +53,9 @@ static void clear_memory(t_prog *game)
  * 3. Exits with value 0. */
 void	clean_exit(t_prog *game)
 {
-	clear_window(game);
+    clear_images(game);
 	clear_memory(game);
+    mlx_terminate(game->mlx);
 	exit(0);
 }
 
@@ -58,8 +66,9 @@ void	clean_exit(t_prog *game)
  * 4. Exit with error code. */
 void	ft_shutdown(char *error_msg, t_prog *game)
 {
-	clear_window(game);
+	clear_images(game);
 	clear_memory(game);
+    mlx_terminate(game->mlx);
 	ft_shut(error_msg);
 }
 
