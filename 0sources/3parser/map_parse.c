@@ -1,0 +1,124 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parse.c.                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
+/*   Updated: 2022/07/05 14:43:31 by jsanfeli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cube.h"
+
+int		parse_content(char *content);
+int		getcoords(t_prog *game, t_list *aux_lst);
+void	fill_spaces_map(t_prog *game, t_list *aux_lst);
+
+int map_build(int data_len, t_prog *game, t_list *aux_lst)
+{
+	int k;
+	int flag;
+
+	k = -1;
+	while(++k <= data_len)
+		aux_lst = aux_lst->next;
+	while (1)
+	{
+		flag = parse_content(aux_lst->content);
+		if (flag == -1)
+			return (-1);
+		if (flag == 1)
+			break;
+		if (aux_lst->next == NULL)
+			return (-1);
+		aux_lst = aux_lst->next;
+	}
+	if (getcoords(game, aux_lst) == -1)
+		return (-1);
+	fill_spaces_map(game, aux_lst);
+	return (0);
+}
+
+int	parse_content(char *content)
+{
+	int i;
+
+	i = -1;
+	while (ft_isspaces(content[++i]) != 0 && content[i])
+		;
+	if (i == (int)ft_strlen(content))
+		return (0);
+	else if(content[i] == '1')
+		return (1);
+	return(-1);
+}
+
+void	fill_spaces_map(t_prog *game, t_list *aux_lst)
+{
+	int i;
+	int count;
+
+	i = 1;
+	printf("\n-------------------------------------\n");
+	game->map = ft_calloc(sizeof(char *), game->map_y + 3);
+	game->map[0] = ft_calloc(sizeof(char), game->map_x + 3);
+	count = -1;
+	while (++count <= game->map_x + 1)
+		game->map[0][count] = ' ';
+	printf("(%s)\n", game->map[0]);
+	while (i <= game->map_y)
+	{
+		game->map[i] = ft_calloc(sizeof(char), game->map_x + 3);
+		game->map[i][0] = ' ';
+		count = 1;
+		while (count <= game->map_x + 1)
+		{
+			if (count <= (int)ft_strlen((char *)aux_lst->content))
+				game->map[i][count] = ((char *)aux_lst->content)[count - 1];
+			else
+				game->map[i][count] = ' ';
+			count++;
+		}
+		printf("(%s)\n", game->map[i]);
+		aux_lst = aux_lst->next;
+		i++;
+	}
+	game->map[game->map_y + 1] = ft_calloc(sizeof(char) , game->map_x + 3);
+	count = -1;
+	while (++count <= game->map_x + 1)
+		game->map[game->map_y + 1][count] = ' ';
+	printf("(%s)\n", game->map[game->map_y + 1]);
+	printf("-------------------------------------\n");
+}
+
+int	getcoords(t_prog *game, t_list *aux_lst)
+{
+	int x;
+	int l;
+	int y;
+
+	x = 0;
+	y = 1;
+	while (aux_lst->next)
+	{
+		l = 0;
+		while (((char *)aux_lst->content)[l])
+		{
+			if (((char *)aux_lst->content)[l] != '1' && ((char *)aux_lst->content)[l] != '0' 
+				&& ((char *)aux_lst->content)[l] != 'N' && ((char *)aux_lst->content)[l] != 'S' 
+				&& ((char *)aux_lst->content)[l] != 'E' && ((char *)aux_lst->content)[l] != 'W'
+				&& ((char *)aux_lst->content)[l] != ' ')
+				return (-1);
+			l++;
+		}
+		if (l > x)
+			x = l;
+		y++;
+		aux_lst = aux_lst->next;
+	}
+	game->map_x = x;
+	game->map_y = y;
+	return (0);
+}

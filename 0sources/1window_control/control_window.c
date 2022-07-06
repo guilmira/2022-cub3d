@@ -13,16 +13,16 @@
 #include "cube.h"
 
 /** PURPOSE : its necesary because clean_exit returns void. */
-static int	ft_destroy(t_prog *game)
+/*static int	ft_destroy(t_prog *game)
 {
 	clean_exit(game);
 	return (0);
-}
+}*/
 
 /** PURPOSE : open window.
  * 1. Open window, save pointer for later use.
  * 2. Establishes closing window hook */
-void	init_window(t_prog *game, t_vector window_dimensions)
+/*void	init_window(t_prog *game, t_vector window_dimensions)
 {
 	game->mlx_window = mlx_new_window(game->mlx, \
 	window_dimensions.x, window_dimensions.y, TITLE_WINDOW);
@@ -30,3 +30,4 @@ void	init_window(t_prog *game, t_vector window_dimensions)
 		ft_shutdown(EX2, game);
 	mlx_hook(game->mlx_window, DESTROY_EVENT, 0, ft_destroy, game);
 }
+*/

@@ -19,9 +19,9 @@
 void	init_game(t_prog *game)
 {
 	game->mlx_window = NULL; //it has to go 1st
-	game->mlx = mlx_init(); //genera 3 root leaks at exit. Hay que actualizar a la nueba MLX
+	/*game->mlx = mlx_init(); //genera 3 root leaks at exit. Hay que actualizar a la nueba MLX
 	if (!game->mlx)
-		ft_shutdown("MLX could not be initialized\n", game);
+		ft_shutdown("MLX could not be initialized\n", game);*/
 	//INIT all pointers to NULL, variables to zero.
 	game->map = NULL;
 	game->file = 0;

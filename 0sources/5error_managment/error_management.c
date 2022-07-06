@@ -13,12 +13,12 @@
 #include "cube.h"
 
 /** PURPOSE : Close window if exists. */
-static void	clear_window(t_prog *game)
+/*static void	clear_window(t_prog *game)
 {
 	if (game->mlx_window)
 		mlx_destroy_window(game->mlx, game->mlx_window);
 }
-
+*/
 /** PURPOSE : Frees allocated memory in program. */
 static void clear_memory(t_prog *game)
 {
@@ -46,7 +46,7 @@ static void clear_memory(t_prog *game)
  * 3. Exits with value 0. */
 void	clean_exit(t_prog *game)
 {
-	clear_window(game);
+	//clear_window(game);
 	clear_memory(game);
 	exit(0);
 }
@@ -58,7 +58,7 @@ void	clean_exit(t_prog *game)
  * 4. Exit with error code. */
 void	ft_shutdown(char *error_msg, t_prog *game)
 {
-	clear_window(game);
+	//clear_window(game);
 	clear_memory(game);
 	ft_shut(error_msg);
 }

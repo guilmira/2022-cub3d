@@ -42,13 +42,13 @@ void	draw_grid(t_data *image, t_prog *game)
  * 1. Creates image of given size.
  * 2. Once the size of the image is defined, get_data
  * assigns bits per pixel, line lenght and endian. */
-void build_image_parameters(t_data *image, t_prog *game)
+/*void build_image_parameters(t_data *image, t_prog *game)
 {
 	image->img = mlx_new_image(game->mlx, OX_WINDOW, OY_WINDOW);
 	image->addr = mlx_get_data_addr\
 	(image->img, &image->bits_per_pixel, &image->line_length, &image->endian);
 }
-
+*/
 /** PURPOSE : Draw 2D image.
  * 1. Obtain parameters by defining image size.
  * 2. Draw grid.
@@ -57,16 +57,16 @@ void draw_image(t_prog *game)
 {
 	t_data image;
 
-	build_image_parameters(&image, game);
+	//build_image_parameters(&image, game);
 	draw_grid(&image, game);
 	draw_player_position(&image, 2 * OX_UNIT, 2 * OY_UNIT, game);
-	mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
+	//mlx_put_image_to_window(game->mlx, game->mlx_window, image.img, 0, 0);
 }
 
 /** PURPOSE : Describe CUBE.
  * 1. Define structure of program. */
 //int	main(int argc, char **argv)
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_prog		*game;
 	t_vector	window_dimensions;
@@ -81,21 +81,21 @@ int	main(void)
 	/* --------------------------------------------------------------- */
 	init_game(game);
 
-	//parser(game, argc, argv);
+	parser(game, argc, argv);
 	//input_management();
 
-	init_window(game, window_dimensions);
+	//init_window(game, window_dimensions);
 
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//create_images();
 	//detect_hooks();
 
-	draw_image(game);
+	//draw_image(game);
 	
 	
 	/* --------------------------------------------------------------- */
-	hooks_and_loops(game);
+	//hooks_and_loops(game);
 	clean_exit(game);
 	return (0);
 }
