@@ -12,8 +12,10 @@
 
 #include "cube.h"
 
-int	ext_err(t_prog *game, char *av);
-int	map_prep(t_prog *game);;
+int		ext_err(t_prog *game, char *av);
+int		map_prep(t_prog *game);
+void	show_map(t_prog *game);
+void	show_info(t_prog *game);
 
 void	parser(t_prog *game, int ac, char **av)
 {
@@ -23,12 +25,6 @@ void	parser(t_prog *game, int ac, char **av)
 	// Parse map (check char, filter identificators, map creator)
 	if (map_prep(game))
 		ft_shutdown("Error: Map parse fail\n", game);
-	printf("%s\n", game->NO);
-	printf("%s\n", game->SO);
-	printf("%s\n", game->WE);
-	printf("%s\n", game->EA);
-	printf("%d\n", game->floor_clr);
-	printf("%d\n", game->sky_clr);
 }
 
 int	ext_err(t_prog *game, char *av)
@@ -58,14 +54,62 @@ int map_prep(t_prog *game)
 
 	aux_lst = NULL;
 	fill_lst(game, &aux_lst);
-	printlist(aux_lst);
 	data_len = parselst(game, aux_lst);
+	show_info(game);
 	if (data_len == -1 || map_build(data_len, game, aux_lst) == -1)
 	{
+		if (data_len != -1)
+			show_map(game);
 		ft_lstclear(&aux_lst, free);
 		return (1);
 	}
+	show_map(game);
  	ft_lstclear(&aux_lst, free);
 	return (0);
 }
 
+void	show_info(t_prog *game)
+{	
+	if(game->NO)
+		printf("North texture: %s\n", game->NO);
+	else
+		printf("North texture: Not Parsed\n");
+	if(game->SO)
+		printf("South texture: %s\n", game->SO);
+	else
+		printf("South texture: Not Parsed\n");
+	if(game->EA)
+		printf("East texture: %s\n", game->EA);
+	else
+		printf("East texture: Not Parsed\n");
+	if(game->WE)
+		printf("West texture: %s\n", game->WE);
+	else
+		printf("West texture: Not Parsed\n");
+	if(game->sky_clr != -1)
+		printf("Sky colour: %d\n", game->sky_clr);
+	else
+		printf("Sky colour: ERROR\n");
+	if(game->floor_clr != -1)
+		printf("Floor colour: %d\n", game->floor_clr);
+	else
+		printf("Floor colour: ERROR\n");
+	printf("\n");
+}
+
+void	show_map(t_prog *game)
+{
+	int i;
+
+	i = -1;
+	while(++i < game->map_x + 4)
+		write(0, "-", 1);
+	write(0, "\n", 1);
+	i = -1;
+	while (++i < game->map_y)
+		printf("(%s)\n", game->map[i]);
+	i = -1;
+	while(++i < game->map_x + 4)
+		write(0, "-", 1);
+	write(0, "\n", 1);
+}

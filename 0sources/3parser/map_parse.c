@@ -64,13 +64,11 @@ void	fill_spaces_map(t_prog *game, t_list *aux_lst)
 	int count;
 
 	i = 1;
-	printf("\n-------------------------------------\n");
 	game->map = ft_calloc(sizeof(char *), game->map_y + 3);
 	game->map[0] = ft_calloc(sizeof(char), game->map_x + 3);
 	count = -1;
 	while (++count <= game->map_x + 1)
 		game->map[0][count] = ' ';
-	printf("(%s)\n", game->map[0]);
 	while (i <= game->map_y)
 	{
 		game->map[i] = ft_calloc(sizeof(char), game->map_x + 3);
@@ -84,7 +82,6 @@ void	fill_spaces_map(t_prog *game, t_list *aux_lst)
 				game->map[i][count] = ' ';
 			count++;
 		}
-		printf("(%s)\n", game->map[i]);
 		aux_lst = aux_lst->next;
 		i++;
 	}
@@ -92,8 +89,6 @@ void	fill_spaces_map(t_prog *game, t_list *aux_lst)
 	count = -1;
 	while (++count <= game->map_x + 1)
 		game->map[game->map_y + 1][count] = ' ';
-	printf("(%s)\n", game->map[game->map_y + 1]);
-	printf("-------------------------------------\n");
 }
 
 int		is_closed(char **map)
