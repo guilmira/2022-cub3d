@@ -15,6 +15,7 @@
 int		parse_content(char *content);
 int		getcoords(t_prog *game, t_list *aux_lst);
 void	fill_spaces_map(t_prog *game, t_list *aux_lst);
+int		is_closed(char **map);
 
 int map_build(int data_len, t_prog *game, t_list *aux_lst)
 {
@@ -38,6 +39,8 @@ int map_build(int data_len, t_prog *game, t_list *aux_lst)
 	if (getcoords(game, aux_lst) == -1)
 		return (-1);
 	fill_spaces_map(game, aux_lst);
+	if (is_closed(game->map) == -1)
+		return(-1);
 	return (0);
 }
 
@@ -91,6 +94,33 @@ void	fill_spaces_map(t_prog *game, t_list *aux_lst)
 		game->map[game->map_y + 1][count] = ' ';
 	printf("(%s)\n", game->map[game->map_y + 1]);
 	printf("-------------------------------------\n");
+}
+
+int		is_closed(char **map)
+{
+	int y;
+	int x;
+	int flag;
+
+	y = 0;
+	flag = 0;
+	while(map[y])
+	{
+		x = 0;
+		while(map[y][x])
+		{
+			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'W' || map[y][x] == 'E' || map[y][x] == 'S')
+				if (map[y][x - 1] == ' ' || map[y][x + 1] == ' ' || map[y - 1][x] == ' ' || map[y + 1][x] == ' ')
+					return (-1);
+			if (map[y][x] == 'N' || map[y][x] == 'W' || map[y][x] == 'E' || map[y][x] == 'S')
+				flag += 1;
+			x++;
+		}
+		y++;
+	}
+	if (flag != 1)
+		return (-1);
+	return (0);
 }
 
 int	getcoords(t_prog *game, t_list *aux_lst)
