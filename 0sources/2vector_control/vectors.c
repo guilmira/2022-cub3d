@@ -42,7 +42,7 @@ void draw_vector(mlx_image_t *image, t_vector vec, int x_origin, int y_origin)
 	while (--counter > 0)
 	{	
 		//my_mlx_pixel_put(image, x_pixel, coor(y_pixel), colour_code);
-		mlx_put_pixel(image, x_pixel, coor(y_pixel), RED);
+		mlx_put_pixel(image, x_pixel, coor(y_pixel, OY_MINIMAP), RED);
 		x_pixel += unit_vec.x;
 		y_pixel += unit_vec.y;
 		if (x_pixel >= OX_WINDOW || y_pixel >= OY_WINDOW)

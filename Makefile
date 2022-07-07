@@ -6,14 +6,14 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/06 16:35:46 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/07 14:45:04 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror #-g #-fsanitize=address
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule
@@ -68,6 +68,9 @@ $(NAME): $(OBJS) $(LIB) $(MLX)
 exe: $(NAME)
 	./$(NAME)
 
+fus:
+	$(RM) $(OBJS)
+redo: fus exe
 #----------------------------------------------------------------------------------------------------CLEANING RULES
 RM = rm -rf
 

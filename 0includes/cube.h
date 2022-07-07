@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/06 17:04:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:15:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
+# define OX_MINIMAP OX_WINDOW - 1 * OX_UNIT
+# define OY_MINIMAP OY_WINDOW - 1 * OY_UNIT
+# define OX_MINIMAP_O 0 + 1 * OX_UNIT
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT
+
+//only round numbers, preferable 10 or 100
 # define OX_DIV 10
 # define OY_DIV 10
 # define OX_UNIT OX_WINDOW / OX_DIV
@@ -67,7 +73,15 @@ typedef struct s_unit_vec
 	float	y;
 }				t_unit_vec;
 
-
+/** PURPOSE : Set of coordinates. */
+typedef struct s_dimensions
+{
+	double origin[2];
+	double size[2];
+	double limit[2];
+	double sec_limit[2];
+	double unit[2];
+}				t_dim;
 
 typedef struct s_program
 {
@@ -85,6 +99,8 @@ typedef struct s_program
 	int		floor_clr;
 	/* ----- GUILLE ---- */
 	t_coor	minimap;
+	t_dim	w1;
+	t_dim	w2;
 
 	/* ----- KIRIAM ---- */
 	int		file;
@@ -117,7 +133,7 @@ t_vector	get_window_dimensions(t_vector dimensions);
 /* FRAMEWORKS */
 int			trgb_translate(int red, int blue, int green, int transparency);
 int			get_opposite(int colour_code);
-void		main_image_framework(t_prog *game, int size_x, int size_y);
+void		main_image_framework(t_prog *game);
 void		secd_image_framework(t_prog *game);
 /* VECTOR TREATMENT */
 void draw_vector(mlx_image_t *image, t_vector vec, int x_origin, int y_origin);
@@ -140,7 +156,7 @@ void		hooks_and_loops(t_prog *game);
 void draw_player_position(mlx_image_t *image, int x, int y, t_prog *game);
 
 /* TOOLS */
-double coor(double y);
+double coor(double y, double size_y);
 float degree_to_radian(float degree);
 float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/06 16:45:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:46:23 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 /* Notas guille: 
 TODOs en el code. Intentar reducir al minimo.
+COORDINATES on a map ar array[2], meanwhile, vectors will be t_vector!
 */
+
+
+
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
@@ -33,8 +37,10 @@ int	main(void)
 	init_game(game);
 	//parser(game, argc, argv);
 	//input_management();
-	main_image_framework(game, OX_WINDOW, OY_WINDOW);
+	main_image_framework(game);
 	secd_image_framework(game);
+	printf("va\n");
+
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//virtualize_3D();

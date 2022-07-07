@@ -12,15 +12,6 @@
 
 #include "cube.h"
 
-/** PURPOSE : two variables: the origin at window and its size. */
-static void init_minimap_dimensions(t_prog *game)
-{
-	game->minimap.ox = MAP_OX;
-	game->minimap.oy = MAP_OY;
-	game->minimap.size_x = MAP_SIZE_X;
-	game->minimap.size_y = MAP_SIZE_Y;
-}
-
 /** PURPOSE : pointers at images to NULL */
 static void init_image(t_prog *game)
 {
@@ -29,6 +20,48 @@ static void init_image(t_prog *game)
 	i = -1;
 	while (++i < TOTAL_IMAGES + 1)
 		game->image[i] = NULL;
+}
+
+/** PURPOSE : calculate boundry condition for framework. */
+static double	window_limit(double origin, double size)
+{
+	return (size + origin);
+}
+
+/** PURPOSE : calculate unit of meastur for each framework. */
+static double	window_unit(double size, double divisor)
+{
+	return ( size / divisor);
+}
+
+/** PURPOSE : calculate main window and minimap dimensions. */
+void	framework_dimensions(t_prog *game)
+{
+	game->w1.origin[0] = 0;
+	game->w1.origin[1] = 0;
+	game->w1.size[0] = OX_WINDOW;
+	game->w1.size[1] = OY_WINDOW;
+	//limit is the OVERALL LIMIT COORDINATE
+	game->w1.limit[0] = window_limit(game->w1.origin[0], game->w1.size[0]);
+	game->w1.limit[1] = window_limit(game->w1.origin[1], game->w1.size[1]);
+	game->w1.unit[0] = window_unit(game->w1.size[0], OX_DIV);
+	game->w1.unit[1] = window_unit(game->w1.size[1], OY_DIV);
+	/* --------------------------------------------------------------- */
+	game->w2.origin[0] = OX_MINIMAP_O;
+	game->w2.origin[1] = OY_MINIMAP_O;
+	game->w2.size[0] = OX_MINIMAP;
+	game->w2.size[1] = OY_MINIMAP;
+	game->w2.limit[0] = window_limit(game->w2.origin[0], game->w2.size[0]);
+	game->w2.limit[1] = window_limit(game->w2.origin[1], game->w2.size[1]);
+	if (game->w2.limit[0] > OX_WINDOW || game->w2.limit[1] > OY_WINDOW)
+		ft_shutdown("Minimap to big\n", game);
+	game->w2.unit[0] = window_unit(game->w2.size[0], OX_DIV);
+	game->w2.unit[1] = window_unit(game->w2.size[1], OY_DIV);
+	/* --------------------------------------------------------------- */
+	game->w1.sec_limit[0] = game->w1.size[0] - game->w2.origin[0]; //only if (OX >= game->w2.origin[0])
+	game->w1.sec_limit[1] = game->w1.size[1] - game->w2.origin[1]; //only if (OY >= game->w2.origin[1])
+	game->w2.sec_limit[0] = 0;
+	game->w2.sec_limit[1] = 0;
 }
 
 /** PURPOSE : init MLX and set pointers to NULL.
@@ -46,5 +79,5 @@ void	init_game(t_prog *game)
 	game->file = 0;
 	/* --------------------------------------------------------------- */
 	init_image(game);
-	init_minimap_dimensions(game);
+	framework_dimensions(game);
 }

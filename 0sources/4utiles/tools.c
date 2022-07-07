@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/06 15:39:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 14:16:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 /** PURPOSE : Position corrector.
  * The -1 avoids seg fault at screen limit (0, 0). */
-double coor(double y)
+double coor(double y, double size_y)
 {
-	if (y < 0)
-		ft_senderror("Invalid y coordinate.\n");
-	return (OY_WINDOW - y - 1);
+	if (y < 0 || size_y - y < 0)
+	{
+		ft_senderror("Invalid 'y' coordinate.\n");
+		return (0);
+	}
+	return (size_y - y - 1);
 }
+
 
 /** PURPOSE :  Converter.
  * 1. 180 º = π rad */
@@ -50,7 +54,7 @@ void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height)
 	while (++j < height)
 	{
 		while (++i < base)
-			mlx_put_pixel(image, x + i, coor(y + j), BLUE);
+			mlx_put_pixel(image, x + i, coor(y + j, OY_MINIMAP), BLUE);
 		i = -1;
 	}
 }
@@ -71,7 +75,7 @@ void draw_centered_rectangle(mlx_image_t *image, int x, int y, int base, int hei
 	while (++j < height)
 	{
 		while (++i < base)
-			mlx_put_pixel(image, x + i, coor(y + j), GREEN);
+			mlx_put_pixel(image, x + i, coor(y + j, OY_MINIMAP), GREEN);
 		i = -1;
 	}
 }
