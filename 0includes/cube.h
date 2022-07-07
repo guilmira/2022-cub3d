@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 14:15:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:17:24 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-# define OX_MINIMAP OX_WINDOW - 1 * OX_UNIT
-# define OY_MINIMAP OY_WINDOW - 1 * OY_UNIT
-# define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT
+# define OX_MINIMAP OX_WINDOW - 8 * OX_UNIT
+# define OY_MINIMAP OY_WINDOW - 8 * OY_UNIT
+# define OX_MINIMAP_O 0 + 8 * OX_UNIT
+# define OY_MINIMAP_O 0 + 8 * OY_UNIT
 
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
@@ -153,7 +153,7 @@ void		freemat(char **mat);
 void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
-void draw_player_position(mlx_image_t *image, int x, int y, t_prog *game);
+void draw_player_position(mlx_image_t *image, float x, float y, t_prog *game);
 
 /* TOOLS */
 double coor(double y, double size_y);

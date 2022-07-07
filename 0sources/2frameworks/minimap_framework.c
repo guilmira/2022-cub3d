@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 14:24:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:15:40 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,13 @@ void	draw_grid(mlx_image_t *image, t_prog *game, double size_x, double size_y)
 	printf("%f\n", game->w2.size[0]);
 	printf("%f\n", game->w2.limit[0]);
 	printf("%f\n", game->w2.unit[0]);
+	
+	//con 11 peta.
 	for (int nb = 0; nb < 10; nb++)
 	{
-			
-
 		put_horizontal(image, ( nb * game->w2.unit[1]), size_x, GREEN);
 		put_vertical(image, ( nb * game->w2.unit[0]), size_y, RED);
 	}
-	printf("PASSA\n");
 	if (0)
 		ft_shutdown(EX, game);
 }
@@ -80,12 +79,12 @@ void	secd_image_framework(t_prog *game)
 	(int) game->w2.size[0], (int) game->w2.size[1]);
 	if (!image)
 		ft_shutdown(EX3, game);
-
 	game->image[1] = image; 
 	/* --------------------------------------------------------------- */
 	draw_grid(image, game, game->w2.size[0], game->w2.size[1]);
-	//draw_player_position(image, 2 * game->w2.unit[0], 2 * game->w2.unit[1], game);
-
+	
+	
+	draw_player_position(image, 2 * game->w2.unit[0], 2 * game->w2.unit[1], game);
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	image, game->w2.origin[0], game->w2.origin[1]);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 14:16:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:05:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ double coor(double y, double size_y)
 	}
 	return (size_y - y - 1);
 }
-
 
 /** PURPOSE :  Converter.
  * 1. 180 º = π rad */
@@ -43,7 +42,6 @@ float ft_line(float slope, float x, float ordinate)
  * Its starting point will be the lefmost inferior corner. */
 void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height)
 {
-	
 	int i;
 	int j;
 

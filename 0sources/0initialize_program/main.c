@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 14:46:23 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:07:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	main(void)
 	//input_management();
 	main_image_framework(game);
 	secd_image_framework(game);
-	printf("va\n");
-
+	
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//virtualize_3D();
 	/* --------------------------------------------------------------- */
+	printf("loopeando\n");
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);

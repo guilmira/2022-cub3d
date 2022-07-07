@@ -6,18 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 14:44:15 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:04:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-/** PURPOSE : Close window if exists. */
-/* static void	clear_window(t_prog *game)
-{
-	if (game->mlx_window)
-		mlx_destroy_window(game->mlx, game->mlx_window);
-} */
 
 /** PURPOSE : Frees allocated memory in program. */
 static void clear_memory(t_prog *game)
@@ -53,9 +46,6 @@ void	clear_images(t_prog *game)
  * 3. Exits with value 0. */
 void	clean_exit(t_prog *game)
 {
-	/* mlx_t	*ptr;
-
-	ptr = game->mlx; */
 	clear_images(game);
 	mlx_terminate(game->mlx);
 	clear_memory(game);
@@ -69,9 +59,6 @@ void	clean_exit(t_prog *game)
  * 4. Exit with error code. */
 void	ft_shutdown(char *error_msg, t_prog *game)
 {
-	/* mlx_t	*ptr;
-	
-	ptr = game->mlx; */
 	clear_images(game);
 	mlx_terminate(game->mlx);
 	clear_memory(game);
