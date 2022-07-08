@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/08 15:33:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:50:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 //mejorar abstraccion con (put_horizontal) y (put_vertical)
 
-/** PURPOSE : 
- * It need to recieve the y coordinate SHIFTED!. */
-void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, int colour)
+/** PURPOSE : Put pixel to image in a secure way.
+ * It need to recieve the y coordinate already SHIFTED!. */
+void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
 {
 	uint32_t x;
 	uint32_t y;
@@ -36,6 +36,7 @@ void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, int colour)
 	mlx_put_pixel(image, x, y, colour);
 }
 
+/** PURPOSE : Horizontal line in given coordinate. */
 void put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int colour)
 {
 	int i;
@@ -49,27 +50,32 @@ void put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int
 		solid_pixel(image, i, coor_y, colour);
 }
 
+/** PURPOSE : Vertical line in given coordinate. */
 void put_vertical(mlx_image_t *image, double coordinate_x, double limit_y, int colour)
 {
 	int j;
+	int coor_y;
+	
 	j = -1;
-
 	while (++j < limit_y)
-		solid_pixel(image, coordinate_x, coor(j, (double) OY_MINIMAP), colour);
+	{
+		coor_y = (int) coor(j, (double) OY_MINIMAP);
+		solid_pixel(image, (int) coordinate_x, coor_y, colour);
+	}
 }
 
 /** PURPOSE : Scale a 2D grid. */
 void	draw_grid(mlx_image_t *image, t_prog *game, double size_x, double size_y)
 {
+	int nb;
 
-	//offset for double
-	printf("%f\n", game->w2.origin[0]);
-
-	for (int nb = 0; nb < 10; nb++)
+	nb = -1;
+	while (++nb < 10)
 	{
-		put_horizontal(image, ( nb * game->w2.unit[1]), size_x - 8, GREEN);
+		put_horizontal(image, ( nb * game->w2.unit[1]), size_x, GREEN);
 		put_vertical(image, ( nb * game->w2.unit[0]), size_y, RED);
 	}
+	printf("%f\n", game->w2.unit[1]);
 	if (0)
 		ft_shutdown(EX, game);
 }
