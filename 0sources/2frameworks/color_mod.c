@@ -6,64 +6,66 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/05 14:47:31 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/06 13:31:48 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+//						FILE DOCUMENTATION RED-BLUE-GREEN
 /* Since each byte contains 2^8 = 256 values (1 byte = 8 bits), 
-and RGB values range from 0 to 255, 
+and RBG values range from 0 to 255, 
 we can perfectly fit a integer (as an int is 4 bytes).  */
+
+//Trnsparency : 0 = ALL. 255 = NONE
 
 /** PURPOSE : Translates values for each colour to a single integer.
  * Values given as a parameter can only go from 0 to 255 in all cases. 
  * 
- * It works as the following example for green
- *  0000 0011 (so i want 3 units of green out of 255.)
- * Since green is stored in the third byte, it has to become:
+ * It works as the following example for blue
+ *  0000 0011 (so i want 3 units of blue out of 255.)
+ * Since blue is stored in the third byte, it has to become:
  * 0000 0000   0000 0000   0000 0011   0000 0000
  * 1011 1111 
  * 1011 
  * So the offset is 8. */
-int	trgb_translate(int t, int red, int green, int blue)
+int	trgb_translate(int red, int green, int blue, int transparency)
 {
 	int	result;
 
 	result = 0;
-	t = t << 24;
-	red = red << 16;
-	green = green << 8;
-	return (result | t | red | green | blue);
+	red = red << 24;
+	green = green << 16;
+	blue = blue << 8;
+	return (result | red | green | blue | transparency);
 }
-/* Now, if we introduce trgb_translate(0, 255, 0, 0) 
-looking for a pure red, i get
-the value 16711680 which is 
-equivalent to 0x00FF0000 */
 
-int	get_transparent(int colour_code)
+//after change in minilib, testing of this functions is very much NEEDED
+int	get_red(int colour_code)
 {
 	return ((colour_code & 0xFF000000) >> 24);
 }
 
-int	get_red(int colour_code)
+int	get_green(int colour_code)
 {
 	return ((colour_code & 0x00FF0000) >> 16);
 }
 
-int	get_green(int colour_code)
+int	get_blue(int colour_code)
 {
 	return ((colour_code & 0x0000FF00) >> 8);
 }
 
-int	get_blue(int colour_code)
+int	get_transparent(int colour_code)
 {
-	return ((colour_code) & 0x000000FF);
+	return (colour_code & 0x0000FF);
 }
 
 int	get_opposite(int colour_code)
 {
-	return (trgb_translate( get_transparent(colour_code) \
-	, (255 - get_red(colour_code)) , (255 - get_green(colour_code)), \
-	(255 - get_blue(colour_code)) ) );
+	return (trgb_translate(\
+	(255 - get_red(colour_code)),\
+	(255 - get_green(colour_code)),\
+	(255 - get_blue(colour_code)),\
+	get_transparent(colour_code) ));
 }

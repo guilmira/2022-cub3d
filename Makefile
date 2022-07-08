@@ -6,27 +6,27 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/05 15:47:39 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/07 14:45:04 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror #-g #-fsanitize=address
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule
 LIB				= $(LIB_DIR)/libft.a
 MLX_DIR			= ./MLX42
 MLX				= $(MLX_DIR)/libmlx42.a
-INCLUDES		= -I./libft_submodule/0includes -I ./MLX42/include/MLX42
+INCLUDES		= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
 FLAGS_MLX		= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./0sources
 FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_variables.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c)
-FOLDER2v	= $(addprefix $(ROUTE)/2image_managment/,		color_mod.c image_mod.c)
+FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c main_framework.c minimap_framework.c)
 FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c vector_tools.c)
 FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c map_parse.c)
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c)
@@ -68,6 +68,9 @@ $(NAME): $(OBJS) $(LIB) $(MLX)
 exe: $(NAME)
 	./$(NAME)
 
+fus:
+	$(RM) $(OBJS)
+redo: fus exe
 #----------------------------------------------------------------------------------------------------CLEANING RULES
 RM = rm -rf
 
@@ -80,7 +83,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@make fclean -C $(LIB_DIR)
-	@make clean -C $(MLX_DIR)
+	@make fclean -C $(MLX_DIR)
 
 re: fclean all
 
