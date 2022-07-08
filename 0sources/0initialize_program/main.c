@@ -21,7 +21,7 @@ COORDINATES on a map ar array[2], meanwhile, vectors will be t_vector!
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
 //int	main(int argc, char **argv)
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_prog		*game;
 
@@ -42,7 +42,7 @@ int	main(void)
 	//virtualize_3D();
 	/* --------------------------------------------------------------- */
 	printf("loopeando\n");
-	hooks_and_loops(game);
+	//hooks_and_loops(game);
 	clean_exit(game);
 	return (0);
 }

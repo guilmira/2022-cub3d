@@ -104,6 +104,8 @@ typedef struct s_program
 
 	/* ----- KIRIAM ---- */
 	int		file;
+    int		map_x;
+    int		map_y;
 }               t_prog;
 
 
@@ -124,6 +126,10 @@ enum e_minimap
 /* ------------------------ PROTOTYPES ------------------------ */
 /* MAP PARSER */
 void		parser(t_prog *game, int ac, char **av);
+void		fill_lst(t_prog *game, t_list **aux_lst);
+int			parselst(t_prog *game, t_list *aux_lst);
+void		printlist(t_list *list);
+int 		map_build(int data_len, t_prog *game, t_list *aux_lst);
 
 /* STRUCT INIT */
 void		init_game(t_prog *game);
