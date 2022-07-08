@@ -155,6 +155,7 @@ char	*cacht_info_str(char *info)
 {
 	char *basic_aux;
 	int i;
+	int k;
 
 	i = 0;
 	while (info[i] == ' ' && info[i])
@@ -163,7 +164,10 @@ char	*cacht_info_str(char *info)
 		i++;
 	while(info[++i] == ' ' && info[i])
 		;
-	basic_aux = ft_substr(info, i, i - ft_strlen(info));
+	k = i;
+	while(info[++k] != ' ' && info[k])
+		;
+	basic_aux = ft_substr(info, i, i - k);
 	return(basic_aux);
 }
 

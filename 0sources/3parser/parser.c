@@ -25,6 +25,8 @@ void	parser(t_prog *game, int ac, char **av)
 	// Parse map (check char, filter identificators, map creator)
 	if (map_prep(game))
 		ft_shutdown("Error: Map parse fail\n", game);
+	if (check_data(game))
+		ft_shutdown("Error: Game data is incorrect\n", game);
 }
 
 int	ext_err(t_prog *game, char *av)
@@ -113,3 +115,5 @@ void	show_map(t_prog *game)
 		write(0, "-", 1);
 	write(0, "\n", 1);
 }
+int		check_data(t_prog *game)
+
