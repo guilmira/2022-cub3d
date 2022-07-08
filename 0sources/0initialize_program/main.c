@@ -6,15 +6,15 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/08 13:33:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:21:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /* Notas guille: 
-TODOs en el code. Intentar reducir al minimo.
-COORDINATES on a map ar array[2], meanwhile, vectors will be t_vector!
+PACE s en el code. Intentar reducir al minimo.
+JAMAS METER DECIMALES, DIVISIONES; Desde DEFINE
 */
 
 /** PURPOSE : CUB3 uses 
@@ -33,10 +33,8 @@ int	main(void)
 	/* --------------------------------------------------------------- */
 	init_game(game);
 	//parser(game, argc, argv);
-	//input_management();
 	main_image_framework(game);
 	secd_image_framework(game);
-	
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//virtualize_3D();

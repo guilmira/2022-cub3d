@@ -6,19 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 15:15:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 13:47:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-#define VISION_ANGLE 140
-/** PURPOSE : Rectangle size. */
-enum player_size
-{
-	x_size = 25,
-	y_size = 25
-};
+
 
 /** PURPOSE : Boolean used to stop casting of vector. */
 static int	collision_condition(int x, int y, int condition_x, int condition_y)

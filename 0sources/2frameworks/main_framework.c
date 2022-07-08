@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:29:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 14:13:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:17:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	main_image_framework(t_prog *game)
 	//cube3D(); TODO
 	//testing:
 	mlx_image_to_window(game->mlx, image, (int) game->w1.origin[0], (int) game->w1.origin[1]);
+
 
 }

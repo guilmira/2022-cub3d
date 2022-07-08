@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/08 13:33:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:28:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <fcntl.h>
 /* LIBFT */
 # include "../libft_submodule/0includes/libft.h"
-//-lm man man 3 math ALL functions allowed
 
 /* ------------------------ MOD DEFINES ------------------------ */
 /* WINDOW SIZE */
@@ -45,7 +44,7 @@
 # define TITLE_WINDOW "CUBE"
 
 # define TOTAL_IMAGES 2
-
+#define SAFE_OFFSET 0.0001
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
@@ -110,18 +109,16 @@ typedef struct s_program
 
 
 /* ------------------------ ENUMS ------------------------ */
-
+#define VISION_ANGLE 140
+/** PURPOSE : Rectangle size. */
+enum player_size
+{
+	x_size = 25,
+	y_size = 25
+};
 
 /* ------------------------ DIMENSIONS OF CUBE ------------------------ */
-enum e_minimap
-{
-	MAP_OX = 0 + OX_UNIT,
-	MAP_OY = 0 + OY_UNIT,
-	MAP_SIZE_X = OX_WINDOW - 4 * OX_UNIT,
-	MAP_SIZE_Y = OY_WINDOW - 4 * OY_UNIT,
-	MAP_UNIT_X = MAP_SIZE_X / 4,
-	MAP_UNIT_Y = MAP_SIZE_Y / 4,
-};
+
 
 /* ------------------------ PROTOTYPES ------------------------ */
 /* MAP PARSER */

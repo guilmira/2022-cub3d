@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 15:05:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 14:44:32 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double coor(double y, double size_y)
 		ft_senderror("Invalid 'y' coordinate.\n");
 		return (0);
 	}
-	return (size_y - y - 1);
+	return (size_y - y);
 }
 
 /** PURPOSE :  Converter.
