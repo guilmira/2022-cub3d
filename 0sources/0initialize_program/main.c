@@ -24,7 +24,7 @@ COORDINATES on a map ar array[2], meanwhile, vectors will be t_vector!
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
 //int	main(int argc, char **argv)
-int	main(int argc, char **argv)
+int	main(void)
 {
 	t_prog		*game;
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
-	parser(game, argc, argv);
+	//parser(game, argc, argv);
 	//input_management();
 	main_image_framework(game);
 	secd_image_framework(game);
