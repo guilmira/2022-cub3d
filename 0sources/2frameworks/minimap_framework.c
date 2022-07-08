@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 15:15:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 13:33:33 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int
 	{
 		//printf("%i\n", i); //768
 		mlx_put_pixel(image, i, coor_y, colour);
-		
-	
 	}
-	printf("komo va\n");
 }
 
 void put_vertical(mlx_image_t *image, double coordinate_x, double limit_y, int colour)
