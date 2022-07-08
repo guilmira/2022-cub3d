@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/07 15:17:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 13:25:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-# define OX_MINIMAP OX_WINDOW - 8 * OX_UNIT
-# define OY_MINIMAP OY_WINDOW - 8 * OY_UNIT
-# define OX_MINIMAP_O 0 + 8 * OX_UNIT
-# define OY_MINIMAP_O 0 + 8 * OY_UNIT
+# define OX_MINIMAP OX_WINDOW - 1 * OX_UNIT
+# define OY_MINIMAP OY_WINDOW - 1 * OY_UNIT
+# define OX_MINIMAP_O 0 + 1 * OX_UNIT
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT
 
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
@@ -115,10 +115,10 @@ enum e_minimap
 {
 	MAP_OX = 0 + OX_UNIT,
 	MAP_OY = 0 + OY_UNIT,
-	MAP_SIZE_X = OX_WINDOW - OX_UNIT,
-	MAP_SIZE_Y = OY_WINDOW - OY_UNIT,
-	MAP_UNIT_X = MAP_SIZE_X / 10,
-	MAP_UNIT_Y = MAP_SIZE_Y / 10,
+	MAP_SIZE_X = OX_WINDOW - 4 * OX_UNIT,
+	MAP_SIZE_Y = OY_WINDOW - 4 * OY_UNIT,
+	MAP_UNIT_X = MAP_SIZE_X / 4,
+	MAP_UNIT_Y = MAP_SIZE_Y / 4,
 };
 
 /* ------------------------ PROTOTYPES ------------------------ */
