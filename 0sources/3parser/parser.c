@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/07/08 13:39:17 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/08 13:39:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,6 @@ void	show_map(t_prog *game)
 		write(0, "-", 1);
 	write(0, "\n", 1);
 }
-<<<<<<< HEAD
-int		check_data(t_prog *game);
-=======
 
 int		check_data(t_prog *game)
 {
@@ -132,5 +129,4 @@ int		check_data(t_prog *game)
 		return (-1);
 	return (0);
 }
->>>>>>> JoanF
 
