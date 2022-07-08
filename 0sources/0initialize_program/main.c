@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
-	//parser(game, argc, argv);
+	parser(game, argc, argv);
 	//input_management();
 	main_image_framework(game);
 	secd_image_framework(game);
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	//virtualize_3D();
 	/* --------------------------------------------------------------- */
 	printf("loopeando\n");
-	hooks_and_loops(game);
+	//hooks_and_loops(game);
 	clean_exit(game);
 	return (0);
 }
