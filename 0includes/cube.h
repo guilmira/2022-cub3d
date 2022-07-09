@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/08 15:28:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/09 16:04:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-# define OX_MINIMAP OX_WINDOW - 1 * OX_UNIT
-# define OY_MINIMAP OY_WINDOW - 1 * OY_UNIT
+/* # define OX_MINIMAP OX_WINDOW - 1.5 * OX_UNIT
+# define OY_MINIMAP OY_WINDOW - 1.5 * OY_UNIT
 # define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT */
+
+# define OX_MINIMAP OX_WINDOW 
+# define OY_MINIMAP OY_WINDOW 
+# define OX_MINIMAP_O 0 
+# define OY_MINIMAP_O 0 
+
 
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
@@ -51,8 +57,8 @@
  * Origin is assumed at axis origin. */
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_vector;
 
 /** PURPOSE : Set of coordinates. */
@@ -63,14 +69,6 @@ typedef struct s_coordinates
 	int	size_x;
 	int	size_y;
 }				t_coor;
-
-/** PURPOSE : struct of a vector, 2D representation.
- * Origin is assumed at axis origin. */
-typedef struct s_unit_vec
-{
-	float	x;
-	float	y;
-}				t_unit_vec;
 
 /** PURPOSE : Set of coordinates. */
 typedef struct s_dimensions
@@ -138,12 +136,21 @@ int			trgb_translate(int red, int blue, int green, int transparency);
 int			get_opposite(int colour_code);
 void		main_image_framework(t_prog *game);
 void		secd_image_framework(t_prog *game);
+
+
+/* GEOMETRY TOOLS */
+void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size, int rectangle);
+void		put_vertical(mlx_image_t *image, double coordinate_x, double limit_y, int colour);
+void 		put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int colour);
+void 		solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour);
+
+
 /* VECTOR TREATMENT */
-void draw_vector(mlx_image_t *image, t_vector vec, int x_origin, int y_origin);
+void draw_vector(mlx_image_t *image, t_vector vec, double origin[]);
 
 /* VECTOR TOOLS */
 double get_module(t_vector vec);
-t_unit_vec get_unit_vector(t_vector vec);
+t_vector get_unit_vector(t_vector vec);
 t_vector rotate_vector(t_vector vec, int angle);
 
 
@@ -156,14 +163,14 @@ void		freemat(char **mat);
 void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
-void draw_player_position(mlx_image_t *image, float x, float y, t_prog *game);
+void draw_player_position(mlx_image_t *image, double x, double y, t_prog *game);
 
 /* TOOLS */
 double coor(double y, double size_y);
 float degree_to_radian(float degree);
 float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height);
-void draw_centered_rectangle(mlx_image_t *image, int x, int y, int base, int height);
+void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int base, int height);
 
 
 //To remove from here eventually

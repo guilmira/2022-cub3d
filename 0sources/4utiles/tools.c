@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/08 14:44:32 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/09 15:34:16 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,6 @@ void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height)
 	}
 }
 
-/** PURPOSE : Base times height.
- * 1. Requires dimensions and position of origin. */
-void draw_centered_rectangle(mlx_image_t *image, int x, int y, int base, int height)
-{
-	int i;
-	int j;
 
-	if (x < 0 || y < 0)
-		return ;
-	i = -1;
-	j = -1;
-	y = y - height / 2;
-	x = x - base / 2;
-	while (++j < height)
-	{
-		while (++i < base)
-			mlx_put_pixel(image, x + i, coor(y + j, OY_MINIMAP), GREEN);
-		i = -1;
-	}
-}
 
 
