@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/09 16:32:20 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/09 16:36:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aper
 	limit[0] = OX_WINDOW;
 	limit[1] = OY_WINDOW;
 	aperture = 0;
+
 	direction = cast_straight(position, limit);
 	draw_vector(image, direction, position);
 	

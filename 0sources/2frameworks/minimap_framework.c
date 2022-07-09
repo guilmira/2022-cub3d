@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/09 16:33:17 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/09 16:37:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	secd_image_framework(t_prog *game)
 	game->image[1] = image; 
 	/* --------------------------------------------------------------- */
 	draw_grid(image, game, game->w2.size[0], game->w2.size[1]);
+	coor_identifier(image, game, 4.2 * game->w2.unit[0], 1.2 * game->w2.unit[1], OY_MINIMAP, 0);
 	draw_player_position(image, 4.2 * game->w2.unit[0], 1.2 * game->w2.unit[1], game); //TODO ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
