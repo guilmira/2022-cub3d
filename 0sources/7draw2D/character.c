@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:58:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 11:16:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void draw_vision(mlx_image_t *image, double position[], int aperture)
 
 	vis_dir.x = 0;
 	vis_dir.y = 1;
-	correct_boundries(&beam_dim, position); //consultar si esto es correcto
+	correct_boundries(&beam_dim, position);
 	vis = cast_ray(vis_dir, beam_dim.low_bound, beam_dim.high_bound);
 	aperture_units = calculate_aperture_units(aperture, vis, RAYCAST_OFFSET);
 	cast_beam(image, vis, &beam_dim, aperture_units);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 10:08:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 11:05:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define OX_MINIMAP_O 0 
 # define OY_MINIMAP_O 0 
 
-
+# define D2 2
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
 # define OY_DIV 10
@@ -53,8 +53,8 @@
 
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
-# define RAYCAST_OFFSET 10
-# define FOV_DEGREE 60
+# define RAYCAST_OFFSET 10 // pixels per aperture
+# define FOV_DEGREE 90
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
@@ -77,18 +77,18 @@ typedef struct s_coordinates
 /** PURPOSE : Set of coordinates. */
 typedef struct s_dimensions
 {
-	double origin[2];
-	double size[2];
-	double limit[2];
-	double sec_limit[2];
-	double unit[2];
+	double origin[D2];
+	double size[D2];
+	double limit[D2];
+	double sec_limit[D2];
+	double unit[D2];
 }				t_dim;
 
 typedef struct s_beam
 {
-	double position[2];
-	double low_bound[2];
-	double high_bound[2];
+	double position[D2];
+	double low_bound[D2];
+	double high_bound[D2];
 }				t_beam;
 
 typedef struct s_program
@@ -168,7 +168,7 @@ t_vector	sum_vec(t_vector lhs, t_vector rhs);
 t_vector	sub_vec(t_vector lhs, t_vector rhs);
 t_vector	mul_vec(t_vector lhs, float escalar);
 t_vector	div_vec(t_vector lhs, float escalar);
-
+t_vector	get_perpendicular(t_vector v);
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
 void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units);

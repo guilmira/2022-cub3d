@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 10:08:51 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 11:15:56 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[
 	return (ray);
 }
 
+
+
+t_vector get_plane_vector(t_vector vis, double aperture_units)
+{
+	int			module;
+	t_vector	perpendicular;
+	t_vector	perpendicular_dir;
+
+	module = (aperture_units / 2) * RAYCAST_OFFSET;
+	perpendicular = get_perpendicular(vis);
+	perpendicular_dir = get_unit_vector(perpendicular);
+	return (mul_vec(perpendicular_dir, module));
+}
+
 /** PURPOSE : Casting beam of rays from origin. 
  * 1. Find out plane x vector. ( <---------------- ).
  * 2. Beam vector is the vision vector added to the plane.
@@ -57,8 +71,12 @@ aperture_units)
 	double time_spent = 0.0;	
 	clock_t begin = clock();
 
-	plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
-	plane.y = 0;
+	/* plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
+	plane.y = 0; */
+	
+	//draw_vector(image, ray, beam_dim->position);
+	plane = get_plane_vector(vis, aperture_units);
+	log_vector(plane);
 	aperture_units++;
 	while (aperture_units-- > 0)
 	{
