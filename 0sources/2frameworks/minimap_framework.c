@@ -6,69 +6,23 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/08 15:33:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 11:05:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-//mejorar abstraccion con (put_horizontal) y (put_vertical)
-
-/** PURPOSE : 
- * It need to recieve the y coordinate SHIFTED!. */
-void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, int colour)
-{
-	uint32_t x;
-	uint32_t y;
-
-	if (coor_x < 0 || coor_y < 0 || colour < 0) //tambien se puede añadir si es =
-	{
-		printf("Pixel (%i, %i) not rendered\n", coor_x, coor_y);
-		return ;
-	}
-	x = (uint32_t) coor_x;
-	y = (uint32_t) coor_y;
-	if (x >= image->width || y >= image->height)
-	{
-		printf("Pixel (%i, %i) could not be rendered\n", coor_x, coor_y);
-		return ;
-	}
-	mlx_put_pixel(image, x, y, colour);
-}
-
-void put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int colour)
-{
-	int i;
-	int coor_y;
-
-	i = -1;
-	if (coordinate_y == 0)
-		coordinate_y += SAFE_OFFSET;
-	coor_y = (int) coor(coordinate_y, (double) OY_MINIMAP);
-	while (++i < limit_x)
-		solid_pixel(image, i, coor_y, colour);
-}
-
-void put_vertical(mlx_image_t *image, double coordinate_x, double limit_y, int colour)
-{
-	int j;
-	j = -1;
-
-	while (++j < limit_y)
-		solid_pixel(image, coordinate_x, coor(j, (double) OY_MINIMAP), colour);
-}
-
 /** PURPOSE : Scale a 2D grid. */
 void	draw_grid(mlx_image_t *image, t_prog *game, double size_x, double size_y)
 {
+	int nb;
 
-	//offset for double
-	printf("%f\n", game->w2.origin[0]);
-
-	for (int nb = 0; nb < 10; nb++)
+	//coor_identifier(image, game, 1800, 20, game->w2.size[1], 0);
+	nb = -1;
+	while (++nb < 11)
 	{
-		put_horizontal(image, ( nb * game->w2.unit[1]), size_x - 8, GREEN);
-		put_vertical(image, ( nb * game->w2.unit[0]), size_y, RED);
+		put_horizontal(image, ( nb * game->w2.unit[1]), size_x, WHITE);
+		put_vertical(image, ( nb * game->w2.unit[0]), size_y, WHITE);
 	}
 	if (0)
 		ft_shutdown(EX, game);
@@ -81,7 +35,11 @@ void	draw_grid(mlx_image_t *image, t_prog *game, double size_x, double size_y)
 void	secd_image_framework(t_prog *game)
 {
 	mlx_image_t	*image;
-	
+	double	player_pos[2];
+
+	player_pos[0] = 5 * game->w2.unit[0];
+	player_pos[1] = 1 * game->w2.unit[1];
+
 	image = mlx_new_image(game->mlx,\
 	(int) game->w2.size[0], (int) game->w2.size[1]);
 	if (!image)
@@ -89,7 +47,8 @@ void	secd_image_framework(t_prog *game)
 	game->image[1] = image; 
 	/* --------------------------------------------------------------- */
 	draw_grid(image, game, game->w2.size[0], game->w2.size[1]);
-	draw_player_position(image, 1 * game->w2.unit[0], 1 * game->w2.unit[1], game); //TODO ejemplo, un 0,0 aqui provoca un seg fault
+	//coor_identifier(image, game, player_pos[0], player_pos[1], OY_MINIMAP, 0);
+	draw_player_position(image, player_pos, game); //TODO ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	image, game->w2.origin[0], game->w2.origin[1]);

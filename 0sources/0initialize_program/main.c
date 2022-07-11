@@ -6,7 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/07/08 15:37:47 by guilmira         ###   ########.fr       */
+=======
+/*   Updated: 2022/07/09 14:23:44 by guilmira         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +46,6 @@ int	main(void)
 	printf("loopeando\n");
 	hooks_and_loops(game);
 	clean_exit(game);
+	
 	return (0);
 }

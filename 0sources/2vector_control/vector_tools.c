@@ -21,17 +21,14 @@ double get_module(t_vector vec)
 }
 
 /** PURPOSE : Gets unit vector.  */
-t_unit_vec get_unit_vector(t_vector vec)
+t_vector get_unit_vector(t_vector vec)
 {
 	double			module;
-	t_unit_vec		unit_vec;
 
 	module = get_module(vec);
 	if (!module)
 		ft_senderror("Attention: Module of vector = 0\n");
-	unit_vec.x = vec.x / module;
-	unit_vec.y = vec.y / module;
-	return (unit_vec);
+	return (div_vec(vec, module));
 }
 
 /** PURPOSE : Rotation of a vector
@@ -42,11 +39,9 @@ t_vector rotate_vector(t_vector vec, int angle)
 {
 	t_vector rotate;
 
-	rotate.x = (int) ( vec.x * \
+	rotate.x = (double) ( vec.x * \
 	( cos(degree_to_radian(angle)) + sin(degree_to_radian(angle)) ) );
-	rotate.y = (int) ( vec.y * \
+	rotate.y = (double) ( vec.y * \
 	( cos(degree_to_radian(angle)) - sin(degree_to_radian(angle)) ) );
 	return (rotate);
 }
-
-//vx y vy

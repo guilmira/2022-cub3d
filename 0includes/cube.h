@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/08 15:28:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 11:05:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,25 @@
 /* LIBFT */
 # include "../libft_submodule/0includes/libft.h"
 
+#include <time.h> //para borrar
+
 /* ------------------------ MOD DEFINES ------------------------ */
 /* WINDOW SIZE */
 //size of window: 1920x1080p
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-# define OX_MINIMAP OX_WINDOW - 1 * OX_UNIT
-# define OY_MINIMAP OY_WINDOW - 1 * OY_UNIT
+/* # define OX_MINIMAP OX_WINDOW - 1.5 * OX_UNIT
+# define OY_MINIMAP OY_WINDOW - 1.5 * OY_UNIT
 # define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT */
 
+# define OX_MINIMAP OX_WINDOW 
+# define OY_MINIMAP OY_WINDOW 
+# define OX_MINIMAP_O 0 
+# define OY_MINIMAP_O 0 
+
+# define D2 2
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
 # define OY_DIV 10
@@ -44,15 +52,17 @@
 # define TITLE_WINDOW "CUBE"
 
 # define TOTAL_IMAGES 2
-#define SAFE_OFFSET 0.0001
+# define SAFE_OFFSET 0.0001
+# define RAYCAST_OFFSET 10 // pixels per aperture
+# define FOV_DEGREE 90
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
  * Origin is assumed at axis origin. */
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_vector;
 
 /** PURPOSE : Set of coordinates. */
@@ -64,23 +74,22 @@ typedef struct s_coordinates
 	int	size_y;
 }				t_coor;
 
-/** PURPOSE : struct of a vector, 2D representation.
- * Origin is assumed at axis origin. */
-typedef struct s_unit_vec
-{
-	float	x;
-	float	y;
-}				t_unit_vec;
-
 /** PURPOSE : Set of coordinates. */
 typedef struct s_dimensions
 {
-	double origin[2];
-	double size[2];
-	double limit[2];
-	double sec_limit[2];
-	double unit[2];
+	double origin[D2];
+	double size[D2];
+	double limit[D2];
+	double sec_limit[D2];
+	double unit[D2];
 }				t_dim;
+
+typedef struct s_beam
+{
+	double position[D2];
+	double low_bound[D2];
+	double high_bound[D2];
+}				t_beam;
 
 typedef struct s_program
 {
@@ -109,7 +118,6 @@ typedef struct s_program
 
 
 /* ------------------------ ENUMS ------------------------ */
-#define VISION_ANGLE 140
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
@@ -138,14 +146,32 @@ int			trgb_translate(int red, int blue, int green, int transparency);
 int			get_opposite(int colour_code);
 void		main_image_framework(t_prog *game);
 void		secd_image_framework(t_prog *game);
+
+
+/* GEOMETRY TOOLS */
+void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size, int rectangle);
+void		put_vertical(mlx_image_t *image, double coordinate_x, double limit_y, int colour);
+void 		put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int colour);
+void 		solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour);
+
+
 /* VECTOR TREATMENT */
-void draw_vector(mlx_image_t *image, t_vector vec, int x_origin, int y_origin);
+void draw_vector(mlx_image_t *image, t_vector vec, double origin[]);
 
 /* VECTOR TOOLS */
 double get_module(t_vector vec);
-t_unit_vec get_unit_vector(t_vector vec);
+t_vector get_unit_vector(t_vector vec);
 t_vector rotate_vector(t_vector vec, int angle);
 
+/* VECTOR ARITHMETIC */
+t_vector	sum_vec(t_vector lhs, t_vector rhs);
+t_vector	sub_vec(t_vector lhs, t_vector rhs);
+t_vector	mul_vec(t_vector lhs, float escalar);
+t_vector	div_vec(t_vector lhs, float escalar);
+t_vector	get_perpendicular(t_vector v);
+/* RAY CASTING */
+t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
+void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
@@ -156,19 +182,20 @@ void		freemat(char **mat);
 void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
-void draw_player_position(mlx_image_t *image, float x, float y, t_prog *game);
+void draw_player_position(mlx_image_t *image, double position[], t_prog *game);
 
 /* TOOLS */
 double coor(double y, double size_y);
-float degree_to_radian(float degree);
+double degree_to_radian(double degree);
 float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height);
-void draw_centered_rectangle(mlx_image_t *image, int x, int y, int base, int height);
+void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int base, int height);
 
 
 //To remove from here eventually
 void		ft_leaks(void);
-
+void log_vector(t_vector v);
+void log_coor(double array[]);
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"
