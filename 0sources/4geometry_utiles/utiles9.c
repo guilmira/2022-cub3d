@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/09 15:30:11 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:59:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,15 @@ void	coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coo
 		put_horizontal(image, coor_y, x - 3, GREEN);
 	}
 	free(aux);
+}
+
+void log_vector(t_vector v)
+{
+	printf("VECTOR:			OX %f y  OY %f\n", v.x, v.y);
+}
+
+void log_coor(double array[])
+{
+	printf("Coordinates:						OX %f y  OY %f\n", array[0], array[1]);
 }
 

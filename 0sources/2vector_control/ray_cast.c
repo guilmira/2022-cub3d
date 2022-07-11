@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:25:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:59:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,16 @@ t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[
 	return (ray);
 }
 
-void log_vector(t_vector v)
-{
-	printf("VECTOR:			OX %f y  OY %f\n", v.x, v.y);
-}
 
-void log_coor(double array[])
-{
-	printf("Coordinates:						OX %f y  OY %f\n", array[0], array[1]);
-}
 
-/** PURPOSE : Casting beam of rays from origin. */
-void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_bound[], double high_bound[], double 
+/** PURPOSE : Casting beam of rays from origin. 
+ * 1. Find out plane x vector. ( <---------------- ).
+ * 2. Beam vector is the vision vector added to the plane.
+ * 3. Get direction of beam vector. i.e: the unit vector of the beam.
+ * 4. Cast ray to obstacle from unit vector of beam.
+ * 5. Draw said vector.
+ * 6. Rcalculate plane vector and start loop. */
+void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double 
 aperture_units)
 {
 	t_vector	beam;
@@ -60,15 +58,13 @@ aperture_units)
 
 	plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
 	plane.y = 0;
-	printf("ape %f\n", aperture_units);
 	aperture_units++;
 	while (aperture_units-- > 0)
 	{
 		beam = sum_vec(vis, plane);
 		direction = get_unit_vector(beam);
-		ray = cast_ray(direction, low_bound, high_bound);
-		draw_vector(image, ray, position);
+		ray = cast_ray(direction, beam_dim->low_bound, beam_dim->high_bound);
+		draw_vector(image, ray, beam_dim->position);
 		plane.x += RAYCAST_OFFSET;
 	}
-
 }

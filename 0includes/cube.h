@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:26:51 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:43:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,13 @@ typedef struct s_dimensions
 	double sec_limit[2];
 	double unit[2];
 }				t_dim;
+
+typedef struct s_beam
+{
+	double position[2];
+	double low_bound[2];
+	double high_bound[2];
+}				t_beam;
 
 typedef struct s_program
 {
@@ -162,7 +169,7 @@ t_vector	div_vec(t_vector lhs, float escalar);
 
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
-void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_bound[], double high_bound[], double aperture_units);
+void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
@@ -173,7 +180,7 @@ void		freemat(char **mat);
 void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
-void draw_player_position(mlx_image_t *image, double x, double y, t_prog *game);
+void draw_player_position(mlx_image_t *image, double position[], t_prog *game);
 
 /* TOOLS */
 double coor(double y, double size_y);

@@ -6,59 +6,25 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:22:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:58:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : Boolean used to stop casting of vector. */
-static int	collision_condition(double x, double y, double condition_x, double condition_y)
+/** PURPOSE : Set limits for collisions of vectors. */
+static void	correct_boundries(t_beam *beam, double position[])
 {
-	if (x >= condition_x)
-		return (1);
-	if (y >= condition_y)
-		return (1);
-	return (0);
+	beam->position[0] = position[0];
+	beam->position[1] = position[1];
+	beam->low_bound[0] = 0 - beam->position[0];
+	beam->low_bound[1] = 0 - beam->position[1];
+	beam->high_bound[0] = OX_WINDOW - beam->position[0];
+	beam->high_bound[1] = OY_WINDOW - beam->position[1];
 }
 
-/** PURPOSE : Cast direction vector until colision. */
-t_vector	cast_straight(double position[], double limit[])
-{
-	int			j;
-	double			collision_y;
-	t_vector	vector;
-
-	j = -1;
-	collision_y = position[1];
-	while (++j <= OY_WINDOW)
-	{
-		if (collision_condition(position[0], collision_y, limit[0], limit[1]))
-			break ;
-		collision_y = position[1] + j;
-	}
-	vector.x = 0;
-	vector.y = j;
-	return (vector);
-}
-
-
-void	correct_boundries(double origin[], double low_bound[], double high_bound[])
-{
-	low_bound[0] = 0 - origin[0];
-	low_bound[1] = 0 - origin[1];
-	high_bound[0] = OX_WINDOW - origin[0];
-	high_bound[1] = OY_WINDOW - origin[1];
-}
-
-
-/* TODO block negative boundaries in vector. */
-
-/* acos(x), asin(x), and atan(x) return the inverse cosine, inverse sine and inverse tangent of x, respectively.  Note that the result is an angle
-in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sign chosen according to the quadrant of (x,y). */
-
-
-double calculate_plane_lenght(double aperture, t_vector vis)
+/** PURPOSE : Total horizontal plane lenght. */ 
+static double calculate_plane_lenght(double aperture, t_vector vis)
 {
 	double theta;
 	double vis_module;
@@ -68,41 +34,49 @@ double calculate_plane_lenght(double aperture, t_vector vis)
 	return (vis_module * tan(theta));
 }
 
+/** PURPOSE : Calculate, given a plane lenght, how many pixels
+ * are gonna divide given plane.
+ * 
+ * --- ^ --- ^ --- ^ ---     : 
+ *     |     |     |
+ *     |     |     | 
+ *     |     |     |
+ * aperture units = 3 */
+static int calculate_aperture_units(double aperture, t_vector vis, int ray_offset)
+{
+	int		aperture_units;
+	double	plane_lenght;
+
+	plane_lenght = calculate_plane_lenght(aperture, vis);
+	aperture_units = (int) (plane_lenght / ray_offset) * 2;
+	return (aperture_units);
+}
+
 /** PURPOSE : Draw field of vision.
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. */
-static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aperture)
+static void draw_vision(mlx_image_t *image, double position[], int aperture)
 {
 	t_vector	vis;
 	t_vector	vis_dir;
-	double		position[2];
+	t_beam		beam_dim;
+	int			aperture_units;
 
-	position[0] = pos_x;
-	position[1] = pos_y;
 	vis_dir.x = 0;
 	vis_dir.y = 1;
-	
-	double plane_lenght;
-	double aperture_units;
-	
-
-	double low_bound[2];
-	double high_bound[2];
-	
-	correct_boundries(position, low_bound, high_bound); //consultar si esto es correcto
-	vis = cast_ray(vis_dir, low_bound, high_bound);
-	plane_lenght = calculate_plane_lenght(aperture, vis);
-	aperture_units = (int) (plane_lenght / RAYCAST_OFFSET) * 2;
-	cast_beam(image, vis, position, low_bound, high_bound, aperture_units);
+	correct_boundries(&beam_dim, position); //consultar si esto es correcto
+	vis = cast_ray(vis_dir, beam_dim.low_bound, beam_dim.high_bound);
+	aperture_units = calculate_aperture_units(aperture, vis, RAYCAST_OFFSET);
+	cast_beam(image, vis, &beam_dim, aperture_units);
 }
 
 /** PURPOSE : Draw player with its field of vision. 
  * 1. Requires player coordinates.
  * 2. From (x, y) coordinates, rays will be casted as vectors. */
-void draw_player_position(mlx_image_t *image, double pos_x, double pos_y, t_prog *game)
+void draw_player_position(mlx_image_t *image, double position[], t_prog *game)
 {
-	if (pos_x < 0 || pos_y < 0)
+	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
-	draw_centered_rectangle(image, pos_x, pos_y, x_size, y_size); //TODO, no esta centrando exacto
-	draw_vision(image, pos_x, pos_y, FOV_DEGREE);
+	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
+	draw_vision(image, position, FOV_DEGREE);
 }

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 08:07:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:34:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ void	draw_grid(mlx_image_t *image, t_prog *game, double size_x, double size_y)
 void	secd_image_framework(t_prog *game)
 {
 	mlx_image_t	*image;
-	
+	double	player_pos[2];
+
+	player_pos[0] = 5 * game->w2.unit[0];
+	player_pos[1] = 1 * game->w2.unit[1];
+
 	image = mlx_new_image(game->mlx,\
 	(int) game->w2.size[0], (int) game->w2.size[1]);
 	if (!image)
@@ -43,8 +47,8 @@ void	secd_image_framework(t_prog *game)
 	game->image[1] = image; 
 	/* --------------------------------------------------------------- */
 	draw_grid(image, game, game->w2.size[0], game->w2.size[1]);
-	coor_identifier(image, game, 5 * game->w2.unit[0], 1 * game->w2.unit[1], OY_MINIMAP, 0);
-	draw_player_position(image, 5 * game->w2.unit[0], 1 * game->w2.unit[1], game); //TODO ejemplo, un 0,0 aqui provoca un seg fault
+	coor_identifier(image, game, player_pos[0], player_pos[1], OY_MINIMAP, 0);
+	draw_player_position(image, player_pos, game); //TODO ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	image, game->w2.origin[0], game->w2.origin[1]);
