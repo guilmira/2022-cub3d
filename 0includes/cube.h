@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 12:57:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:32:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ t_vector	div_vec(t_vector lhs, float escalar);
 t_vector	get_perpendicular(t_vector v);
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
-void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units, t_prog *game);
+void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);

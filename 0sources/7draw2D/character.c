@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 12:55:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:40:54 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int calculate_aperture_units(double aperture, t_vector vis, int ray_offse
 /** PURPOSE : Draw field of vision.
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. */
-static void draw_vision(mlx_image_t *image, t_prog *game, double position[], int aperture)
+static void draw_vision(mlx_image_t *image, double position[], int aperture)
 {
 	t_vector	vis;
 	t_vector	vis_dir;
@@ -65,11 +65,9 @@ static void draw_vision(mlx_image_t *image, t_prog *game, double position[], int
 	vis_dir.x = 0;
 	vis_dir.y = 1;
 	correct_boundries(&beam_dim, position);
-
-
 	vis = cast_ray(vis_dir, beam_dim.low_bound, beam_dim.high_bound);
 	aperture_units = calculate_aperture_units(aperture, vis, RAYCAST_OFFSET);
-	cast_beam(image, vis, &beam_dim, aperture_units, game);
+	cast_beam(image, vis, &beam_dim, aperture_units);
 }
 
 /** PURPOSE : Draw player with its field of vision. 
@@ -80,8 +78,7 @@ void draw_player_position(mlx_image_t *image, double position[], t_prog *game)
 	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
 	coor_identifier(image, game, 10, 100, OY_MINIMAP, 0);
-
 	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
-	draw_vision(image, game, position, FOV_DEGREE);
+	draw_vision(image, position, FOV_DEGREE);
 
 }
