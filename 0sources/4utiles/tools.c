@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 07:40:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 08:46:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ double coor(double y, double size_y)
 
 /** PURPOSE :  Converter.
  * 1. 180 º = π rad */
-float degree_to_radian(float degree)
+double degree_to_radian(double degree)
 {
-	return (degree * (float) M_PI / 180);
+	return (degree * (double) M_PI / 180);
 }
 
 /** PURPOSE : Explicit ecuation of a line.

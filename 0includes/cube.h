@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 08:24:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 08:54:56 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define TOTAL_IMAGES 2
 #define SAFE_OFFSET 0.0001
 #define RAYCAST_OFFSET 6
+#define FOV_DEGREE 60
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
@@ -108,7 +109,6 @@ typedef struct s_program
 
 
 /* ------------------------ ENUMS ------------------------ */
-#define VISION_ANGLE 140
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
@@ -177,7 +177,7 @@ void draw_player_position(mlx_image_t *image, double x, double y, t_prog *game);
 
 /* TOOLS */
 double coor(double y, double size_y);
-float degree_to_radian(float degree);
+double degree_to_radian(double degree);
 float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height);
 void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int base, int height);

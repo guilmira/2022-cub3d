@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 08:30:26 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 08:56:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,17 @@ void	correct_boundries(double origin[], double low_bound[], double high_bound[])
 /* acos(x), asin(x), and atan(x) return the inverse cosine, inverse sine and inverse tangent of x, respectively.  Note that the result is an angle
 in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sign chosen according to the quadrant of (x,y). */
 
+
+double calculate_plane_lenght(double aperture, t_vector vis)
+{
+	double theta;
+	double vis_module;
+
+	vis_module = get_module(vis);
+	theta = degree_to_radian(aperture / 2);
+	return (vis_module * tan(theta));
+}
+
 /** PURPOSE : Draw field of vision.
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. */
@@ -71,15 +82,18 @@ static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aper
 	vis_dir.x = 0;
 	vis_dir.y = 1;
 	
-	aperture = 0;
-
+	int plane_lenght;
+	int aperture_units;
+	
 
 	double low_bound[2];
 	double high_bound[2];
 	
 	correct_boundries(position, low_bound, high_bound); //consultar si esto es correcto
 	vis = cast_ray(vis_dir, low_bound, high_bound);
-	cast_beam(image, vis, position, low_bound, high_bound, 200);
+	plane_lenght = calculate_plane_lenght(aperture, vis);
+	aperture_units = (plane_lenght / RAYCAST_OFFSET) * 2;
+	cast_beam(image, vis, position, low_bound, high_bound, aperture_units);
 
 
 }
@@ -92,5 +106,5 @@ void draw_player_position(mlx_image_t *image, double pos_x, double pos_y, t_prog
 	if (pos_x < 0 || pos_y < 0)
 		ft_shutdown(EX, game);
 	draw_centered_rectangle(image, pos_x, pos_y, x_size, y_size); //TODO, no esta centrando exacto
-	draw_vision(image, pos_x, pos_y, VISION_ANGLE);
+	draw_vision(image, pos_x, pos_y, FOV_DEGREE);
 }
