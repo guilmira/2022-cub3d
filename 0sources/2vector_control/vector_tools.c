@@ -24,14 +24,11 @@ double get_module(t_vector vec)
 t_vector get_unit_vector(t_vector vec)
 {
 	double			module;
-	t_vector		unit_vec;
 
 	module = get_module(vec);
 	if (!module)
 		ft_senderror("Attention: Module of vector = 0\n");
-	unit_vec.x = vec.x / module;
-	unit_vec.y = vec.y / module;
-	return (unit_vec);
+	return (div_vec(vec, module));
 }
 
 /** PURPOSE : Rotation of a vector

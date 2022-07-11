@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/09 16:04:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 06:41:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,15 @@ double get_module(t_vector vec);
 t_vector get_unit_vector(t_vector vec);
 t_vector rotate_vector(t_vector vec, int angle);
 
+/* VECTOR ARITHMETIC */
+t_vector	sum_vec(t_vector lhs, t_vector rhs);
+t_vector	sub_vec(t_vector lhs, t_vector rhs);
+t_vector	mul_vec(t_vector lhs, float escalar);
+t_vector	div_vec(t_vector lhs, float escalar);
+
+/* RAY CASTING */
+t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
+void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_bound[], double high_bound[], int aperture_units);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);

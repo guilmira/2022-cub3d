@@ -49,6 +49,9 @@ void draw_vector(mlx_image_t *image, t_vector vec, double origin[])
 	printf("The elapsed time is %f seconds\n", time_spent);
 }
 
+
+
+
 /** ADDITIONAL NOTES
  * ¿Why not draw the line by using the ecuation of the line (y = mx + n)
  * As we are working with pixels, it will result in free spaces in the pixel map.

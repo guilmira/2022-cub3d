@@ -6,13 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/09 16:36:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 06:46:28 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-
 
 /** PURPOSE : Boolean used to stop casting of vector. */
 static int	collision_condition(double x, double y, double condition_x, double condition_y)
@@ -45,6 +43,17 @@ t_vector	cast_straight(double position[], double limit[])
 }
 
 
+void	correct_boundries(double origin[], double low_bound[], double high_bound[])
+{
+	low_bound[0] = 0 - origin[0];
+	low_bound[1] = 0 - origin[1];
+	high_bound[0] = OX_WINDOW - origin[0];
+	high_bound[1] = OY_WINDOW - origin[1];
+}
+
+
+/* TODO block negative boundaries in vector. */
+
 /* acos(x), asin(x), and atan(x) return the inverse cosine, inverse sine and inverse tangent of x, respectively.  Note that the result is an angle
 in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sign chosen according to the quadrant of (x,y). */
 
@@ -53,7 +62,7 @@ in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sig
  * 2. Side vectors depending of angle of vision. */
 static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aperture)
 {
-	t_vector	direction;
+	t_vector	vis;
 	double		position[2];
 	double		limit[2];
 
@@ -63,16 +72,26 @@ static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aper
 	limit[1] = OY_WINDOW;
 	aperture = 0;
 
-	direction = cast_straight(position, limit);
-	draw_vector(image, direction, position);
-	
-	
-	//direction.y = 600;
-	direction.x = 500;//ver que pasa ahi 
-	direction = rotate_vector(direction, 43);
-	draw_vector(image, direction, position);
-	direction = rotate_vector(direction, -90);
-	draw_vector(image, direction, position);
+	t_vector new;
+	new.x = 0;
+	new.y = 1;
+
+	double low_bound[2];
+	double high_bound[2];
+	correct_boundries(position, low_bound, high_bound); //consultar si esto es correcto
+
+	printf("%f y %f\n", position[0], position[1]);
+	printf("%f y %f\n", low_bound[0], high_bound[0]);
+
+	//vis = cast_straight(position, limit);
+
+	vis = cast_ray(new, low_bound, high_bound);
+	draw_vector(image, vis, position);
+
+	printf("aqui vamos \n");
+
+	cast_beam(image, vis, position, low_bound, high_bound, 50);
+
 
 }
 
