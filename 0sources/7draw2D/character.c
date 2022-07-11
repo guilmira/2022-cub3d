@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 14:40:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 15:04:54 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void draw_player_position(mlx_image_t *image, double position[], t_prog *game)
 {
 	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
-	coor_identifier(image, game, 10, 100, OY_MINIMAP, 0);
+	//coor_identifier(image, game, 10, 100, OY_MINIMAP, 0);
 	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
 	draw_vision(image, position, FOV_DEGREE);
 

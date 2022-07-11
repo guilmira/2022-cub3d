@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 14:33:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 15:23:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[
 	while (++counter <= OX_WINDOW)
 	{
 		if (collision(ray, low_boundry, high_boundry))
-			break;
+			break; //PACE aqui puede petar si no encuenta break point de colision
 		ray = mul_vec(direction, counter);
 	}
 	return (ray);
