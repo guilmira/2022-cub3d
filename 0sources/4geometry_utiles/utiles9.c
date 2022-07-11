@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:59:34 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 10:03:30 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,10 @@ void log_coor(double array[])
 	printf("Coordinates:						OX %f y  OY %f\n", array[0], array[1]);
 }
 
+
+/* 	double time_spent = 0.0;	
+	clock_t begin = clock(); */
+
+/* clock_t end = clock();
+	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+	printf("The elapsed time is %f seconds\n", time_spent); */

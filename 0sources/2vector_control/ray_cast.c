@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:59:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 10:08:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[
 	return (ray);
 }
 
-
-
 /** PURPOSE : Casting beam of rays from origin. 
  * 1. Find out plane x vector. ( <---------------- ).
  * 2. Beam vector is the vision vector added to the plane.
@@ -56,6 +54,9 @@ aperture_units)
 	t_vector	direction;
 	t_vector	ray;
 
+	double time_spent = 0.0;	
+	clock_t begin = clock();
+
 	plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
 	plane.y = 0;
 	aperture_units++;
@@ -67,4 +68,8 @@ aperture_units)
 		draw_vector(image, ray, beam_dim->position);
 		plane.x += RAYCAST_OFFSET;
 	}
+
+	clock_t end = clock();
+	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+	printf("The elapsed time is %f seconds\n", time_spent);
 }

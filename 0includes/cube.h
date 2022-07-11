@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:43:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 10:08:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <fcntl.h>
 /* LIBFT */
 # include "../libft_submodule/0includes/libft.h"
+
+#include <time.h> //para borrar
 
 /* ------------------------ MOD DEFINES ------------------------ */
 /* WINDOW SIZE */
@@ -52,7 +54,7 @@
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
 # define RAYCAST_OFFSET 10
-# define FOV_DEGREE 80
+# define FOV_DEGREE 60
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
