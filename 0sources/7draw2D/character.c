@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 08:58:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:22:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aper
 	vis_dir.x = 0;
 	vis_dir.y = 1;
 	
-	int plane_lenght;
-	int aperture_units;
+	double plane_lenght;
+	double aperture_units;
 	
 
 	double low_bound[2];
@@ -92,7 +92,7 @@ static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aper
 	correct_boundries(position, low_bound, high_bound); //consultar si esto es correcto
 	vis = cast_ray(vis_dir, low_bound, high_bound);
 	plane_lenght = calculate_plane_lenght(aperture, vis);
-	aperture_units = (plane_lenght / RAYCAST_OFFSET) * 2;
+	aperture_units = (int) (plane_lenght / RAYCAST_OFFSET) * 2;
 	cast_beam(image, vis, position, low_bound, high_bound, aperture_units);
 }
 

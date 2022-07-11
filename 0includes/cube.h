@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 09:01:26 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:26:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
-# define RAYCAST_OFFSET 6
-# define FOV_DEGREE 60
+# define RAYCAST_OFFSET 10
+# define FOV_DEGREE 80
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
@@ -162,7 +162,7 @@ t_vector	div_vec(t_vector lhs, float escalar);
 
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
-void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_bound[], double high_bound[], int aperture_units);
+void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_bound[], double high_bound[], double aperture_units);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 08:59:19 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:25:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void log_coor(double array[])
 }
 
 /** PURPOSE : Casting beam of rays from origin. */
-void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_bound[], double high_bound[], int aperture_units)
+void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_bound[], double high_bound[], double 
+aperture_units)
 {
 	t_vector	beam;
 	t_vector	plane;
@@ -59,13 +60,15 @@ void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_b
 
 	plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
 	plane.y = 0;
+	printf("ape %f\n", aperture_units);
+	aperture_units++;
 	while (aperture_units-- > 0)
 	{
+		beam = sum_vec(vis, plane);
+		direction = get_unit_vector(beam);
 		ray = cast_ray(direction, low_bound, high_bound);
 		draw_vector(image, ray, position);
 		plane.x += RAYCAST_OFFSET;
-		beam = sum_vec(vis, plane);
-		direction = get_unit_vector(beam);
 	}
 
 }
