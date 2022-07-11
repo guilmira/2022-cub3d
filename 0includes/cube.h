@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 08:54:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 09:01:26 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@
 # define TITLE_WINDOW "CUBE"
 
 # define TOTAL_IMAGES 2
-#define SAFE_OFFSET 0.0001
-#define RAYCAST_OFFSET 6
-#define FOV_DEGREE 60
+# define SAFE_OFFSET 0.0001
+# define RAYCAST_OFFSET 6
+# define FOV_DEGREE 60
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.

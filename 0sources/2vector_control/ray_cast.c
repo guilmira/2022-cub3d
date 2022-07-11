@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 08:24:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 08:59:19 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ void cast_beam(mlx_image_t *image, t_vector vis, double position[], double low_b
 	{
 		ray = cast_ray(direction, low_bound, high_bound);
 		draw_vector(image, ray, position);
-		log_vector(plane);
-		plane.x = plane.x + RAYCAST_OFFSET;
+		plane.x += RAYCAST_OFFSET;
 		beam = sum_vec(vis, plane);
 		direction = get_unit_vector(beam);
 	}
