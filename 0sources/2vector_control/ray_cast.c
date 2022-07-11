@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 11:15:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 12:59:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ t_vector get_plane_vector(t_vector vis, double aperture_units)
  * 4. Cast ray to obstacle from unit vector of beam.
  * 5. Draw said vector.
  * 6. Rcalculate plane vector and start loop. */
-void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double 
-aperture_units)
+void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units, t_prog *game)
 {
 	t_vector	beam;
 	t_vector	plane;
@@ -70,10 +69,11 @@ aperture_units)
 
 	double time_spent = 0.0;	
 	clock_t begin = clock();
-
-	/* plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
-	plane.y = 0; */
 	
+	coor_identifier(image, game, 100, 300, OY_MINIMAP, 0);
+
+	plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
+	plane.y = 0;
 	//draw_vector(image, ray, beam_dim->position);
 	plane = get_plane_vector(vis, aperture_units);
 	log_vector(plane);
