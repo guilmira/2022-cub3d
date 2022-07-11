@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/09 15:34:16 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 07:40:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
  * The -1 avoids seg fault at screen limit (0, 0). */
 double coor(double y, double size_y)
 {
-	if (y < 0 || size_y - y < 0)
+	if ( size_y - y < 0)
 	{
-		ft_senderror("Invalid 'y' coordinate.\n");
+		ft_senderror("Invalid 'y' coordinate. \n");
+		printf("Value %f\n", y);
 		return (0);
 	}
 	return (size_y - y);

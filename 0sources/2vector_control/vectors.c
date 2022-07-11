@@ -24,19 +24,21 @@
  * (unit_Vector + unit_Vector) repeated n module times.  */
 void draw_vector(mlx_image_t *image, t_vector vec, double origin[])
 {
-	double	x_pixel;
-	double	y_pixel;
-	double	counter;
+	double		x_pixel;
+	double		y_pixel;
+	double		counter;
 	t_vector	unit_vec;
 
-	double time_spent = 0.0;	
-    clock_t begin = clock();
+/* 	double time_spent = 0.0;	
+    clock_t begin = clock(); */
 
 
 	counter = get_module(vec);
 	unit_vec = get_unit_vector(vec);
 	x_pixel = origin[0] + unit_vec.x;
 	y_pixel = origin[1] + unit_vec.y;
+	
+
 	while (--counter > 0)
 	{	
 		solid_pixel(image, (int) x_pixel, (int) coor(y_pixel, OY_MINIMAP), BLUE);
@@ -44,9 +46,9 @@ void draw_vector(mlx_image_t *image, t_vector vec, double origin[])
 		y_pixel += unit_vec.y;
 	}
 	
-	clock_t end = clock();
+	/* clock_t end = clock();
 	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-	printf("The elapsed time is %f seconds\n", time_spent);
+	printf("The elapsed time is %f seconds\n", time_spent); */
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 06:46:28 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/11 08:30:26 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,34 +63,23 @@ in radians.  atan2(y, x) returns the inverse tangent of y/x in radians, with sig
 static void draw_vision(mlx_image_t *image, double pos_x, double pos_y, int aperture)
 {
 	t_vector	vis;
+	t_vector	vis_dir;
 	double		position[2];
-	double		limit[2];
 
 	position[0] = pos_x;
 	position[1] = pos_y;
-	limit[0] = OX_WINDOW;
-	limit[1] = OY_WINDOW;
+	vis_dir.x = 0;
+	vis_dir.y = 1;
+	
 	aperture = 0;
 
-	t_vector new;
-	new.x = 0;
-	new.y = 1;
 
 	double low_bound[2];
 	double high_bound[2];
+	
 	correct_boundries(position, low_bound, high_bound); //consultar si esto es correcto
-
-	printf("%f y %f\n", position[0], position[1]);
-	printf("%f y %f\n", low_bound[0], high_bound[0]);
-
-	//vis = cast_straight(position, limit);
-
-	vis = cast_ray(new, low_bound, high_bound);
-	draw_vector(image, vis, position);
-
-	printf("aqui vamos \n");
-
-	cast_beam(image, vis, position, low_bound, high_bound, 50);
+	vis = cast_ray(vis_dir, low_bound, high_bound);
+	cast_beam(image, vis, position, low_bound, high_bound, 200);
 
 
 }
