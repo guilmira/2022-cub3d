@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:35:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:45:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-/* # define OX_MINIMAP OX_WINDOW - 1.5 * OX_UNIT
+# define OX_MINIMAP OX_WINDOW - 1.5 * OX_UNIT
 # define OY_MINIMAP OY_WINDOW - 1.5 * OY_UNIT
 # define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT */
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT
 
-# define OX_MINIMAP OX_WINDOW 
+/* # define OX_MINIMAP OX_WINDOW 
 # define OY_MINIMAP OY_WINDOW 
 # define OX_MINIMAP_O 0 
-# define OY_MINIMAP_O 0 
+# define OY_MINIMAP_O 0  */
 
 # define D2 2
 //only round numbers, preferable 10 or 100
@@ -184,7 +184,7 @@ t_vector	div_vec(t_vector lhs, float escalar);
 t_vector	get_perpendicular(t_vector v);
 t_vector	invert_sense_vector(t_vector v);
 /* Initialize beam dimensions */
-void init_beam(t_beam *beam, double position[]);
+void init_beam(t_beam *beam, double position[], t_vector dir);
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
 void cast_beam(mlx_image_t *image, t_beam *beam);

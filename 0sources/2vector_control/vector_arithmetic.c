@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 05:44:20 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 11:06:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:40:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,4 @@ t_vector	div_vec(t_vector lhs, float escalar)
 	else
 		result.y = lhs.y / escalar;
 	return (result);
-}
-
-/** PURPOSE : Gives vector perendicular counterclockwise. */
-t_vector	get_perpendicular(t_vector v)
-{
-	t_vector new;
-
-	new.x = -v.y;
-	new.y = v.x;
-	return (new);
 }

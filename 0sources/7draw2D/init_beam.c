@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 14:32:05 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:33:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:44:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ static void	correct_boundries(t_beam *beam, double position[])
 }
 
 /** PURPOSE : Init beam as a straight vector pointing north. */
-void init_beam(t_beam *beam, double position[])
+void init_beam(t_beam *beam, double position[], t_vector dir)
 {
-	beam->vis_dir.x = 0; 
-	beam->vis_dir.y = 1;
+	beam->vis_dir = dir;
 	beam->plane_left.x = -1;
 	beam->plane_left.y = 0;
 	beam->plane_right.x = 1;

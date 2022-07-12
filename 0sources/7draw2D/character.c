@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:35:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:47:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ static t_vector calculate_plane_segment(t_vector plane_left, int aperture_units)
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. 
  * 3. Find out plane x vector. ( <---------------- ).*/
-static void draw_vision(mlx_image_t *image, double position[], int angle)
+static void draw_vision(mlx_image_t *image, double position[], t_vector dir, int angle)
 {
 	t_beam		beam;
 
-	init_beam(&beam, position);
+	init_beam(&beam, position, dir);
 	beam.vis = cast_ray(beam.vis_dir, beam.low_bound, beam.high_bound);
 	beam.aperture_units = calculate_aperture_units(angle, beam.vis, RAYCAST_OFFSET);
 	beam.plane_left = get_plane_vector(beam.vis, beam.aperture_units);
@@ -99,6 +99,10 @@ void draw_player_position(mlx_image_t *image, double position[], t_prog *game)
 		ft_shutdown(EX, game);
 	//coor_identifier(image, game, 10, 100, OY_MINIMAP, 0);
 	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
-	draw_vision(image, position, FOV_DEGREE);
+	t_vector dir;
+
+	dir.x = 0;
+	dir.y = 1;
+	draw_vision(image, position, dir, FOV_DEGREE);
 
 }
