@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 15:12:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:35:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
-# define RAYCAST_OFFSET 10 // pixels per aperture
+# define RAYCAST_OFFSET 100 // pixels per aperture
 # define FOV_DEGREE 90
 /* ------------------------ STRUCTS ------------------------ */
 
@@ -84,11 +84,25 @@ typedef struct s_dimensions
 	double unit[D2];
 }				t_dim;
 
+/** PURPOSE : Beam dimensions
+ * ^ - - - - ^ - - - - ^
+ * \ - - - - | - - - - /
+ * - \ - - - | - - - / -  
+ * - - \ - - | - - / - - 
+ * - - - \ - | - / - - - 
+ * - - - - \ | / - - - -
+ * - - - - - o - - - - - */
 typedef struct s_beam
 {
-	double position[D2];
-	double low_bound[D2];
-	double high_bound[D2];
+	double		position[D2];
+	double		low_bound[D2];
+	double		high_bound[D2];
+	t_vector	vis;
+	t_vector	vis_dir;
+	t_vector	plane_left;
+	t_vector	plane_right;
+	t_vector	plane_segment;
+	int			aperture_units;
 }				t_beam;
 
 typedef struct s_program
@@ -147,16 +161,14 @@ int			get_opposite(int colour_code);
 void		main_image_framework(t_prog *game);
 void		secd_image_framework(t_prog *game);
 
-
 /* GEOMETRY TOOLS */
 void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size, int rectangle);
 void		put_vertical(mlx_image_t *image, double coordinate_x, double limit_y, int colour);
 void 		put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int colour);
 void 		solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour);
 
-
 /* VECTOR TREATMENT */
-void draw_vector(mlx_image_t *image, t_vector vec, double origin[]);
+void draw_vector(mlx_image_t *image, t_vector vec, double origin[], uint32_t colour);
 
 /* VECTOR TOOLS */
 double get_module(t_vector vec);
@@ -168,10 +180,14 @@ t_vector	sum_vec(t_vector lhs, t_vector rhs);
 t_vector	sub_vec(t_vector lhs, t_vector rhs);
 t_vector	mul_vec(t_vector lhs, float escalar);
 t_vector	div_vec(t_vector lhs, float escalar);
+/* VECTOR ARITHMETIC ADVANCED */
 t_vector	get_perpendicular(t_vector v);
+t_vector	invert_sense_vector(t_vector v);
+/* Initialize beam dimensions */
+void init_beam(t_beam *beam, double position[]);
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
-void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units);
+void cast_beam(mlx_image_t *image, t_beam *beam);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);

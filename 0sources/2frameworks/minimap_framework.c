@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 15:07:11 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 11:41:19 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	secd_image_framework(t_prog *game)
 	double	player_pos[2]; //PACE calcular el player position (meterlo en la estructura)
 
 	player_pos[0] = 5 * game->w2.unit[0];
-	player_pos[1] = 5 * game->w2.unit[1];
+	player_pos[1] = 1 * game->w2.unit[1];
 
 	image = mlx_new_image(game->mlx,\
 	(int) game->w2.size[0], (int) game->w2.size[1]);

@@ -6,24 +6,17 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 15:04:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:35:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : Set limits for collisions of vectors. */
-static void	correct_boundries(t_beam *beam, double position[])
-{
-	beam->position[0] = position[0];
-	beam->position[1] = position[1];
-	beam->low_bound[0] = 0 - beam->position[0];
-	beam->low_bound[1] = 0 - beam->position[1];
-	beam->high_bound[0] = OX_WINDOW - beam->position[0];
-	beam->high_bound[1] = OY_WINDOW - beam->position[1];
-}
-
-/** PURPOSE : Total horizontal plane lenght. */ 
+/** PURPOSE : Total horizontal plane lenght. 
+ * 1. Get module of vision vector. 
+ * 2. Pass it to radian. 
+ * 3. tan(thetha) = opposite/ adyacent
+ * 4. Therefore: result = adyacent * tan(thetha) */ 
 static double calculate_plane_lenght(double aperture, t_vector vis)
 {
 	double theta;
@@ -37,7 +30,7 @@ static double calculate_plane_lenght(double aperture, t_vector vis)
 /** PURPOSE : Calculate, given a plane lenght, how many pixels
  * are gonna divide given plane.
  * 
- * --- ^ --- ^ --- ^ ---     : 
+ * --- ^ --- ^ --- ^ ---      
  *     |     |     |
  *     |     |     | 
  *     |     |     |
@@ -52,22 +45,49 @@ static int calculate_aperture_units(double aperture, t_vector vis, int ray_offse
 	return (aperture_units);
 }
 
+/** PURPOSE : Get plane vector, perpendicular to vision vector,
+ * but is treated as only half of the plane. */
+t_vector get_plane_vector(t_vector vis, double aperture_units)
+{
+	int			module;
+	t_vector	perpendicular;
+	t_vector	perpendicular_dir;
+
+	module = (aperture_units / 2) * RAYCAST_OFFSET;
+	perpendicular = get_perpendicular(vis);
+	perpendicular_dir = get_unit_vector(perpendicular);
+	return (mul_vec(perpendicular_dir, module));
+}
+
+/** PURPOSE : Calculate segment base on division. */
+static t_vector calculate_plane_segment(t_vector plane_left, int aperture_units)
+{
+	t_vector segment;
+
+	segment.x = plane_left.x / aperture_units;
+	segment.y = plane_left.y / aperture_units;
+	if (segment.x < 0)
+		segment.x *= -1;
+	if (segment.y < 0)
+		segment.x *= -1;
+	return (segment);
+}
+
 /** PURPOSE : Draw field of vision.
  * 1. Straight forward direction from point of origin.
- * 2. Side vectors depending of angle of vision. */
-static void draw_vision(mlx_image_t *image, double position[], int aperture)
+ * 2. Side vectors depending of angle of vision. 
+ * 3. Find out plane x vector. ( <---------------- ).*/
+static void draw_vision(mlx_image_t *image, double position[], int angle)
 {
-	t_vector	vis;
-	t_vector	vis_dir;
-	t_beam		beam_dim;
-	int			aperture_units;
+	t_beam		beam;
 
-	vis_dir.x = 0;
-	vis_dir.y = 1;
-	correct_boundries(&beam_dim, position);
-	vis = cast_ray(vis_dir, beam_dim.low_bound, beam_dim.high_bound);
-	aperture_units = calculate_aperture_units(aperture, vis, RAYCAST_OFFSET);
-	cast_beam(image, vis, &beam_dim, aperture_units);
+	init_beam(&beam, position);
+	beam.vis = cast_ray(beam.vis_dir, beam.low_bound, beam.high_bound);
+	beam.aperture_units = calculate_aperture_units(angle, beam.vis, RAYCAST_OFFSET);
+	beam.plane_left = get_plane_vector(beam.vis, beam.aperture_units);
+	beam.plane_right = invert_sense_vector(beam.plane_left);
+	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.aperture_units); 
+	cast_beam(image, &beam);
 }
 
 /** PURPOSE : Draw player with its field of vision. 

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 15:23:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:28:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	collision(t_vector ray, double low_boundry[], double high_boundry[])
 }
 
 /** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
-t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[])
+t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry[])
 {
 	int				counter;
 	t_vector		ray;
@@ -39,54 +39,45 @@ t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[
 	return (ray);
 }
 
-
-
-t_vector get_plane_vector(t_vector vis, double aperture_units)
+/** PURPOSE : Cast barrage of vector, starting outwards an going inwards. */
+void cast_barrage(mlx_image_t *image, t_beam *beam, int counter, t_vector plane)
 {
-	int			module;
-	t_vector	perpendicular;
-	t_vector	perpendicular_dir;
+	t_vector ray;
+	t_vector resultant_left;
+	t_vector resultant_right;
+	t_vector direction;
 
-	module = (aperture_units / 2) * RAYCAST_OFFSET;
-	perpendicular = get_perpendicular(vis);
-	perpendicular_dir = get_unit_vector(perpendicular);
-	return (mul_vec(perpendicular_dir, module));
+	while (counter-- > 0)
+	{
+		resultant_left = sum_vec(beam->vis, plane);
+		resultant_right = sub_vec(beam->vis, plane);
+		direction = get_unit_vector(resultant_left);
+		ray = cast_ray(direction, beam->low_bound, beam->high_bound);
+		draw_vector(image, ray, beam->position, BLUE);
+		direction = get_unit_vector(resultant_right);
+		ray = cast_ray(direction, beam->low_bound, beam->high_bound);
+		draw_vector(image, ray, beam->position, BLUE);
+		plane = sum_vec(plane, beam->plane_segment);
+	}
 }
 
-/** PURPOSE : Casting beam of rays from origin. 
- * 1. Find out plane x vector. ( <---------------- ).
- * 2. Beam vector is the vision vector added to the plane.
- * 3. Get direction of beam vector. i.e: the unit vector of the beam.
- * 4. Cast ray to obstacle from unit vector of beam.
- * 5. Draw said vector.
- * 6. Rcalculate plane vector and start loop. */
-void cast_beam(mlx_image_t *image, t_vector vis, t_beam *beam_dim, double aperture_units)
-{
-	t_vector	beam;
-	t_vector	plane;
-	t_vector	direction;
-	t_vector	ray;
 
+/** PURPOSE : Casting beam of rays from origin. 
+ * 1. Beam vector is the vision vector added to the plane.
+ * 2. Get direction of beam vector. i.e: the unit vector of the beam.
+ * 3. Cast ray to obstacle from unit vector of beam.
+ * 4. Draw said vector.
+ * 5. Recalculate plane vector and start loop. */
+void cast_beam(mlx_image_t *image, t_beam *beam)
+{
+	
 	double time_spent = 0.0;	
 	clock_t begin = clock();
+
+	cast_barrage(image, beam, beam->aperture_units, beam->plane_left);
+	draw_vector(image, cast_ray(beam->vis_dir, beam->low_bound, beam->high_bound),\
+	beam->position, RED);
 	
-
-	plane.x = vis.x - (aperture_units / 2) * RAYCAST_OFFSET; 
-	plane.y = 0;
-	//coor_identifier(image, game, plane.x + 970, plane.y + 100, OY_MINIMAP, 0);
-	//draw_vector(image, ray, beam_dim->position);
-	plane = get_plane_vector(vis, aperture_units);
-	log_vector(plane);
-	aperture_units++;
-	while (aperture_units-- > 0)
-	{
-		beam = sum_vec(vis, plane);
-		direction = get_unit_vector(beam);
-		ray = cast_ray(direction, beam_dim->low_bound, beam_dim->high_bound);
-		draw_vector(image, ray, beam_dim->position);
-		plane.x += RAYCAST_OFFSET;
-	}
-
 	clock_t end = clock();
 	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("The elapsed time is %f seconds\n", time_spent);
