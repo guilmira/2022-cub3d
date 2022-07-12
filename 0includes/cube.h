@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 15:38:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:20:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
 //# define RAYCAST_OFFSET 100 // pixels per aperture
-# define RAYCAST_OFFSET 108
-# define FOV_DEGREE 90
+# define RAYCAST_OFFSET 6
+# define FOV_DEGREE 60
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
@@ -199,7 +199,7 @@ void		freemat(char **mat);
 void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
-void draw_player_position(mlx_image_t *image, double position[], t_prog *game);
+void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);
 
 /* TOOLS */
 double coor(double y, double size_y);
