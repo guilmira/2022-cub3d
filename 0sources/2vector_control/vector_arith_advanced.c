@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 05:44:20 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:29:51 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:42:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ t_vector	get_perpendicular(t_vector v)
 t_vector invert_sense_vector(t_vector v)
 {
 	t_vector inverted;
-	inverted.x = -v.x;
-	inverted.y = -v.y;
+	if (!inverted.x)
+		inverted.x = 0;
+	else
+		inverted.x = -v.x;
+	if (!inverted.y)
+		inverted.y = 0;
+	else
+		inverted.y = -v.y;
 	return (inverted);
 }

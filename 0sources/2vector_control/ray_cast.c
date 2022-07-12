@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:28:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:05:31 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void cast_barrage(mlx_image_t *image, t_beam *beam, int counter, t_vector plane)
 		direction = get_unit_vector(resultant_right);
 		ray = cast_ray(direction, beam->low_bound, beam->high_bound);
 		draw_vector(image, ray, beam->position, BLUE);
-		plane = sum_vec(plane, beam->plane_segment);
+		plane = sub_vec(plane, beam->plane_segment);
 	}
 }
 

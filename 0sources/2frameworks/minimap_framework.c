@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 11:41:19 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:06:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	secd_image_framework(t_prog *game)
 	double	player_pos[2]; //PACE calcular el player position (meterlo en la estructura)
 
 	player_pos[0] = 5 * game->w2.unit[0];
-	player_pos[1] = 1 * game->w2.unit[1];
+	player_pos[1] = 1 * game->w2.unit[1]; //PACE see whats up at 0,0
 
 	image = mlx_new_image(game->mlx,\
 	(int) game->w2.size[0], (int) game->w2.size[1]);
@@ -48,7 +48,7 @@ void	secd_image_framework(t_prog *game)
 	/* --------------------------------------------------------------- */
 	draw_grid(image, game, game->w2.size[0], game->w2.size[1]);
 	coor_identifier(image, game, player_pos[0], player_pos[1], OY_MINIMAP, 0);
-	draw_player_position(image, player_pos, game); //TODO ejemplo, un 0,0 aqui provoca un seg fault
+	draw_player_position(image, player_pos, game); //PACE ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	image, game->w2.origin[0], game->w2.origin[1]);

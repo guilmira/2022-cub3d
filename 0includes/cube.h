@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:45:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:38:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-# define OX_MINIMAP OX_WINDOW - 1.5 * OX_UNIT
+/* # define OX_MINIMAP OX_WINDOW - 1.5 * OX_UNIT
 # define OY_MINIMAP OY_WINDOW - 1.5 * OY_UNIT
 # define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT */
 
-/* # define OX_MINIMAP OX_WINDOW 
+# define OX_MINIMAP OX_WINDOW 
 # define OY_MINIMAP OY_WINDOW 
 # define OX_MINIMAP_O 0 
-# define OY_MINIMAP_O 0  */
+# define OY_MINIMAP_O 0 
 
 # define D2 2
 //only round numbers, preferable 10 or 100
@@ -53,7 +53,8 @@
 
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
-# define RAYCAST_OFFSET 100 // pixels per aperture
+//# define RAYCAST_OFFSET 100 // pixels per aperture
+# define RAYCAST_OFFSET 108
 # define FOV_DEGREE 90
 /* ------------------------ STRUCTS ------------------------ */
 
@@ -102,7 +103,7 @@ typedef struct s_beam
 	t_vector	plane_left;
 	t_vector	plane_right;
 	t_vector	plane_segment;
-	int			aperture_units;
+	double		aperture_units;
 }				t_beam;
 
 typedef struct s_program
@@ -212,6 +213,7 @@ void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int bas
 void		ft_leaks(void);
 void log_vector(t_vector v);
 void log_coor(double array[]);
+void log_d(double d);
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 10:03:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:58:24 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void log_coor(double array[])
 	printf("Coordinates:						OX %f y  OY %f\n", array[0], array[1]);
 }
 
+void log_d(double d)
+{
+	printf("DOUBLE %f\n", d);
+}
 
 /* 	double time_spent = 0.0;	
 	clock_t begin = clock(); */
