@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 20:52:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 21:25:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-# define OX_MINIMAP (OX_WINDOW - 1.5 * OX_UNIT)
+/* # define OX_MINIMAP (OX_WINDOW - 1.5 * OX_UNIT)
 # define OY_MINIMAP (OY_WINDOW - 1.5 * OY_UNIT)
 # define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT 
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT  */
 
-/*# define OX_MINIMAP OX_WINDOW 
+# define OX_MINIMAP OX_WINDOW 
 # define OY_MINIMAP OY_WINDOW 
 # define OX_MINIMAP_O 0 
-# define OY_MINIMAP_O 0 
-*/
+# define OY_MINIMAP_O 0
+
 # define D2 2
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
@@ -52,7 +52,7 @@
 # define TITLE_WINDOW "CUBE"
 
 //player info
-# define PLAYER_RATIO 72
+# define PLAYER_RATIO 0.5
 
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
@@ -215,7 +215,7 @@ void		hooks_and_loops(t_prog *game);
 /* PLAYER */
 void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);
 void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour);
-void	fill_player_pos(t_prog *game, double player_pos[]);
+void fill_player_pos(t_prog *game, double player_pos[]);
 
 /* TOOLS */
 double coor(double y, double size_y);
