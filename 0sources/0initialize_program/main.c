@@ -21,7 +21,7 @@ JAMAS METER DECIMALES, DIVISIONES; Desde DEFINE
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
 //int	main(int argc, char **argv)
-int	main(void)
+int	main(int argc, char  **argv)
 {
 	t_prog		*game;
 
@@ -32,7 +32,8 @@ int	main(void)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
-	//parser(game, argc, argv);
+	parser(game, argc, argv);
+	framework_dimensions(game);
 	main_image_framework(game);
 	secd_image_framework(game);
 	/* --------------------------------------------------------------- */

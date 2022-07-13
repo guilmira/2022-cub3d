@@ -33,16 +33,16 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-/* # define OX_MINIMAP OX_WINDOW - 1.5 * OX_UNIT
-# define OY_MINIMAP OY_WINDOW - 1.5 * OY_UNIT
+# define OX_MINIMAP (OX_WINDOW - 1.5 * OX_UNIT)
+# define OY_MINIMAP (OY_WINDOW - 1.5 * OY_UNIT)
 # define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT */
+# define OY_MINIMAP_O 0 + 1 * OY_UNIT 
 
-# define OX_MINIMAP OX_WINDOW 
+/*# define OX_MINIMAP OX_WINDOW 
 # define OY_MINIMAP OY_WINDOW 
 # define OX_MINIMAP_O 0 
 # define OY_MINIMAP_O 0 
-
+*/
 # define D2 2
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
@@ -50,6 +50,9 @@
 # define OX_UNIT OX_WINDOW / OX_DIV
 # define OY_UNIT OY_WINDOW / OY_DIV
 # define TITLE_WINDOW "CUBE"
+
+//player info
+# define PLAYER_RATIO 72
 
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
@@ -83,6 +86,8 @@ typedef struct s_dimensions
 	double limit[D2];
 	double sec_limit[D2];
 	double unit[D2];
+	double pixel_per_block[D2];
+
 }				t_dim;
 
 /** PURPOSE : Beam dimensions
@@ -155,6 +160,7 @@ int 		map_build(int data_len, t_prog *game, t_list *aux_lst);
 void		init_game(t_prog *game);
 void		init_window(t_prog *game, t_vector window_dimensions);
 t_vector	get_window_dimensions(t_vector dimensions);
+void		framework_dimensions(t_prog *game);
 
 /* FRAMEWORKS */
 int			trgb_translate(int red, int blue, int green, int transparency);
@@ -200,7 +206,8 @@ void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
 void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);
-void draw_2d_player(mlx_image_t *image, double pos[], double radio);
+void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour);
+void	fill_player_pos(t_prog *game, double player_pos[]);
 
 /* TOOLS */
 double coor(double y, double size_y);

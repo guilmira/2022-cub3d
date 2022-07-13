@@ -37,9 +37,6 @@ void	secd_image_framework(t_prog *game)
 	mlx_image_t	*image;
 	double	player_pos[2]; //PACE calcular el player position (meterlo en la estructura)
 
-	player_pos[0] = 1 * game->w2.unit[0];
-	player_pos[1] = 1 * game->w2.unit[1]; //PACE see whats up at 0,0
-
 	image = mlx_new_image(game->mlx,\
 	(int) game->w2.size[0], (int) game->w2.size[1]);
 	if (!image)
@@ -47,6 +44,7 @@ void	secd_image_framework(t_prog *game)
 	game->image[1] = image; 
 	/* --------------------------------------------------------------- */
 	draw_grid(image, game, game->w2.size[0], game->w2.size[1]);
+	fill_player_pos(game, player_pos);
 	coor_identifier(image, game, player_pos[0], player_pos[1], OY_MINIMAP, 0);
 	
 	t_vector dir;
