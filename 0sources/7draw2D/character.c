@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 17:22:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:50:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,68 @@ static void draw_vision(mlx_image_t *image, double position[], t_vector dir, int
  * 2. From (x, y) coordinates, rays will be casted as vectors. */
 void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game)
 {
+	double ratio;
 	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
-	//coor_identifier(image, game, 10, 100, OY_MINIMAP, 0);
-	draw_2d_player(image, position, 30);
+	ratio = ((double)OY_MINIMAP / (double)PLAYER_RATIO);
+	draw_2d_player(image, position, ratio, GREEN + RED);
 	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
 	draw_vision(image, position, dir, FOV_DEGREE);
+}
+
+void fill_vis(t_prog *game, char dir);
+
+void	fill_player_pos(t_prog *game, double player_pos[])
+{
+	int i[2];
+
+	i[0] = -1;
+	if(game->map == NULL)
+	{
+		player_pos[0] = (double)(5 * game->w2.pixel_per_block[0]);
+		player_pos[1] = (double)(5 * game->w2.pixel_per_block[1]);
+		return ;
+	}
+	while (game->map[++i[0]])
+	{
+		i[1] = -1;
+		while (game->map[i[0]][++i[1]])
+		{
+			if (game->map[i[0]][i[1]] != ' '
+				&& game->map[i[0]][i[1]] != '1'
+				&& game->map[i[0]][i[1]] != '0'
+				&& game->map[i[0]][i[1]] != '\0')
+			{
+				player_pos[0] = (double)(((i[1]) * game->w2.pixel_per_block[0]));
+				player_pos[1] = (double)((game->map_y - i[0]) * game->w2.pixel_per_block[1]);
+				fill_vis(game, game->map[i[0]][i[1]]);
+				return ;
+			}
+		}
+	}
+	return ;
+}
+
+void fill_vis(t_prog *game, char dir)
+{
+	if(dir == 'N')
+	{
+		game->pl.vis.x = 0;
+		game->pl.vis.y = 1;
+	}
+	else if(dir == 'S')
+	{
+		game->pl.vis.x = 0;
+		game->pl.vis.y = -1;
+	}
+	else if(dir == 'E')
+	{
+		game->pl.vis.x = 1;
+		game->pl.vis.y = 0;
+	}
+	else if(dir == 'W')
+	{
+		game->pl.vis.x = -1;
+		game->pl.vis.y = 0;
+	}
 }

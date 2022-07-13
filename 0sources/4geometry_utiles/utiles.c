@@ -104,24 +104,19 @@ void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int bas
 
 int check_radio(double coord[], double radio);
 
-void draw_2d_player(mlx_image_t *image, double pos[], double radio)
+void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour)
 {
 	double i[2];
 
 	//draw_centered_rectangle(image, pos[0], pos[1], 6, 6);
 	i[0] = -1 - radio;
-	while (++i[0] < 90)
+	printf("%f\n", radio);
+	while (++i[0] < (radio * 2))
 	{
 		i[1] = -1 - radio;
-		while (++i[1] < 90)
-		{
+		while (++i[1] < (radio * 2))
 			if(check_radio(i, radio))
-			{
-				solid_pixel(image, i[0] + pos[0], coor(i[1] + pos[1], OY_MINIMAP), GREEN);
-
-				//invert pixel put;
-			}
-		}
+				solid_pixel(image, i[0] + pos[0], coor(i[1] + pos[1], OY_MINIMAP), colour);
 	}
 }
 

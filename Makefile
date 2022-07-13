@@ -14,6 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror #-g #-fsanitize=address
+ARG			= default.cub
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule
@@ -68,7 +69,7 @@ $(NAME): $(OBJS) $(LIB) $(MLX)
 	@echo $(GREEN) "$(NAME) compiled" $(NONE)
 
 exe: $(NAME)
-	./$(NAME)
+	./$(NAME) $(ARG)
 
 fus:
 	$(RM) $(OBJS)

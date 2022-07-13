@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 19:34:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:42:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ JAMAS METER DECIMALES, DIVISIONES; Desde DEFINE
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
 //int	main(int argc, char **argv)
-int	main(void)
+int	main(int argc, char  **argv)
 {
 	t_prog		*game;
 
@@ -32,9 +32,8 @@ int	main(void)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
-	//parser(game, argc, argv);
-	//secd_image_framework(game);
-	//framework_2D(game);
+	parser(game, argc, argv);
+	framework_dimensions(game);
 	create_image(game, 0, game->w1.size);
 	main_image_framework(game);
 	create_image(game, 1, game->w2.size);
@@ -42,6 +41,7 @@ int	main(void)
 	//trace_rays();
 	//virtualize_3D();
 	/* --------------------------------------------------------------- */
+	framework_2D(game);
 	hooks_and_loops(game);
 	clean_exit(game);
 	
