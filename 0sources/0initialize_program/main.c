@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 16:59:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 19:34:43 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ int	main(void)
 	/* --------------------------------------------------------------- */
 	init_game(game);
 	//parser(game, argc, argv);
-	main_image_framework(game);
 	//secd_image_framework(game);
-	framework_2D(game);
+	//framework_2D(game);
+	create_image(game, 0, game->w1.size);
+	main_image_framework(game);
+	create_image(game, 1, game->w2.size);
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//virtualize_3D();
 	/* --------------------------------------------------------------- */
-	printf("loopeando\n");
 	hooks_and_loops(game);
 	clean_exit(game);
 	

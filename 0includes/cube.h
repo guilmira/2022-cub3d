@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 16:59:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 19:40:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define SAFE_OFFSET 0.0001
 //# define RAYCAST_OFFSET 100 // pixels per aperture
 # define RAYCAST_OFFSET 6
-# define FOV_DEGREE 60
+# define FOV_DEGREE 30
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
@@ -110,6 +110,7 @@ typedef struct s_player
 {
 	double		position[D2];
 	t_vector	vis;
+	
 }				t_player;
 
 typedef struct s_program

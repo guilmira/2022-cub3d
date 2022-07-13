@@ -29,20 +29,23 @@ void	hk_close(void *game)
 
 
 /** PURPOSE : Hook loop function. */
-void next_frame(void *game)
+void next_frame(void *g)
 {
 	static int frame;
+	t_prog *game;
 
-	t_prog *g;
-
-	g = (t_prog *) game;
+	game = (t_prog *) g;
 	
 	frame++;
 
-	int colour;
-	colour = trgb_translate(255, 200, 10, 0);
-	wash_screen(g, g->image[1], g->w2, BLACK);
-	wash_screen(g, g->image[1], g->w2, colour);
+	wash_screen(game, game->image[1], game->w2, RED);
+	wash_screen(game, game->image[1], game->w2, BLACK);
+
+	game->pl.position[0] = 1 * game->w2.unit[0];
+	game->pl.position[1] = 1 * game->w2.unit[1];
+	game->pl.vis.x = frame * 0.01;
+	game->pl.vis.y = 1;
+
 	framework_2D(game);
 } 
 
