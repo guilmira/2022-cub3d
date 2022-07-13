@@ -36,13 +36,13 @@ void next_frame(void *g)
 
 	game = (t_prog *) g;
 	
+	frame++;
 
 	wash_screen(game, game->image[1], game->w2, RED);
 	wash_screen(game, game->image[1], game->w2, BLACK);
 	framework_2D(game);
 	game->pl.vis.x = frame * 0.01;
 	game->pl.vis.y = 1;
-	
 
 } 
 
