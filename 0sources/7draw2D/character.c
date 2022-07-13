@@ -97,6 +97,7 @@ void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t
 	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
 	//coor_identifier(image, game, 10, 100, OY_MINIMAP, 0);
+	draw_2d_player(image, position, 30);
 	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
 	draw_vision(image, position, dir, FOV_DEGREE);
 }

@@ -37,7 +37,7 @@ void	secd_image_framework(t_prog *game)
 	mlx_image_t	*image;
 	double	player_pos[2]; //PACE calcular el player position (meterlo en la estructura)
 
-	player_pos[0] = 5 * game->w2.unit[0];
+	player_pos[0] = 1 * game->w2.unit[0];
 	player_pos[1] = 1 * game->w2.unit[1]; //PACE see whats up at 0,0
 
 	image = mlx_new_image(game->mlx,\

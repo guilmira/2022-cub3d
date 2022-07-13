@@ -96,8 +96,39 @@ void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int bas
 		{
 			x = (int) (o_x + i);
 			y = (int) coor(o_y + j, OY_MINIMAP);
-			solid_pixel(image, x, y, GREEN);
+			solid_pixel(image, x, y, RED);
 		}
 		i = -1;
 	}
 }
+
+int check_radio(double coord[], double radio);
+
+void draw_2d_player(mlx_image_t *image, double pos[], double radio)
+{
+	double i[2];
+
+	//draw_centered_rectangle(image, pos[0], pos[1], 6, 6);
+	i[0] = -1 - radio;
+	while (++i[0] < 90)
+	{
+		i[1] = -1 - radio;
+		while (++i[1] < 90)
+		{
+			if(check_radio(i, radio))
+			{
+				solid_pixel(image, i[0] + pos[0], coor(i[1] + pos[1], OY_MINIMAP), GREEN);
+
+				//invert pixel put;
+			}
+		}
+	}
+}
+
+int check_radio(double coord[], double radio)
+{
+	if(pow((coord[0]) , 2) + pow((coord[1]), 2) <= pow(radio, 2))
+		return (1);
+	return (0);
+}
+

@@ -136,8 +136,8 @@ typedef struct s_program
 /** PURPOSE : Rectangle size. */
 enum player_size
 {
-	x_size = 25,
-	y_size = 25
+	x_size = 3,
+	y_size = 3
 };
 
 /* ------------------------ DIMENSIONS OF CUBE ------------------------ */
@@ -200,6 +200,7 @@ void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
 void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);
+void draw_2d_player(mlx_image_t *image, double pos[], double radio);
 
 /* TOOLS */
 double coor(double y, double size_y);
