@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 17:20:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:59:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,29 +106,35 @@ typedef struct s_beam
 	double		aperture_units;
 }				t_beam;
 
+typedef struct s_player
+{
+	double		position[D2];
+	t_vector	vis;
+}				t_player;
+
 typedef struct s_program
 {
     /* ----- SHARED ---- */
 	mlx_t		*mlx;
 	mlx_image_t	*image[TOTAL_IMAGES + 1];
 	//void	*mlx_window;
-	char	**map;
+	char		**map;
 	/*---- MAP_INFO ----*/
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	int		sky_clr;
-	int		floor_clr;
+	char		*NO;
+	char		*SO;
+	char		*WE;
+	char		*EA;
+	int			sky_clr;
+	int			floor_clr;
 	/* ----- GUILLE ---- */
-	t_coor	minimap;
-	t_dim	w1;
-	t_dim	w2;
-
+	t_coor		minimap;
+	t_dim		w1;
+	t_dim		w2;
+	t_player	pl;
 	/* ----- KIRIAM ---- */
-	int		file;
-    int		map_x;
-    int		map_y;
+	int			file;
+    int			map_x;
+    int			map_y;
 }               t_prog;
 
 
@@ -155,12 +161,13 @@ int 		map_build(int data_len, t_prog *game, t_list *aux_lst);
 void		init_game(t_prog *game);
 void		init_window(t_prog *game, t_vector window_dimensions);
 t_vector	get_window_dimensions(t_vector dimensions);
+void 		create_image(t_prog *game, int array_position, double size[]);
 
 /* FRAMEWORKS */
 int			trgb_translate(int red, int blue, int green, int transparency);
 int			get_opposite(int colour_code);
 void		main_image_framework(t_prog *game);
-void		secd_image_framework(t_prog *game);
+void		framework_2D(t_prog *game);
 
 /* GEOMETRY TOOLS */
 void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size, int rectangle);
@@ -208,6 +215,7 @@ double degree_to_radian(double degree);
 float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height);
 void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int base, int height);
+void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour);
 
 
 //To remove from here eventually

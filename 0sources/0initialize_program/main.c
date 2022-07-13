@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/09 14:23:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:59:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(void)
 	init_game(game);
 	//parser(game, argc, argv);
 	main_image_framework(game);
-	secd_image_framework(game);
+	//secd_image_framework(game);
+	framework_2D(game);
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//virtualize_3D();

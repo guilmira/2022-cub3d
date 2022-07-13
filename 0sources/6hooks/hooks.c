@@ -26,19 +26,25 @@ void	hk_close(void *game)
 	clean_exit(game);
 }
 
+
+
 /** PURPOSE : Hook loop function. */
-/* void next_frame(void *game)
+void next_frame(void *game)
 {
 	static int frame;
 
+	t_prog *g;
+
+	g = (t_prog *) game;
 	
 	frame++;
 
-	clear_screen(game, game->image[1], BLACK);
-	
-	
-	
-} */
+	int colour;
+	colour = trgb_translate(255, 200, 10, 0);
+	wash_screen(g, g->image[1], g->w2, BLACK);
+	wash_screen(g, g->image[1], g->w2, colour);
+	framework_2D(game);
+} 
 
 /** PURPOSE : execute main routine of program.
  * mlx_loop and mlx_loop_hook will tried to be executed a total
@@ -47,10 +53,8 @@ void	hooks_and_loops(t_prog *game)
 {
 	mlx_close_hook(game->mlx, &hk_close, (void *) game);
 	mlx_key_hook(game->mlx, &hk_keys, game);
-	//
 		
-	//mlx_loop_hook(game->mlx, &next_frame, game);
-	//
+	mlx_loop_hook(game->mlx, &next_frame, game);
 	
 	mlx_loop(game->mlx);
 }
