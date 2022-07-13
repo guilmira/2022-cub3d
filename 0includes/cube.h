@@ -53,8 +53,8 @@
 
 # define TOTAL_IMAGES 2
 # define SAFE_OFFSET 0.0001
-# define RAYCAST_OFFSET 10 // pixels per aperture
-# define FOV_DEGREE 90
+# define RAYCAST_OFFSET 20 // pixels per aperture
+# define FOV_DEGREE 30
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
