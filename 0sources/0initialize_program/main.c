@@ -6,16 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 20:42:13 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:53:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-/* Notas guille: 
-PACE s en el code. Intentar reducir al minimo.
-JAMAS METER DECIMALES, DIVISIONES; Desde DEFINE
-*/
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
