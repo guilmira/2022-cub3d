@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 20:57:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 21:42:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@
 //int	main(int argc, char **argv)
 int	main(int argc, char  **argv)
 {
-	t_prog		*game;
-
+	t_prog	*game;
 	/* --------------------------------------------------------------- */
 	atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
@@ -32,11 +31,12 @@ int	main(int argc, char  **argv)
 	create_image(game, 0, game->w1.size);
 	main_image_framework(game);
 	create_image(game, 1, game->w2.size);
+	fill_player_pos(game, game->pl.position);
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//virtualize_3D();
 	/* --------------------------------------------------------------- */
-	framework_2D(game);
+	//framework_2D(game);
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);
