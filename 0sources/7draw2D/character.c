@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 20:50:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 21:21:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,11 @@ void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t
 	double ratio;
 	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
-	ratio = ((double)OY_MINIMAP / (double)PLAYER_RATIO);
+	ratio = (0.5 * game->w2.pixel_per_block[0]);
 	draw_2d_player(image, position, ratio, GREEN + RED);
 	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
 	draw_vision(image, position, dir, FOV_DEGREE);
+	coor_identifier(game->image[1], game, game->pl.position[0], game->pl.position[1], game->w2.size[1], 1);
 }
 
 void fill_vis(t_prog *game, char dir);
@@ -127,7 +128,7 @@ void	fill_player_pos(t_prog *game, double player_pos[])
 				&& game->map[i[0]][i[1]] != '\0')
 			{
 				player_pos[0] = (double)(((i[1]) * game->w2.pixel_per_block[0]));
-				player_pos[1] = (double)((game->map_y - i[0]) * game->w2.pixel_per_block[1]);
+				player_pos[1] = (double)((game->map_y - i[0] + 1) * game->w2.pixel_per_block[1]);
 				fill_vis(game, game->map[i[0]][i[1]]);
 				return ;
 			}

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:42:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 21:16:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour)
 
 	//draw_centered_rectangle(image, pos[0], pos[1], 6, 6);
 	i[0] = -1 - radio;
-	printf("%f\n", radio);
 	while (++i[0] < (radio * 2))
 	{
 		i[1] = -1 - radio;

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 20:53:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:57:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ int	main(int argc, char  **argv)
 	framework_2D(game);
 	hooks_and_loops(game);
 	clean_exit(game);
-	
 	return (0);
 }
