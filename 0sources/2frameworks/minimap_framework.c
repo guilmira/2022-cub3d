@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/11 11:05:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:45:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,16 @@ void	draw_grid(mlx_image_t *image, t_prog *game, double size_x, double size_y)
  * 1. Obtain parameters by defining image size.
  * 2. Draw grid.
  * 3. Draw player position + its field of vision. */
-void	secd_image_framework(t_prog *game)
+void	framework_2D(t_prog *game)
 {
-	mlx_image_t	*image;
-	double	player_pos[2];
-
-	player_pos[0] = 5 * game->w2.unit[0];
-	player_pos[1] = 1 * game->w2.unit[1];
-
-	image = mlx_new_image(game->mlx,\
-	(int) game->w2.size[0], (int) game->w2.size[1]);
-	if (!image)
-		ft_shutdown(EX3, game);
-	game->image[1] = image; 
+	
 	/* --------------------------------------------------------------- */
-	draw_grid(image, game, game->w2.size[0], game->w2.size[1]);
-	//coor_identifier(image, game, player_pos[0], player_pos[1], OY_MINIMAP, 0);
-	draw_player_position(image, player_pos, game); //TODO ejemplo, un 0,0 aqui provoca un seg fault
+
+	/* --------------------------------------------------------------- */
+	fill_player_pos(game, game->pl.position);
+	draw_grid(game->image[1], game, game->w2.size[0], game->w2.size[1]);	
+	draw_player_position(game->image[1], game->pl.position, game->pl.vis, game); //PACE ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
-	image, game->w2.origin[0], game->w2.origin[1]);
+	game->image[1], game->w2.origin[0], game->w2.origin[1]);
 }

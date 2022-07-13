@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_framework.c                                   :+:      :+:    :+:   */
+/*   vector_arith_advanced.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 16:29:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 19:34:05 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/11 05:44:20 by guilmira          #+#    #+#             */
+/*   Updated: 2022/07/12 15:42:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : Draw 3D image as main render.
- * 1. Obtain parameters by defining image size.
- * 2. Build cube. */
-void	main_image_framework(t_prog *game)
+/** PURPOSE : Gives vector perendicular counterclockwise. */
+t_vector	get_perpendicular(t_vector v)
 {
-	//cube3D(); TODO
-	mlx_image_to_window(game->mlx, game->image[0], (int) game->w1.origin[0], (int) game->w1.origin[1]);
+	t_vector new;
+
+	new.x = -v.y;
+	new.y = v.x;
+	return (new);
 }
 
-
+/** PURPOSE : Invert sense(sentido). */
+t_vector invert_sense_vector(t_vector v)
+{
+	t_vector inverted;
+	if (!inverted.x)
+		inverted.x = 0;
+	else
+		inverted.x = -v.x;
+	if (!inverted.y)
+		inverted.y = 0;
+	else
+		inverted.y = -v.y;
+	return (inverted);
+}

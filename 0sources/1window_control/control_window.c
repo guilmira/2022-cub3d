@@ -6,27 +6,38 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 14:23:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/06 12:35:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:40:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : its necesary because clean_exit returns void. */
-/* static int	ft_destroy(t_prog *game)
+/** PURPOSE : Delete image tool. */
+void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour)
 {
-	clean_exit(game);
-	return (0);
-} */
+	int i;
+	int j;
 
-/** PURPOSE : open window.
- * 1. Open window, save pointer for later use.
- * 2. Establishes closing window hook */
-/* void	init_window(t_prog *game, t_vector window_dimensions)
+	i = -1;
+	j = 0;
+	while (++j <= window.limit[1])
+	{
+		i = -1;
+		while (++i <= window.limit[0] - 1)
+			solid_pixel(image, i, coor(j, window.limit[1]), colour);
+	}
+	if (0)
+		ft_shutdown("", game); //PACE delete if not necessary
+}
+
+void create_image(t_prog *game, int array_position, double size[])
 {
-	game->mlx_window = mlx_new_window(game->mlx, \
-	window_dimensions.x, window_dimensions.y, TITLE_WINDOW);
-	if (!game->mlx_window)
-		ft_shutdown(EX2, game);
-	//--mlx_hook(game->mlx_window, DESTROY_EVENT, 0, ft_destroy, game);
-} */
+	mlx_image_t	*image;
+
+	printf("%f\n", size[0]);
+	printf("%f\n", size[1]);
+	image = mlx_new_image(game->mlx, (int) size[0], (int) size[1]);
+	if (!image)
+		ft_shutdown(EX3, game);
+	game->image[array_position] = image; 
+}

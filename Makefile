@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/11 06:09:22 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/12 14:39:42 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror #-g #-fsanitize=address
+ARG			= default.cub
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule
@@ -27,13 +28,13 @@ ROUTE 		= ./0sources
 FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_variables.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c)
 FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c main_framework.c minimap_framework.c)
-FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c vector_tools.c vector_arithmetic.c ray_cast.c)
+FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c vector_tools.c vector_arithmetic.c vector_arith_advanced.c ray_cast.c)
 FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c map_parse.c)
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles9.c)
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					hooks.c)
-FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				character.c)
+FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				character.c init_beam.c)
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	$(FOLDER0)\
 				$(FOLDER1)\
@@ -68,7 +69,7 @@ $(NAME): $(OBJS) $(LIB) $(MLX)
 	@echo $(GREEN) "$(NAME) compiled" $(NONE)
 
 exe: $(NAME)
-	./$(NAME)
+	./$(NAME) $(ARG)
 
 fus:
 	$(RM) $(OBJS)

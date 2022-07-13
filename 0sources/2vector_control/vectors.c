@@ -18,7 +18,7 @@
  * 1. First, unit vector (vector unit is calulated). 
  * 2. As the unit of the grid is the pixel, to obtaing the line:
  * (unit_Vector + unit_Vector) repeated n module times.  */
-void draw_vector(mlx_image_t *image, t_vector vec, double origin[])
+void draw_vector(mlx_image_t *image, t_vector vec, double origin[], uint32_t colour)
 {
 	double		x_pixel;
 	double		y_pixel;
@@ -31,7 +31,7 @@ void draw_vector(mlx_image_t *image, t_vector vec, double origin[])
 	y_pixel = origin[1] + unit_vec.y;
 	while (--counter > 0)
 	{	
-		solid_pixel(image, (int) x_pixel, (int) coor(y_pixel, OY_MINIMAP), BLUE);
+		solid_pixel(image, (int) x_pixel, (int) coor(y_pixel, OY_MINIMAP), colour);
 		x_pixel += unit_vec.x;
 		y_pixel += unit_vec.y;
 	}

@@ -62,6 +62,12 @@ void	framework_dimensions(t_prog *game)
 	game->w1.sec_limit[1] = game->w1.size[1] - game->w2.origin[1]; //only if (OY >= game->w2.origin[1])
 	game->w2.sec_limit[0] = 0;
 	game->w2.sec_limit[1] = 0;
+	/* --------------------------------------------------------------- */
+	game->w2.pixel_per_block[0] = (double)((game->w2.size[0]) / (game->map_x + 2));
+	game->w2.pixel_per_block[1] = (double)((game->w2.size[1]) / (game->map_y + 2));
+	game->w1.pixel_per_block[0] = (double)((game->w1.size[0]) / (game->map_x + 2));
+	game->w1.pixel_per_block[1] = (double)((game->w1.size[1]) / (game->map_y + 2));
+
 }
 
 /** PURPOSE : init MLX and set pointers to NULL.
@@ -79,5 +85,4 @@ void	init_game(t_prog *game)
 	game->file = 0;
 	/* --------------------------------------------------------------- */
 	init_image(game);
-	framework_dimensions(game);
 }
