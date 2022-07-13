@@ -37,7 +37,7 @@ void next_frame(void *g)
 	game = (t_prog *) g;
 	
 	frame++;
-
+	//que haga barrido, asi veo el render
 	wash_screen(game, game->image[1], game->w2, RED);
 	wash_screen(game, game->image[1], game->w2, BLACK);
 	framework_2D(game);
