@@ -26,8 +26,6 @@ void	hk_close(void *game)
 	clean_exit(game);
 }
 
-
-
 /** PURPOSE : Hook loop function. */
 void next_frame(void *g)
 {
@@ -41,8 +39,8 @@ void next_frame(void *g)
 	wash_screen(game, game->image[1], game->w2, RED);
 	wash_screen(game, game->image[1], game->w2, BLACK);
 	framework_2D(game);
-	game->pl.vis.x = frame * 0.01;
-	game->pl.vis.y = 1;
+		game->pl.vis.x = frame * 0.01;
+		game->pl.vis.y = 1;
 
 } 
 
