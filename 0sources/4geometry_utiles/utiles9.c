@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 15:58:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:06:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /** PURPOSE : Write coordinates. ONLY WORKS AT FULL WINDOW.
  * EXPECT SEGFAULTS IF USED AT REDUCED MINIMAP SIZE.
 */
-void	coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size, int rectangle)
+void	coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size)
 {
 	char *str;
 	char *aux;
@@ -35,14 +35,13 @@ void	coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coo
 	free(aux);
 	aux =  ft_strjoin(str, ")");
 	free(str);
+
 	mlx_put_string(game->mlx, aux, x, y); //sin offset funciona solo para la ventana general.
-	if (rectangle)
-		draw_centered_rectangle(image, coor_x, coor_y, 3, 3);
-	else
-	{
+	
+
 		solid_pixel(image, x, y, BLACK);
-		put_horizontal(image, coor_y, x - 3, GREEN);
-	}
+		put_horizontal(coor_y, x - 3, GREEN, game); //esta printeando en la imagen 1, daria seeg fault
+	
 	free(aux);
 }
 

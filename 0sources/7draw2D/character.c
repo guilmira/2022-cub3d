@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 21:21:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:05:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static t_vector calculate_plane_segment(t_vector plane_left, int aperture_units)
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. 
  * 3. Find out plane x vector. ( <---------------- ).*/
-static void draw_vision(mlx_image_t *image, double position[], t_vector dir, int angle)
+static void draw_vision(double position[], t_vector dir, int angle, t_prog *game)
 {
 	t_beam		beam;
 	double		plane_lenght;
@@ -86,7 +86,7 @@ static void draw_vision(mlx_image_t *image, double position[], t_vector dir, int
 	beam.plane_right = invert_sense_vector(beam.plane_left);
 	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.aperture_units); 
 	//log_vector(beam.plane_right);
-	cast_beam(image, &beam);
+	cast_beam(&beam, game);
 }
 
 /** PURPOSE : Draw player with its field of vision. 
@@ -98,10 +98,10 @@ void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t
 	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
 	ratio = (0.5 * game->w2.pixel_per_block[0]);
-	draw_2d_player(image, position, ratio, GREEN + RED);
-	draw_centered_rectangle(image, position[0], position[1], x_size, y_size);
-	draw_vision(image, position, dir, FOV_DEGREE);
-	coor_identifier(game->image[1], game, game->pl.position[0], game->pl.position[1], game->w2.size[1], 1);
+	draw_2d_player(image, position, ratio, GREEN + RED, game);
+	draw_centered_rectangle(position[0], position[1], x_size, y_size, game);
+	draw_vision(position, dir, FOV_DEGREE, game);
+	coor_identifier(game->image[1], game, game->pl.position[0], game->pl.position[1], game->w2.size[1]);
 }
 
 void fill_vis(t_prog *game, char dir);

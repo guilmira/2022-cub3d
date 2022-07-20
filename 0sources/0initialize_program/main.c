@@ -6,11 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 22:16:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:05:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+
+
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
@@ -29,14 +32,13 @@ int	main(int argc, char  **argv)
 	parser(game, argc, argv);
 	framework_dimensions(game);
 	create_image(game, 0, game->w1.size);
-	main_image_framework(game);
 	create_image(game, 1, game->w2.size);
-	fill_player_pos(game, game->pl.position);
+	main_image_framework(game);
+	fill_player_pos(game, game->pl.position); //PACE tiene que autoactualizarse
 	/* --------------------------------------------------------------- */
 	//trace_rays();
 	//virtualize_3D();
 	/* --------------------------------------------------------------- */
-	//framework_2D(game);
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);

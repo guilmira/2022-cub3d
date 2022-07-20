@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 21:25:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:04:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,23 @@
 /* MAXIMUN WINDOW SIZE ALLOWED - Mac Screen: 2560 x 1440 */
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
-/* # define OX_MINIMAP (OX_WINDOW - 1.5 * OX_UNIT)
-# define OY_MINIMAP (OY_WINDOW - 1.5 * OY_UNIT)
-# define OX_MINIMAP_O 0 + 1 * OX_UNIT
-# define OY_MINIMAP_O 0 + 1 * OY_UNIT  */
 
+/* Full minimap */
 # define OX_MINIMAP OX_WINDOW 
 # define OY_MINIMAP OY_WINDOW 
 # define OX_MINIMAP_O 0 
 # define OY_MINIMAP_O 0
+
+/* 0 - no minimap
+1 - minimap corner
+2 - full minimap */
+# define MINIMAP_INTIAL_STATE 2
+
+/* Corner minimap */
+# define OX_CORNER (OX_WINDOW - 1.5 * OX_UNIT)
+# define OY_CORNER (OY_WINDOW - 1.5 * OY_UNIT)
+# define OX_CORNER_O 0 + 1 * OX_UNIT
+# define OY_CORNER_O 0 + 1 * OY_UNIT 
 
 # define D2 2
 //only round numbers, preferable 10 or 100
@@ -84,7 +92,6 @@ typedef struct s_dimensions
 	double origin[D2];
 	double size[D2];
 	double limit[D2];
-	double sec_limit[D2];
 	double unit[D2];
 	double pixel_per_block[D2];
 
@@ -134,6 +141,7 @@ typedef struct s_program
 	int			floor_clr;
 	/* ----- GUILLE ---- */
 	t_coor		minimap;
+	int			minimap_state;
 	t_dim		w1;
 	t_dim		w2;
 	t_player	pl;
@@ -143,6 +151,10 @@ typedef struct s_program
     int			map_y;
 }               t_prog;
 
+/* references to slots of images in image[TOTAL_IMAGES + 1];
+Window 1 for 3D and window 2 Minimap */
+#define W0 0
+#define W1 1
 
 /* ------------------------ ENUMS ------------------------ */
 /** PURPOSE : Rectangle size. */
@@ -177,13 +189,13 @@ void		main_image_framework(t_prog *game);
 void		framework_2D(t_prog *game);
 
 /* GEOMETRY TOOLS */
-void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size, int rectangle);
-void		put_vertical(mlx_image_t *image, double coordinate_x, double limit_y, int colour);
-void 		put_horizontal(mlx_image_t *image, double coordinate_y, double limit_x, int colour);
+void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size);
+void put_vertical(double coordinate_x, double limit_y, int colour, t_prog *game);
+void put_horizontal(double coordinate_y, double limit_x, int colour, t_prog *game);
 void 		solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour);
 
 /* VECTOR TREATMENT */
-void draw_vector(mlx_image_t *image, t_vector vec, double origin[], uint32_t colour);
+void draw_vector(t_vector vec, double origin[], uint32_t colour, t_prog *game);
 
 /* VECTOR TOOLS */
 double get_module(t_vector vec);
@@ -202,7 +214,7 @@ t_vector	invert_sense_vector(t_vector v);
 void init_beam(t_beam *beam, double position[], t_vector dir);
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
-void cast_beam(mlx_image_t *image, t_beam *beam);
+void cast_beam(t_beam *beam, t_prog *game);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
@@ -214,15 +226,15 @@ void		hooks_and_loops(t_prog *game);
 
 /* PLAYER */
 void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);
-void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour);
+void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game);
 void fill_player_pos(t_prog *game, double player_pos[]);
 
 /* TOOLS */
 double coor(double y, double size_y);
 double degree_to_radian(double degree);
 float ft_line(float slope, float x, float ordinate);
-void draw_rectangle(mlx_image_t *image, int x, int y, int base, int height);
-void draw_centered_rectangle(mlx_image_t *image, double o_x, double o_y, int base, int height);
+void draw_rectangle(int x, int y, int base, int height, t_prog *game);
+void draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour);
 
 

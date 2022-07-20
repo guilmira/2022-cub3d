@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 16:05:31 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 15:46:28 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry
 }
 
 /** PURPOSE : Cast barrage of vector, starting outwards an going inwards. */
-void cast_barrage(mlx_image_t *image, t_beam *beam, int counter, t_vector plane)
+void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 {
 	t_vector ray;
 	t_vector resultant_left;
@@ -53,10 +53,10 @@ void cast_barrage(mlx_image_t *image, t_beam *beam, int counter, t_vector plane)
 		resultant_right = sub_vec(beam->vis, plane);
 		direction = get_unit_vector(resultant_left);
 		ray = cast_ray(direction, beam->low_bound, beam->high_bound);
-		draw_vector(image, ray, beam->position, BLUE);
+		draw_vector(ray, beam->position, BLUE, game);
 		direction = get_unit_vector(resultant_right);
 		ray = cast_ray(direction, beam->low_bound, beam->high_bound);
-		draw_vector(image, ray, beam->position, BLUE);
+		draw_vector(ray, beam->position, BLUE, game);
 		plane = sub_vec(plane, beam->plane_segment);
 	}
 }
@@ -68,15 +68,15 @@ void cast_barrage(mlx_image_t *image, t_beam *beam, int counter, t_vector plane)
  * 3. Cast ray to obstacle from unit vector of beam.
  * 4. Draw said vector.
  * 5. Recalculate plane vector and start loop. */
-void cast_beam(mlx_image_t *image, t_beam *beam)
+void cast_beam(t_beam *beam, t_prog *game)
 {
 	
 	double time_spent = 0.0;	
 	clock_t begin = clock();
 
-	cast_barrage(image, beam, beam->aperture_units, beam->plane_left);
-	draw_vector(image, cast_ray(beam->vis_dir, beam->low_bound, beam->high_bound),\
-	beam->position, RED);
+	cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
+	draw_vector(cast_ray(beam->vis_dir, beam->low_bound, beam->high_bound),\
+	beam->position, RED, game);
 	
 	clock_t end = clock();
 	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;

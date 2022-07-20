@@ -18,20 +18,22 @@
  * 1. First, unit vector (vector unit is calulated). 
  * 2. As the unit of the grid is the pixel, to obtaing the line:
  * (unit_Vector + unit_Vector) repeated n module times.  */
-void draw_vector(mlx_image_t *image, t_vector vec, double origin[], uint32_t colour)
+void draw_vector(t_vector vec, double origin[], uint32_t colour, t_prog *game)
 {
 	double		x_pixel;
 	double		y_pixel;
 	double		counter;
 	t_vector	unit_vec;
+	mlx_image_t *image;
 
+	image = game->image[W1];
 	counter = get_module(vec);
 	unit_vec = get_unit_vector(vec);
 	x_pixel = origin[0] + unit_vec.x;
 	y_pixel = origin[1] + unit_vec.y;
 	while (--counter > 0)
 	{	
-		solid_pixel(image, (int) x_pixel, (int) coor(y_pixel, OY_MINIMAP), colour);
+		solid_pixel(image, (int) x_pixel, (int) coor(y_pixel, game->w2.size[1]), colour);
 		x_pixel += unit_vec.x;
 		y_pixel += unit_vec.y;
 	}

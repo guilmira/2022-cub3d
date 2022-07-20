@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 14:23:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/13 20:40:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 12:36:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void create_image(t_prog *game, int array_position, double size[])
 {
 	mlx_image_t	*image;
 
-	printf("%f\n", size[0]);
-	printf("%f\n", size[1]);
 	image = mlx_new_image(game->mlx, (int) size[0], (int) size[1]);
 	if (!image)
 		ft_shutdown(EX3, game);

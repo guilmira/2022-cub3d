@@ -28,10 +28,41 @@ static double	window_limit(double origin, double size)
 	return (size + origin);
 }
 
-/** PURPOSE : calculate unit of meastur for each framework. */
+/** PURPOSE : calculate unit of measure for each framework. */
 static double	window_unit(double size, double divisor)
 {
 	return ( size / divisor);
+}
+
+/** PURPOSE : define size of minimap at the moment. */
+void	minimap_state(t_prog *game)
+{
+	if (!game->minimap_state || game->minimap_state == 1)
+	{
+		game->w2.origin[0] = (double) OX_CORNER_O;
+		game->w2.origin[1] = (double) OY_CORNER_O;
+		game->w2.size[0] = (double) OX_CORNER;
+		game->w2.size[1] = (double) OY_CORNER;
+		game->w2.limit[0] = window_limit(game->w2.origin[0], game->w2.size[0]);
+		game->w2.limit[1] = window_limit(game->w2.origin[1], game->w2.size[1]);
+		if (game->w2.limit[0] > OX_WINDOW || game->w2.limit[1] > OY_WINDOW)
+				ft_shutdown("Minimap to big\n", game);
+		game->w2.unit[0] = window_unit(game->w2.size[0], OX_DIV);
+		game->w2.unit[1] = window_unit(game->w2.size[1], OY_DIV);
+	}
+	else
+	{
+		game->w2.origin[0] = (double) OX_MINIMAP_O;
+		game->w2.origin[1] = (double) OY_MINIMAP_O;
+		game->w2.size[0] = (double) OX_MINIMAP;
+		game->w2.size[1] = (double) OY_MINIMAP;
+		game->w2.limit[0] = window_limit(game->w2.origin[0], game->w2.size[0]);
+		game->w2.limit[1] = window_limit(game->w2.origin[1], game->w2.size[1]);
+		if (game->w2.limit[0] > OX_WINDOW || game->w2.limit[1] > OY_WINDOW)
+				ft_shutdown("Minimap to big\n", game);
+		game->w2.unit[0] = window_unit(game->w2.size[0], OX_DIV);
+		game->w2.unit[1] = window_unit(game->w2.size[1], OY_DIV);
+	}
 }
 
 /** PURPOSE : calculate main window and minimap dimensions. */
@@ -47,21 +78,10 @@ void	framework_dimensions(t_prog *game)
 	game->w1.unit[0] = window_unit(game->w1.size[0], OX_DIV);
 	game->w1.unit[1] = window_unit(game->w1.size[1], OY_DIV);
 	/* --------------------------------------------------------------- */
-	game->w2.origin[0] = OX_MINIMAP_O;
-	game->w2.origin[1] = OY_MINIMAP_O;
-	game->w2.size[0] = OX_MINIMAP;
-	game->w2.size[1] = OY_MINIMAP;
-	game->w2.limit[0] = window_limit(game->w2.origin[0], game->w2.size[0]);
-	game->w2.limit[1] = window_limit(game->w2.origin[1], game->w2.size[1]);
-	if (game->w2.limit[0] > OX_WINDOW || game->w2.limit[1] > OY_WINDOW)
-		ft_shutdown("Minimap to big\n", game);
-	game->w2.unit[0] = window_unit(game->w2.size[0], OX_DIV);
-	game->w2.unit[1] = window_unit(game->w2.size[1], OY_DIV);
+	minimap_state(game);
+
 	/* --------------------------------------------------------------- */
-	game->w1.sec_limit[0] = game->w1.size[0] - game->w2.origin[0]; //only if (OX >= game->w2.origin[0])
-	game->w1.sec_limit[1] = game->w1.size[1] - game->w2.origin[1]; //only if (OY >= game->w2.origin[1])
-	game->w2.sec_limit[0] = 0;
-	game->w2.sec_limit[1] = 0;
+
 	/* --------------------------------------------------------------- */
 	game->w2.pixel_per_block[0] = (double)((game->w2.size[0]) / (game->map_x + 2));
 	game->w2.pixel_per_block[1] = (double)((game->w2.size[1]) / (game->map_y + 2));
@@ -83,6 +103,7 @@ void	init_game(t_prog *game)
 	//INIT all pointers to NULL, variables to zero.
 	game->map = NULL;
 	game->file = 0;
+	game->minimap_state = MINIMAP_INTIAL_STATE;
 	/* --------------------------------------------------------------- */
 	init_image(game);
 }

@@ -38,9 +38,11 @@ void next_frame(void *g)
 	//que haga barrido, asi veo el render
 	wash_screen(game, game->image[1], game->w2, RED);
 	wash_screen(game, game->image[1], game->w2, BLACK);
-	framework_2D(game);
-		game->pl.vis.x = frame * 0.01;
-		game->pl.vis.y = 1;
+	if (game->minimap_state)
+		framework_2D(game);
+	game->pl.vis.x = frame * 0.01;
+	game->pl.vis.y = 1;
+
 
 } 
 
