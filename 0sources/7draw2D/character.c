@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 16:05:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:37:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ static void draw_vision(double position[], t_vector dir, int angle, t_prog *game
 	t_beam		beam;
 	double		plane_lenght;
 
-	init_beam(&beam, position, dir);
+	init_beam(&beam, position, dir, game);
 	//ESTE PRIMER RAYO EN REALIDAD HAY QUE TIRARLO A LOS LIMITES DE LA VENTANA
-	beam.vis = cast_ray(beam.vis_dir, beam.low_bound, beam.high_bound);
+	beam.vis = cast_ray(beam.vis_dir, beam.low_bound, beam.high_bound, game);
 	
 	plane_lenght = calculate_plane_lenght(angle, beam.vis);
 	beam.aperture_units = calculate_aperture_units(plane_lenght, RAYCAST_OFFSET);

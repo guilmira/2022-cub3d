@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 16:04:15 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:13:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,19 @@
 /* 0 - no minimap
 1 - minimap corner
 2 - full minimap */
-# define MINIMAP_INTIAL_STATE 2
+# define MINIMAP_INTIAL_STATE 1
 
 /* Corner minimap */
-# define OX_CORNER (OX_WINDOW - 1.5 * OX_UNIT)
-# define OY_CORNER (OY_WINDOW - 1.5 * OY_UNIT)
-# define OX_CORNER_O 0 + 1 * OX_UNIT
-# define OY_CORNER_O 0 + 1 * OY_UNIT 
+# define OX_CORNER_WINDOW_FACTOR 6
+# define OY_CORNER_WINDOW_FACTOR 6
+# define OX_CORNER_WINDOW_DESPLACEMENT 6
+# define OY_CORNER_WINDOW_DESPLACEMENT 6
+ 
 
 # define D2 2
 //only round numbers, preferable 10 or 100
 # define OX_DIV 10
 # define OY_DIV 10
-# define OX_UNIT OX_WINDOW / OX_DIV
-# define OY_UNIT OY_WINDOW / OY_DIV
 # define TITLE_WINDOW "CUBE"
 
 //player info
@@ -211,9 +210,10 @@ t_vector	div_vec(t_vector lhs, float escalar);
 t_vector	get_perpendicular(t_vector v);
 t_vector	invert_sense_vector(t_vector v);
 /* Initialize beam dimensions */
-void init_beam(t_beam *beam, double position[], t_vector dir);
+void init_beam(t_beam *beam, double position[], t_vector dir, t_prog *game);
+
 /* RAY CASTING */
-t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[]);
+t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game);
 void cast_beam(t_beam *beam, t_prog *game);
 
 /* CLEAR MEMORY */

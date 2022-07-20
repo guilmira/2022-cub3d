@@ -6,15 +6,18 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/12 14:39:42 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/20 16:17:01 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror #-g #-fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror -g #-fsanitize=address
 ARG			= default.cub
+
+#time ./cube default.cub
+#./cube default.cub  1.26s user 0.28s system 23% cpu 6.525 total
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule

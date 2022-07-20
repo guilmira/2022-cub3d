@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 15:46:28 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:43:48 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ static int	collision(t_vector ray, double low_boundry[], double high_boundry[])
 }
 
 /** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
-t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry[])
+t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game)
 {
 	int				counter;
 	t_vector		ray;
 
+	(void) game;
 	counter = -1;
 	ray = direction;
-	while (++counter <= OX_WINDOW)
+	while (++counter <= game->w2.size[0])
 	{
 		if (collision(ray, low_boundry, high_boundry))
 			break; //PACE aqui puede petar si no encuenta break point de colision
@@ -52,10 +53,10 @@ void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 		resultant_left = sum_vec(beam->vis, plane);
 		resultant_right = sub_vec(beam->vis, plane);
 		direction = get_unit_vector(resultant_left);
-		ray = cast_ray(direction, beam->low_bound, beam->high_bound);
+		ray = cast_ray(direction, beam->low_bound, beam->high_bound, game);
 		draw_vector(ray, beam->position, BLUE, game);
 		direction = get_unit_vector(resultant_right);
-		ray = cast_ray(direction, beam->low_bound, beam->high_bound);
+		ray = cast_ray(direction, beam->low_bound, beam->high_bound, game);
 		draw_vector(ray, beam->position, BLUE, game);
 		plane = sub_vec(plane, beam->plane_segment);
 	}
@@ -71,14 +72,14 @@ void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 void cast_beam(t_beam *beam, t_prog *game)
 {
 	
-	double time_spent = 0.0;	
-	clock_t begin = clock();
+	/* double time_spent = 0.0;	
+	clock_t begin = clock(); */
 
 	cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
-	draw_vector(cast_ray(beam->vis_dir, beam->low_bound, beam->high_bound),\
+	draw_vector(beam->vis,\
 	beam->position, RED, game);
 	
-	clock_t end = clock();
+	/* clock_t end = clock();
 	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-	printf("The elapsed time is %f seconds\n", time_spent);
+	printf("The elapsed time is %f seconds\n", time_spent); */
 }
