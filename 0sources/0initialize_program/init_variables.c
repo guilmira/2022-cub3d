@@ -34,23 +34,48 @@ static double	window_unit(double size, double divisor)
 	return ( size / divisor);
 }
 
-/** PURPOSE : define size of minimap at the moment. */
-void	minimap_state(t_prog *game)
+t_dim copy_dim_struct(t_dim window_src)
 {
-	if (!game->minimap_state || game->minimap_state == 1)
+	t_dim win_return;
+
+	win_return.origin[0] = window_src.origin[0];
+	win_return.origin[1] = window_src.origin[1];
+	win_return.size[0] = window_src.size[0];
+	win_return.size[1] = window_src.size[1];
+	win_return.limit[0] = window_src.limit[0];
+	win_return.limit[1] = window_src.limit[1];
+	win_return.unit[0] = window_src.unit[0];
+	win_return.unit[1] = window_src.unit[1];
+	return (win_return);
+}
+
+void	minimap_dimensions(t_prog *game)
+{
+	if (!game->minimap_state)
+		return ;
+	else if (game->minimap_state == 2)
 	{
 		game->w2.origin[0] = (double) game->w1.origin[0] + game->w1.unit[0] * OX_CORNER_WINDOW_DESPLACEMENT;
 		game->w2.origin[1] = (double) game->w1.origin[1] + game->w1.unit[1] * OY_CORNER_WINDOW_DESPLACEMENT;
 		game->w2.size[0] = (double) (game->w1.size[0] - OX_CORNER_WINDOW_FACTOR * game->w1.unit[0]) ;
 		game->w2.size[1] = (double) (game->w1.size[1] - OY_CORNER_WINDOW_FACTOR * game->w1.unit[1]);
+		game->w2.limit[0] = window_limit(game->w2.origin[0], game->w1.size[0]); //has to be window 1
+		game->w2.limit[1] = window_limit(game->w2.origin[1], game->w1.size[1]);
+		if (game->w2.limit[0] > OX_WINDOW || game->w2.limit[1] > OY_WINDOW)
+			ft_shutdown("Minimap to big\n", game);
+		game->w2.unit[0] = window_unit(game->w2.size[0], OX_DIV);
+		game->w2.unit[1] = window_unit(game->w2.size[1], OY_DIV);
 	}
 	else
 	{
-		game->w2.origin[0] = game->w1.origin[0];
-		game->w2.origin[1] = game->w1.origin[1];
-		game->w2.size[0] = game->w1.size[0];
-		game->w2.size[1] = game->w1.size[1];
+
+		game->w2 = copy_dim_struct(game->w1);
+		printf("aki estamos\n");
+		log_coor(game->w2.size);
+		log_coor(game->w1.size);
+		sleep(2);
 	}
+	
 }
 
 /** PURPOSE : calculate main window and minimap dimensions. */
@@ -66,14 +91,7 @@ void	framework_dimensions(t_prog *game)
 	game->w1.unit[0] = window_unit(game->w1.size[0], OX_DIV);
 	game->w1.unit[1] = window_unit(game->w1.size[1], OY_DIV);
 	/* --------------------------------------------------------------- */
-	minimap_state(game);
-	game->w2.limit[0] = window_limit(game->w2.origin[0], game->w1.size[0]); //has to be window 1
-	game->w2.limit[1] = window_limit(game->w2.origin[1], game->w1.size[1]);
-	if (game->w2.limit[0] > OX_WINDOW || game->w2.limit[1] > OY_WINDOW)
-		ft_shutdown("Minimap to big\n", game);
-	game->w2.unit[0] = window_unit(game->w2.size[0], OX_DIV);
-	game->w2.unit[1] = window_unit(game->w2.size[1], OY_DIV);
-
+	minimap_dimensions(game);
 	/* --------------------------------------------------------------- */
 
 	/* --------------------------------------------------------------- */

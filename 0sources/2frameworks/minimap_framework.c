@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 18:15:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:26:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
  * 3. Draw player position + its field of vision. */
 void	framework_2D(t_prog *game)
 {
-	
+	if (!game->minimap_state)
+		return ;
 	/* --------------------------------------------------------------- */
 
 	/* --------------------------------------------------------------- */

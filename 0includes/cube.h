@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 19:13:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:01:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@
 # define OY_MINIMAP_O 0
 
 /* 0 - no minimap
-1 - minimap corner
-2 - full minimap */
-# define MINIMAP_INTIAL_STATE 1
+2 - minimap corner
+4 - full minimap */
+# define MINIMAP_INTIAL_STATE 2
 
 /* Corner minimap */
 # define OX_CORNER_WINDOW_FACTOR 6
@@ -165,6 +165,9 @@ enum player_size
 
 /* ------------------------ DIMENSIONS OF CUBE ------------------------ */
 
+//prototipos rapidos.
+void	minimap_state(t_prog *game);
+void	minimap_dimensions(t_prog *game);
 
 /* ------------------------ PROTOTYPES ------------------------ */
 /* MAP PARSER */

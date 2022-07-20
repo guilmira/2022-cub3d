@@ -13,10 +13,29 @@
 #include "cube.h"
 
 /** PURPOSE : manage keys. */
-void	hk_keys(mlx_key_data_t key, void *game)
+void	hk_keys(mlx_key_data_t key, void *g)
 {
+	t_prog *game;
+
+	game = (t_prog *)g;
 	if (key.key == MLX_KEY_ESCAPE)
 		clean_exit(game);
+	if (key.key == MLX_KEY_TAB)
+	{
+		game->minimap_state++;
+		if (game->minimap_state == 6)
+		{
+			game->minimap_state = 0;
+		}
+		if (game->minimap_state == 2 || game->minimap_state == 4)
+		{
+
+			minimap_dimensions(game);
+			if (game->minimap_state)
+				create_image(game, 1, game->w2.size);
+		}
+	}
+
 }
 
 /** PURPOSE : manage window closing or 
@@ -26,42 +45,35 @@ void	hk_close(void *game)
 	clean_exit(game);
 }
 
-/** PURPOSE : Scale a 2D grid. */
-void	draw_gridd(t_prog *game, double size_x, double size_y)
-{
-	int nb;
-
-	nb = -1;
-	while (++nb < 11)
-	{
-		put_horizontal(( nb * game->w2.unit[1]), size_x, WHITE, game);
-		put_vertical(( nb * game->w2.unit[0]), size_y, WHITE, game);
-	}
-	if (0)
-		ft_shutdown(EX, game);
-}
-
 /** PURPOSE : Hook loop function. */
 void next_frame(void *g)
 {
 	static int frame;
 	t_prog *game;
+	game = (t_prog *) g;
 
 /* 	double time_spent = 0.0;	
 clock_t begin = clock(); */
 
-	game = (t_prog *) g;
 	
 
 	frame++;
-	//que haga barrido, asi veo el render
-	printf("%i\n", frame);
-	draw_gridd(game, game->w2.size[0], game->w2.size[1]);	
-	wash_screen(game, game->image[1], game->w2, RED);
-	wash_screen(game, game->image[1], game->w2, BLACK);
-
+	if (!game->minimap_state)
+	{
+		wash_screen(game, game->image[1], game->w1, BLACK);
+	}
+	wash_screen(game, game->image[0], game->w1, BLACK);
+	if (game->minimap_state)
+	{
+		wash_screen(game, game->image[1], game->w2, RED);
+		wash_screen(game, game->image[1], game->w2, BLACK);
+	}
 	if (game->minimap_state)
 		framework_2D(game);
+	mlx_image_to_window(game->mlx,\
+	game->image[1], game->w2.origin[0], game->w2.origin[1]);
+	
+	
 	game->pl.vis.x = (frame) * 0.01;
 	game->pl.vis.y = 1;
 	
