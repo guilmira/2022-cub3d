@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 10:39:50 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 10:41:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	main(int argc, char  **argv)
 	main_image_framework(game);
 	fill_player_pos(game, game->pl.position); //PACE tiene que autoactualizarse
 	/* --------------------------------------------------------------- */
-	//trace_rays();
-	//virtualize_3D();
 	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);
 	clean_exit(game);

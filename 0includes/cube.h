@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 10:39:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 10:57:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,7 @@ void		hooks_and_loops(t_prog *game);
 
 /* RENDERING LOOP 60FPS */
 void	put_frame(t_prog *game);
+void	hook_control_minimap(t_prog *game);
 
 void	hk_keys(mlx_key_data_t key, void *g);
 

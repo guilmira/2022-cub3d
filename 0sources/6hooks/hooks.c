@@ -19,7 +19,6 @@ static void	hk_close(void *game)
 	clean_exit(game);
 }
 
-
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
 static void next_frame(void *g)
 {
