@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 13:48:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:31:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void draw_vision_beam(double position[], t_vector dir, int angle, int ray_offset
 	beam.aperture_units = calculate_aperture_units(plane_lenght, (double) ray_offset);
 	beam.aperture_units = roundl(beam.aperture_units);
 	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.aperture_units); 
-	//log_beam(&beam);
 	cast_beam(&beam, game);
+	game->pl.beam = beam;
+	game->pl.flag_movement = 0;
 }

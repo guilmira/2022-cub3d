@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 13:20:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:27:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ typedef struct s_player
 {
 	double		position[D2];
 	t_vector	vis;
-	
+	t_beam		beam;
+	int			flag_movement;
 }				t_player;
 
 typedef struct s_program
@@ -91,6 +92,7 @@ typedef struct s_program
 	t_dim		w1;
 	t_dim		w2;
 	t_player	pl;
+	t_vector	wind_rose[MOVE_OPTIONS];
 	/* ----- KIRIAM ---- */
 	int			file;
     int			map_x;
@@ -104,6 +106,18 @@ enum player_size
 	x_size = 3,
 	y_size = 3
 };
+enum player_movement
+{
+	key_up,
+	key_down,
+	key_left,
+	key_right,
+	key_NE,
+	key_NW,
+	key_SE,
+	key_SW,
+};
+
 
 /* ------------------------ DIMENSIONS OF CUBE ------------------------ */
 
@@ -184,6 +198,9 @@ void	hk_keys(mlx_key_data_t key, void *g);
 void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);
 void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game);
 void fill_player_pos(t_prog *game, double player_pos[]);
+
+/* MOVEMENT */
+void	movement_control(mlx_key_data_t key, t_prog *game);
 
 /* TOOLS */
 double coor(double y, double size_y);

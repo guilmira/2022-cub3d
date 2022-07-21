@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 15:25:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:36:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 								4 - full minimap 						*/
 # define MINIMAP_INTIAL_STATE 2
 
+# define MOVEMENT_PIXEL_UNIT 2
 /* Corner minimap DIMENSIONS */
 # define OX_CORNER_WINDOW_FACTOR 6
 # define OY_CORNER_WINDOW_FACTOR 6
@@ -68,6 +69,7 @@ CUB_3D for 3D and MAP_2D Minimap */
 /* ------------------------ BASE DEFINES ------------------------ */
 /* Not meant to be modified. */
 # define D2 2
+# define MOVE_OPTIONS 8
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"

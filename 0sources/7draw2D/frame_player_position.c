@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:01:02 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 13:11:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:30:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t
 	draw_centered_rectangle(position[0], position[1], x_size, y_size, game);
 	/* --------------------------------------------------------------- */
 	/* 			MAIN FUNCTION RAYCAST */
+	//if (game->pl.flag_movement) //seria intereante separar rayos y dibujarlos solo cuando haya movimiento.
 	draw_vision_beam(position, dir, FOV_DEGREE, RAYCAST_OFFSET, game);
 	//coor_identifier(game->image[MAP_2D], game, game->pl.position[0], game->pl.position[1], game->w2.size[1]);
 }
