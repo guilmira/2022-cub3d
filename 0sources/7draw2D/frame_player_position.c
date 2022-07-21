@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:01:02 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 12:01:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 12:40:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,12 @@ void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t
 	if (position[0] < 0 || position[1] < 0)
 		ft_shutdown(EX, game);
 	ratio = (0.5 * game->w2.pixel_per_block[0]);
-	draw_2d_player(image, position, ratio, GREEN + RED, game);
+	/* --------------------------------------------------------------- */
+	/* 						CIRCLE + RECTANGLE IN THE MIDDLE */
+	draw_2d_player(image, position, ratio, GREEN + RED, game); //!!! CHECKS OUT ON ENGINE.
 	draw_centered_rectangle(position[0], position[1], x_size, y_size, game);
+	/* --------------------------------------------------------------- */
+	/* 			MAIN FUNCTION RAYCAST */
 	draw_vision(position, dir, FOV_DEGREE, game);
-	coor_identifier(game->image[MAP_2D], game, game->pl.position[0], game->pl.position[1], game->w2.size[1]);
+	//coor_identifier(game->image[MAP_2D], game, game->pl.position[0], game->pl.position[1], game->w2.size[1]);
 }
