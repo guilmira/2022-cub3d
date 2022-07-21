@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 11:53:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:09:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@
 # include "MLX42.h"
 /* TOOLS */
 #include <time.h> //PACE para borrar
-/* ------------------------ BASE DEFINES ------------------------ */
-/* Not meant to be modified. */
-# define D2 2
+
 /* ------------------------ MODIFIABLE DEFINES ------------------------ */
 # define TITLE_WINDOW "CUBE"
 /* 								WINDOW SIZE
@@ -42,7 +40,7 @@
 								0 - no minimap
 								2 - minimap corner
 								4 - full minimap 						*/
-# define MINIMAP_INTIAL_STATE 1
+# define MINIMAP_INTIAL_STATE 2
 
 /* Corner minimap DIMENSIONS */
 # define OX_CORNER_WINDOW_FACTOR 6
@@ -61,15 +59,15 @@
 //# define RAYCAST_OFFSET 100 // pixels per aperture
 # define RAYCAST_OFFSET 6
 # define FOV_DEGREE 30
-
-
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 # define TOTAL_IMAGES 2
 /* References to slots of images in image[TOTAL_IMAGES + 1];
 CUB_3D for 3D and MAP_2D Minimap */
 #define CUB_3D 0
 #define MAP_2D 1
-
+/* ------------------------ BASE DEFINES ------------------------ */
+/* Not meant to be modified. */
+# define D2 2
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"

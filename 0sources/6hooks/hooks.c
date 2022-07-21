@@ -30,10 +30,13 @@ static void next_frame(void *g)
 	frame++;
 	put_frame(game);
 
-	/* game->pl.vis.x = (frame) * 0.01;
+	game->pl.vis.x = (frame) * 0.01;
 	game->pl.vis.y = 1 - (frame) * 0.01;
 	if (frame == 250)
-		frame = 0; */
+	{
+		//sleep(2);
+		frame = 0;
+	}
 }
 
 /** PURPOSE : execute main routine of program.

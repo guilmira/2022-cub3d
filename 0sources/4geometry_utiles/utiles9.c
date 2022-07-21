@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 16:06:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:47:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,27 @@ void log_d(double d)
 {
 	printf("DOUBLE %f\n", d);
 }
+
+
+
+
+void log_beam(t_beam *beam)
+{
+	printf("BEAM:\n");
+	printf("Position, low bound and high bound \n");
+	log_coor(beam->position);
+	log_coor(beam->position);
+	log_coor(beam->position);
+	printf("Vision direction, vision ray\n");
+	log_vector(beam->vis_dir);
+	log_vector(beam->vis);
+	printf("Plane left, plane right, plane segment (each unit to divide)\n");
+	log_vector(beam->plane_left);
+	log_vector(beam->plane_right);
+	log_vector(beam->plane_segment);
+}
+
+
 
 /* 	double time_spent = 0.0;	
 	clock_t begin = clock(); */

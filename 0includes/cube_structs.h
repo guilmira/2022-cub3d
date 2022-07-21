@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 11:35:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:20:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,12 @@ void init_beam(t_beam *beam, double position[], t_vector dir, t_prog *game);
 
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game);
+
+/* BEAM */
 void cast_beam(t_beam *beam, t_prog *game);
+void draw_vision_beam(double position[], t_vector dir, int angle, int ray_offset, t_prog *game);
+double plane_lenght_and_direction(t_beam *beam, int angle);
+
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);
@@ -194,6 +199,7 @@ void		ft_leaks(void);
 void log_vector(t_vector v);
 void log_coor(double array[]);
 void log_d(double d);
+void log_beam(t_beam *beam);
 
 
 #endif

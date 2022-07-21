@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/21 11:58:49 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/21 13:14:38 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles9.c)
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					hook_keys.c hooks.c)
-FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c frame_player_position.c character_intital.c init_beam.c)
+FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c frame_player_position.c character_intital.c init_beam.c)
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	$(FOLDER0)\
 				$(FOLDER1)\

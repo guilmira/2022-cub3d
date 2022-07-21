@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 18:43:48 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:48:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void cast_beam(t_beam *beam, t_prog *game)
 	clock_t begin = clock(); */
 
 	cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
+	
+
 	draw_vector(beam->vis,\
 	beam->position, RED, game);
 	
