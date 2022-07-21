@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 14:09:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:36:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 								0 - no minimap
 								2 - minimap corner
 								4 - full minimap 						*/
-# define MINIMAP_INTIAL_STATE 2
+# define MINIMAP_INTIAL_STATE 4
 
 /* Corner minimap DIMENSIONS */
 # define OX_CORNER_WINDOW_FACTOR 6

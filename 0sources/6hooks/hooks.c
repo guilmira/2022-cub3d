@@ -19,22 +19,42 @@ static void	hk_close(void *game)
 	clean_exit(game);
 }
 
+void	ft_mlx_delete_image_safe(int image_position, t_prog *game)
+{
+	mlx_delete_image(game->mlx, game->image[image_position]);
+	game->image[image_position] = NULL;
+}
+
+/** PURPOSE : Clear framework and create a new image to write pixel into. */
+void	frame_reset(int window_number, int image_position, t_prog *game)
+{
+	ft_mlx_delete_image_safe(image_position, game);
+	if (window_number == 0)
+		create_image(game, image_position, game->w1.size);
+	else if (window_number == 1)
+		create_image(game, image_position, game->w2.size);
+
+}
+
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
 static void next_frame(void *g)
 {
 	t_prog		*game;
 	static int	frame;
 
+
 	game = (t_prog *) g;
 	printf("												FRAME: 	 %i\n", frame);
 	frame++;
+
+	frame_reset(1, 1, game);
 	put_frame(game);
 
+	
 	game->pl.vis.x = (frame) * 0.01;
 	game->pl.vis.y = 1 - (frame) * 0.01;
-	if (frame == 250)
+	if (frame >= 250)
 	{
-		//sleep(2);
 		frame = 0;
 	}
 }

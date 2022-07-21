@@ -6,18 +6,18 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/21 13:14:38 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/21 15:24:16 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror -O3 #-g -fsanitize=address 
 ARG			= default.cub
 
 #time ./cube default.cub
-#./cube default.cub  1.26s user 0.28s system 23% cpu 6.525 total
+# 8.64 real         7.62 user         0.93 sys   reseteando each frame
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER			= -I ./0includes
 LIB_DIR			= libft_submodule
@@ -72,7 +72,7 @@ $(NAME): $(OBJS) $(LIB) $(MLX)
 	@echo $(GREEN) "$(NAME) compiled" $(NONE)
 
 exe: $(NAME)
-	./$(NAME) $(ARG)
+	time ./$(NAME) $(ARG)
 
 fus:
 	$(RM) $(OBJS)
