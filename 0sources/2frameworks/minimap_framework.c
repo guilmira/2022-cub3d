@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 11:27:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 12:31:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 	while (++nb < 11)
 	{
 		put_horizontal(( nb * game->w2.unit[1]), size_x, WHITE, game);
+		(void ) size_x;
 		put_vertical(( nb * game->w2.unit[0]), size_y, WHITE, game);
 	}
 	if (0)
@@ -38,7 +39,6 @@ void	framework_2D(t_prog *game)
 	/* --------------------------------------------------------------- */
 
 	/* --------------------------------------------------------------- */
-	
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */

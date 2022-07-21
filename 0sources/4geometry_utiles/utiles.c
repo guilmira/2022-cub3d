@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 11:26:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 12:22:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void put_vertical(double coordinate_x, double limit_y, int colour, t_prog *game)
 
 	image = game->image[MAP_2D];
 	if (coordinate_x == image->width)
-		coordinate_x -= SAFE_OFFSET;
+		coordinate_x -= (SAFE_OFFSET);
 	j = -1;
 	while (++j < limit_y)
 	{

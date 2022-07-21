@@ -6,20 +6,25 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 11:27:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 12:31:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Position corrector.
- * The -1 avoids seg fault at screen limit (0, 0). */
+ * 1. The checker for y == 0, makes sure that we dont print on the lower limit of the screen. 
+ * 2. The checker for size_y - y makes sure we do not go beyond the upper screen limit. 
+ * size_y - y shouldn be repetead several times.*/
 double coor(double y, double size_y)
 {
+	if (y == 0)
+		return (SAFE_OFFSET);
 	if ( size_y - y < 0)
 	{
-		//ft_senderror("Invalid 'y' coordinate. \n");
-		//printf("Value %f\n", y);
+		ft_senderror("Invalid 'y' coordinate.\n");
+		ft_senderror("If this message appears reptedly, will slower the rendering.\n");
+		printf("Value %f\n", y);
 		return (0);
 	}
 	return (size_y - y);
