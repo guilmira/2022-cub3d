@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 20:01:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 10:39:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,11 @@ void		freemat(char **mat);
 
 /* LOOP */
 void		hooks_and_loops(t_prog *game);
+
+/* RENDERING LOOP 60FPS */
+void	put_frame(t_prog *game);
+
+void	hk_keys(mlx_key_data_t key, void *g);
 
 /* PLAYER */
 void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);

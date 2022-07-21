@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/20 16:17:01 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/21 10:32:50 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ INCLUDES		= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
 FLAGS_MLX		= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./0sources
-FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_variables.c)
+FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_variables.c init_dimensions.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c)
 FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c main_framework.c minimap_framework.c)
 FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c vector_tools.c vector_arithmetic.c vector_arith_advanced.c ray_cast.c)
@@ -36,8 +36,8 @@ FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c map_parse.c)
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles9.c)
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
-FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					hooks.c)
-FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				character.c init_beam.c)
+FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					hook_keys.c hooks.c)
+FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c character.c init_beam.c)
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	$(FOLDER0)\
 				$(FOLDER1)\

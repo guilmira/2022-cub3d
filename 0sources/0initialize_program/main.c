@@ -6,19 +6,25 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 19:44:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 10:39:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-
-//teoria, creo que estoy disparando pixeles a sitios usuper lejanos.
+/** PURPOSE : Requires parser executed and game stored at heap.
+ * 1. Initialize the dimensions of both of the windows.
+ * 2. Create images dor both of the frameworks, 3D and 2D minimap. */
+void init_framework(t_prog *game)
+{
+	framework_dimensions(game);
+	create_image(game, 0, game->w1.size);
+	create_image(game, 1, game->w2.size);
+}
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
-//int	main(int argc, char **argv)
 int	main(int argc, char  **argv)
 {
 	t_prog	*game;
@@ -30,9 +36,8 @@ int	main(int argc, char  **argv)
 	/* --------------------------------------------------------------- */
 	init_game(game);
 	parser(game, argc, argv);
-	framework_dimensions(game);
-	create_image(game, 0, game->w1.size);
-	create_image(game, 1, game->w2.size);
+	init_framework(game);
+	/* --------------------------------------------------------------- */
 	main_image_framework(game);
 	fill_player_pos(game, game->pl.position); //PACE tiene que autoactualizarse
 	/* --------------------------------------------------------------- */
