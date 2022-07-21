@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 20:26:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:27:30 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	framework_2D(t_prog *game)
 	/* --------------------------------------------------------------- */
 	
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
-	draw_player_position(game->image[1], game->pl.position, game->pl.vis, game); //PACE ejemplo, un 0,0 aqui provoca un seg fault
+	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
-	game->image[1], game->w2.origin[0], game->w2.origin[1]);
+	game->image[MAP_2D], game->w2.origin[0], game->w2.origin[1]);
 }

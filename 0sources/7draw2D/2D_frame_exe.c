@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 10:59:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:28:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ void correct_minimap_value(t_prog *game)
 	game->minimap_state++;
 	if (game->minimap_state == 6)
 	{
-		wash_screen(game, game->image[1], game->w1, BLACK);
+		wash_screen(game, game->image[MAP_2D], game->w1, BLACK);
 		game->minimap_state = 0;
 	}
-	
-	
 }
 /** PURPOSE : Executed when hitting tab. It executes twice */
 void	hook_control_minimap(t_prog *game)
@@ -53,18 +51,10 @@ void	put_frame(t_prog *game)
 {
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */
-	/* if (!game->minimap_state)
-	{
-		wash_screen(game, game->image[1], game->w1, BLACK);
-	}
-	wash_screen(game, game->image[0], game->w1, BLACK); */
-
 	if (game->minimap_state)
 	{
-		wash_screen(game, game->image[1], game->w2, RED);
-		wash_screen(game, game->image[1], game->w2, BLACK);
+		wash_screen(game, game->image[MAP_2D], game->w2, RED);
+		wash_screen(game, game->image[MAP_2D], game->w2, BLACK);
 		framework_2D(game);
 	}
-	mlx_image_to_window(game->mlx,\
-	game->image[1], game->w2.origin[0], game->w2.origin[1]);	
 }

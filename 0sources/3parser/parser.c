@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/07/08 13:39:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:47:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	parser(t_prog *game, int ac, char **av)
 {
 	// Basic parse (ac > 1, .cub, perms)
 	if (ac != 2 || ext_err(game, av[1]) != 0)
-		ft_shutdown("Error: Failed to aprove data of file\n", game);
+		ft_shutdown("Error.\nFailed to aprove data of file\n", game);
 	// Parse map (check char, filter identificators, map creator)
 	if (map_prep(game))
-		ft_shutdown("Error: Map parse fail\n", game);
+		ft_shutdown("Error.\nMap parse fail\n", game);
 	/*if (check_data(game))
-		ft_shutdown("Error: Game data is incorrect\n", game);*/
+		ft_shutdown("Error.\nGame data is incorrect\n", game);*/
 }
 
 int	ext_err(t_prog *game, char *av)

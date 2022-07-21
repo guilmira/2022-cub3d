@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 15:43:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:27:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void draw_rectangle(int x, int y, int base, int height, t_prog *game)
 	int			j;
 	mlx_image_t	*image;
 
-	image = game->image[1];
+	image = game->image[MAP_2D];
 	i = -1;
 	j = -1;
 	if (x < 0 || y < 0)

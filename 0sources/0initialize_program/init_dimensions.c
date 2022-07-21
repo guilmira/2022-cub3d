@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 10:18:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:46:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	minimap_dimensions(t_prog *game)
 		game->w2.limit[0] = window_limit(game->w2.origin[0], game->w1.size[0]); //has to be window 1
 		game->w2.limit[1] = window_limit(game->w2.origin[1], game->w1.size[1]);
 		if (game->w2.limit[0] > OX_WINDOW || game->w2.limit[1] > OY_WINDOW)
-			ft_shutdown("Minimap to big\n", game);
+			ft_shutdown("Error.\nMinimap to big\n", game);
 		game->w2.unit[0] = window_unit(game->w2.size[0], OX_DIV);
 		game->w2.unit[1] = window_unit(game->w2.size[1], OY_DIV);
 	}

@@ -30,7 +30,7 @@ void	init_game(t_prog *game)
 {
 	game->mlx = mlx_init(OX_WINDOW, OY_WINDOW, TITLE_WINDOW, 1);
 	if (!game->mlx)
-		ft_shutdown("MLX could not be initialized\n", game);
+		ft_shutdown("Error.\nMLX could not be initialized\n", game);
 	/* --------------------------------------------------------------- */
 	//INIT all pointers to NULL, variables to zero.
 	game->map = NULL;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   character.c                                        :+:      :+:    :+:   */
+/*   frame_player_position.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/20 18:37:03 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/21 12:01:02 by guilmira          #+#    #+#             */
+/*   Updated: 2022/07/21 12:01:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,62 +101,5 @@ void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t
 	draw_2d_player(image, position, ratio, GREEN + RED, game);
 	draw_centered_rectangle(position[0], position[1], x_size, y_size, game);
 	draw_vision(position, dir, FOV_DEGREE, game);
-	coor_identifier(game->image[1], game, game->pl.position[0], game->pl.position[1], game->w2.size[1]);
-}
-
-void fill_vis(t_prog *game, char dir);
-
-void	fill_player_pos(t_prog *game, double player_pos[])
-{
-	int i[2];
-
-	i[0] = -1;
-	if(game->map == NULL)
-	{
-		player_pos[0] = (double)(5 * game->w2.pixel_per_block[0]);
-		player_pos[1] = (double)(5 * game->w2.pixel_per_block[1]);
-		return ;
-	}
-	while (game->map[++i[0]])
-	{
-		i[1] = -1;
-		while (game->map[i[0]][++i[1]])
-		{
-			if (game->map[i[0]][i[1]] != ' '
-				&& game->map[i[0]][i[1]] != '1'
-				&& game->map[i[0]][i[1]] != '0'
-				&& game->map[i[0]][i[1]] != '\0')
-			{
-				player_pos[0] = (double)(((i[1]) * game->w2.pixel_per_block[0]));
-				player_pos[1] = (double)((game->map_y - i[0] + 1) * game->w2.pixel_per_block[1]);
-				fill_vis(game, game->map[i[0]][i[1]]);
-				return ;
-			}
-		}
-	}
-	return ;
-}
-
-void fill_vis(t_prog *game, char dir)
-{
-	if(dir == 'N')
-	{
-		game->pl.vis.x = 0;
-		game->pl.vis.y = 1;
-	}
-	else if(dir == 'S')
-	{
-		game->pl.vis.x = 0;
-		game->pl.vis.y = -1;
-	}
-	else if(dir == 'E')
-	{
-		game->pl.vis.x = 1;
-		game->pl.vis.y = 0;
-	}
-	else if(dir == 'W')
-	{
-		game->pl.vis.x = -1;
-		game->pl.vis.y = 0;
-	}
+	coor_identifier(game->image[MAP_2D], game, game->pl.position[0], game->pl.position[1], game->w2.size[1]);
 }
