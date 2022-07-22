@@ -30,16 +30,6 @@ void	frame_reset(int window_number, int image_position, t_prog *game)
 
 }
 
-/** PURPOSE : Update vision vector coordinates. */
-void	update_vision(t_prog *game)
-{
-	t_vector plane_perpendicular;
-
-	
-	plane_perpendicular = get_perpendicular(game->pl.beam.vis);
-	game->pl.vis = sum_vec(game->pl.vis, get_unit_vector(plane_perpendicular));
-}
-
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
 static void next_frame(void *g)
 {
@@ -53,14 +43,6 @@ static void next_frame(void *g)
 
 	frame_reset(1, 1, game);
 	put_frame(game);
-
-	//update_vision(game);
-	game->pl.vis.x = (frame) * 0.01;
-	game->pl.vis.y = 1 - (frame) * 0.01;
-	if (frame >= 250)
-	{
-		frame = 0;
-	}
 }
 
 /** PURPOSE : execute main routine of program.

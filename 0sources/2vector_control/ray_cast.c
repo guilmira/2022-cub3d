@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 13:48:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:30:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 /** PURPOSE : Collision conditions. */
 static int	collision(t_vector ray, double low_boundry[], double high_boundry[])
 {
-	if (ray.x <= low_boundry[0] || ray.x >= high_boundry[0] )
+	//vector rojo es el que se sale
+	//PACE set boundries and safe offset correctly.
+	if (ray.x <= low_boundry[0] || ray.x >= high_boundry[0])
 		return (1);
-	if (ray.y <= low_boundry[1]  || ray.y >= high_boundry[1] )
+	if (ray.y <= low_boundry[1] + 20  || ray.y >= high_boundry[1] + 20 )
 		return (1);
 	return (0);
 }
@@ -59,6 +61,7 @@ void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 		ray = cast_ray(direction, beam->low_bound, beam->high_bound, game);
 		draw_vector(ray, beam->position, BLUE, game);
 		plane = sub_vec(plane, beam->plane_segment);
+
 	}
 }
 

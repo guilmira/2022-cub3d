@@ -6,13 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 16:30:16 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:48:26 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-#define SAFE_MARGIN 30
 
 /** PURPOSE : evaluate if movement gets close to window limit. */
 static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game)

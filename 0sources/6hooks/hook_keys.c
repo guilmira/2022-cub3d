@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 16:34:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:54:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	hk_keys(mlx_key_data_t key, void *g)
 	}
 	else
 		movement_control(key, game);
+	vison_control(key, game);
 	
 }
