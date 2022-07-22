@@ -19,11 +19,7 @@ static void	hk_close(void *game)
 	clean_exit(game);
 }
 
-void	ft_mlx_delete_image_safe(int image_position, t_prog *game)
-{
-	mlx_delete_image(game->mlx, game->image[image_position]);
-	game->image[image_position] = NULL;
-}
+
 
 /** PURPOSE : Clear framework and create a new image to write pixel into. */
 void	frame_reset(int window_number, int image_position, t_prog *game)

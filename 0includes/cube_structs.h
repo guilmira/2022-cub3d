@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 19:27:20 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:22:40 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ double plane_lenght_and_direction(t_beam *beam, int angle);
 void		clean_exit(t_prog *game);
 void		ft_shutdown(char *error_msg, t_prog *game);
 void		freemat(char **mat);
+void	ft_mlx_delete_image_safe(int image_position, t_prog *game);
 
 /* LOOP */
 void		hooks_and_loops(t_prog *game);

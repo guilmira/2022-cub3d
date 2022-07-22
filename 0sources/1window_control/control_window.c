@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 14:23:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 14:57:20 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:26:48 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ void create_image(t_prog *game, int array_position, double size[])
 	if (!image)
 		ft_shutdown(EX3, game);
 	if (game->image[array_position])
-	{
-		mlx_delete_image(game->mlx, game->image[array_position]);
-		game->image[array_position] = NULL;
-	}
+		ft_mlx_delete_image_safe(array_position, game);
 	game->image[array_position] = image; 
 }
