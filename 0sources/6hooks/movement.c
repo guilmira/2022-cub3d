@@ -6,15 +6,37 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 19:29:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:43:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+#define SAFE_MARGIN 30
+
+/** PURPOSE : evaluate if movement gets close to window limit. */
+static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game)
+{
+	(void) game;
+	if (new_pos[0] + margin >= win.size[0] || new_pos[0] - margin <= 0)
+		return (1);
+	if (new_pos[1] + margin >= win.size[1] || new_pos[1] - margin <= 0)
+		return (1);
+	return (0);
+}
+
 /** PURPOSE : calculate new coordinates. */
 static void move_position(t_vector v, t_prog *game)
 {
+	double new_pos[2];
+
+	new_pos[0] = game->pl.position[0] + v.x;
+	new_pos[1] = game->pl.position[1] + v.y;
+
+	/* if (wall(new_pos, game))
+		return ; */ //PACE
+	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
+		return ;
 	game->pl.position[0] += v.x;
 	game->pl.position[1] += v.y;
 }

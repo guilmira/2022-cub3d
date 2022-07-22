@@ -19,8 +19,6 @@ static void	hk_close(void *game)
 	clean_exit(game);
 }
 
-
-
 /** PURPOSE : Clear framework and create a new image to write pixel into. */
 void	frame_reset(int window_number, int image_position, t_prog *game)
 {
@@ -32,6 +30,7 @@ void	frame_reset(int window_number, int image_position, t_prog *game)
 
 }
 
+/** PURPOSE : Update vision vector coordinates. */
 void	update_vision(t_prog *game)
 {
 	t_vector plane_perpendicular;
@@ -53,11 +52,9 @@ static void next_frame(void *g)
 	frame++;
 
 	frame_reset(1, 1, game);
-
 	put_frame(game);
 
 	//update_vision(game);
-	
 	game->pl.vis.x = (frame) * 0.01;
 	game->pl.vis.y = 1 - (frame) * 0.01;
 	if (frame >= 250)
