@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 15:43:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:30:16 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,21 @@ static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game
 static void move_position(t_vector v, t_prog *game)
 {
 	double new_pos[2];
+	double speed_multiplier;
 
-	new_pos[0] = game->pl.position[0] + v.x;
-	new_pos[1] = game->pl.position[1] + v.y;
+	if (game->pl.flag_trance)
+		speed_multiplier = TRANCE_BOOST;
+	else
+		speed_multiplier = 1;
+	new_pos[0] = game->pl.position[0] + v.x * speed_multiplier;
+	new_pos[1] = game->pl.position[1] + v.y * speed_multiplier;
 
 	/* if (wall(new_pos, game))
 		return ; */ //PACE
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
-	game->pl.position[0] += v.x;
-	game->pl.position[1] += v.y;
+	game->pl.position[0] = new_pos[0];
+	game->pl.position[1] = new_pos[1];
 }
 
 /** PURPOSE : correct position by adding correct vector. */

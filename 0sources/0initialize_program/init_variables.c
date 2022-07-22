@@ -36,7 +36,6 @@ static void	movement_vector_init(double move_unit, t_prog *game)
 	i = -1;
 	while (++i < 8)
 	{
-		
 		swich_vector(i, move_unit, &aux);
 		game->wind_rose[i] = aux;
 	}
@@ -70,4 +69,5 @@ void	init_game(t_prog *game)
 	init_image(game);
 	movement_vector_init(MOVEMENT_PIXEL_UNIT, game);
 	game->pl.flag_movement = 1;
+	game->pl.flag_trance = 0;
 }

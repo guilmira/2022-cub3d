@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 15:22:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:24:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_player
 	t_vector	vis;
 	t_beam		beam;
 	int			flag_movement;
+	int 		flag_trance;
 }				t_player;
 
 typedef struct s_program

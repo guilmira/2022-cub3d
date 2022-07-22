@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 19:36:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:29:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@
 								4 - full minimap 						*/
 # define MINIMAP_INTIAL_STATE 2
 
-# define MOVEMENT_PIXEL_UNIT 2
+# define MOVEMENT_PIXEL_UNIT 4 //velocity 
+# define TRANCE_BOOST 10 //velocity 
 /* Corner minimap DIMENSIONS */
 # define OX_CORNER_WINDOW_FACTOR 6
 # define OY_CORNER_WINDOW_FACTOR 6
