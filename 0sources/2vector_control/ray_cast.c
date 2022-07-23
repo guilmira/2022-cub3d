@@ -13,35 +13,94 @@
 #include "cube.h"
 
 /** PURPOSE : Collision conditions. */
-static int	collision(t_vector ray, double low_boundry[], double high_boundry[])
+
+double	calculate_col(t_vector direction, t_prog *game, double stable, int flag)
 {
-	//vector rojo es el que se sale
-	//PACE set boundries and safe offset correctly.
-	if (ray.x <= low_boundry[0] || ray.x >= high_boundry[0])
-		return (1);
-	if (ray.y <= low_boundry[1] + 20  || ray.y >= high_boundry[1] + 20 )
-		return (1);
+	if (flag == 'x')
+	{
+		if (direction.x == 0)
+			return (0);
+		return (round((direction.y/direction.x) * (stable - game->pl.position[1]) + game->pl.position[0]));
+	}
+	else if (flag == 'y')
+	{
+		if (direction.y == 0)
+			return (0);
+		return (round((direction.x/direction.y) * (stable - game->pl.position[0]) + game->pl.position[1]));
+	}
 	return (0);
 }
 
-/** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
-t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game)
+double	get_colision_x(t_vector direction, t_prog *game, double stable)
 {
-	int				counter;
-	t_vector		ray;
+	double  collision;
+	int		y;
+	int		x;
+	double	start;
+	double	finish;
 
-	(void) game;
-	counter = -1;
-	ray = direction;
-	while (++counter <= game->w2.size[0])
+	printf("dir:%f y %f ; game: %f, %f ; stable %f\n", direction.x, direction.y, game->pl.position[0], game->pl.position[1], stable);
+	collision = calculate_col(direction, game, stable, 'x');
+	if (collision == 0)
+		return (-1);
+	 y = round(((stable + round(game->w2.pixel_per_block[1]/2))) / game->w2.pixel_per_block[1]);
+	start = 0;
+	finish = game->w2.pixel_per_block[0];
+	x = 0;
+	while (x < game->map_x)
 	{
-		if (collision(ray, low_boundry, high_boundry))
-			break; //PACE aqui puede petar si no encuenta break point de colision
-		ray = mul_vec(direction, counter);
+		if (collision >= start && collision <= finish)
+			break;
+		x++;
+		start = finish;
+		finish += game->w2.pixel_per_block[0];
 	}
-	return (ray);
+	if (game->map[y][x] == '1')
+		return(collision);
+	return (0);
 }
 
+double	get_colision_y(t_vector direction, t_prog *game, double stable)
+{
+	double  collision;
+	int		y;
+	int		x;
+	double	start;
+	double	finish;
+
+	collision = calculate_col(direction, game, stable, 'y');
+	if (collision == 0)
+		return (-1);
+	x = round((stable + round(game->w2.pixel_per_block[0]/2)) / game->w2.pixel_per_block[0]);
+	start = 0;
+	finish = game->w2.pixel_per_block[1];
+	y = 0;
+	while (y < game->map_y)
+	{
+		if (collision >= start && collision <= finish)
+			break;
+		y++;
+		start = finish;
+		finish += game->w2.pixel_per_block[1];
+	}
+	y = game->map_y - y;
+	if (game->map[y][x] == '1')
+		return(collision);
+	return (0);
+}
+
+int	check_length(double x[], double y[], t_prog *game)
+{	
+	double len_x;
+	double len_y;
+
+	len_x = sqrt(pow((x[0] - game->pl.position[0]), 2) +  pow((x[1] - game->pl.position[1]), 2));
+	len_y = sqrt(pow((y[0] - game->pl.position[0]), 2) +  pow((y[1] - game->pl.position[1]), 2));
+	if (len_x < len_y)
+		return('x');
+	else
+		return('y');
+}
 /** PURPOSE : Cast barrage of vector, starting outwards an going inwards. */
 void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 {
