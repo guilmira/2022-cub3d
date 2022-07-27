@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 07:04:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 08:02:59 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ static int	collision(t_vector ray, double low_boundry[], double high_boundry[])
 		return(1);
 	return(0);
 } */
+
+
+
+
+
 
 /** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
 t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game)

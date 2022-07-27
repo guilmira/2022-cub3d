@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 17:57:23 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 07:25:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[
 
 /* BEAM */
 void cast_beam(t_beam *beam, t_prog *game);
-void draw_vision_beam(double position[], t_vector dir, int angle, int ray_offset, t_prog *game);
+void draw_vision_beam(double position[], t_vector vis, int angle, int ray_offset, t_prog *game);
 double plane_lenght_and_direction(t_beam *beam, int angle);
 
 
@@ -92,7 +92,7 @@ void	hook_control_minimap(t_prog *game);
 void	hk_keys(mlx_key_data_t key, void *g);
 
 /* PLAYER */
-void draw_player_position(mlx_image_t *image, double position[], t_vector dir, t_prog *game);
+void draw_player_position(mlx_image_t *image, double position[], t_vector vis, t_prog *game);
 void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game);
 void fill_player_pos(t_prog *game, double player_pos[]);
 

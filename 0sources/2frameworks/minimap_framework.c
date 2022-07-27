@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 15:15:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 08:08:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,24 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 		ft_shutdown(EX, game);
 }
 
+static void draw_map(t_prog *game)
+{
+	int i;
+	int x;
+
+	i = 0;
+	while (i < game->map_y)
+	{
+		x = -1;
+		while (x <= game->map_x)
+		{		
+			if (game->map[i][x++] == '1')
+				draw_centered_rectangle(x * game->w2.pixel_per_block[0], (game->map_y - i) * game->w2.pixel_per_block[1], game->w2.pixel_per_block[0], game->w2.pixel_per_block[1], game);
+		}
+		i++;
+	}
+}
+
 /** PURPOSE : Draw 2D image as main render.
  * 1. Obtain parameters by defining image size.
  * 2. Draw grid.
@@ -37,10 +55,10 @@ void	framework_2D(t_prog *game)
 	if (!game->minimap_state)
 		return ;
 	/* --------------------------------------------------------------- */
-
-	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
-	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE ejemplo, un 0,0 aqui provoca un seg fault
+	/* --------------------------------------------------------------- */
+	draw_map(game);
+	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE un 0,0 aqui (position) provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	game->image[MAP_2D], game->w2.origin[0], game->w2.origin[1]);

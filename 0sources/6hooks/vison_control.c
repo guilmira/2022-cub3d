@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 07:16:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 07:54:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 /** PURPOSE : correct vision by adding correct plane vector. */
 static void update_player_vision(int key, t_prog *game)
 {
-	t_vector plane_perpendicular;
+	t_vector	plane_perpendicular;
+	t_vector	new_vision;
+	double		speed_multiplier;
 
-	plane_perpendicular = get_unit_vector(get_perpendicular(game->pl.beam.vis));
+	speed_multiplier = 1;
+	if (game->pl.flag_trance)
+		speed_multiplier = TRANCE_BOOST * 5;
+	plane_perpendicular = get_unit_vector(get_perpendicular(game->pl.vis));
+	plane_perpendicular = mul_vec(plane_perpendicular, speed_multiplier);
 	if (key == key_lookright)
-		game->pl.vis = sum_vec(game->pl.vis, invert_sense_vector(plane_perpendicular));
+		new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, invert_sense_vector(plane_perpendicular)));
 	else
-		game->pl.vis = sum_vec(game->pl.vis, (plane_perpendicular));
-
-
+		new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, (plane_perpendicular)));
+	game->pl.vis = new_vision;
 }
 
 /** PURPOSE : control field of vision. */

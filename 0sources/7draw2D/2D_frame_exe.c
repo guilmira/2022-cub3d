@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 07:18:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 08:08:16 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,4 @@ void	put_frame(t_prog *game)
 		game->pl.flag_movement = 0; //to not keep drawing if there isnt more movement
 	}
 }
+

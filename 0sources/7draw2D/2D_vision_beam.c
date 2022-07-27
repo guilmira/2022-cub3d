@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 19:31:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 07:26:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static double calculate_aperture_units(double plane_lenght, double ray_offset)
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. 
  * 3. Find out plane x vector. ( <---------------- ).*/
-void draw_vision_beam(double position[], t_vector dir, int angle, int ray_offset, t_prog *game)
+void draw_vision_beam(double position[], t_vector vis, int angle, int ray_offset, t_prog *game)
 {
 	t_beam		beam;
 	double		plane_lenght;
 
 	//ESTE PRIMER RAYO EN REALIDAD HAY QUE TIRARLO A LOS LIMITES DE LA VENTANA
-	init_beam(&beam, position, dir, game);
+	init_beam(&beam, position, vis, game);
 	beam.vis = cast_ray(beam.vis_dir, beam.low_bound, beam.high_bound, game);
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
 	//2 units up, 5 right  108 is the unit at OX

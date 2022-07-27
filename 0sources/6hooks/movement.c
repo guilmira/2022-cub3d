@@ -6,11 +6,29 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 16:48:26 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 08:16:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+
+//PACE funcion pendiente de mas testeo
+static int wall_coll(t_prog *game, double new_pos[])
+{
+	int pos[6];
+
+	pos[0] = round(new_pos[0] / game->w2.pixel_per_block[0]);
+	pos[1] = round((new_pos[0] - SAFE_MARGIN) / game->w2.pixel_per_block[0]);
+	pos[2] = round((new_pos[0] + SAFE_MARGIN) / game->w2.pixel_per_block[0]);
+	pos[3] = game->map_y - round(new_pos[1] / game->w2.pixel_per_block[1]);
+	pos[4] = game->map_y - round((new_pos[1] - SAFE_MARGIN)  / game->w2.pixel_per_block[1]);
+	pos[5] = game->map_y - round((new_pos[1] + SAFE_MARGIN) / game->w2.pixel_per_block[1]);
+	if (game->map[pos[3]][pos[1]] == '1' || game->map[pos[3]][pos[2]] == '1'
+		|| game->map[pos[4]][pos[0]] == '1' || game->map[pos[5]][pos[0]] == '1')
+		return (1);
+	return (0);
+}
 
 /** PURPOSE : evaluate if movement gets close to window limit. */
 static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game)
@@ -36,8 +54,12 @@ static void move_position(t_vector v, t_prog *game)
 	new_pos[0] = game->pl.position[0] + v.x * speed_multiplier;
 	new_pos[1] = game->pl.position[1] + v.y * speed_multiplier;
 
-	/* if (wall(new_pos, game))
-		return ; */ //PACE
+	if (wall_coll(game, new_pos))
+	{
+		printf("ITS COLLIDING\n");
+		//sleep(2);
+		return ;
+	}
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
 	game->pl.position[0] = new_pos[0];
