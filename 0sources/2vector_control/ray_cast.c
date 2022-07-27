@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 08:02:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:15:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ static int	collision(t_vector ray, double low_boundry[], double high_boundry[])
 	return(0);
 } */
 
-
-
-
-
-
 /** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
 t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game)
 {
@@ -47,21 +42,17 @@ t_vector	 cast_ray(t_vector direction, double low_boundry[], double high_boundry
 	t_vector		ray;
 
 	(void) game;
-	/* (void) low_boundry;
+/* 	(void) low_boundry;
 	(void) high_boundry; */
 	counter = -1;
 	ray = direction;
-	//printf("Here\n");
-/* 	for (int i = 1; i < game->w2.size[0]; i++)
-	{
-		for (int j = 1; j < game->w2.size[1]; i++)
-			printf("%i ", game->map[i][j]);
-		sleep(1);
-		printf("\n");
-	} */
+	
 	while (++counter <= game->w2.size[0])
 	{
-		//if (collision(ray, low_boundry, high_boundry))
+	/* 	if (collision_provisional(ray, game))
+		{
+			break;
+		} */
 		if (collision(ray, low_boundry, high_boundry))
 			break; //PACE aqui puede petar si no encuenta break point de colision
 		ray = mul_vec(direction, counter);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 07:26:14 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 08:19:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void draw_vision_beam(double position[], t_vector vis, int angle, int ray_offset
 	init_beam(&beam, position, vis, game);
 	beam.vis = cast_ray(beam.vis_dir, beam.low_bound, beam.high_bound, game);
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
-	//2 units up, 5 right  108 is the unit at OX
-	//108 * 2 = 216 1080- 216 = 864
 	beam.aperture_units = calculate_aperture_units(plane_lenght, (double) ray_offset);
 	beam.aperture_units = roundl(beam.aperture_units);
 	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.aperture_units); 

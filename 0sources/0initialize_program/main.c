@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 07:05:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:16:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(int argc, char  **argv)
 	init_game(game);
 	parser(game, argc, argv);
 	init_framework(game);
-	
 	/* --------------------------------------------------------------- */
 	main_image_framework(game);
 	fill_player_pos(game, game->pl.position); //PACE tiene que autoactualizarse

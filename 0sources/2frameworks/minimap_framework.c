@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 08:08:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:04:39 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 		ft_shutdown(EX, game);
 }
 
+/* 
+//FUNCION JOAN CON map doble puntero. adaptada abajo con array a double.
 static void draw_map(t_prog *game)
 {
 	int i;
@@ -44,7 +46,27 @@ static void draw_map(t_prog *game)
 		}
 		i++;
 	}
+} */
+
+/* provisional */
+void	draw_map2D(t_prog *game)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	while (++j < 20)
+	{
+		while (++i < 60)
+		{
+			if (game->provisional_map2D[j][i] == 1)
+				draw_centered_rectangle(i * game->w2.pixel_per_block[0], (game->map_y - j) * game->w2.pixel_per_block[1], game->w2.pixel_per_block[0], game->w2.pixel_per_block[1], game);
+		}
+		i = -1;
+	}
 }
+
 
 /** PURPOSE : Draw 2D image as main render.
  * 1. Obtain parameters by defining image size.
@@ -54,10 +76,12 @@ void	framework_2D(t_prog *game)
 {
 	if (!game->minimap_state)
 		return ;
+
 	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	/* --------------------------------------------------------------- */
-	draw_map(game);
+	printf("SALE\n");
+	draw_map2D(game);
 	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE un 0,0 aqui (position) provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\

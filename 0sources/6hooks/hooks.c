@@ -27,7 +27,6 @@ void	frame_reset(int window_number, int image_position, t_prog *game)
 		create_image(game, image_position, game->w1.size);
 	else if (window_number == 1)
 		create_image(game, image_position, game->w2.size);
-
 }
 
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
