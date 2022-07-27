@@ -38,11 +38,14 @@ static void next_frame(void *g)
 
 
 	game = (t_prog *) g;
-	printf("												FRAME: 	 %i\n", frame);
-	frame++;
 
-	frame_reset(1, 1, game);
-	put_frame(game);
+	if (game->pl.flag_movement)
+	{
+		printf("												FRAME: 	 %i\n", frame);
+		frame++;
+		frame_reset(1, 1, game);
+		put_frame(game);
+	}
 }
 
 /** PURPOSE : execute main routine of program.

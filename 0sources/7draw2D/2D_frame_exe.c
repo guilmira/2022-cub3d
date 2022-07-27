@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 11:28:02 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 07:18:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	hook_control_minimap(t_prog *game)
 }
 
 
-/** PURPOSE : 60 frames per second function. */
+/** PURPOSE : 60 frames per second function. 
+ * pl.flag_movement deactivates in order to prevent drawing if there isnt changes in the game
+*/
 void	put_frame(t_prog *game)
 {
 	/* --------------------------------------------------------------- */
@@ -56,5 +58,6 @@ void	put_frame(t_prog *game)
 		wash_screen(game, game->image[MAP_2D], game->w2, RED);
 		wash_screen(game, game->image[MAP_2D], game->w2, BLACK);
 		framework_2D(game);
+		game->pl.flag_movement = 0; //to not keep drawing if there isnt more movement
 	}
 }

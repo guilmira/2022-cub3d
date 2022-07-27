@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 17:56:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 07:16:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_player
 	double		position[D2];
 	t_vector	vis;
 	t_beam		beam;
-	int			flag_movement;
+	int			flag_movement; //activates if there is any kind of movement
 	int 		flag_trance;
 }				t_player;
 
