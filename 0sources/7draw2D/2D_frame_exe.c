@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 08:08:16 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:50:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void correct_minimap_value(t_prog *game)
 		game->minimap_state = 0;
 	}
 }
+
+void update_pixel_per_block(t_prog *game);
+
 /** PURPOSE : Executed when hitting tab. It executes twice */
 void	hook_control_minimap(t_prog *game)
 {
@@ -40,6 +43,7 @@ void	hook_control_minimap(t_prog *game)
 		if (is_minimap(game))
 		{
 			minimap_dimensions(game);
+			update_pixel_per_block(game);
 			if (game->minimap_state)
 				create_image(game, 1, game->w2.size);
 		}

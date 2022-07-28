@@ -51,28 +51,6 @@ static void init_image(t_prog *game)
 		game->image[i] = NULL;
 }
 
-/* provisional */
-void	init_map2D(t_prog *game)
-{
-	int i;
-	int j;
-
-	i = -1;
-	j = -1;
-	while (++j < 20)
-	{
-		while (++i < 60)
-		{
-			game->provisional_map2D[j][i] = 0;
-			if (j == 0 || j == 19)
-				game->provisional_map2D[j][i] = 1;
-			if (i == 0 || i == 59)
-				game->provisional_map2D[j][i] = 1;	
-		}
-		i = -1;
-	}
-}
-
 /** PURPOSE : init MLX and set pointers to NULL.
  * 1. mlx_returns a pointer (void *). 
  * The library functions need it in order to work.
@@ -92,5 +70,5 @@ void	init_game(t_prog *game)
 	movement_vector_init(MOVEMENT_PIXEL_UNIT, game);
 	game->pl.flag_movement = 1;
 	game->pl.flag_trance = 0;
-	init_map2D(game);//provisonal SOLO PARA MIS PRUEBAS
+	game->map2D.layout = NULL;
 }

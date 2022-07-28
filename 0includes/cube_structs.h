@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 12:30:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:11:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,23 @@ typedef struct s_player
 	int 		flag_trance;
 }				t_player;
 
+/** PURPOSE : Map 2D given as an argument. */
+typedef struct s_map
+{
+	int		**layout;
+	int		height;
+	int		width;
+	int		pixel_per_block[D2];
+}				t_map;
+
 typedef struct s_program
 {
     /* ----- SHARED ---- */
 	mlx_t		*mlx;
 	mlx_image_t	*image[TOTAL_IMAGES + 1];
-	double 		provisional_map2D[20][60];//provisonal SOLO PARA MIS PRUEBAS
 	char		**map;
+	t_map		map2D;
+
 	/*---- MAP_INFO ----*/
 	char		*NO;
 	char		*SO;

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 12:04:39 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:15:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 	int nb;
 
 	nb = -1;
-	while (++nb < 11)
+	while (++nb < OX_DIV + 1)
 	{
 		put_horizontal(( nb * game->w2.unit[1]), size_x, WHITE, game);
 		(void ) size_x;
@@ -28,43 +28,92 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 		ft_shutdown(EX, game);
 }
 
-/* 
-//FUNCION JOAN CON map doble puntero. adaptada abajo con array a double.
-static void draw_map(t_prog *game)
+/** PURPOSE : Put line horizontal from given beginning to end. */
+void put_lineH(double start[], double end[], int colour, t_prog *game)
 {
-	int i;
 	int x;
+	int y;
+	mlx_image_t *image;
+	image = game->image[MAP_2D];
+	int counter;
+	int i;
 
-	i = 0;
-	while (i < game->map_y)
+	i = -1;
+
+	counter = (int) end[0] - (int) start[0];
+	if (counter <= 0)
+		return ;
+
+	while (++i < counter)
 	{
-		x = -1;
-		while (x <= game->map_x)
-		{		
-			if (game->map[i][x++] == '1')
-				draw_centered_rectangle(x * game->w2.pixel_per_block[0], (game->map_y - i) * game->w2.pixel_per_block[1], game->w2.pixel_per_block[0], game->w2.pixel_per_block[1], game);
-		}
-		i++;
+		x = (int) (start[0] + i);
+		y = (int) coor(start[1], game->w2.size[1]);
+		solid_pixel(image, x, y, colour);
 	}
-} */
+}
 
-/* provisional */
-void	draw_map2D(t_prog *game)
+
+void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game)
+{
+	(void) game;
+	position_screen[0] = position_map[0] * (double) pixel_per_block[0];
+	position_screen[1] = position_map[1] * (double) pixel_per_block[1];
+}
+
+
+/** PURPOSE : From map parser draw in minimap2D each wall. */
+void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
+{
+	int				j;
+	mlx_image_t		*image;
+	double				line_end[2];
+	double				line_start[2];
+	double				base_location[2];
+
+
+	image = game->image[MAP_2D];
+	if (map_position[0] < 0 || map_position[1] < 0)
+		return ;
+	
+	translate_to_screen(map_position, base_location, pixel_per_block, game);
+	line_start[0] = base_location[0];
+	line_start[1] = base_location[1];
+	line_end[0] = line_start[0] + (double) pixel_per_block[0];
+	line_end[1] = line_start[1];
+
+	
+	j = -1;
+	while (++j < pixel_per_block[1])
+	{
+		line_start[1] = base_location[1] + j;
+		line_end[1] = line_start[1];
+		put_lineH(line_start, line_end, BLUE, game);
+	}
+}
+
+/** PURPOSE : Draw all the 2D wall to screen. */
+void	draw_wall2D(t_prog *game)
 {
 	int i;
 	int j;
+	double map_position[2];
 
 	i = -1;
 	j = -1;
-	while (++j < 20)
+	while (++j < game->map2D.height)
 	{
-		while (++i < 60)
+		while (++i < game->map2D.width)
 		{
-			if (game->provisional_map2D[j][i] == 1)
-				draw_centered_rectangle(i * game->w2.pixel_per_block[0], (game->map_y - j) * game->w2.pixel_per_block[1], game->w2.pixel_per_block[0], game->w2.pixel_per_block[1], game);
+			if (game->map2D.layout[j][i] == 1)
+			{
+				map_position[0] = i;
+				map_position[1] = j;
+				draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
+			}
 		}
 		i = -1;
 	}
+	//printf("%i\n",game->map2D.height);
 }
 
 
@@ -77,11 +126,15 @@ void	framework_2D(t_prog *game)
 	if (!game->minimap_state)
 		return ;
 
+	double map_position[2];
+	map_position[0] = 10;
+	map_position[1] = 10;
 	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	/* --------------------------------------------------------------- */
-	printf("SALE\n");
-	draw_map2D(game);
+	//draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
+	draw_wall2D(game);
+	//draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
 	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE un 0,0 aqui (position) provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\

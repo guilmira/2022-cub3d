@@ -6,15 +6,15 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/27 12:18:20 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/28 14:18:14 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -O3 #-fsanitize=address   #-g
-ARG			= easy_map.cub
+CFLAGS		= -Wall -Wextra -Werror -O3 -fsanitize=address   #-g
+ARG			= easy_map2.cub
 
 #time ./cube default.cub
 # 8.64 real         7.62 user         0.93 sys   reseteando each frame
