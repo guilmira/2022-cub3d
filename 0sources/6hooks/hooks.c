@@ -45,7 +45,6 @@ static void next_frame(void *g)
 		//frame_reset(1, 1, game); //como lo actives empieza el flasheo
 		put_frame3D(game);
 		put_frame2D(game);
-		
 	}
 }
 

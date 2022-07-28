@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 15:42:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:18:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,19 @@
  */
 void put_lineH(double start[], double end[], int colour, t_prog *game)
 {
-	int x;
-	int y;
-	mlx_image_t *image;
-	image = game->image[MAP_2D];
-	int counter;
-	int i;
+	int				i;
+	int				y;
+	int				counter;
+	mlx_image_t		*image;
 
 	i = -1;
-
+	image = game->image[MAP_2D];
 	counter = (int) end[0] - (int) start[0];
 	if (counter <= 0)
 		return ;
-
+	y = (int) coor(start[1], game->w2.size[1]);
 	while (++i < counter)
-	{
-		x = (int) (start[0] + i);
-		y = (int) coor(start[1], game->w2.size[1]);
-		solid_pixel(image, x, y, colour);
-	}
+		solid_pixel(image, (int) (start[0] + i), y, colour);
 }
 
 /** PURPOSE : Translate coordinate from argument map to screen.

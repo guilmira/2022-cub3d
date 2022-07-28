@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 15:40:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:26:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
 {
 	int				j;
 	mlx_image_t		*image;
-	double				line_end[2];
-	double				line_start[2];
-	double				base_location[2];
+	double			line_end[2];
+	double			line_start[2];
+	double			base_location[2];
 
 
 	image = game->image[MAP_2D];
@@ -76,7 +76,7 @@ void	draw_wall2D(t_prog *game)
 			if (game->map2D.layout[j][i] == 1)
 			{
 				map_position[0] = i;
-				map_position[1] = j;
+				map_position[1] = game->map2D.height - j - 1;
 				draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
 			}
 		}
@@ -101,6 +101,8 @@ void	framework_2D(t_prog *game)
 	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	/* --------------------------------------------------------------- */
+	/* double pos[2] = {12, 19};
+	draw_wall_unit(pos, game->map2D.pixel_per_block, game); */
 	draw_wall2D(game);
 	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE un 0,0 aqui (position) provoca un seg fault
 	/* --------------------------------------------------------------- */

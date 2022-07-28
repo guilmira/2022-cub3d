@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/07/28 15:51:28 by guilmira         ###   ########.fr        #
+#    Updated: 2022/07/28 16:27:59 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -O3 -fsanitize=address   #-g
 ARG			= easy_map2.cub
+#ARG			= default.cub
 
 #time ./cube default.cub
 # 8.64 real         7.62 user         0.93 sys   reseteando each frame
@@ -28,7 +29,7 @@ INCLUDES		= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
 FLAGS_MLX		= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./0sources
-FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_variables.c init_dimensions.c)
+FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D.c init_variables.c init_dimensions.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c)
 FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c main_framework.c minimap_framework.c)
 FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c vector_tools.c vector_arithmetic.c vector_arith_advanced.c ray_cast.c)

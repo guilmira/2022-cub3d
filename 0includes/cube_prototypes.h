@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 15:49:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:03:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 
 #include "cube_structs.h"
 
-/* ------------------------ DIMENSIONS OF CUBE ------------------------ */
 
-//prototipos rapidos.
-void	minimap_state(t_prog *game);
-void	minimap_dimensions(t_prog *game);
+
 
 /* ------------------------ PROTOTYPES ------------------------ */
 /* MAP PARSER */
@@ -35,6 +32,10 @@ void		init_window(t_prog *game, t_vector window_dimensions);
 t_vector	get_window_dimensions(t_vector dimensions);
 void 		create_image(t_prog *game, int array_position, double size[]);
 void		framework_dimensions(t_prog *game);
+void 		init_map2D(char **map, t_prog *game);
+void		minimap_dimensions(t_prog *game);
+
+
 
 /* FRAMEWORKS */
 int			trgb_translate(int red, int blue, int green, int transparency);
