@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 14:17:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:50:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,38 +22,12 @@ void init_framework(t_prog *game)
 	create_image(game, 1, game->w2.size);
 }
 
-	
 
-void print_map(char **map, t_prog *game)
-{
+//fluent movement
+//parpadea un frame al hacer tab
 
-	(void) map;
-	printf("empieza\n");
-
-	for (int i = 0; i < 21; i++)
-	{
-			printf("%s ", map[i]);
-		
-		printf("\n");
-	}
-
-	printf("here: \n");
-	for (int j = 0; j < game->map2D.height; j++)
-	{
-		for (int i = 0; i < game->map2D.width; i++)
-			printf("%i ", game->map2D.layout[j][i]);
-		
-		printf("\n");
-	}
-}
-
-void update_pixel_per_block(t_prog *game)
-{
-	game->map2D.pixel_per_block[0] = game->w2.size[0] / game->map2D.width;
-	game->map2D.pixel_per_block[1] = game->w2.size[1] / game->map2D.height;
-}
-
-
+//PACE:
+//si tiene el offset de 2 (uno a cada lado, ese offset hay que meterseloa player)
 /** PURPOSE : Translate parser map into a wall map */
 void init_map2D(char **map, t_prog *game)
 {
@@ -61,18 +35,15 @@ void init_map2D(char **map, t_prog *game)
 	int i;
 	int **layout;
 	
-	printf("here: %i\n", game->map_x);
-	printf("here: %i\n", game->map_y);
 	j = -1;
 	i = -1;
 	layout = NULL;
+	/* --------------------------------------------------------------- */
 	//PACE pregunta para JOAN: ajustado manual, necesito un calculo correcto
 	//diria que el width llamado map_x esta desajustado dos unidades.
 	game->map2D.width = ft_strlen(game->map[0]);
 	game->map2D.height = game->map_y; 
-	printf("here: %i\n", game->map2D.width);
-	printf("here: %i\n", game->map2D.height);
-
+	/* --------------------------------------------------------------- */
 	layout = ft_calloc(game->map2D.height, sizeof(int *));
 	while (++j < game->map2D.height)
 	{
@@ -87,14 +58,9 @@ void init_map2D(char **map, t_prog *game)
 		i = -1;
 	}
 	game->map2D.layout = layout;
-
-
 	/* print_map(map, game);
 	sleep(100); */
-
 	update_pixel_per_block(game);
-	
-
 }
 
 
@@ -115,7 +81,6 @@ int	main(int argc, char  **argv)
 	init_framework(game);
 	init_map2D(game->map, game);
 	/* --------------------------------------------------------------- */
-	main_image_framework(game);
 	fill_player_pos(game, game->pl.position); //PACE tiene que autoactualizarse
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */

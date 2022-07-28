@@ -35,15 +35,17 @@ static void next_frame(void *g)
 	t_prog		*game;
 	static int	frame;
 
-
 	game = (t_prog *) g;
 
 	if (game->pl.flag_movement)
 	{
 		printf("												FRAME: 	 %i\n", frame);
 		frame++;
-		frame_reset(1, 1, game);
-		put_frame(game);
+		frame_reset(1, 0, game);
+		//frame_reset(1, 1, game); //como lo actives empieza el flasheo
+		put_frame3D(game);
+		put_frame2D(game);
+		
 	}
 }
 

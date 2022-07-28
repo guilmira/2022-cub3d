@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 14:15:41 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:40:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,6 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 		ft_shutdown(EX, game);
 }
 
-/** PURPOSE : Put line horizontal from given beginning to end. */
-void put_lineH(double start[], double end[], int colour, t_prog *game)
-{
-	int x;
-	int y;
-	mlx_image_t *image;
-	image = game->image[MAP_2D];
-	int counter;
-	int i;
-
-	i = -1;
-
-	counter = (int) end[0] - (int) start[0];
-	if (counter <= 0)
-		return ;
-
-	while (++i < counter)
-	{
-		x = (int) (start[0] + i);
-		y = (int) coor(start[1], game->w2.size[1]);
-		solid_pixel(image, x, y, colour);
-	}
-}
-
-
-void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game)
-{
-	(void) game;
-	position_screen[0] = position_map[0] * (double) pixel_per_block[0];
-	position_screen[1] = position_map[1] * (double) pixel_per_block[1];
-}
 
 
 /** PURPOSE : From map parser draw in minimap2D each wall. */
@@ -132,9 +101,7 @@ void	framework_2D(t_prog *game)
 	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	/* --------------------------------------------------------------- */
-	//draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
 	draw_wall2D(game);
-	//draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
 	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE un 0,0 aqui (position) provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\

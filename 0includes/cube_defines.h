@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 14:20:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:03:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 								0 - no minimap
 								2 - minimap corner
 								4 - full minimap 						*/
-# define MINIMAP_INTIAL_STATE 4
+# define MINIMAP_INTIAL_STATE 2
 
 # define MOVEMENT_PIXEL_UNIT 4 //velocity 
 # define TRANCE_BOOST 10 //velocity 

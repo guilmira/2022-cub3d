@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/27 07:25:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:49:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ int			trgb_translate(int red, int blue, int green, int transparency);
 int			get_opposite(int colour_code);
 void		main_image_framework(t_prog *game);
 void		framework_2D(t_prog *game);
+void update_pixel_per_block(t_prog *game);
 
 /* GEOMETRY TOOLS */
 void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size);
 void put_vertical(double coordinate_x, double limit_y, int colour, t_prog *game);
 void put_horizontal(double coordinate_y, double limit_x, int colour, t_prog *game);
 void 		solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour);
+
 
 /* VECTOR TREATMENT */
 void draw_vector(t_vector vec, double origin[], uint32_t colour, t_prog *game);
@@ -85,9 +87,14 @@ void	ft_mlx_delete_image_safe(int image_position, t_prog *game);
 /* LOOP */
 void		hooks_and_loops(t_prog *game);
 
-/* RENDERING LOOP 60FPS */
-void	put_frame(t_prog *game);
+/* RENDERING LOOP "2D" 60FPS */
+void	put_frame2D(t_prog *game);
 void	hook_control_minimap(t_prog *game);
+
+
+/* RENDERING LOOP "3D" 60FPS */
+void	put_frame3D(t_prog *game);
+
 
 void	hk_keys(mlx_key_data_t key, void *g);
 
@@ -103,17 +110,19 @@ void	movement_control(mlx_key_data_t key, t_prog *game);
 /* TOOLS */
 double coor(double y, double size_y);
 double degree_to_radian(double degree);
-float ft_line(float slope, float x, float ordinate);
 void draw_rectangle(int x, int y, int base, int height, t_prog *game);
 void draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour);
+void put_lineH(double start[], double end[], int colour, t_prog *game);
+void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game);
 
 
-//To remove from here eventually
+//To remove from here before evaluation
 void		ft_leaks(void);
 void log_vector(t_vector v);
 void log_coor(double array[]);
 void log_d(double d);
 void log_beam(t_beam *beam);
+void print_map(char **map, t_prog *game);
 
 #endif

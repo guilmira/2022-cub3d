@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 12:50:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:46:11 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void correct_minimap_value(t_prog *game)
 	}
 }
 
-void update_pixel_per_block(t_prog *game);
-
 /** PURPOSE : Executed when hitting tab. It executes twice */
 void	hook_control_minimap(t_prog *game)
 {
@@ -53,7 +51,7 @@ void	hook_control_minimap(t_prog *game)
 /** PURPOSE : 60 frames per second function. 
  * pl.flag_movement deactivates in order to prevent drawing if there isnt changes in the game
 */
-void	put_frame(t_prog *game)
+void	put_frame2D(t_prog *game)
 {
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */

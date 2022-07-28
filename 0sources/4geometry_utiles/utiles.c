@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 12:34:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:28:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,4 +133,7 @@ int check_radio(double coord[], double radio)
 		return (1);
 	return (0);
 }
+
+
+
 
