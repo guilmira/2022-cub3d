@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_framework.c                                   :+:      :+:    :+:   */
+/*   3D_frame_exe.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 16:29:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 15:30:08 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/28 15:48:19 by guilmira          #+#    #+#             */
+/*   Updated: 2022/07/28 16:02:26 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : Draw 3D image as main render.
- * 1. Obtain parameters by defining image size.
- * 2. Build cube. */
-void	main_image_framework(t_prog *game)
+/** PURPOSE : Raise 3D images.
+ * 1. Build image.
+ * 2. Put to window. */
+void	put_frame3D(t_prog *game)
 {
-	(void) game;
-	//virtualize_3D();
+	//virtualize_3D(game);
+	/* wash_screen(game, game->image[CUB_3D], game->w1, RED);
+	wash_screen(game, game->image[CUB_3D], game->w1, BLACK); */
+	//solid_pixel(game->image[CUB_3D], 50, 600, GREEN);
+	mlx_image_to_window(game->mlx, game->image[CUB_3D], (int) game->w1.origin[0], (int) game->w1.origin[1]);
 }
-
-

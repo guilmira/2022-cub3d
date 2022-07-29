@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 17:36:28 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:08:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 								0 - no minimap
 								2 - minimap corner
 								4 - full minimap 						*/
-# define MINIMAP_INTIAL_STATE 2
+# define MINIMAP_INTIAL_STATE 4
 
 # define MOVEMENT_PIXEL_UNIT 4 //velocity 
 # define TRANCE_BOOST 10 //velocity 
@@ -36,15 +36,15 @@
 # define OY_CORNER_WINDOW_DESPLACEMENT 6
  
 /* Only round noumbers, preferable 10 */
-# define OX_DIV 10
-# define OY_DIV 10
+# define OX_DIV 12
+# define OY_DIV OX_DIV
 
 /* Player ratio of (see code) */
 # define PLAYER_RATIO 0.5
 
 # define SAFE_OFFSET 0.0001
 //# define RAYCAST_OFFSET 100 // pixels per aperture
-# define RAYCAST_OFFSET 6
+# define RAYCAST_OFFSET 100
 # define FOV_DEGREE 30
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 # define TOTAL_IMAGES 2

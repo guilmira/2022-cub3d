@@ -12,6 +12,13 @@
 
 #include "cube.h"
 
+/** PURPOSE : general function to init variables. */
+void update_pixel_per_block(t_prog *game)
+{
+	game->map2D.pixel_per_block[0] = game->w2.size[0] / game->map2D.width;
+	game->map2D.pixel_per_block[1] = game->w2.size[1] / game->map2D.height;
+}
+
 /** PURPOSE : assign rose vector values. */
 static void swich_vector(int i, double move_unit, t_vector *aux)
 {
@@ -70,4 +77,5 @@ void	init_game(t_prog *game)
 	movement_vector_init(MOVEMENT_PIXEL_UNIT, game);
 	game->pl.flag_movement = 1;
 	game->pl.flag_trance = 0;
+	game->map2D.layout = NULL;
 }

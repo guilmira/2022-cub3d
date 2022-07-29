@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 17:30:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:15:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,7 @@ int	check_length(double x[], double y[], t_prog *game)
 	else
 		return('y');
 }*/
-/*
-static int	collision(t_vector ray, t_prog *game)
+/*static int	collision_provisional(t_vector ray, t_prog *game)
 {
 	int coord[2];
 
@@ -111,21 +110,25 @@ static int	collision(t_vector ray, t_prog *game)
 	if (game->map[coord[1]][coord[2]] == '1')
 		return(1);
 	return(0);
-}
-*/
+}*/
+
+
 /** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
 t_vector	 cast_ray(t_vector direction, t_prog *game)
 {
 	int				counter;
 	t_vector		ray;
 
-	(void) game;
 	counter = -1;
 	ray = direction;
+	
 	while (++counter <= game->w2.size[0])
 	{
-		/*if (collision(ray, game))
-			break; //PACE aqui puede petar si no encuenta break point de colision*/
+
+	 	/*if (collision_provisional(ray, game))
+		{
+			break;
+		}*/
 		ray = mul_vec(direction, counter);
 	}
 	return (ray);

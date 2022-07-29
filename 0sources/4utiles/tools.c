@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 12:31:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:29:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ double coor(double y, double size_y)
 double degree_to_radian(double degree)
 {
 	return (degree * (double) M_PI / 180);
-}
-
-/** PURPOSE : Explicit ecuation of a line.
- *  y = m * x + n . */
-float ft_line(float slope, float x, float ordinate)
-{
-	return (slope * x + ordinate);
 }
 
 /** PURPOSE : Base times height.

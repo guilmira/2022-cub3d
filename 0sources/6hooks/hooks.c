@@ -27,7 +27,6 @@ void	frame_reset(int window_number, int image_position, t_prog *game)
 		create_image(game, image_position, game->w1.size);
 	else if (window_number == 1)
 		create_image(game, image_position, game->w2.size);
-
 }
 
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
@@ -36,13 +35,17 @@ static void next_frame(void *g)
 	t_prog		*game;
 	static int	frame;
 
-
 	game = (t_prog *) g;
-	printf("												FRAME: 	 %i\n", frame);
-	frame++;
 
-	frame_reset(1, 1, game);
-	put_frame(game);
+	if (game->pl.flag_movement)
+	{
+		printf("												FRAME: 	 %i\n", frame);
+		frame++;
+		frame_reset(1, 0, game);
+		//frame_reset(1, 1, game); //como lo actives empieza el flasheo
+		put_frame3D(game);
+		put_frame2D(game);
+	}
 }
 
 /** PURPOSE : execute main routine of program.

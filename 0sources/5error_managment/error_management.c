@@ -6,11 +6,30 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 15:25:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/07/28 11:24:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+/** PURPOSE : Frees array of int. */
+static void clear_map2D(t_prog *game)
+{
+	int j;
+	int i;
+	
+	j = -1;
+	i = -1;
+	while (++j < game->map2D.height)
+	{
+		free(game->map2D.layout[j]);
+		game->map2D.layout[j] = NULL;
+	}
+	if (game->map2D.layout)
+		free(game->map2D.layout);
+	game->map2D.layout = NULL;
+}
+
 
 /** PURPOSE : Frees allocated memory in program. */
 static void clear_memory(t_prog *game)
@@ -27,6 +46,7 @@ static void clear_memory(t_prog *game)
 			free(game->WE);
 		if (game->EA)
 			free(game->EA);
+		clear_map2D(game);
 		free(game);
     }
 }
