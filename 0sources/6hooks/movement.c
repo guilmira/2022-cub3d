@@ -23,6 +23,23 @@ static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game
 	return (0);
 }
 
+static int wall_coll(t_prog *game, double new_pos[])
+{
+	int pos[6];
+
+
+	pos[0] = round(new_pos[0] / game->w2.pixel_per_block[0]);
+	pos[1] = round((new_pos[0] - SAFE_MARGIN) / game->w2.pixel_per_block[0]);
+	pos[2] = round((new_pos[0] + SAFE_MARGIN) / game->w2.pixel_per_block[0]);
+	pos[3] = game->map_y - round(new_pos[1] / game->w2.pixel_per_block[1]);
+	pos[4] = game->map_y - round((new_pos[1] - SAFE_MARGIN)  / game->w2.pixel_per_block[1]);
+	pos[5] = game->map_y - round((new_pos[1] + SAFE_MARGIN) / game->w2.pixel_per_block[1]);
+	if (game->map[pos[3]][pos[1]] == '1' || game->map[pos[3]][pos[2]] == '1'
+		|| game->map[pos[4]][pos[0]] == '1' || game->map[pos[5]][pos[0]] == '1')
+		return(1);
+	return(0);
+}
+
 /** PURPOSE : calculate new coordinates. */
 static void move_position(t_vector v, t_prog *game)
 {
@@ -36,8 +53,8 @@ static void move_position(t_vector v, t_prog *game)
 	new_pos[0] = game->pl.position[0] + v.x * speed_multiplier;
 	new_pos[1] = game->pl.position[1] + v.y * speed_multiplier;
 
-	/* if (wall(new_pos, game))
-		return ; */ //PACE
+	if (wall_coll(game, new_pos))
+		return ;
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
 	game->pl.position[0] = new_pos[0];

@@ -28,6 +28,24 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 		ft_shutdown(EX, game);
 }
 
+static void draw_map(t_prog *game)
+{
+	int i;
+	int x;
+
+	i = 1;
+	while (i < game->map_y + 1)
+	{
+		x = -1;
+		while (x <= game->map_x)
+		{		
+			if (game->map[i][x++] == '1')
+				draw_centered_rectangle(x * game->w2.pixel_per_block[0], (game->map_y - i) * game->w2.pixel_per_block[1], game->w2.pixel_per_block[0], game->w2.pixel_per_block[1], game);
+		}
+		i++;
+	}
+}
+
 /** PURPOSE : Draw 2D image as main render.
  * 1. Obtain parameters by defining image size.
  * 2. Draw grid.
@@ -39,7 +57,8 @@ void	framework_2D(t_prog *game)
 	/* --------------------------------------------------------------- */
 
 	/* --------------------------------------------------------------- */
-	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
+	draw_grid(game, game->w2.size[0], game->w2.size[1]);
+	draw_map(game);
 	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE ejemplo, un 0,0 aqui provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\

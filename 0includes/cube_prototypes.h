@@ -68,7 +68,7 @@ t_vector	invert_sense_vector(t_vector v);
 void init_beam(t_beam *beam, double position[], t_vector dir, t_prog *game);
 
 /* RAY CASTING */
-t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game);
+t_vector	cast_ray(t_vector direction, t_prog *game);
 
 /* BEAM */
 void cast_beam(t_beam *beam, t_prog *game);

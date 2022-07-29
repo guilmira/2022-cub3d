@@ -14,7 +14,7 @@
 
 /** PURPOSE : Collision conditions. */
 
-double	calculate_col(t_vector direction, t_prog *game, double stable, int flag)
+/*double	calculate_col(t_vector direction, t_prog *game, double stable, int flag)
 {
 	if (flag == 'x')
 	{
@@ -100,7 +100,37 @@ int	check_length(double x[], double y[], t_prog *game)
 		return('x');
 	else
 		return('y');
+}*/
+/*
+static int	collision(t_vector ray, t_prog *game)
+{
+	int coord[2];
+
+	coord[0] = round(ray.x / game->w2.pixel_per_block[0]);
+	coord[1] =  game->map_y - round(ray.y / game->w2.pixel_per_block[0]);
+	if (game->map[coord[1]][coord[2]] == '1')
+		return(1);
+	return(0);
 }
+*/
+/** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
+t_vector	 cast_ray(t_vector direction, t_prog *game)
+{
+	int				counter;
+	t_vector		ray;
+
+	(void) game;
+	counter = -1;
+	ray = direction;
+	while (++counter <= game->w2.size[0])
+	{
+		/*if (collision(ray, game))
+			break; //PACE aqui puede petar si no encuenta break point de colision*/
+		ray = mul_vec(direction, counter);
+	}
+	return (ray);
+}
+
 /** PURPOSE : Cast barrage of vector, starting outwards an going inwards. */
 void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 {
@@ -114,13 +144,12 @@ void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 		resultant_left = sum_vec(beam->vis, plane);
 		resultant_right = sub_vec(beam->vis, plane);
 		direction = get_unit_vector(resultant_left);
-		ray = cast_ray(direction, beam->low_bound, beam->high_bound, game);
+		ray = cast_ray(direction, game);
 		draw_vector(ray, beam->position, BLUE, game);
 		direction = get_unit_vector(resultant_right);
-		ray = cast_ray(direction, beam->low_bound, beam->high_bound, game);
+		ray = cast_ray(direction, game);
 		draw_vector(ray, beam->position, BLUE, game);
 		plane = sub_vec(plane, beam->plane_segment);
-
 	}
 }
 

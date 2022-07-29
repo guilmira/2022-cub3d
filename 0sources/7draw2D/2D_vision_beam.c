@@ -48,7 +48,7 @@ void draw_vision_beam(double position[], t_vector dir, int angle, int ray_offset
 
 	//ESTE PRIMER RAYO EN REALIDAD HAY QUE TIRARLO A LOS LIMITES DE LA VENTANA
 	init_beam(&beam, position, dir, game);
-	beam.vis = cast_ray(beam.vis_dir, beam.low_bound, beam.high_bound, game);
+	beam.vis = cast_ray(beam.vis_dir, game);
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
 	//2 units up, 5 right  108 is the unit at OX
 	//108 * 2 = 216 1080- 216 = 864
