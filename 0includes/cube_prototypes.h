@@ -115,7 +115,7 @@ void draw_rectangle(int x, int y, int base, int height, t_prog *game);
 void draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour);
 void put_lineH(double start[], double end[], int colour, t_prog *game);
-void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game);
+void translate_to_screen(double position_map[], double position_screen[], double pixel_per_block, t_prog *game);
 
 
 //To remove from here before evaluation

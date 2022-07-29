@@ -38,9 +38,9 @@ void put_lineH(double start[], double end[], int colour, t_prog *game)
  * 						1001
  * 						1111
  * to an 1080 x 1900 (or whatever was set) on the screen. */ 
-void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game)
+void translate_to_screen(double position_map[], double position_screen[], double pixel_per_block, t_prog *game)
 {
 	(void) game;
-	position_screen[0] = position_map[0] * (double) pixel_per_block[0];
-	position_screen[1] = position_map[1] * (double) pixel_per_block[1];
+	position_screen[0] = position_map[0] * pixel_per_block;
+	position_screen[1] = position_map[1] * pixel_per_block;
 }

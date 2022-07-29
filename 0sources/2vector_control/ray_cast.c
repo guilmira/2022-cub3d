@@ -43,9 +43,9 @@ double	get_colision_x(t_vector direction, t_prog *game, double stable)
 	collision = calculate_col(direction, game, stable, 'x');
 	if (collision == 0)
 		return (-1);
-	 y = round(((stable + round(game->w2.pixel_per_block[1]/2))) / game->w2.pixel_per_block[1]);
+	 y = round(((stable + round(game->w2.pixel_per_block/2))) / game->w2.pixel_per_block);
 	start = 0;
-	finish = game->w2.pixel_per_block[0];
+	finish = game->w2.pixel_per_block;
 	x = 0;
 	while (x < game->map_x)
 	{
@@ -53,7 +53,7 @@ double	get_colision_x(t_vector direction, t_prog *game, double stable)
 			break;
 		x++;
 		start = finish;
-		finish += game->w2.pixel_per_block[0];
+		finish += game->w2.pixel_per_block;
 	}
 	if (game->map[y][x] == '1')
 		return(collision);
@@ -71,9 +71,9 @@ double	get_colision_y(t_vector direction, t_prog *game, double stable)
 	collision = calculate_col(direction, game, stable, 'y');
 	if (collision == 0)
 		return (-1);
-	x = round((stable + round(game->w2.pixel_per_block[0]/2)) / game->w2.pixel_per_block[0]);
+	x = round((stable + round(game->w2.pixel_per_block/2)) / game->w2.pixel_per_block);
 	start = 0;
-	finish = game->w2.pixel_per_block[1];
+	finish = game->w2.pixel_per_block;
 	y = 0;
 	while (y < game->map_y)
 	{
@@ -81,7 +81,7 @@ double	get_colision_y(t_vector direction, t_prog *game, double stable)
 			break;
 		y++;
 		start = finish;
-		finish += game->w2.pixel_per_block[1];
+		finish += game->w2.pixel_per_block;
 	}
 	y = game->map_y - y;
 	if (game->map[y][x] == '1')
@@ -105,8 +105,8 @@ int	check_length(double x[], double y[], t_prog *game)
 {
 	int coord[2];
 
-	coord[0] = round(ray.x / game->w2.pixel_per_block[0]);
-	coord[1] =  game->map_y - round(ray.y / game->w2.pixel_per_block[0]);
+	coord[0] = round(ray.x / game->w2.pixel_per_block);
+	coord[1] =  game->map_y - round(ray.y / game->w2.pixel_per_block);
 	if (game->map[coord[1]][coord[2]] == '1')
 		return(1);
 	return(0);

@@ -19,12 +19,12 @@
 {
 	int pos[6];
 
-	pos[0] = round(new_pos[0] / game->w2.pixel_per_block[0]);
-	pos[1] = round((new_pos[0] - SAFE_MARGIN) / game->w2.pixel_per_block[0]);
-	pos[2] = round((new_pos[0] + SAFE_MARGIN) / game->w2.pixel_per_block[0]);
-	pos[3] = game->map_y - round(new_pos[1] / game->w2.pixel_per_block[1]);
-	pos[4] = game->map_y - round((new_pos[1] - SAFE_MARGIN)  / game->w2.pixel_per_block[1]);
-	pos[5] = game->map_y - round((new_pos[1] + SAFE_MARGIN) / game->w2.pixel_per_block[1]);
+	pos[0] = round(new_pos[0] / game->w2.pixel_per_block);
+	pos[1] = round((new_pos[0] - SAFE_MARGIN) / game->w2.pixel_per_block);
+	pos[2] = round((new_pos[0] + SAFE_MARGIN) / game->w2.pixel_per_block);
+	pos[3] = game->map_y - round(new_pos[1] / game->w2.pixel_per_block);
+	pos[4] = game->map_y - round((new_pos[1] - SAFE_MARGIN)  / game->w2.pixel_per_block);
+	pos[5] = game->map_y - round((new_pos[1] + SAFE_MARGIN) / game->w2.pixel_per_block);
 	if (game->map[pos[3]][pos[1]] == '1' || game->map[pos[3]][pos[2]] == '1'
 		|| game->map[pos[4]][pos[0]] == '1' || game->map[pos[5]][pos[0]] == '1')
 		return (1);
@@ -46,12 +46,12 @@ static int wall_coll(t_prog *game, double new_pos[])
 	int pos[6];
 
 
-	pos[0] = floor((new_pos[0] + (game->pl.ratio)) / game->w2.pixel_per_block[0]);
-	pos[1] = floor((new_pos[0] - (game->pl.ratio)) / game->w2.pixel_per_block[0]);
-	pos[2] = floor(new_pos[0] / game->w2.pixel_per_block[0]);
-	pos[3] = game->map_y - floor((new_pos[1] + (game->pl.ratio)) / game->w2.pixel_per_block[1]);
-	pos[4] = game->map_y - floor((new_pos[1] - (game->pl.ratio)) / game->w2.pixel_per_block[1]);
-	pos[5] = game->map_y - floor(new_pos[1] / game->w2.pixel_per_block[1]);
+	pos[0] = floor((new_pos[0] + (game->pl.ratio)) / game->w2.pixel_per_block);
+	pos[1] = floor((new_pos[0] - (game->pl.ratio)) / game->w2.pixel_per_block);
+	pos[2] = floor(new_pos[0] / game->w2.pixel_per_block);
+	pos[3] = game->map_y - ceil((new_pos[1] + (game->pl.ratio)) / game->w2.pixel_per_block);
+	pos[4] = game->map_y - ceil((new_pos[1] - (game->pl.ratio)) / game->w2.pixel_per_block);
+	pos[5] = game->map_y - ceil(new_pos[1] / game->w2.pixel_per_block);
 	if (game->map[pos[5]][pos[0]] == '1' || game->map[pos[5]][pos[1]] == '1'
 		|| game->map[pos[3]][pos[2]] == '1' || game->map[pos[4]][pos[2]] == '1')
 		return(1);
@@ -67,13 +67,10 @@ static void move_position(t_vector v, t_prog *game)
 		speed_multiplier = TRANCE_BOOST;
 	else
 		speed_multiplier = 1;
-	new_pos[0] = game->pl.position[0] + (v.x) * speed_multiplier;
-	new_pos[1] = game->pl.position[1] + (v.y) * speed_multiplier;
+	new_pos[0] = game->pl.position[0] + (v.x/126) * speed_multiplier;
+	new_pos[1] = game->pl.position[1] + (v.y/126) * speed_multiplier;
 	if (wall_coll(game, new_pos))
-	{
-		printf("ITS COLLIDING\n");
 		return ;
-	}
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
 	game->pl.position[0] = new_pos[0];
@@ -84,11 +81,18 @@ static void move_position(t_vector v, t_prog *game)
 static void update_player_position(int key, t_prog *game)
 {
 	int i;
+	int x;
 
 	i = -1;
 	while (++i < 8)
+	{
 		if (key == i)
-			move_position(game->wind_rose[i], game);
+		{
+			x = -1;
+			while(++x < 126)
+				move_position(game->wind_rose[i], game);
+		}
+	}
 }
 
 /** PURPOSE : distribute proper key control

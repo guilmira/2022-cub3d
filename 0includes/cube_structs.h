@@ -40,7 +40,7 @@ typedef struct s_dimensions
 	double size[D2];
 	double limit[D2];
 	double unit[D2];
-	double pixel_per_block[D2];
+	double pixel_per_block;
 
 }				t_dim;
 

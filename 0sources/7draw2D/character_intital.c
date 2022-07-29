@@ -23,8 +23,8 @@ void	fill_player_pos(t_prog *game, double player_pos[])
 	i[0] = -1;
 	if(game->map == NULL)
 	{
-		player_pos[0] = (double)(5 * game->w2.pixel_per_block[0]);
-		player_pos[1] = (double)(5 * game->w2.pixel_per_block[1]);
+		player_pos[0] = (double)(5 * game->w2.pixel_per_block);
+		player_pos[1] = (double)(5 * game->w2.pixel_per_block);
 		return ;
 	}
 	while (game->map[++i[0]])
@@ -37,8 +37,8 @@ void	fill_player_pos(t_prog *game, double player_pos[])
 				&& game->map[i[0]][i[1]] != '0'
 				&& game->map[i[0]][i[1]] != '\0')
 			{
-				player_pos[0] = (double)(((i[1] + 1) * game->w2.pixel_per_block[0]));
-				player_pos[1] = (double)((game->map_y - i[0]) * game->w2.pixel_per_block[1]);
+				player_pos[0] = (double)(((i[1] + 1) * game->w2.pixel_per_block));
+				player_pos[1] = (double)((game->map_y - i[0]) * game->w2.pixel_per_block);
 				fill_vis(game, game->map[i[0]][i[1]]);
 				return ;
 			}

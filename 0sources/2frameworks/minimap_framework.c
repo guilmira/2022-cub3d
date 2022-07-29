@@ -30,7 +30,7 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 
 
 /** PURPOSE : From map parser draw in minimap2D each wall. */
-void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
+void draw_wall_unit(double map_position[], double pixel_per_block, t_prog *game)
 {
 	int				j;
 	mlx_image_t		*image;
@@ -46,12 +46,12 @@ void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
 	translate_to_screen(map_position, base_location, pixel_per_block, game);
 	line_start[0] = base_location[0];
 	line_start[1] = base_location[1];
-	line_end[0] = line_start[0] + (double) pixel_per_block[0];
+	line_end[0] = line_start[0] + pixel_per_block;
 	line_end[1] = line_start[1];
 
 	
 	j = -1;
-	while (++j < pixel_per_block[1])
+	while (++j < pixel_per_block)
 	{
 		line_start[1] = base_location[1] + j;
 		line_end[1] = line_start[1];
@@ -76,7 +76,7 @@ void	draw_wall2D(t_prog *game)
 			{
 				map_position[0] = i;
 				map_position[1] = game->map2D.height - j - 1;
-				draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
+				draw_wall_unit(map_position, game->w2.pixel_per_block, game);
 			}
 		}
 		i = -1;
