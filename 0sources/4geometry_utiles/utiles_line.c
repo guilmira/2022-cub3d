@@ -41,6 +41,6 @@ void put_lineH(double start[], double end[], int colour, t_prog *game)
 void translate_to_screen(double position_map[], double position_screen[], double pixel_per_block, t_prog *game)
 {
 	(void) game;
-	position_screen[0] = position_map[0] * pixel_per_block;
-	position_screen[1] = position_map[1] * pixel_per_block;
+	position_screen[0] = position_map[0] *  pixel_per_block;
+	position_screen[1] = position_map[1] *  pixel_per_block;
 }
