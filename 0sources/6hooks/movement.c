@@ -12,25 +12,6 @@
 
 #include "cube.h"
 
-
-//PACE funcion pendiente de mas testeo
-//CUidado con el paso de doubles a int sin casteo explicito. (variable new_pos)
-/* static int wall_coll(t_prog *game, double new_pos[])
-{
-	int pos[6];
-
-	pos[0] = round(new_pos[0] / game->w2.pixel_per_block);
-	pos[1] = round((new_pos[0] - SAFE_MARGIN) / game->w2.pixel_per_block);
-	pos[2] = round((new_pos[0] + SAFE_MARGIN) / game->w2.pixel_per_block);
-	pos[3] = game->map_y - round(new_pos[1] / game->w2.pixel_per_block);
-	pos[4] = game->map_y - round((new_pos[1] - SAFE_MARGIN)  / game->w2.pixel_per_block);
-	pos[5] = game->map_y - round((new_pos[1] + SAFE_MARGIN) / game->w2.pixel_per_block);
-	if (game->map[pos[3]][pos[1]] == '1' || game->map[pos[3]][pos[2]] == '1'
-		|| game->map[pos[4]][pos[0]] == '1' || game->map[pos[5]][pos[0]] == '1')
-		return (1);
-	return (0);
-} */
-
 /** PURPOSE : evaluate if movement gets close to window limit. */
 static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game)
 {
