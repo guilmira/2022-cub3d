@@ -16,7 +16,7 @@
  * Assuming position of player as a coordinate (0, 0).
  * Therefore, vector can be represented by having a single point in space (Vx, Vy) 
  * 1. First, unit vector (vector unit is calulated). 
- * 2. As the unit of the grid is the pixel, to obtaing the line:
+ * 2. As the unit of the grid is the pixel, to obtain the line:
  * (unit_Vector + unit_Vector) repeated n module times.  */
 void draw_vector(t_vector vec, double origin[], uint32_t colour, t_prog *game)
 {

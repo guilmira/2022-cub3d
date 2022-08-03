@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 17:55:02 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:07:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 /* MLX */
 # include "MLX42.h"
 /* TOOLS */
-#include <time.h> //PACE para borrar
+#include <time.h> //PREVIO_EV para borrar
 
 /* ------------------------ PROYECT INCLUDES ------------------------ */
 #include "cube_defines.h"

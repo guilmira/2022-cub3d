@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 16:04:23 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:20:32 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,14 @@ int	main(int argc, char  **argv)
 	parser(game, argc, argv);
 	init_framework(game);
 	init_map2D(game->map, game);
+	
 	/* --------------------------------------------------------------- */
-	fill_player_pos(game, game->pl.position); //PACE tiene que autoactualizarse
+	//PACE tiene que actualizarse y funcionar para el cambio de tamaño de la ventana
+	fill_player_pos(game, game->pl.position); 
+	
+	//PACE unificar pixel per block
+	//map_x y map_y desvincular del offset y dejar solo uno.
+
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 16:26:34 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:20:59 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ void	framework_2D(t_prog *game)
 	/* double pos[2] = {12, 19};
 	draw_wall_unit(pos, game->map2D.pixel_per_block, game); */
 	draw_wall2D(game);
-	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); //PACE un 0,0 aqui (position) provoca un seg fault
+	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); 
+	//PACE un 0,0 aqui (position) provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	game->image[MAP_2D], game->w2.origin[0], game->w2.origin[1]);
