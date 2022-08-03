@@ -6,11 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 14:23:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 15:26:48 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:11:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+#define SIZE_OFFSET 1
 
 /** PURPOSE : Delete image tool. */
 void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour)
@@ -21,11 +23,11 @@ void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour)
 	i = -1;
 	j = 0;
 	(void) game;
-	while (++j <= window.limit[1])
+	while (++j <= window.size[1])
 	{
 		i = -1;
-		while (++i <= window.limit[0] - 1)
-			solid_pixel(image, i, coor(j, window.limit[1]), colour);
+		while (++i <= window.size[0] - SIZE_OFFSET)
+			solid_pixel(image, i, coor(j, window.size[1]), colour);
 	}
 }
 

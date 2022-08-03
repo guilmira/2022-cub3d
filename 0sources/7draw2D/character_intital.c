@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/21 12:01:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:18:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	fill_player_pos(t_prog *game, double player_pos[])
 	i[0] = -1;
 	if(game->map == NULL)
 	{
+		//PACE =  game->w2.pixel_per_block[0] que sea el correcto
 		player_pos[0] = (double)(5 * game->w2.pixel_per_block[0]);
 		player_pos[1] = (double)(5 * game->w2.pixel_per_block[1]);
 		return ;

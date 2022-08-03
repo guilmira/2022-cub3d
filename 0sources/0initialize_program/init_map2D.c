@@ -6,12 +6,18 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 16:15:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:55:26 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+/** PURPOSE : general function to init variables. */
+void update_pixel_per_block(t_prog *game)
+{
+	game->map2D.pixel_per_block[0] = game->w2.size[0] / game->map2D.width;
+	game->map2D.pixel_per_block[1] = game->w2.size[1] / game->map2D.height;
+}
 
 /** PURPOSE : Translate parser map into a wall map */
 void init_map2D(char **map, t_prog *game)
