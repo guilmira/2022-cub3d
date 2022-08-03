@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 13:38:31 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:25:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ typedef struct s_dimensions
 	double origin[D2];
 	double size[D2];
 	double unit[D2];
-	double pixel_per_block;
-
-	//double pixel_per_block[D2];
 }				t_dim;
 
 /** PURPOSE : Beam dimensions
@@ -75,6 +72,12 @@ typedef struct s_map
 	int		height;
 	int		width;
 	int		pixel_per_block[D2];
+
+	/* --------------- */
+	char		**map;
+	int			map_x;
+	int			map_y;
+	/* --------------- */
 }				t_map;
 
 typedef struct s_program
@@ -82,7 +85,7 @@ typedef struct s_program
     /* ----- SHARED ---- */
 	mlx_t		*mlx;
 	mlx_image_t	*image[TOTAL_IMAGES + 1];
-	char		**map;
+	
 	t_map		map2D;
 	/*---- MAP_INFO ----*/
 	char		*NO;
@@ -95,12 +98,11 @@ typedef struct s_program
 	t_dim		w1;
 	t_dim		w2;
 	t_player	pl;
-	t_vector	wind_rose[MOVE_OPTIONS];
+	//t_vector	wind_rose[MOVE_OPTIONS];
 	int			minimap_state;
 	/* ----- KIRIAM ---- */
 	int			file;
-    int			map_x;
-    int			map_y;
+	
 }               t_prog;
 
 #endif

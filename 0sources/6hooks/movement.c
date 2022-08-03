@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 11:21:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:34:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static int wall_coll(t_prog *game, double new_pos[])
 	int pos[6];
 
 
-	pos[0] = floor((new_pos[0] + (game->pl.ratio)) / game->w2.pixel_per_block);
-	pos[1] = floor((new_pos[0] - (game->pl.ratio)) / game->w2.pixel_per_block);
-	pos[2] = floor(new_pos[0] / game->w2.pixel_per_block);
-	pos[3] = game->map_y - ceil((new_pos[1] + (game->pl.ratio)) / game->w2.pixel_per_block);
-	pos[4] = game->map_y - ceil((new_pos[1] - (game->pl.ratio)) / game->w2.pixel_per_block);
-	pos[5] = game->map_y - ceil(new_pos[1] / game->w2.pixel_per_block);
-	if (game->map[pos[5]][pos[0]] == '1' || game->map[pos[5]][pos[1]] == '1'
-		|| game->map[pos[3]][pos[2]] == '1' || game->map[pos[4]][pos[2]] == '1')
+	pos[0] = floor((new_pos[0] + (game->pl.ratio)) / game->map2D.pixel_per_block[0]);
+	pos[1] = floor((new_pos[0] - (game->pl.ratio)) / game->map2D.pixel_per_block[0]);
+	pos[2] = floor(new_pos[0] / game->map2D.pixel_per_block[0]);
+	pos[3] = game->map2D.map_y - ceil((new_pos[1] + (game->pl.ratio)) / game->map2D.pixel_per_block[1]);
+	pos[4] = game->map2D.map_y - ceil((new_pos[1] - (game->pl.ratio)) / game->map2D.pixel_per_block[1]);
+	pos[5] = game->map2D.map_y - ceil(new_pos[1] / game->map2D.pixel_per_block[1]);
+	if (game->map2D.map[pos[5]][pos[0]] == '1' || game->map2D.map[pos[5]][pos[1]] == '1'
+		|| game->map2D.map[pos[3]][pos[2]] == '1' || game->map2D.map[pos[4]][pos[2]] == '1')
 		return(1);
 	return(0);
 }

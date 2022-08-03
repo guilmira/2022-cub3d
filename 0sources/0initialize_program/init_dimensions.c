@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 11:17:16 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:28:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,13 @@ void	minimap_dimensions(t_prog *game)
 		game->w2 = copy_dim_struct(game->w1);
 }
 
+
+#define SPACES_AT_BORDER 2
+
 /** PURPOSE : calculate main window and minimap dimensions. */
 void	framework_dimensions(t_prog *game)
 {
-	double help[2];
+	int help[2];
 
 	game->w1.origin[0] = 0;
 	game->w1.origin[1] = 0;
@@ -70,19 +73,22 @@ void	framework_dimensions(t_prog *game)
 	/* --------------------------------------------------------------- */
 	minimap_dimensions(game);
 	/* --------------------------------------------------------------- */
+	game->map2D.width = game->map2D.map_x + SPACES_AT_BORDER;
+	game->map2D.height = game->map2D.map_y + SPACES_AT_BORDER;
 
 	/* --------------------------------------------------------------- */
-	help[0] = (double)((game->w2.size[0]) / (game->map_x + 2));
-	help[1] = (double)((game->w1.size[1]) / (game->map_y + 2));
+	help[0] = (int)((game->w2.size[0]) / (game->map2D.width));
+	help[1] = (int)((game->w2.size[1]) / (game->map2D.height));
+	/* --------------------------------------------------------------- */
 
-	if (help[0] > help[1])
+/* 	if (help[0] > help[1])
+	{ */
+		game->map2D.pixel_per_block[0] = help[0];
+		game->map2D.pixel_per_block[1]  = help[1];
+	//}
+/* 	else
 	{
-		game->w2.pixel_per_block = help[1];
-		game->w1.pixel_per_block = help[1];
-	}
-	else
-	{
-		game->w2.pixel_per_block = help[0];
-		game->w1.pixel_per_block = help[0];
-	}
+		game->map2D.pixel_per_block[0] = help[0];
+		game->map2D.pixel_per_block[1] = help[0];
+	} */
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parse.c.                                       :+:      :+:    :+:   */
+/*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/07/05 14:43:31 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:17:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int map_build(int data_len, t_prog *game, t_list *aux_lst)
 	if (getcoords(game, aux_lst) == -1)
 		return (-1);
 	fill_spaces_map(game, aux_lst);
-	if (is_closed(game->map) == -1)
+	if (is_closed(game->map2D.map) == -1)
 		return(-1);
 	return (0);
 }
@@ -64,31 +64,31 @@ void	fill_spaces_map(t_prog *game, t_list *aux_lst)
 	int count;
 
 	i = 1;
-	game->map = ft_calloc(sizeof(char *), game->map_y + 3);
-	game->map[0] = ft_calloc(sizeof(char), game->map_x + 3);
+	game->map2D.map = ft_calloc(sizeof(char *), game->map2D.map_y + 3);
+	game->map2D.map[0] = ft_calloc(sizeof(char), game->map2D.map_x + 3);
 	count = -1;
-	while (++count <= game->map_x + 1)
-		game->map[0][count] = ' ';
-	while (i <= game->map_y)
+	while (++count <= game->map2D.map_x + 1)
+		game->map2D.map[0][count] = ' ';
+	while (i <= game->map2D.map_y)
 	{
-		game->map[i] = ft_calloc(sizeof(char), game->map_x + 3);
-		game->map[i][0] = ' ';
+		game->map2D.map[i] = ft_calloc(sizeof(char), game->map2D.map_x + 3);
+		game->map2D.map[i][0] = ' ';
 		count = 1;
-		while (count <= game->map_x + 1)
+		while (count <= game->map2D.map_x + 1)
 		{
 			if (count <= (int)ft_strlen((char *)aux_lst->content))
-				game->map[i][count] = ((char *)aux_lst->content)[count - 1];
+				game->map2D.map[i][count] = ((char *)aux_lst->content)[count - 1];
 			else
-				game->map[i][count] = ' ';
+				game->map2D.map[i][count] = ' ';
 			count++;
 		}
 		aux_lst = aux_lst->next;
 		i++;
 	}
-	game->map[game->map_y + 1] = ft_calloc(sizeof(char) , game->map_x + 3);
+	game->map2D.map[game->map2D.map_y + 1] = ft_calloc(sizeof(char) , game->map2D.map_x + 3);
 	count = -1;
-	while (++count <= game->map_x + 1)
-		game->map[game->map_y + 1][count] = ' ';
+	while (++count <= game->map2D.map_x + 1)
+		game->map2D.map[game->map2D.map_y + 1][count] = ' ';
 }
 
 int		is_closed(char **map)
@@ -143,7 +143,7 @@ int	getcoords(t_prog *game, t_list *aux_lst)
 		y++;
 		aux_lst = aux_lst->next;
 	}
-	game->map_x = x;
-	game->map_y = y;
+	game->map2D.map_x = x;
+	game->map2D.map_y = y;
 	return (0);
 }

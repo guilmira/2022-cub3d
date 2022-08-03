@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 14:26:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:45:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,6 @@ void print_map(char **map, t_prog *game)
 
 	(void) map;
 	printf("empieza\n");
-
-	for (int i = 0; i < 21; i++)
-	{
-			printf("%s ", map[i]);
-		
-		printf("\n");
-	}
-
-	printf("here: \n");
 	for (int j = 0; j < game->map2D.height; j++)
 	{
 		for (int i = 0; i < game->map2D.width; i++)

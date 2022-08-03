@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 13:43:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:35:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ double	get_colision_x(t_vector direction, t_prog *game, double stable)
 	collision = calculate_col(direction, game, stable, 'x');
 	if (collision == 0)
 		return (-1);
-	 y = round(((stable + round(game->w2.pixel_per_block/2))) / game->w2.pixel_per_block);
+	 y = round(((stable + round(game->map2D.pixel_per_block/2))) / game->map2D.pixel_per_block);
 	start = 0;
-	finish = game->w2.pixel_per_block;
+	finish = game->map2D.pixel_per_block;
 	x = 0;
 	while (x < game->map_x)
 	{
@@ -53,7 +53,7 @@ double	get_colision_x(t_vector direction, t_prog *game, double stable)
 			break;
 		x++;
 		start = finish;
-		finish += game->w2.pixel_per_block;
+		finish += game->map2D.pixel_per_block;
 	}
 	if (game->map[y][x] == '1')
 		return(collision);
@@ -71,9 +71,9 @@ double	get_colision_y(t_vector direction, t_prog *game, double stable)
 	collision = calculate_col(direction, game, stable, 'y');
 	if (collision == 0)
 		return (-1);
-	x = round((stable + round(game->w2.pixel_per_block/2)) / game->w2.pixel_per_block);
+	x = round((stable + round(game->map2D.pixel_per_block/2)) / game->map2D.pixel_per_block);
 	start = 0;
-	finish = game->w2.pixel_per_block;
+	finish = game->map2D.pixel_per_block;
 	y = 0;
 	while (y < game->map_y)
 	{
@@ -81,7 +81,7 @@ double	get_colision_y(t_vector direction, t_prog *game, double stable)
 			break;
 		y++;
 		start = finish;
-		finish += game->w2.pixel_per_block;
+		finish += game->map2D.pixel_per_block;
 	}
 	y = game->map_y - y;
 	if (game->map[y][x] == '1')
@@ -105,8 +105,8 @@ int	check_length(double x[], double y[], t_prog *game)
 {
 	int coord[2];
 
-	coord[0] = round(ray.x / game->w2.pixel_per_block);
-	coord[1] =  game->map_y - round(ray.y / game->w2.pixel_per_block);
+	coord[0] = round(ray.x / game->map2D.pixel_per_block);
+	coord[1] =  game->map_y - round(ray.y / game->map2D.pixel_per_block);
 	if (game->map[coord[1]][coord[2]] == '1')
 		return(1);
 	return(0);

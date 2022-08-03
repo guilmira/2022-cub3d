@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/07/21 11:47:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:16:43 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ void	show_map(t_prog *game)
 	int i;
 
 	i = -1;
-	while(++i < game->map_x + 4)
+	while(++i < game->map2D.map_x + 4)
 		write(0, "-", 1);
 	write(0, "\n", 1);
 	i = -1;
-	while (++i < game->map_y + 1)
-		printf("(%s)\n", game->map[i]);
+	while (++i < game->map2D.map_y + 1)
+		printf("(%s)\n", game->map2D.map[i]);
 	i = -1;
-	while(++i < game->map_x + 4)
+	while(++i < game->map2D.map_x + 4)
 		write(0, "-", 1);
 	write(0, "\n", 1);
 }
