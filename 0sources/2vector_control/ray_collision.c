@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:30:25 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 12:41:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:02:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,6 @@ int is_wall(double coor[], t_prog *game)
 
 	i = coor[0] / game->map2D.pixel_per_block[0];
 	j = coor[1] / game->map2D.pixel_per_block[1];
-	
-
-	/* log_coor(coor);
-	sleep(1);
-	printf("pixel en y : %i \n", game->map2D.pixel_per_block[1]);
-	printf("OY : %i \n", j);
-	printf("OX : %i\n", i);
-	sleep(2);
-	j = game->map2D.height - j;
-	printf("height : %i \n", game->map2D.height);
-	printf("OY : %i \n", j);
-	sleep(4); */
-
 	j = game->map2D.height - 1 - j;
 
 	if (j < 0)
