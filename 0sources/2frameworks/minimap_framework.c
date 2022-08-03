@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 15:19:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:55:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,18 @@ static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog 
 	line_end[0] = line_start[0] + pixel_per_block[0];
 	line_end[1] = line_start[1];
 
-	
+	//NEXT :: meterlo en rectagulos
 	j = -1;
 	while (++j < pixel_per_block[1])
 	{
+	
+
 		line_start[1] = base_location[1] + j;
 		line_end[1] = line_start[1];
 		put_lineH(line_start, line_end, BLUE, game);
+
+	
+
 	}
 }
 
@@ -103,7 +108,6 @@ void	framework_2D(t_prog *game)
 	draw_wall_unit(pos, game->map2D.pixel_per_block, game); */
 	draw_wall2D(game);
 	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); 
-	//PACE un 0,0 aqui (position) provoca un seg fault
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	game->image[MAP_2D], game->w2.origin[0], game->w2.origin[1]);
