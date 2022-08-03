@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 16:03:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/03 11:58:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ t_vector	invert_sense_vector(t_vector v);
 void init_beam(t_beam *beam, double position[], t_vector dir, t_prog *game);
 
 /* RAY CASTING */
-t_vector	cast_ray(t_vector direction, double low_boundry[], double high_boundry[], t_prog *game);
+t_vector	cast_ray(t_vector direction, double position[], double low_boundry[], double high_boundry[], t_prog *game);
+
+/* COLLISION */
+int	collision_wall(t_vector ray, double position[], t_prog *game);
+int	collision_window(t_vector ray, double low_boundry[], double high_boundry[]);
 
 /* BEAM */
 void cast_beam(t_beam *beam, t_prog *game);
