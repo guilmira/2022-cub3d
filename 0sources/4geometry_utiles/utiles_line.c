@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 08:22:14 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:45:43 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void put_lineH(double start[], double end[], int colour, t_prog *game)
 		solid_pixel(image, (int) (start[0] + i), y, colour);
 }
 
-/** PURPOSE : Put line horizontal from given beginning to end.
- * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP. */
-void put_lineV(double start[], double end[], int colour, t_prog *game)
+/** PURPOSE : Put line vertical of given size.
+ * ONLY VERTICAL LINE AND ONLY FOR MINIMAP. */
+void put_lineV(double start[], int size, int colour, t_prog *game)
 {
 	int				i;
 	int				y;
@@ -42,12 +42,14 @@ void put_lineV(double start[], double end[], int colour, t_prog *game)
 
 	i = -1;
 	image = game->image[MAP_2D];
-	counter = (int) end[0] - (int) start[0];
+	counter = (int) size;
 	if (counter <= 0)
 		return ;
-	y = (int) coor(start[1], game->w2.size[1]);
 	while (++i < counter)
-		solid_pixel(image, (int) (start[0] + i), y, colour);
+	{
+		y = (int) coor(start[1] - i, game->w2.size[1]);
+		solid_pixel(image, (int) (start[0]), y, colour);
+	}
 }
 
 /** PURPOSE : Translate coordinate from argument map to screen.

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:30:41 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:41:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void draw_rectangle(int x, int y, int base, int height, t_prog *game);
 void draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour);
 void put_lineH(double start[], double end[], int colour, t_prog *game);
+void put_lineV(double start[], int size, int colour, t_prog *game);
+
 void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game);
 
 
