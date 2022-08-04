@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:30:25 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 13:02:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:49:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int is_wall(double coor[], t_prog *game)
 	
 }
 
+/** PURPOSE : Ray vector actual coordinates in pixel map. */
 void	ray_coordinates(t_vector ray, double position[], double coor[])
 {
 	coor[0] = ray.x + position[0];

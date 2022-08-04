@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:45:02 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 09:14:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,6 @@ void print_map(char **map, t_prog *game)
 		
 		printf("\n");
 	}
+	printf("altura %i\n", game->map2D.height);
+	printf("anchur %i\n", game->map2D.width);
 }
