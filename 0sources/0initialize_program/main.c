@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 08:04:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 10:51:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void init_framework(t_prog *game)
 //parpadea un frame al hacer tab
 
 //poner recuadro
+
+void	framework_2D(t_prog *game);
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.

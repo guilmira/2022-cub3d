@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 08:04:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:01:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,15 @@ typedef struct s_map
 	int			map_y;
 	/* --------------- */
 }				t_map;
+
+typedef struct s_grid
+{
+	double	partial[2]; //const
+	double	delta[2]; //const
+
+	int	blocks[2];
+	double	distance[2];
+}				t_grid;
 
 typedef struct s_program
 {

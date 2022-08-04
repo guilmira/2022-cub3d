@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:35:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:32:23 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,13 @@ int	check_length(double x[], double y[], t_prog *game)
 }*/
 
 
-/** PURPOSE : Casting ray from a direction until it hits a boundry condition. */
+void update_grid(t_grid *grid, t_vector ray, double position[], t_prog *game);
+t_grid calculate_grid_parameters(double position[], t_vector direction, t_prog *game);
+
+
+/** PURPOSE : Casting ray from the coordinate position.
+ * 1. The cast follows the direction given as an argument. 
+ * 2. Stops when it hits boundry condition. */
 t_vector	 cast_ray(t_vector direction, double position[], double low_boundry[], double high_boundry[], t_prog *game)
 {
 	int				counter;
@@ -123,14 +129,23 @@ t_vector	 cast_ray(t_vector direction, double position[], double low_boundry[], 
 	counter = -1;
 	ray = direction;
 	(void) position;
-	
+
+	/* FED AS ARGUMENT */
+	t_grid grid;
+	grid = calculate_grid_parameters(position, direction, game);
+	//printf("%i\n", game->map2D.pixel_per_block[1]); 154
+
 	while (++counter <= game->w2.size[0])
 	{
-		if (collision_wall(ray, position, game))
+		/* if (collision_wall(ray, position, game))
+			break; */
+		if (collision_wall_trigonometric(ray, position, &grid, game))
 			break;
 		if (collision_window(ray, low_boundry, high_boundry))
 			break;
-		ray = mul_vec(direction, counter);
+		ray = mul_vec(direction, counter); //se podria multiplicar de mas en mas cantidades.
+		update_grid(&grid, ray, position, game);
+		
 	}
 	return (ray);
 }
