@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:30:25 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 13:31:41 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:17:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int needs_collision_check(t_vector ray, t_grid *grid, t_prog *game)
 int	collision_wall_trigonometric(t_vector ray, double position[], t_grid *grid, t_prog *game)
 {
 	double coor[D2];
-	ray_coordinates(ray, position, coor); //now we have coor, the actual coordinates if its aiing left
 	
 	if (needs_collision_check(ray, grid, game))
 	{
 		coor[0]++;
 		coor[1]++;
+		ray_coordinates(ray, position, coor);
 		if (is_wall(coor, game))
 			return (1);
 	}
@@ -59,8 +59,12 @@ void calculate_partial(t_grid *grid, double position[], t_vector direction, t_pr
 {
 	(void) direction;
 	(void) position;
+
+	grid->partial[0] = game->map2D.pixel_per_block[0] - (game->pl.position_coor[0] - game->pl.position[0] * game->map2D.pixel_per_block[0]);
+	grid->partial[1] = game->map2D.pixel_per_block[1] - (game->pl.position_coor[1] - game->pl.position[1] * game->map2D.pixel_per_block[1]);
+	/* Cuando esta en el medio
 	grid->partial[0] = game->map2D.pixel_per_block[0] / 2;
-	grid->partial[1] = game->map2D.pixel_per_block[1] / 2;
+	grid->partial[1] = game->map2D.pixel_per_block[1] / 2; */
 }
 
 void calculate_delta(t_grid *grid, double position[], t_vector direction, t_prog *game)
@@ -92,6 +96,9 @@ t_grid calculate_grid_parameters(double position[], t_vector direction, t_prog *
 	return (grid);
 }
 
+/** PURPOSE : Casting ray from the coordinate position.
+ * 1. The cast follows the direction given as an argument. 
+ * 2. Stops when it hits boundry condition. */
 void update_grid(t_grid *grid, t_vector ray, double position[], t_prog *game)
 {
 	(void) game;

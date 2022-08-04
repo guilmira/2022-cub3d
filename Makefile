@@ -6,14 +6,14 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/08/04 12:53:53 by guilmira         ###   ########.fr        #
+#    Updated: 2022/08/04 14:23:35 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra  -Werror   -O3 -fsanitize=address   #-g
+CFLAGS		= -Wall -Wextra  -Werror   -O3 #-fsanitize=address   #-g
 ARG			= easy_map3.cub
 #ARG			= default.cub
 

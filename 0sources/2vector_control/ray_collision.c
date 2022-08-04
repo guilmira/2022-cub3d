@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:30:25 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 13:28:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:17:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ int is_wall(double coor[], t_prog *game)
 	int j;
 	int i;
 
-	static int calcu;
-	printf("caLc: %i\n", ++calcu);
-
+	/* static int calcu;
+	printf("caLc: %i\n", ++calcu); */
 
 	i = coor[0] / game->map2D.pixel_per_block[0];
 	j = coor[1] / game->map2D.pixel_per_block[1];
