@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 15:39:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:04:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ void init_framework(t_prog *game)
 	create_image(game, 1, game->w2.size);
 }
 
-//PACE:
+//NEXT
 //fluent movement
 //parpadea un frame al hacer tab
+
+//poner recuadro
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
@@ -44,7 +46,6 @@ int	main(int argc, char  **argv)
 	init_map2D(game->map2D.map, game);
 	/* --------------------------------------------------------------- */
 
-	//fill_player_pos(game, game->pl.position); 
 
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */

@@ -6,16 +6,34 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:29:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:22:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Put line horizontal from given beginning to end.
- * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP.
- */
+ * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP. */
 void put_lineH(double start[], double end[], int colour, t_prog *game)
+{
+	int				i;
+	int				y;
+	int				counter;
+	mlx_image_t		*image;
+
+	i = -1;
+	image = game->image[MAP_2D];
+	counter = (int) end[0] - (int) start[0];
+	if (counter <= 0)
+		return ;
+	y = (int) coor(start[1], game->w2.size[1]);
+	while (++i < counter)
+		solid_pixel(image, (int) (start[0] + i), y, colour);
+}
+
+/** PURPOSE : Put line horizontal from given beginning to end.
+ * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP. */
+void put_lineV(double start[], double end[], int colour, t_prog *game)
 {
 	int				i;
 	int				y;

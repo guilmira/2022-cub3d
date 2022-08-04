@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/28 15:46:11 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:10:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,16 @@ void correct_minimap_value(t_prog *game)
 	game->minimap_state++;
 	if (game->minimap_state == 6)
 	{
-		wash_screen(game, game->image[MAP_2D], game->w1, BLACK);
+		wash_screen(game, game->image[MAP_2D], game->w1, BLACK); //NEXT: podria ser razon de flasheo
 		game->minimap_state = 0;
 	}
+}
+
+/** PURPOSE : Correct minimap status and reset screen. */
+void update_player_location(t_prog *game)
+{
+	game->pl.position_coor[0] = (double) (game->pl.position[1]) * game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
+	game->pl.position_coor[1] = (game->map2D.height - (double) game->pl.position[0]) * game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
 }
 
 /** PURPOSE : Executed when hitting tab. It executes twice */
@@ -42,6 +49,7 @@ void	hook_control_minimap(t_prog *game)
 		{
 			minimap_dimensions(game);
 			update_pixel_per_block(game);
+			update_player_location(game);
 			if (game->minimap_state)
 				create_image(game, 1, game->w2.size);
 		}

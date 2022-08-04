@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 15:35:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:19:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ static void fill_vis(t_prog *game, char dir)
 	}
 }
 
+/** PURPOSE : Define intial location of player position in pixel screen. */
+static void	update_player_position(int j, int i, t_prog *game)
+{
+	game->pl.position[0] = j;
+	game->pl.position[1] = i;
+	game->pl.position_coor[0] = (double) (game->pl.position[1]) * game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
+	game->pl.position_coor[1] = (game->map2D.height - (double) game->pl.position[0]) * game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
+}
+
 /** PURPOSE : Translate parser map into a wall map */
 void init_map2D(char **map, t_prog *game)
 {
@@ -54,11 +63,7 @@ void init_map2D(char **map, t_prog *game)
 	i = -1;
 	layout = NULL;
 	/* --------------------------------------------------------------- */
-	printf("%i\n", game->map2D.height);
-	printf("%i\n", game->map2D.width);
-	/* --------------------------------------------------------------- */
 	layout = ft_calloc(game->map2D.height, sizeof(int *));
-
 	while (++j < game->map2D.height)
 	{
 		layout[j] = ft_calloc(game->map2D.width, sizeof(int));
@@ -70,8 +75,7 @@ void init_map2D(char **map, t_prog *game)
 				layout[j][i] = 0;
 			else
 			{
-				game->pl.position[0] = (double) (i) * game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
-				game->pl.position[1] = (game->map2D.height - (double) j) * game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
+				update_player_position(j, i, game);
 				fill_vis(game, game->map2D.map[j][i]);
 			}
 
@@ -79,6 +83,6 @@ void init_map2D(char **map, t_prog *game)
 		i = -1;
 	}
 	game->map2D.layout = layout;
-	print_map(map, game);
+	//print_map(map, game);
 	update_pixel_per_block(game);
 }

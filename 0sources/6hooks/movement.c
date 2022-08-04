@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:34:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:18:17 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ static void move_position(t_vector v, t_prog *game, int key)
 		speed_multiplier = 1;
 	if (key == 0)
 	{
-		new_pos[0] = game->pl.position[0] + (v.x/126) * speed_multiplier;
-		new_pos[1] = game->pl.position[1] + (v.y/126) * speed_multiplier;
+		new_pos[0] = game->pl.position_coor[0] + (v.x/126) * speed_multiplier;
+		new_pos[1] = game->pl.position_coor[1] + (v.y/126) * speed_multiplier;
 	}
 	else
 	{
-		new_pos[0] = game->pl.position[0] - (v.x/126) * speed_multiplier;
-		new_pos[1] = game->pl.position[1] - (v.y/126) * speed_multiplier;
+		new_pos[0] = game->pl.position_coor[0] - (v.x/126) * speed_multiplier;
+		new_pos[1] = game->pl.position_coor[1] - (v.y/126) * speed_multiplier;
 	}
 	if (wall_coll(game, new_pos))
 		return ;
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
-	game->pl.position[0] = new_pos[0];
-	game->pl.position[1] = new_pos[1];
+	game->pl.position_coor[0] = new_pos[0];
+	game->pl.position_coor[1] = new_pos[1];
 }
 
 /** PURPOSE : correct position by adding correct vector. */

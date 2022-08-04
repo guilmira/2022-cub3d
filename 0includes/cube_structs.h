@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:25:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:04:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef struct s_beam
  * Where is located, where is it looking at. */
 typedef struct s_player
 {
-	double		position[D2];
+	int			position[D2];
+	double		position_coor[D2];
 	double		ratio;
 	t_vector	vis;
 	t_beam		beam;
