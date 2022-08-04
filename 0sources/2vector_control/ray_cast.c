@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 14:20:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:45:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,10 @@ t_vector	 cast_ray(t_vector direction, double position[], double low_boundry[], 
 
 	while (++counter <= game->w2.size[0])
 	{
-		/* if (collision_wall(ray, position, game))
-			break; */
-		if (collision_wall_trigonometric(ray, position, &grid, game))
+		if (collision_wall(ray, position, game))
 			break;
+		/* if (collision_wall_trigonometric(ray, position, &grid, game))
+			break; */
 		if (collision_window(ray, low_boundry, high_boundry))
 			break;
 		ray = mul_vec(direction, counter); //se podria multiplicar de mas en mas cantidades.
