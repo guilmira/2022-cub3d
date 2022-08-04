@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:25:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:04:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef struct s_beam
  * Where is located, where is it looking at. */
 typedef struct s_player
 {
-	double		position[D2];
+	int			position[D2];
+	double		position_coor[D2];
 	double		ratio;
 	t_vector	vis;
 	t_beam		beam;
@@ -79,6 +80,16 @@ typedef struct s_map
 	int			map_y;
 	/* --------------- */
 }				t_map;
+
+/* PURPOSE : Used as an auxiliar grid to calculate collisions. */
+typedef struct s_grid
+{
+	double	partial[2]; //const
+	double	delta[2]; //const
+
+	int		blocks[2];
+	double	distance[2];
+}				t_grid;
 
 typedef struct s_program
 {

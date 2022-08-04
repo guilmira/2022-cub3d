@@ -6,15 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 14:29:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 08:45:43 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Put line horizontal from given beginning to end.
- * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP.
- */
+ * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP. */
 void put_lineH(double start[], double end[], int colour, t_prog *game)
 {
 	int				i;
@@ -30,6 +29,27 @@ void put_lineH(double start[], double end[], int colour, t_prog *game)
 	y = (int) coor(start[1], game->w2.size[1]);
 	while (++i < counter)
 		solid_pixel(image, (int) (start[0] + i), y, colour);
+}
+
+/** PURPOSE : Put line vertical of given size.
+ * ONLY VERTICAL LINE AND ONLY FOR MINIMAP. */
+void put_lineV(double start[], int size, int colour, t_prog *game)
+{
+	int				i;
+	int				y;
+	int				counter;
+	mlx_image_t		*image;
+
+	i = -1;
+	image = game->image[MAP_2D];
+	counter = (int) size;
+	if (counter <= 0)
+		return ;
+	while (++i < counter)
+	{
+		y = (int) coor(start[1] - i, game->w2.size[1]);
+		solid_pixel(image, (int) (start[0]), y, colour);
+	}
 }
 
 /** PURPOSE : Translate coordinate from argument map to screen.

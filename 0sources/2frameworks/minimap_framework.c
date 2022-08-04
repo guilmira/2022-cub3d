@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 15:19:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 10:51:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,20 @@ static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog 
 	line_end[0] = line_start[0] + pixel_per_block[0];
 	line_end[1] = line_start[1];
 
-	
+
 	j = -1;
 	while (++j < pixel_per_block[1])
 	{
 		line_start[1] = base_location[1] + j;
 		line_end[1] = line_start[1];
-		put_lineH(line_start, line_end, BLUE, game);
+		if (!j)
+			put_lineH(line_start, line_end, GREEN, game);
+		else
+			put_lineH(line_start, line_end, BLUE, game);
 	}
+	put_lineH(line_start, line_end, GREEN, game);
+	put_lineV(line_start, pixel_per_block[1], GREEN, game);
+	put_lineV(line_end, pixel_per_block[1], GREEN, game);
 }
 
 /** PURPOSE : Draw all the 2D wall to screen. */
@@ -81,7 +87,6 @@ void	draw_wall2D(t_prog *game)
 		}
 		i = -1;
 	}
-	//printf("%i\n",game->map2D.height);
 }
 
 /** PURPOSE : Draw 2D image as main render.
@@ -92,18 +97,13 @@ void	framework_2D(t_prog *game)
 {
 	if (!game->minimap_state)
 		return ;
-
-	double map_position[2];
-	map_position[0] = 10;
-	map_position[1] = 10;
 	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	/* --------------------------------------------------------------- */
 /* 	double pos[2] = {2, 2};
 	draw_wall_unit(pos, game->map2D.pixel_per_block, game); */
 	draw_wall2D(game);
-	draw_player_position(game->image[MAP_2D], game->pl.position, game->pl.vis, game); 
-	//PACE un 0,0 aqui (position) provoca un seg fault
+	draw_player_position(game->image[MAP_2D], game->pl.position_coor, game->pl.vis, game); 
 	/* --------------------------------------------------------------- */
 	mlx_image_to_window(game->mlx,\
 	game->image[MAP_2D], game->w2.origin[0], game->w2.origin[1]);

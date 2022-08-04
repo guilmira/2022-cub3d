@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:30:25 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 13:02:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:17:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int is_wall(double coor[], t_prog *game)
 	int j;
 	int i;
 
+	/* static int calcu;
+	printf("caLc: %i\n", ++calcu); */
+
 	i = coor[0] / game->map2D.pixel_per_block[0];
 	j = coor[1] / game->map2D.pixel_per_block[1];
 	j = game->map2D.height - 1 - j;
@@ -27,21 +30,18 @@ int is_wall(double coor[], t_prog *game)
 	if (j < 0)
 		j = 0;
 	if (game->map2D.layout[j][i])
-	{
-		
 		return (1);
-	}
 	else
 		return (0);
 	
 }
 
+/** PURPOSE : Ray vector actual coordinates in pixel map. */
 void	ray_coordinates(t_vector ray, double position[], double coor[])
 {
 	coor[0] = ray.x + position[0];
 	coor[1] = ray.y + position[1];
 }
-
 
 /** PURPOSE : Collision conditions. */
 int	collision_wall(t_vector ray, double position[], t_prog *game)
@@ -49,26 +49,11 @@ int	collision_wall(t_vector ray, double position[], t_prog *game)
 	double coor[D2];
 
 	ray_coordinates(ray, position, coor);
-	
 	if (is_wall(coor, game))
 		return (1);
 	else
 		return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /** PURPOSE : Collision condition for window. */
 int	collision_window(t_vector ray, double low_boundry[], double high_boundry[])

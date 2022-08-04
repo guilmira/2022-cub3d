@@ -30,7 +30,7 @@ void	frame_reset(int window_number, int image_position, t_prog *game)
 }
 
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
-static void next_frame(void *g)
+void next_frame(void *g)
 {
 	t_prog		*game;
 	static int	frame;
