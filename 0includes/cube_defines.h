@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 14:24:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:40:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define OY_CORNER_WINDOW_DESPLACEMENT 6
  
 /* Only round noumbers, preferable 10 */
-# define OX_DIV 7 
+# define OX_DIV 7
 # define OY_DIV OX_DIV
 
 /* Player ratio of (see code) */
