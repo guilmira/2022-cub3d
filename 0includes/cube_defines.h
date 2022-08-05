@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 11:52:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:45:54 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ CUB_3D for 3D and MAP_2D Minimap */
 /* Not meant to be modified. */
 # define D2 2
 # define MOVE_OPTIONS 8
+/* Offset to prevent rays from ever get out of the window. */
+#define SECURE_WINDOW 2
+
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"

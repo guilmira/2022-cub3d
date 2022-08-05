@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 11:04:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:39:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int shift_array(int y, int height)
 	return ((height - 1) - y);
 }
 
+/** PURPOSE : Allocate all memory for 2D array. */
 static int **allocate_all_layout(int height, int width)
 {
 	int j;
@@ -70,7 +71,7 @@ static int **allocate_all_layout(int height, int width)
 	return (layout);
 }
 
-/** PURPOSE : Translate parser map into a wall map */
+/** PURPOSE : Translate parser map into a wall map. */
 void init_map2D(char **map, t_prog *game)
 {
 	int	j;
