@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 14:45:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:16:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,15 +137,14 @@ t_vector	 cast_ray(t_vector direction, double position[], double low_boundry[], 
 
 	while (++counter <= game->w2.size[0])
 	{
-		if (collision_wall(ray, position, game))
-			break;
-		/* if (collision_wall_trigonometric(ray, position, &grid, game))
+		/* if (collision_wall(ray, position, game))
 			break; */
+		if (collision_wall_trigonometric(ray, position, &grid, game))
+			break;
 		if (collision_window(ray, low_boundry, high_boundry))
 			break;
 		ray = mul_vec(direction, counter); //se podria multiplicar de mas en mas cantidades.
 		update_grid(&grid, ray, position, game);
-		
 	}
 	return (ray);
 }
@@ -189,7 +188,7 @@ void cast_beam(t_beam *beam, t_prog *game)
 	/* double time_spent = 0.0;	
 	clock_t begin = clock(); */
 
-	cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
+	//cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
 	draw_vector(beam->vis, beam->position, RED, game);
 	
 	/* clock_t end = clock();

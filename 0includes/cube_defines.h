@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 14:40:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:23:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,10 @@
 
 # define TRANCE_BOOST 10 //velocity 
 /* Corner minimap DIMENSIONS */
-# define OX_CORNER_WINDOW_FACTOR 6
-# define OY_CORNER_WINDOW_FACTOR 6
-# define OX_CORNER_WINDOW_DESPLACEMENT 6
-# define OY_CORNER_WINDOW_DESPLACEMENT 6
- 
-/* Only round noumbers, preferable 10 */
-# define OX_DIV 7
-# define OY_DIV OX_DIV
+# define OX_CORNER_WINDOW_FACTOR 5
+# define OY_CORNER_WINDOW_FACTOR 5
+# define OX_CORNER_WINDOW_DESPLACEMENT 5
+# define OY_CORNER_WINDOW_DESPLACEMENT 5
 
 /* Player ratio of (see code) */
 # define PLAYER_RATIO 0.5

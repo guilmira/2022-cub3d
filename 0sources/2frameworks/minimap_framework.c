@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 10:51:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:21:48 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	draw_grid(t_prog *game, double size_x, double size_y)
 	int nb;
 
 	nb = -1;
-	while (++nb < OX_DIV + 1)
+	while (++nb < game->map2D.width + 1)
 	{
 		put_horizontal(( nb * game->w2.unit[1]), size_x, WHITE, game);
 		(void ) size_x;
