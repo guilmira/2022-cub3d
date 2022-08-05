@@ -51,14 +51,14 @@ static int wall_coll(t_prog *game, double new_pos[])
 
 	pos[0] = floor((new_pos[0] + (game->pl.ratio)) / game->map2D.pixel_per_block[0]);
 	pos[1] = floor((new_pos[0] - (game->pl.ratio)) / game->map2D.pixel_per_block[0]);
-	pos[2] = ceil(new_pos[0] / game->map2D.pixel_per_block[0]);
+	pos[2] = floor(new_pos[0] / game->map2D.pixel_per_block[0]);
 	pos[3] = game->map2D.map_y - ceil((new_pos[1] + game->pl.ratio) / game->map2D.pixel_per_block[1]) + 2;
 	pos[4] = game->map2D.map_y - ceil((new_pos[1] - game->pl.ratio) / game->map2D.pixel_per_block[1]) + 2;
-	pos[5] = game->map2D.map_y - floor(new_pos[1] / game->map2D.pixel_per_block[1]) + 2;
-	if (game->map2D.map[pos[5]][pos[0]] == '1' && game->map2D.map[pos[4]][pos[2]] == '1')
-		return(5);
-	if (game->map2D.map[pos[3]][pos[2]] == '1' && game->map2D.map[pos[5]][pos[1]] == '1')
-		return(5);
+	pos[5] = game->map2D.map_y - ceil(new_pos[1] / game->map2D.pixel_per_block[1]) + 2;
+	/*if (game->map2D.map[pos[5]][pos[0]] == '1' && game->map2D.map[pos[4]][pos[2]] == '1')
+		return(5);*/
+	/*if (game->map2D.map[pos[3]][pos[2]] == '1' && game->map2D.map[pos[5]][pos[1]] == '1')
+		return(5);*/
 	if (game->map2D.map[pos[5]][pos[0]] == '1' || game->map2D.map[pos[5]][pos[1]] == '1')
 		return(1);
 	if (game->map2D.map[pos[3]][pos[2]] == '1' || game->map2D.map[pos[4]][pos[2]] == '1')

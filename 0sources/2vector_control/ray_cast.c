@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 14:45:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:47:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,6 @@ t_vector	 cast_ray(t_vector direction, double position[], double low_boundry[], 
 			break;
 		ray = mul_vec(direction, counter); //se podria multiplicar de mas en mas cantidades.
 		update_grid(&grid, ray, position, game);
-		
 	}
 	return (ray);
 }
