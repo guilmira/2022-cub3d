@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 10:23:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 11:52:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,25 @@
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
 
+/* # define OX_WINDOW 2560
+# define OY_WINDOW 1440 */
+
 /* 								 MAP INTITAL STATE
 								0 - no minimap
 								2 - minimap corner
 								4 - full minimap 						*/
+
+#define FULL_MINIMAP 4
+
 # define MINIMAP_INTIAL_STATE 4
 
 //# define MOVEMENT_PIXEL_UNIT 4 //velocity 
 
+
 # define TRANCE_BOOST 10 //velocity 
 /* Corner minimap DIMENSIONS */
-# define OX_CORNER_WINDOW_FACTOR 5
-# define OY_CORNER_WINDOW_FACTOR 5
-# define OX_CORNER_WINDOW_DESPLACEMENT 5
-# define OY_CORNER_WINDOW_DESPLACEMENT 5
+#define SPACES_AT_BORDER 2
+#define MINIMAP_WINDOW_RATIO 3
 
 /* Player ratio of (see code) */
 # define PLAYER_RATIO 0.5
@@ -51,6 +56,9 @@ CUB_3D for 3D and MAP_2D Minimap */
 #define MAP_2D 1
 /* Safe margin not to burst the window limits. */
 #define SAFE_MARGIN 30
+
+/* From full at 0, to none at 255 */
+#define GRID_TRANSPARENCY 15
 /* ------------------------ BASE DEFINES ------------------------ */
 /* Not meant to be modified. */
 # define D2 2

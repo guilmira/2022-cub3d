@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 09:20:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 11:04:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,50 @@ static void	update_player_position(int j, int i, t_prog *game)
 {
 	game->pl.position[0] = i;
 	game->pl.position[1] = game->map2D.height - j - 1;
-	game->pl.position_coor[0] = (double) game->pl.position[0] * game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
-	game->pl.position_coor[1] = (double) game->pl.position[1] * game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
+	game->pl.position_coor[0] = game->pl.position[0] * (double) game->map2D.pixel_per_block[0] + ( (double) game->map2D.pixel_per_block[0] / 2);
+	game->pl.position_coor[1] = game->pl.position[1] * (double) game->map2D.pixel_per_block[1] + ( (double) game->map2D.pixel_per_block[1] / 2);
+}
+
+/** PURPOSE : Work with array [j][i] as a cartesian system. */
+int shift_array(int y, int height)
+{
+	return ((height - 1) - y);
+}
+
+static int **allocate_all_layout(int height, int width)
+{
+	int j;
+	int	**layout;
+	
+	j = -1;
+	layout = ft_calloc(height, sizeof(int *));
+	while (++j < height)
+		layout[j] = ft_calloc(width, sizeof(int));
+	return (layout);
 }
 
 /** PURPOSE : Translate parser map into a wall map */
 void init_map2D(char **map, t_prog *game)
 {
-	int j;
-	int i;
-	int **layout;
+	int	j;
+	int	i;
+	int	**layout;
+	int	height;
 	
 	j = -1;
 	i = -1;
 	layout = NULL;
+	height = game->map2D.height;
 	/* --------------------------------------------------------------- */
-	layout = ft_calloc(game->map2D.height, sizeof(int *));
-	while (++j < game->map2D.height)
+	layout = allocate_all_layout(height, game->map2D.width);
+	while (++j < height)
 	{
-		layout[j] = ft_calloc(game->map2D.width, sizeof(int));
 		while (++i < game->map2D.width)
 		{
 			if (map[j][i] == '1')
-				layout[j][i] = 1;
+				layout[shift_array(j, height)][i] = 1;
 			else if (map[j][i] == '0' || map[j][i] == ' ')
-				layout[j][i] = 0;
+				layout[shift_array(j, height)][i] = 0;
 			else
 			{
 				update_player_position(j, i, game);

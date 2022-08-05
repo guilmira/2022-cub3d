@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 14:43:28 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 12:04:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void correct_minimap_value(t_prog *game)
 /** PURPOSE : Correct minimap status and reset screen. */
 void update_player_location(t_prog *game)
 {
-	game->pl.position_coor[0] = (double) (game->pl.position[1]) * game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
-	game->pl.position_coor[1] = (double) (game->pl.position[0]) * game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
+	game->pl.position_coor[0] = (double) (game->pl.position[0]) * game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
+	game->pl.position_coor[1] = (double) (game->pl.position[1]) * game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
 }
 
 /** PURPOSE : Executed when hitting tab. It executes twice */
@@ -69,6 +69,8 @@ void	put_frame2D(t_prog *game)
 		wash_screen(game, game->image[MAP_2D], game->w2, BLACK);
 		framework_2D(game);
 		game->pl.flag_movement = 0; //to not keep drawing if there isnt more movement
+
+
 	}
 }
 

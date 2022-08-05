@@ -19,14 +19,21 @@ static void	hk_close(void *game)
 	clean_exit(game);
 }
 
-/** PURPOSE : Clear framework and create a new image to write pixel into. */
-void	frame_reset(int window_number, int image_position, t_prog *game)
+/** PURPOSE : Clear framework and create a new image to write pixels into. 
+ * Window_number is either 0 for the 3D or 1 for the 2D
+*/
+void	frame_reset(int window_number, t_prog *game)
 {
-	ft_mlx_delete_image_safe(image_position, game);
 	if (window_number == 0)
-		create_image(game, image_position, game->w1.size);
+	{
+		ft_mlx_delete_image_safe(0, game);
+		create_image(game, 0, game->w1.size);
+	}
 	else if (window_number == 1)
-		create_image(game, image_position, game->w2.size);
+	{
+		ft_mlx_delete_image_safe(1, game);
+		create_image(game, 1, game->w2.size);
+	}
 }
 
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
@@ -41,10 +48,18 @@ void next_frame(void *g)
 	{
 		printf("												FRAME: 	 %i\n", frame);
 		frame++;
-		frame_reset(1, 0, game);
-		//frame_reset(1, 1, game); //como lo actives empieza el flasheo
-		put_frame3D(game);
-		put_frame2D(game);
+	
+		/* if (game->minimap_state != FULL_MINIMAP)
+		{
+			frame_reset(0, game);
+			put_frame3D(game);
+		} */
+
+		if (game->minimap_state)
+		{
+			frame_reset(1, game);
+			put_frame2D(game);
+		}
 	}
 }
 

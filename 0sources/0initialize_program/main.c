@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 10:51:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 11:24:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ int	main(int argc, char  **argv)
 {
 	t_prog	*game;
 	/* --------------------------------------------------------------- */
-	//atexit(ft_leaks);
+	atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);
 	/* --------------------------------------------------------------- */
 	init_game(game);
+
 	parser(game, argc, argv);
 	init_framework(game);
 	init_map2D(game->map2D.map, game);

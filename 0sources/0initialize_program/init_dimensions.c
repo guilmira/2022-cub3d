@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 10:20:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:55:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void	minimap_dimensions(t_prog *game)
 		return ;
 	else if (game->minimap_state == 2)
 	{
-		game->w2.origin[0] = (double) game->w1.origin[0] + game->w1.unit[0] * OX_CORNER_WINDOW_DESPLACEMENT;
-		game->w2.origin[1] = (double) game->w1.origin[1] + game->w1.unit[1] * OY_CORNER_WINDOW_DESPLACEMENT;
-		game->w2.size[0] = (double) (game->w1.size[0] - OX_CORNER_WINDOW_FACTOR * game->w1.unit[0]) ;
-		game->w2.size[1] = (double) (game->w1.size[1] - OY_CORNER_WINDOW_FACTOR * game->w1.unit[1]);
+		game->w2.origin[0] = game->w1.size[0] - game->w1.size[0] / MINIMAP_WINDOW_RATIO;
+		game->w2.origin[1] = game->w1.size[1] - game->w1.size[1] / MINIMAP_WINDOW_RATIO;
+		game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
+		game->w2.size[1] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
 		if (game->w2.size[0] - game->w2.origin[0] > game->w1.size[0] \
 		|| game->w2.size[1] - game->w2.origin[1] > game->w1.size[1])
 			ft_shutdown("Error.\nMinimap to big\n", game);
@@ -56,14 +56,9 @@ void	minimap_dimensions(t_prog *game)
 		game->w2 = copy_dim_struct(game->w1);
 }
 
-
-#define SPACES_AT_BORDER 2
-
 /** PURPOSE : calculate main window and minimap dimensions. */
 void	framework_dimensions(t_prog *game)
 {
-	int help[2];
-
 	game->map2D.width = game->map2D.map_x + SPACES_AT_BORDER;
 	game->map2D.height = game->map2D.map_y + SPACES_AT_BORDER;
 	/* --------------------------------------------------------------- */
@@ -76,20 +71,7 @@ void	framework_dimensions(t_prog *game)
 	/* --------------------------------------------------------------- */
 	minimap_dimensions(game);
 	/* --------------------------------------------------------------- */
-
 	/* --------------------------------------------------------------- */
-	help[0] = (int)((game->w2.size[0]) / (game->map2D.width));
-	help[1] = (int)((game->w2.size[1]) / (game->map2D.height));
-	/* --------------------------------------------------------------- */
+	update_pixel_per_block(game);
 
-/* 	if (help[0] > help[1])
-	{ */
-		game->map2D.pixel_per_block[0] = help[0];
-		game->map2D.pixel_per_block[1]  = help[1];
-	//}
-/* 	else
-	{
-		game->map2D.pixel_per_block[0] = help[0];
-		game->map2D.pixel_per_block[1] = help[0];
-	} */
 }
