@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 12:45:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 07:18:54 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
  						Mac Screen: 2560 x 1440 						*/
 # define OX_WINDOW 1920
 # define OY_WINDOW 1080
+
+
+//nEXT NO PERMITIR Bajo ningun concepto OY > OX
 
 /* # define OX_WINDOW 2560
 # define OY_WINDOW 1440 */

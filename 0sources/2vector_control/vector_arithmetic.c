@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 05:44:20 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/12 14:40:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 09:11:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_vector	sub_vec(t_vector lhs, t_vector rhs)
 }
 
 /** PURPOSE : Ecalar multiplication of a vector. */
-t_vector	mul_vec(t_vector lhs, float escalar)
+t_vector	mul_vec(t_vector lhs, double escalar)
 {
 	t_vector	result;
 
@@ -43,7 +43,7 @@ t_vector	mul_vec(t_vector lhs, float escalar)
 }
 
 /** PURPOSE : Escaalar divison of a vector. */
-t_vector	div_vec(t_vector lhs, float escalar)
+t_vector	div_vec(t_vector lhs, double escalar)
 {
 	t_vector	result;
 

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 13:32:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 09:11:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ t_vector rotate_vector(t_vector vec, int angle);
 /* VECTOR ARITHMETIC */
 t_vector	sum_vec(t_vector lhs, t_vector rhs);
 t_vector	sub_vec(t_vector lhs, t_vector rhs);
-t_vector	mul_vec(t_vector lhs, float escalar);
-t_vector	div_vec(t_vector lhs, float escalar);
+t_vector	mul_vec(t_vector lhs, double escalar);
+t_vector	div_vec(t_vector lhs, double escalar);
 /* VECTOR ARITHMETIC ADVANCED */
 t_vector	get_perpendicular(t_vector v);
 t_vector	invert_sense_vector(t_vector v);
@@ -132,6 +132,7 @@ void log_coor(double array[]);
 void log_d(double d);
 void log_beam(t_beam *beam);
 void print_map(char **map, t_prog *game);
+void log_coor_int(int i[]);
 
 
 int	collision_wall_trigonometric(t_vector ray, double position[], t_grid *grid, t_prog *game);

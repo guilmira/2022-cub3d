@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 10:52:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 09:47:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ double coor(double y, double size_y)
 	if ( size_y - y < 0)
 	{
 		ft_senderror("Invalid 'y' coordinate.\n");
-		ft_senderror("If this message appears reptedly, will slower the rendering.\n");
+		ft_senderror("If this message appears repetedly, will slower the rendering.\n");
 		printf("Value %f\n", y);
 		return (0);
 	}

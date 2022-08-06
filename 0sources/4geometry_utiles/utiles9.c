@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 11:24:34 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 09:21:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void log_d(double d)
 	printf("DOUBLE %f\n", d);
 }
 
+void log_coor_int(int i[])
+{
+		printf("INT:						OX %i y  OY %i\n", i[0], i[1]);
+
+}
 
 
 
@@ -103,4 +108,23 @@ void print_map(char **map, t_prog *game)
 	}
 	printf("altura %i\n", game->map2D.height);
 	printf("anchura %i\n", game->map2D.width);
+}
+
+
+/* Just for testing */
+void insta_player_vision(t_prog *game)
+{
+	t_vector	plane_perpendicular;
+	t_vector	new_vision;
+	double		speed_multiplier;
+
+	speed_multiplier = 30;
+	if (game->pl.flag_trance)
+		speed_multiplier = TRANCE_BOOST * 5;
+	plane_perpendicular = get_unit_vector(get_perpendicular(game->pl.vis));
+	plane_perpendicular = mul_vec(plane_perpendicular, speed_multiplier);
+	
+	new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, invert_sense_vector(plane_perpendicular)));
+
+	game->pl.vis = new_vision;
 }

@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/08/05 12:51:08 by guilmira         ###   ########.fr        #
+#    Updated: 2022/08/06 06:58:12 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra  -Werror   -O3 #-fsanitize=address   #-g
-ARG			= easy_map2.cub
+ARG			= easy_map3.cub
 #ARG			= default.cub
 
 #time ./cube default.cub
@@ -32,7 +32,7 @@ ROUTE 		= ./0sources
 FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D.c init_variables.c init_dimensions.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c)
 FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c main_framework.c minimap_framework.c)
-FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c  vector_tools.c vector_arithmetic.c vector_arith_advanced.c ray_cast.c ray_collision.c ray_collision2.c)
+FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c  vector_tools.c vector_arithmetic.c vector_arith_advanced.c ray_cast.c cast_ray2D.c ray_collision.c ray_collision2.c)
 FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c map_parse.c)
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles_line.c utiles9.c )

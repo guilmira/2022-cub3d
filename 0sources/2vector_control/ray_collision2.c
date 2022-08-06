@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:30:25 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 14:17:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 07:22:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ray_coordinates(t_vector ray, double position[], double coor[]);
 
 int needs_collision_check(t_vector ray, t_grid *grid, t_prog *game)
 {
-(void) game;
+	(void) game;
 	if (ray.x >= grid->distance[0] - RANGE && ray.x <= grid->distance[0] + RANGE)
 		return 1;
 	else if (ray.y >= grid->distance[1] - RANGE && ray.y <= grid->distance[1] + RANGE)
@@ -39,7 +39,7 @@ int needs_collision_check(t_vector ray, t_grid *grid, t_prog *game)
 int	collision_wall_trigonometric(t_vector ray, double position[], t_grid *grid, t_prog *game)
 {
 	double coor[D2];
-	
+
 	if (needs_collision_check(ray, grid, game))
 	{
 		coor[0]++;
@@ -73,6 +73,8 @@ void calculate_delta(t_grid *grid, double position[], t_vector direction, t_prog
 	(void) position;
 	grid->delta[0] = game->map2D.pixel_per_block[0];
 	grid->delta[1] = game->map2D.pixel_per_block[1];
+
+	
 }
 
 void update_distance(t_grid *grid, int array_pos)

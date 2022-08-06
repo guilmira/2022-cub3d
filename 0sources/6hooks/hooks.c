@@ -36,6 +36,15 @@ void	frame_reset(int window_number, t_prog *game)
 	}
 }
 
+void insta_player_vision(t_prog *game);
+void	speed_testing(int frame, t_prog *game)
+{
+	if (frame == 80)
+		clean_exit(game);
+	insta_player_vision(game);
+}
+
+
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
 void next_frame(void *g)
 {
@@ -44,6 +53,8 @@ void next_frame(void *g)
 
 	game = (t_prog *) g;
 
+	//speed_testing(frame, game);
+	
 	if (game->pl.flag_movement)
 	{
 		printf("												FRAME: 	 %i\n", frame);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 12:47:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 11:24:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,14 +133,12 @@ t_vector	 cast_ray(t_vector direction, double position[], double low_boundry[], 
 	/* FED AS ARGUMENT */
 	t_grid grid;
 	grid = calculate_grid_parameters(position, direction, game);
-	//printf("%i\n", game->map2D.pixel_per_block[1]); 154
-
 	while (++counter <= game->w2.size[0])
 	{
-		if (collision_wall(ray, position, game))
-			break;
-		/* if (collision_wall_trigonometric(ray, position, &grid, game))
+		/* if (collision_wall(ray, position, game))
 			break; */
+		if (collision_wall_trigonometric(ray, position, &grid, game))
+			break;
 		if (collision_window(ray, low_boundry, high_boundry))
 			break;
 		ray = mul_vec(direction, counter); //se podria multiplicar de mas en mas cantidades.
@@ -176,6 +174,10 @@ void cast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	}
 }
 
+
+t_vector	 raycast(t_vector dir, double origin[], t_prog *game);
+
+
 /** PURPOSE : Casting beam of rays from origin. 
  * 1. Beam vector is the vision vector added to the plane.
  * 2. Get direction of beam vector. i.e: the unit vector of the beam.
@@ -188,9 +190,15 @@ void cast_beam(t_beam *beam, t_prog *game)
 	/* double time_spent = 0.0;	
 	clock_t begin = clock(); */
 
-	cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
-	draw_vector(beam->vis, beam->position, RED, game);
+	//cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
+	t_vector v;
+	v = raycast(beam->vis_dir, beam->position, game);
+
+	draw_vector(v, beam->position, RED, game);
+
+	//draw_vector(beam->vis, beam->position, RED, game);
 	
+
 	/* clock_t end = clock();
 	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("The elapsed time is %f seconds\n", time_spent); */
