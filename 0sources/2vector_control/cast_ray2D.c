@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 11:25:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 13:42:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,6 @@
 
 #define MARGIN 0.01  //probar con 0
 
-void get_exact_location(t_ray *ray, t_vector direction, t_prog *game)
-{
-	(void) direction;
-
-	double unitarian_position[2];
-
-	unitarian_position[0] = 0;
-	unitarian_position[1] = 0;
-
-	unitarian_position[0] = ray->origin[0] - ray->position_2D[0] * game->map2D.pixel_per_block[0];
-	unitarian_position[1] = ray->origin[1] - ray->position_2D[1] * game->map2D.pixel_per_block[1];
-	if (unitarian_position[0] > MARGIN)
-		unitarian_position[0] = unitarian_position[0] / game->map2D.pixel_per_block[0];
-	else
-		unitarian_position[0] = 0;
-	if (unitarian_position[1] > MARGIN)
-		unitarian_position[1] = unitarian_position[1] / game->map2D.pixel_per_block[1];
-	else
-		unitarian_position[1] = 0;
-
-
-}
 
 /* Why isnt necessary the exact location. Vector can only stop at 
 walls end, so it dosent matter where we are at exactly withing the block.
@@ -45,27 +23,27 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	(void) direction;
 	(void) game;
 
-	
+	ray->step[0] = 1;
+	ray->step[1] = 1;
 
 	if (ray->dir.x > 0)
 	{
-		ray->step[0]++;
+		ray->step_increase[0] = 1;
 		ray->fictional_distance[0] = (1 * ray->delta[0]);
 	}
 	else
 	{
-		ray->step[0]--;
+		ray->step_increase[0] = -1;
 		ray->fictional_distance[0] = (0 * ray->delta[0]);
 	}
 	if (ray->dir.y > 0)
 	{
-		ray->step[1]++;
+		ray->step_increase[1] = 1;
 		ray->fictional_distance[1] = (1 * ray->delta[1]);
-		//ray->fictional_distance[1] = (get_exact_location(ray, direction, game) * (ray->delta[1]);
 	}
 	else
 	{
-		ray->step[1]--;
+		ray->step_increase[1] = -1;
 		ray->fictional_distance[1] = (0 * ray->delta[1]);
 	}
 
@@ -105,7 +83,7 @@ void init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game)
 	ray->delta[0] = 0;
 	ray->delta[1] = 0;
 	ray->face = 0;
-	get_delta(ray, ray->dir, game); log_coor(ray->delta);
+	get_delta(ray, ray->dir, game);
 	init_fictional_distance(ray, dir, game);
 
 }
@@ -116,7 +94,7 @@ void init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game)
 int is_wall2D(int j, int i, t_prog *game);
 void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game);
 
-
+//poner una cmrobacion de wall al principio
 t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
 {
 	//274 unidades en x  es el multiplicador.
@@ -132,18 +110,26 @@ t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
 	counter = -1;
 	while (++counter <= game->map2D.width)
 	{
+		printf("pasada\n");
+		log_coor(ray.fictional_distance);
+		
 		if (ray.fictional_distance[1] < ray.fictional_distance[0])
 		{
-			ray.step[1]++;
+			//ray.step[1]++;
+			
+				ray.step[1] += ray.step_increase[1];
+		
 			ray.fictional_distance[1] += ray.delta[1];
-			coor_map2D[1] = ray.position_2D[1] + ray.fictional_distance[1];
+			coor_map2D[1] = ray.position_2D[1] + ray.step[1];
 			ray.face = 2;
 		}
 		else
 		{
-			ray.step[0]++;
+			
+				ray.step[0] += ray.step_increase[0];
+			
 			ray.fictional_distance[0] += ray.delta[0];
-			coor_map2D[0] = ray.position_2D[0] + ray.fictional_distance[0];
+			coor_map2D[0] = ray.position_2D[0] + ray.step[0];
 			ray.face = 1;
 		}
 		if (is_wall2D(coor_map2D[1], coor_map2D[0], game))
@@ -187,7 +173,6 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 	double mult;
 
 	mult = ray->fictional_distance[array_pos] * game->map2D.pixel_per_block[array_pos];
-	//mult = ray->fictional_distance[1];
 	ray->resultant_vector = mul_vec(dir, mult);
 }
 

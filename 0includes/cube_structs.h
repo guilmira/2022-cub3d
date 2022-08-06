@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 11:22:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 13:33:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_ray
 	double		partial[D2];
 	double		delta[D2];
 	int			step[D2];
+	int			step_increase[D2];
 	double			fictional_distance[D2];
 	int			face;
 	t_vector	resultant_vector;

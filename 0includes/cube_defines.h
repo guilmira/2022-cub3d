@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 07:18:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/06 13:09:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1920
+# define OX_WINDOW 1080
 # define OY_WINDOW 1080
 
 
