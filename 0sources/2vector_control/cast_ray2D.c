@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/07 12:14:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/07 14:15:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #define MARGIN 0.01  //probar con 0
 
 
+#define PROV 0.01
+
 /* Why isnt necessary the exact location. Vector can only stop at 
 walls end, so it dosent matter where we are at exactly withing the block.
 We work with a vector that would always start at the inferior leftmost corner. */
@@ -22,9 +24,6 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 {
 	(void) direction;
 	(void) game;
-
-	ray->step[0] = 1; //esta en el step 1 porque ya le estamos sumando el delta
-	ray->step[1] = 1;
 
 	if (ray->dir.x > 0)
 	{
@@ -47,12 +46,13 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 		ray->fictional_distance[1] = (0 * ray->delta[1]);
 	}
 
-	if (!ray->dir.x)
+	if (fabs(ray->dir.x) < PROV)
 		ray->fictional_distance[0] = game->map2D.width + 1;
-	if (!ray->dir.y)
+	if (fabs(ray->dir.y) < PROV)
 		ray->fictional_distance[1] = game->map2D.width + 1;
 
-
+	ray->step[0] = ray->step_increase[0]; //esta en el step 1 porque ya le estamos sumando el delta
+	ray->step[1] = ray->step_increase[1];
 }
 
 
@@ -92,19 +92,28 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 
 int first_block_evaluation(t_ray *ray, int coor_map2D[], t_vector dir, t_prog *game)
 {
+	printf("---\n");
+	log_coor(ray->fictional_distance);
 	if (ray->fictional_distance[1] < ray->fictional_distance[0])
 		{
 			coor_map2D[1] = ray->position_2D[1] + ray->step[1];
+			/* if (ray->dir.x < 0)
+				coor_map2D[1] = ray->position_2D[0] + ray->step[0]; */
+
 			ray->face = 2;
 		}
 		else
 		{
 			coor_map2D[0] = ray->position_2D[0] + ray->step[0];
+	/* 		if (ray->dir.y < 0)
+				coor_map2D[0] = ray->position_2D[1] + ray->step[1]; */
 			ray->face = 1;
 		}
-			printf("----------------------\n");
+	/* 	log_coor_int(ray->step_increase);
+		log_vector(dir);
+			printf("----------\n");
 		log_coor_int(coor_map2D);
-			printf("----------------------\n");
+			printf("----------------------\n"); */
 
 		if (is_wall2D(coor_map2D[1], coor_map2D[0], game))
 		{
@@ -112,7 +121,7 @@ int first_block_evaluation(t_ray *ray, int coor_map2D[], t_vector dir, t_prog *g
 				get_resultant_vector(ray, 0, dir, game);
 			if (ray->face == 2)
 				get_resultant_vector(ray, 1, dir, game);
-			printf("pego coordenaadas (%i ,%i )en cara%i\n", coor_map2D[0], coor_map2D[1], ray->face); //2 es vertical
+			//printf("pego coordenaadas (%i ,%i )en cara%i\n", coor_map2D[0], coor_map2D[1], ray->face); //2 es vertical
 			return (1);
 		}
 	return (0);
@@ -128,13 +137,17 @@ void raycast_collision_routine(t_ray *ray, int coor_map2D[], t_vector dir, t_pro
 	{
 		if (ray->fictional_distance[1] < ray->fictional_distance[0])
 		{
+			printf("me fijo en OY\n");
 			ray->step[1] += ray->step_increase[1];
 			ray->fictional_distance[1] += ray->delta[1];
+			
 			coor_map2D[1] = ray->position_2D[1] + ray->step[1];
 			ray->face = 2;
 		}
 		else
 		{
+			printf("me fijo en OX\n");
+
 			ray->step[0] += ray->step_increase[0];
 			ray->fictional_distance[0] += ray->delta[0];
 			coor_map2D[0] = ray->position_2D[0] + ray->step[0];
@@ -197,6 +210,10 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 	double mult;
 
 	mult = ray->fictional_distance[array_pos] * game->map2D.pixel_per_block[array_pos];
+	if (ray->dir.y < 0 && ray->face == 2)
+		mult -= ray->delta[array_pos] * game->map2D.pixel_per_block[array_pos];
+	if (ray->dir.x < 0 && ray->face == 1)
+		mult -= ray->delta[array_pos] * game->map2D.pixel_per_block[array_pos];
 	ray->resultant_vector = mul_vec(dir, mult);
 }
 
@@ -216,11 +233,10 @@ void get_delta(t_ray *ray, t_vector dir, t_prog *game)
 {
 	(void) game;
 
-	if (dir.x > DELTA_LIMIT )
+	if (fabs(dir.x) > DELTA_LIMIT )
 		ray->delta[0] = fabs(1 / dir.x);
-	if (dir.y > DELTA_LIMIT )
+	if (fabs(dir.y) > DELTA_LIMIT )
 		ray->delta[1] = fabs(1 / dir.y);
-
 
 /* 	double m;
 	double factor;
