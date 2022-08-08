@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/07 14:15:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/08 16:46:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	if (fabs(ray->dir.y) < PROV)
 		ray->fictional_distance[1] = game->map2D.width + 1;
 
-	ray->step[0] = ray->step_increase[0]; //esta en el step 1 porque ya le estamos sumando el delta
-	ray->step[1] = ray->step_increase[1];
+	ray->step[0] = 0; //esta en el step 1 porque ya le estamos sumando el delta
+	ray->step[1] = 0;
 }
 
 
@@ -83,50 +83,34 @@ void init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game)
 
 }
 
-
-
-
 int is_wall2D(int j, int i, t_prog *game);
 void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game);
 
 
-int first_block_evaluation(t_ray *ray, int coor_map2D[], t_vector dir, t_prog *game)
+void get_resultant_vec(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 {
-	printf("---\n");
-	log_coor(ray->fictional_distance);
-	if (ray->fictional_distance[1] < ray->fictional_distance[0])
-		{
-			coor_map2D[1] = ray->position_2D[1] + ray->step[1];
-			/* if (ray->dir.x < 0)
-				coor_map2D[1] = ray->position_2D[0] + ray->step[0]; */
+	//double mult;
 
-			ray->face = 2;
-		}
-		else
-		{
-			coor_map2D[0] = ray->position_2D[0] + ray->step[0];
-	/* 		if (ray->dir.y < 0)
-				coor_map2D[0] = ray->position_2D[1] + ray->step[1]; */
-			ray->face = 1;
-		}
-	/* 	log_coor_int(ray->step_increase);
-		log_vector(dir);
-			printf("----------\n");
-		log_coor_int(coor_map2D);
-			printf("----------------------\n"); */
+	double factor;
+	double v_y;
+	double v_x;
+	
 
-		if (is_wall2D(coor_map2D[1], coor_map2D[0], game))
-		{
-			if (ray->face == 1)
-				get_resultant_vector(ray, 0, dir, game);
-			if (ray->face == 2)
-				get_resultant_vector(ray, 1, dir, game);
-			//printf("pego coordenaadas (%i ,%i )en cara%i\n", coor_map2D[0], coor_map2D[1], ray->face); //2 es vertical
-			return (1);
-		}
-	return (0);
+	factor = dir.y / dir.x;
+	if (ray->face == 2)
+	{
+		v_y	= ray->step[array_pos] * game->map2D.pixel_per_block[array_pos];
+		v_x = v_y / factor;
+	}
+	if (ray->face == 1)
+	{
+		v_x	= ray->step[array_pos] * game->map2D.pixel_per_block[array_pos];
+		v_y = v_x * factor;
+	}
+	ray->resultant_vector.x = v_x;
+	ray->resultant_vector.y = v_y;
+
 }
-
 
 void raycast_collision_routine(t_ray *ray, int coor_map2D[], t_vector dir, t_prog *game)
 {
@@ -135,12 +119,13 @@ void raycast_collision_routine(t_ray *ray, int coor_map2D[], t_vector dir, t_pro
 	counter = -1;
 	while (++counter <= game->map2D.width)
 	{
+		if (!counter)
+			printf("EMPIEZA------------------------------------------------------------------\n");
 		if (ray->fictional_distance[1] < ray->fictional_distance[0])
 		{
 			printf("me fijo en OY\n");
 			ray->step[1] += ray->step_increase[1];
 			ray->fictional_distance[1] += ray->delta[1];
-			
 			coor_map2D[1] = ray->position_2D[1] + ray->step[1];
 			ray->face = 2;
 		}
@@ -155,15 +140,19 @@ void raycast_collision_routine(t_ray *ray, int coor_map2D[], t_vector dir, t_pro
 		}
 		if (is_wall2D(coor_map2D[1], coor_map2D[0], game))
 		{
-			log_coor_int(coor_map2D);
+			
+		
 			if (ray->face == 1)
-				get_resultant_vector(ray, 0, dir, game);
+				get_resultant_vec(ray, 0, dir, game);
 			if (ray->face == 2)
-				get_resultant_vector(ray, 1, dir, game);
+				get_resultant_vec(ray, 1, dir, game);
 
 			printf("pego coordenaadas (%i ,%i )en cara%i\n", coor_map2D[0], coor_map2D[1], ray->face); //2 es vertical
 			break ;
 		}
+		printf("-----------------------\n");
+		log_coor(ray->fictional_distance);
+		printf("-----------------------\n");
 		
 	}
 }
@@ -181,8 +170,6 @@ t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
 	init_ray(&ray, origin, dir, game);
 	coor_map2D[0] = ray.position_2D[0];
 	coor_map2D[1] = ray.position_2D[1];
-	if (first_block_evaluation(&ray, coor_map2D, dir, game))
-			return (ray.resultant_vector);
 	raycast_collision_routine(&ray, coor_map2D, dir, game);
 	return (ray.resultant_vector);
 }
@@ -210,12 +197,17 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 	double mult;
 
 	mult = ray->fictional_distance[array_pos] * game->map2D.pixel_per_block[array_pos];
+	
 	if (ray->dir.y < 0 && ray->face == 2)
 		mult -= ray->delta[array_pos] * game->map2D.pixel_per_block[array_pos];
 	if (ray->dir.x < 0 && ray->face == 1)
 		mult -= ray->delta[array_pos] * game->map2D.pixel_per_block[array_pos];
+	
+	
 	ray->resultant_vector = mul_vec(dir, mult);
 }
+
+
 
 
 
