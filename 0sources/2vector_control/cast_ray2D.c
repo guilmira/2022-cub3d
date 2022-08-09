@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/09 12:03:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:04:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	(void) direction;
 	(void) game;
 
-	ray->step[0] = 0; //esta en el step 1 porque ya le estamos sumando el delta
-	ray->step[1] = 0;
+	ray->step[0] = ray->position_2D[0]; //equivalent to a standar 0, 0
+	ray->step[1] = ray->position_2D[1];
 
 	if (ray->dir.x > 0)
 	{
@@ -36,19 +36,18 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	else
 	{
 		ray->step_increase[0] = -1;
-		ray->step[0] = -1;
+		ray->step[0] -= ray->step_increase[0];
 		ray->fictional_distance[0] = (1 * ray->delta[0]);
 	}
 	if (ray->dir.y > 0)
 	{
 		ray->step_increase[1] = 1;
-		
 		ray->fictional_distance[1] = (1 * ray->delta[1]);
 	}
 	else
 	{
 		ray->step_increase[1] = -1;
-		ray->step[1] = -1;
+		ray->step[1] -= ray->step_increase[1];
 		ray->fictional_distance[1] = (1 * ray->delta[1]);
 	}
 
@@ -128,33 +127,36 @@ void raycast_collision_routine(t_ray *ray, t_vector dir, t_prog *game)
 		if (ray->fictional_distance[1] < ray->fictional_distance[0])
 		{
 			printf("me fijo en OY\n");
-			
+		/* 	if (!counter && ray->dir.x < 0)
+				coor_map2D[0] = ray->position_2D[0] + ray->step[0]; */
 			ray->step[1] += ray->step_increase[1];
+			printf("AQUI %i\n", ray->step[1]);
 			ray->fictional_distance[1] += ray->delta[1];
-			coor_map2D[1] = ray->position_2D[1] + ray->step[1];
-				printf("AQUI %i\n", coor_map2D[1]);
-
+			//coor_map2D[1] = ray->position_2D[1] + ray->step[1];
 			ray->face = 2;
 		}
 		else
 		{
 			printf("me fijo en OX\n");
-		
+			/* if (!counter && ray->dir.y < 0)
+				coor_map2D[1] = ray->position_2D[1] + ray->step[1]; */
 			ray->step[0] += ray->step_increase[0];
 			ray->fictional_distance[0] += ray->delta[0];
-			coor_map2D[0] = ray->position_2D[0] + ray->step[0];
+			//coor_map2D[0] = ray->position_2D[0] + ray->step[0];
 			ray->face = 1;
 		}
-		if (is_wall2D(coor_map2D[1], coor_map2D[0], game))
+		if (is_wall2D(ray->step[1], ray->step[0], game))
 		{
 			printf("distancia resultante\n");
 			log_coor(ray->fictional_distance);
+			printf("pegue resultante\n");
+			log_coor_int(ray->step);
 			if (ray->face == 1)
 				get_resultant_vector(ray, 0, dir, game);
 			if (ray->face == 2)
 				get_resultant_vector(ray, 1, dir, game);
 
-			printf("pego coordenaadas (%i ,%i )en cara%i\n", coor_map2D[0], coor_map2D[1], ray->face); //2 es vertical
+			printf("pego coordenaadas (%i ,%i )en cara%i\n", ray->step[0], ray->step[1], ray->face); //2 es vertical
 			break ;
 		}
 		printf("-----------------------\n");
@@ -171,13 +173,13 @@ t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
 	//274 unidades en x  es el multiplicador.
 	//154 unidades en y
 	
-	int coor_map2D[2];
+	//int coor_map2D[2];
 	t_ray ray;
 
 	init_ray(&ray, origin, dir, game);
-	coor_map2D[0] = ray.position_2D[0];
-	coor_map2D[1] = ray.position_2D[1];
-	raycast_collision_routine(&ray, coor_map2D, dir, game);
+/* 	coor_map2D[0] = ray.position_2D[0];
+	coor_map2D[1] = ray.position_2D[1]; */
+	raycast_collision_routine(&ray, dir, game);
 	return (ray.resultant_vector);
 }
 
