@@ -58,7 +58,8 @@ static int wall_coll(t_prog *game, double new_pos[])
 	if ((game->map2D.map[pos[5]][pos[0]] == '1' && game->map2D.map[pos[4]][pos[2]] == '1') 
 		|| (game->map2D.map[pos[5]][pos[0]] == '1' && game->map2D.map[pos[3]][pos[2]] == '1'))
 		return(5);
-	if ( ( game->map2D.map[pos[5]][pos[1]] == '1' && game->map2D.map[pos[4]][pos[2]] == '1') || (game->map2D.map[pos[3]][pos[2]] == '1' && game->map2D.map[pos[5]][pos[1]] == '1'))
+	if ((game->map2D.map[pos[5]][pos[1]] == '1' && game->map2D.map[pos[4]][pos[2]] == '1') 
+		|| (game->map2D.map[pos[3]][pos[2]] == '1' && game->map2D.map[pos[5]][pos[1]] == '1'))
 		return(5);
 	if (game->map2D.map[pos[5]][pos[0]] == '1' || game->map2D.map[pos[5]][pos[1]] == '1')
 		return(1);
