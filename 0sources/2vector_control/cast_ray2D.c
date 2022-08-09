@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/08 16:46:14 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:50:24 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	(void) direction;
 	(void) game;
 
+	ray->step[0] = 0; //esta en el step 1 porque ya le estamos sumando el delta
+	ray->step[1] = 0;
+
 	if (ray->dir.x > 0)
 	{
 		ray->step_increase[0] = 1;
@@ -33,17 +36,20 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	else
 	{
 		ray->step_increase[0] = -1;
-		ray->fictional_distance[0] = (0 * ray->delta[0]);
+		ray->step[0] = -1;
+		ray->fictional_distance[0] = (1 * ray->delta[0]);
 	}
 	if (ray->dir.y > 0)
 	{
 		ray->step_increase[1] = 1;
+		
 		ray->fictional_distance[1] = (1 * ray->delta[1]);
 	}
 	else
 	{
 		ray->step_increase[1] = -1;
-		ray->fictional_distance[1] = (0 * ray->delta[1]);
+		ray->step[1] = -1;
+		ray->fictional_distance[1] = (1 * ray->delta[1]);
 	}
 
 	if (fabs(ray->dir.x) < PROV)
@@ -51,9 +57,7 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	if (fabs(ray->dir.y) < PROV)
 		ray->fictional_distance[1] = game->map2D.width + 1;
 
-	ray->step[0] = 0; //esta en el step 1 porque ya le estamos sumando el delta
-	ray->step[1] = 0;
-}
+	}
 
 
 
@@ -87,7 +91,7 @@ int is_wall2D(int j, int i, t_prog *game);
 void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game);
 
 
-void get_resultant_vec(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
+void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 {
 	//double mult;
 
@@ -124,6 +128,8 @@ void raycast_collision_routine(t_ray *ray, int coor_map2D[], t_vector dir, t_pro
 		if (ray->fictional_distance[1] < ray->fictional_distance[0])
 		{
 			printf("me fijo en OY\n");
+			if (!counter && ray->dir.x < 0)
+				coor_map2D[0] = ray->position_2D[0] + ray->step[0];
 			ray->step[1] += ray->step_increase[1];
 			ray->fictional_distance[1] += ray->delta[1];
 			coor_map2D[1] = ray->position_2D[1] + ray->step[1];
@@ -132,7 +138,8 @@ void raycast_collision_routine(t_ray *ray, int coor_map2D[], t_vector dir, t_pro
 		else
 		{
 			printf("me fijo en OX\n");
-
+			if (!counter && ray->dir.y < 0)
+				coor_map2D[1] = ray->position_2D[1] + ray->step[1];
 			ray->step[0] += ray->step_increase[0];
 			ray->fictional_distance[0] += ray->delta[0];
 			coor_map2D[0] = ray->position_2D[0] + ray->step[0];
@@ -140,12 +147,12 @@ void raycast_collision_routine(t_ray *ray, int coor_map2D[], t_vector dir, t_pro
 		}
 		if (is_wall2D(coor_map2D[1], coor_map2D[0], game))
 		{
-			
-		
+			printf("distancia resultante\n");
+			log_coor(ray->fictional_distance);
 			if (ray->face == 1)
-				get_resultant_vec(ray, 0, dir, game);
+				get_resultant_vector(ray, 0, dir, game);
 			if (ray->face == 2)
-				get_resultant_vec(ray, 1, dir, game);
+				get_resultant_vector(ray, 1, dir, game);
 
 			printf("pego coordenaadas (%i ,%i )en cara%i\n", coor_map2D[0], coor_map2D[1], ray->face); //2 es vertical
 			break ;
@@ -190,26 +197,6 @@ int is_wall2D(int j, int i, t_prog *game)
 		return (0);
 	
 }
-
-
-void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
-{
-	double mult;
-
-	mult = ray->fictional_distance[array_pos] * game->map2D.pixel_per_block[array_pos];
-	
-	if (ray->dir.y < 0 && ray->face == 2)
-		mult -= ray->delta[array_pos] * game->map2D.pixel_per_block[array_pos];
-	if (ray->dir.x < 0 && ray->face == 1)
-		mult -= ray->delta[array_pos] * game->map2D.pixel_per_block[array_pos];
-	
-	
-	ray->resultant_vector = mul_vec(dir, mult);
-}
-
-
-
-
 
 /** PURPOSE : Get coordinates of array. */
 void update_location_map2D(t_ray *ray, double position[], t_prog *game)

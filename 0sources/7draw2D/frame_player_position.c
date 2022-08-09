@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:01:02 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 11:56:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:17:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ void draw_player_position(mlx_image_t *image, double position[], t_vector vis, t
 	/* --------------------------------------------------------------- */
 	/* 			MAIN FUNCTION RAYCAST */
 	draw_vision_beam(position, vis, FOV_DEGREE, RAYCAST_OFFSET, game);
-	
 
 }
