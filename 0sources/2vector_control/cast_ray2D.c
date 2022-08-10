@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/09 12:04:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/10 06:59:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,20 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 	double v_y;
 	double v_x;
 	
+	int blocks_advanced;
+	
+	blocks_advanced = ray->step[array_pos];// - ray->origin[array_pos];
+	printf("BLoques avanzados : %i\n", blocks_advanced);
 
 	factor = dir.y / dir.x;
 	if (ray->face == 2)
 	{
-		v_y	= ray->step[array_pos] * game->map2D.pixel_per_block[array_pos];
+		v_y	= blocks_advanced * game->map2D.pixel_per_block[array_pos];
 		v_x = v_y / factor;
 	}
 	if (ray->face == 1)
 	{
-		v_x	= ray->step[array_pos] * game->map2D.pixel_per_block[array_pos];
+		v_x	= blocks_advanced * game->map2D.pixel_per_block[array_pos];
 		v_y = v_x * factor;
 	}
 	ray->resultant_vector.x = v_x;
