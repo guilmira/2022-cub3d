@@ -6,14 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/10 06:59:13 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/10 10:31:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 #define MARGIN 0.01  //probar con 0
-
 
 #define PROV 0.01
 
@@ -24,31 +23,40 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 {
 	(void) direction;
 	(void) game;
+	double origin_coordinates[2]; 
+	double factor_at_origin;
 
+	//tu ray->step (su map) empieza en 0!!!
+
+	origin_coordinates[0] = ray->origin[0];
+	origin_coordinates[1] = ray->origin[1];
 	ray->step[0] = ray->position_2D[0]; //equivalent to a standar 0, 0
 	ray->step[1] = ray->position_2D[1];
 
-	if (ray->dir.x > 0)
+
+	if (ray->dir.x >= 0)
 	{
 		ray->step_increase[0] = 1;
-		ray->fictional_distance[0] = (1 * ray->delta[0]);
+		factor_at_origin = (double) origin_coordinates[0] - ray->origin[0];
+		ray->fictional_distance[0] = (factor_at_origin + 1) * ray->delta[0];
 	}
 	else
 	{
 		ray->step_increase[0] = -1;
-		ray->step[0] -= ray->step_increase[0];
-		ray->fictional_distance[0] = (1 * ray->delta[0]);
+		factor_at_origin = ray->origin[0] - (double) origin_coordinates[0];
+		ray->fictional_distance[0] = (factor_at_origin) * ray->delta[0];
 	}
-	if (ray->dir.y > 0)
+	if (ray->dir.y >= 0)
 	{
 		ray->step_increase[1] = 1;
-		ray->fictional_distance[1] = (1 * ray->delta[1]);
+		factor_at_origin = (double) origin_coordinates[1] - ray->origin[1];
+		ray->fictional_distance[1] = (factor_at_origin + 1) * ray->delta[1];
 	}
 	else
 	{
 		ray->step_increase[1] = -1;
-		ray->step[1] -= ray->step_increase[1];
-		ray->fictional_distance[1] = (1 * ray->delta[1]);
+		factor_at_origin = ray->origin[1] - (double) origin_coordinates[1];
+		ray->fictional_distance[1] = (factor_at_origin) * ray->delta[1];
 	}
 
 	if (fabs(ray->dir.x) < PROV)
@@ -56,7 +64,7 @@ void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 	if (fabs(ray->dir.y) < PROV)
 		ray->fictional_distance[1] = game->map2D.width + 1;
 
-	}
+}
 
 
 
@@ -100,7 +108,13 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 	
 	int blocks_advanced;
 	
-	blocks_advanced = ray->step[array_pos];// - ray->origin[array_pos];
+	printf("steps neto : %i\n", ray->step[array_pos]);
+	
+	blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos];
+	if (ray->dir.y < 0 && array_pos == 1)
+		blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos] + 1;
+	if (ray->dir.x < 0 && array_pos == 0)
+		blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos] + 1;
 	printf("BLoques avanzados : %i\n", blocks_advanced);
 
 	factor = dir.y / dir.x;
