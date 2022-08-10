@@ -118,14 +118,30 @@ int		is_closed(char **map)
 	return (0);
 }
 
+int	get_maxlen(t_prog *game, t_list *aux_lst)
+{
+	int l;
+	int info;
+
+	l = 0;
+	info = 0;
+	while (aux_lst->next)
+	{
+		l++;
+		if (ft_strchr(aux_lst->content, '1'))
+			info = l;
+		aux_lst = aux_lst->next;
+	}
+	return(info);
+}
+
 int	getcoords(t_prog *game, t_list *aux_lst)
 {
 	int x;
 	int l;
-	int y;
 
 	x = 0;
-	y = 1;
+	game->map2D.map_y = get_maxlen(game, aux_lst);
 	while (aux_lst->next)
 	{
 		l = 0;
@@ -140,10 +156,8 @@ int	getcoords(t_prog *game, t_list *aux_lst)
 		}
 		if (l > x)
 			x = l;
-		y++;
 		aux_lst = aux_lst->next;
 	}
 	game->map2D.map_x = x;
-	game->map2D.map_y = y;
 	return (0);
 }
