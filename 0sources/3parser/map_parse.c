@@ -125,11 +125,13 @@ int	get_maxlen(t_prog *game, t_list *aux_lst)
 
 	l = 0;
 	info = 0;
-	while (aux_lst->next)
+	while (aux_lst)
 	{
 		l++;
 		if (ft_strchr(aux_lst->content, '1'))
 			info = l;
+		if (aux_lst->next == NULL)
+			break ;
 		aux_lst = aux_lst->next;
 	}
 	return(info);
