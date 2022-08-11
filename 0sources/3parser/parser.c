@@ -61,7 +61,7 @@ int map_prep(t_prog *game)
 	show_info(game);
 	if (data_len == -1 || map_build(data_len, game, aux_lst) == -1)
 	{
-		if (data_len != -1)
+		if (data_len != -1 && game->map2D.map)
 			show_map(game);
 		ft_lstclear(&aux_lst, free);
 		return (1);
