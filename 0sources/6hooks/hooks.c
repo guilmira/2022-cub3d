@@ -39,9 +39,15 @@ void	frame_reset(int window_number, t_prog *game)
 void insta_player_vision(t_prog *game);
 void	speed_testing(int frame, t_prog *game)
 {
-	if (frame == 80)
+	if (frame == 150)
 		clean_exit(game);
 	insta_player_vision(game);
+	if (frame == 0)
+	{
+	game->pl.vis.x = 1;
+	game->pl.vis.y = 1;
+
+	}
 }
 
 

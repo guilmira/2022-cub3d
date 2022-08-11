@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:55 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/11 11:22:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:26:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,32 @@ static void init_net_distance(t_ray *ray, t_vector direction, t_prog *game)
 	{
 		ray->step_increase[0] = 1;
 		factor_at_origin = (double) ray->position_2D[0] * game->map2D.pixel_per_block[0] - ray->origin[0];
-		ray->fictional_distance[0] = (factor_at_origin + 1) * ray->delta[0];
+		ray->net_distance[0] = (factor_at_origin + 1) * ray->delta[0];
 	}
 	else
 	{
 		ray->step_increase[0] = -1;
 		factor_at_origin = ray->origin[0] - (double) ray->position_2D[0] * game->map2D.pixel_per_block[0];
-		ray->fictional_distance[0] = (factor_at_origin) * ray->delta[0];
+		ray->net_distance[0] = (factor_at_origin) * ray->delta[0];
 	}
 	if (direction.y >= 0)
 	{
 		ray->step_increase[1] = 1;
 		factor_at_origin = (double) ray->position_2D[1] * game->map2D.pixel_per_block[0] - ray->origin[1];
-		ray->fictional_distance[1] = (factor_at_origin + 1) * ray->delta[1];
+		ray->net_distance[1] = (factor_at_origin + 1) * ray->delta[1];
 	}
 	else
 	{
 		ray->step_increase[1] = -1;
 		factor_at_origin = ray->origin[1] - (double) ray->position_2D[1] * game->map2D.pixel_per_block[0];
-		ray->fictional_distance[1] = (factor_at_origin) * ray->delta[1];
+		ray->net_distance[1] = (factor_at_origin) * ray->delta[1];
 	}
 /* printf("%f\n", factor_at_origin);
 	printf("HERE \n");
 	if (fabs(direction.x) < PROV)
-		ray->fictional_distance[0] = game->map2D.width + 1;
+		ray->net_distance[0] = game->map2D.width + 1;
 	if (fabs(direction.y) < PROV)
-		ray->fictional_distance[1] = game->map2D.width + 1; */
+		ray->net_distance[1] = game->map2D.width + 1; */
 
 }
 

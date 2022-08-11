@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 12:49:02 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:39:56 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void init_framework(t_prog *game)
 //NEXT
 //fluent movement
 //parpadea un frame al hacer tab
-
 //poner recuadro
 
 void	framework_2D(t_prog *game);
@@ -37,7 +36,7 @@ int	main(int argc, char  **argv)
 {
 	t_prog	*game;
 	/* --------------------------------------------------------------- */
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);

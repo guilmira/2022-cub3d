@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 09:11:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:36:17 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ t_vector	invert_sense_vector(t_vector v);
 /* Initialize beam dimensions */
 void init_beam(t_beam *beam, double position[], t_vector dir, t_prog *game);
 
+/* RAY CASTING AND DDA ALGORITHM */
+void init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game);
+t_vector	 raycast(t_vector dir, double origin[], t_prog *game);
+
 /* RAY CASTING */
 t_vector	cast_ray(t_vector direction, double position[], double low_boundry[], double high_boundry[], t_prog *game);
 
@@ -123,6 +127,8 @@ void put_lineH(double start[], double end[], int colour, t_prog *game);
 void put_lineV(double start[], int size, int colour, t_prog *game);
 
 void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game);
+
+
 
 
 //To remove from here before evaluation
