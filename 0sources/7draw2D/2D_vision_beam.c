@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 12:29:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/11 10:37:31 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void draw_vision_beam(double position[], t_vector vis, int angle, int ray_offset
 	cast_beam(&beam, game);
 	game->pl.beam = beam;
 	game->pl.flag_movement = 0;
+
 }

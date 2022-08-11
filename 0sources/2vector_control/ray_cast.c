@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 11:24:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/11 10:38:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,8 @@ void cast_beam(t_beam *beam, t_prog *game)
 	//cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
 	t_vector v;
 	v = raycast(beam->vis_dir, beam->position, game);
-
+		printf("KPASA\n");
+	log_vector(v);
 	draw_vector(v, beam->position, RED, game);
 
 	//draw_vector(beam->vis, beam->position, RED, game);

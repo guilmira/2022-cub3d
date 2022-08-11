@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/10 10:31:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/11 10:46:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,52 @@
 /* Why isnt necessary the exact location. Vector can only stop at 
 walls end, so it dosent matter where we are at exactly withing the block.
 We work with a vector that would always start at the inferior leftmost corner. */
+
+/** PURPOSE : Init distance of delta x or delta y at first block
+ * 1. Factor at origin corrects int  */
 void init_fictional_distance(t_ray *ray, t_vector direction, t_prog *game)
 {
-	(void) direction;
 	(void) game;
 	double origin_coordinates[2]; 
 	double factor_at_origin;
 
-	//tu ray->step (su map) empieza en 0!!!
-
 	origin_coordinates[0] = ray->origin[0];
+	
 	origin_coordinates[1] = ray->origin[1];
 	ray->step[0] = ray->position_2D[0]; //equivalent to a standar 0, 0
 	ray->step[1] = ray->position_2D[1];
+	log_coor_int(ray->position_2D);
 
 
-	if (ray->dir.x >= 0)
+	if (direction.x >= 0)
 	{
 		ray->step_increase[0] = 1;
-		factor_at_origin = (double) origin_coordinates[0] - ray->origin[0];
+		factor_at_origin = (double) ray->position_2D[0] * game->map2D.pixel_per_block[0] - ray->origin[0];
 		ray->fictional_distance[0] = (factor_at_origin + 1) * ray->delta[0];
 	}
 	else
 	{
 		ray->step_increase[0] = -1;
-		factor_at_origin = ray->origin[0] - (double) origin_coordinates[0];
+		factor_at_origin = ray->origin[0] - (double) ray->position_2D[0] * game->map2D.pixel_per_block[0];
 		ray->fictional_distance[0] = (factor_at_origin) * ray->delta[0];
 	}
-	if (ray->dir.y >= 0)
+	if (direction.y >= 0)
 	{
 		ray->step_increase[1] = 1;
-		factor_at_origin = (double) origin_coordinates[1] - ray->origin[1];
+		factor_at_origin = (double) ray->position_2D[1] * game->map2D.pixel_per_block[0] - ray->origin[1];
 		ray->fictional_distance[1] = (factor_at_origin + 1) * ray->delta[1];
 	}
 	else
 	{
 		ray->step_increase[1] = -1;
-		factor_at_origin = ray->origin[1] - (double) origin_coordinates[1];
+		factor_at_origin = ray->origin[1] - (double) ray->position_2D[1] * game->map2D.pixel_per_block[0];
 		ray->fictional_distance[1] = (factor_at_origin) * ray->delta[1];
 	}
-
-	if (fabs(ray->dir.x) < PROV)
+printf("%f\n", factor_at_origin);
+	printf("HERE \n");
+	if (fabs(direction.x) < PROV)
 		ray->fictional_distance[0] = game->map2D.width + 1;
-	if (fabs(ray->dir.y) < PROV)
+	if (fabs(direction.y) < PROV)
 		ray->fictional_distance[1] = game->map2D.width + 1;
 
 }
@@ -90,7 +93,7 @@ void init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game)
 	ray->delta[1] = 0;
 	ray->face = 0;
 	get_delta(ray, ray->dir, game);
-	init_fictional_distance(ray, dir, game);
+	init_fictional_distance(ray, ray->dir, game);
 
 }
 
@@ -100,15 +103,15 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 
 void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 {
-	//double mult;
-
-	double factor;
-	double v_y;
-	double v_x;
-	
-	int blocks_advanced;
+	double		factor;
+	t_vector	vector;
+	int			blocks_advanced;
 	
 	printf("steps neto : %i\n", ray->step[array_pos]);
+
+	vector.x = 0;
+	vector.y = 0;
+
 	
 	blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos];
 	if (ray->dir.y < 0 && array_pos == 1)
@@ -117,50 +120,55 @@ void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 		blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos] + 1;
 	printf("BLoques avanzados : %i\n", blocks_advanced);
 
+
+	if (!dir.x)
+		vector.y = blocks_advanced * game->map2D.pixel_per_block[array_pos];
+	if (!dir.y)
+		vector.x = blocks_advanced * game->map2D.pixel_per_block[array_pos];
+	if (!dir.x || !dir.y)
+	{
+		ray->resultant_vector= vector;
+		return ;
+	}	
 	factor = dir.y / dir.x;
 	if (ray->face == 2)
 	{
-		v_y	= blocks_advanced * game->map2D.pixel_per_block[array_pos];
-		v_x = v_y / factor;
+		vector.y = blocks_advanced * game->map2D.pixel_per_block[array_pos];
+		vector.x = vector.y / factor;
 	}
 	if (ray->face == 1)
 	{
-		v_x	= blocks_advanced * game->map2D.pixel_per_block[array_pos];
-		v_y = v_x * factor;
+		vector.x = blocks_advanced * game->map2D.pixel_per_block[array_pos];
+		vector.y = vector.x * factor;
 	}
-	ray->resultant_vector.x = v_x;
-	ray->resultant_vector.y = v_y;
-
+	ray->resultant_vector= vector;
 }
+
+#define PROVI 300
 
 void raycast_collision_routine(t_ray *ray, t_vector dir, t_prog *game)
 {
 	int counter;
 
 	counter = -1;
-	while (++counter <= game->map2D.width)
+	while (++counter <= PROVI)
 	{
+
 		if (!counter)
 			printf("EMPIEZA------------------------------------------------------------------\n");
 		if (ray->fictional_distance[1] < ray->fictional_distance[0])
 		{
 			printf("me fijo en OY\n");
-		/* 	if (!counter && ray->dir.x < 0)
-				coor_map2D[0] = ray->position_2D[0] + ray->step[0]; */
 			ray->step[1] += ray->step_increase[1];
 			printf("AQUI %i\n", ray->step[1]);
 			ray->fictional_distance[1] += ray->delta[1];
-			//coor_map2D[1] = ray->position_2D[1] + ray->step[1];
 			ray->face = 2;
 		}
 		else
 		{
 			printf("me fijo en OX\n");
-			/* if (!counter && ray->dir.y < 0)
-				coor_map2D[1] = ray->position_2D[1] + ray->step[1]; */
 			ray->step[0] += ray->step_increase[0];
 			ray->fictional_distance[0] += ray->delta[0];
-			//coor_map2D[0] = ray->position_2D[0] + ray->step[0];
 			ray->face = 1;
 		}
 		if (is_wall2D(ray->step[1], ray->step[0], game))
@@ -182,22 +190,18 @@ void raycast_collision_routine(t_ray *ray, t_vector dir, t_prog *game)
 		printf("-----------------------\n");
 		
 	}
+
 }
 
 
 //poner una cmrobacion de wall al principio
 t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
 {
-	//274 unidades en x  es el multiplicador.
-	//154 unidades en y
-	
-	//int coor_map2D[2];
 	t_ray ray;
 
 	init_ray(&ray, origin, dir, game);
-/* 	coor_map2D[0] = ray.position_2D[0];
-	coor_map2D[1] = ray.position_2D[1]; */
 	raycast_collision_routine(&ray, dir, game);
+
 	return (ray.resultant_vector);
 }
 
@@ -206,9 +210,6 @@ int is_wall2D(int j, int i, t_prog *game)
 	/* static int calcu;
 	printf("caLc: %i\n", ++calcu); */
 				
-
-	/* if (j >  6)
-		return (1); */ //RZON SEG FALT
 	if (j < 0 || i < 0)
 		return (1);
 	if (game->map2D.layout[j][i])
