@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 13:33:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/11 11:06:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ typedef struct s_vector
 	double	y;
 }				t_vector;
 
+/** PURPOSE : Structure to define a full ray.
+ * Not only the vector itself, but its origin, direction
+ * blocks that covers in grid and in what face of wall impacts. */
 typedef struct s_ray
 {
 	double		origin[D2];
 	t_vector	dir;
 	int 		position_2D[D2];
-	double		partial[D2];
 	double		delta[D2];
 	int			step[D2];
 	int			step_increase[D2];
-	double			fictional_distance[D2];
+	double		fictional_distance[D2];
 	int			face;
 	t_vector	resultant_vector;
 }				t_ray;
@@ -87,23 +89,12 @@ typedef struct s_map
 	int		height;
 	int		width;
 	int		pixel_per_block[D2];
-
 	/* --------------- */
 	char		**map;
 	int			map_x;
 	int			map_y;
 	/* --------------- */
 }				t_map;
-
-/* PURPOSE : Used as an auxiliar grid to calculate collisions. */
-typedef struct s_grid
-{
-	double	partial[2]; //const
-	double	delta[2]; //const
-
-	int		blocks[2];
-	double	distance[2];
-}				t_grid;
 
 typedef struct s_program
 {
@@ -130,4 +121,17 @@ typedef struct s_program
 	
 }               t_prog;
 
+
+
+
+/* LEGACY, OBSOLETO PARA BORRAR PRONTO */
+/* PURPOSE : Used as an auxiliar grid to calculate collisions. */
+typedef struct s_grid
+{
+	double	partial[2]; //const
+	double	delta[2]; //const
+
+	int		blocks[2];
+	double	distance[2];
+}				t_grid;
 #endif
