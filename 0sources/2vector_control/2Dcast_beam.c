@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/11 12:26:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/15 09:13:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_vector	 raycast(t_vector dir, double origin[], t_prog *game);
 
 /** PURPOSE : Cast barrage of vector, starting outwards an going inwards. */
-static void raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
+void raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 {
 	t_vector ray;
 	t_vector resultant_left;
