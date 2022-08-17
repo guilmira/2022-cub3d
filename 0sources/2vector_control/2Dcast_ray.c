@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/16 10:28:13 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:37:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 int is_wall2D(int j, int i, t_prog *game)
 {
-/* 	static int calcu;
-	printf("caLc: %i\n", ++calcu); */
-				
 	if (j < 0 || i < 0)
 		return (1);
 	if (game->map2D.layout[j][i])
 		return (1);
 	else
 		return (0);
-	
 }
 
 t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, t_prog *game)
@@ -69,12 +65,6 @@ static void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog
 	factor = dir.y / dir.x;
 	ray->resultant_vector = final_raycasted_vector\
 	(blocks_advanced, factor, ray, game);
-
-	printf("VECTOR FINAL\n");
-	printf("blocks %i\n", blocks_advanced);
-	log_vector(ray->resultant_vector);
-	
-
 }
 
 void raycast_collision_routine(t_ray *ray, t_vector dir, t_prog *game)

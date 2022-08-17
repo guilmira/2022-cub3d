@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/11 15:11:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:28:33 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 								2 - minimap corner
 								4 - full minimap 						*/
 
+# define MINIMAP_INTIAL_STATE 4
 #define FULL_MINIMAP 4
 
-# define MINIMAP_INTIAL_STATE 4
 
 //# define MOVEMENT_PIXEL_UNIT 4 //velocity 
 

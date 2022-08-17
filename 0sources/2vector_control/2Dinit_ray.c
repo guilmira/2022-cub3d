@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:55 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/15 17:53:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:37:48 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void get_delta(t_ray *ray, t_vector dir)
 		ray->delta[0] = fabs(1 / dir.x);
 	if (dir.y)
 		ray->delta[1] = fabs(1 / dir.y);
-
 	
 }
 
@@ -47,8 +46,6 @@ static void init_net_distance(t_ray *ray, t_vector direction, t_prog *game)
 	origin_coordinates[1] = ray->origin[1];
 	ray->step[0] = ray->position_2D[0];
 	ray->step[1] = ray->position_2D[1];
-	
-
 	get_relative_distance(ray, game);
 	if (direction.x >= 0)
 	{
@@ -74,13 +71,6 @@ static void init_net_distance(t_ray *ray, t_vector direction, t_prog *game)
 		factor_at_origin = (ray->origin[1] - (double) ray->position_2D[1] * game->map2D.pixel_per_block[1]) / game->map2D.pixel_per_block[1];
 		ray->net_distance[1] = (factor_at_origin) * ray->delta[1];
 	}
-	printf("FACTOR AT ORIGIN \n");
-	printf("%f\n", factor_at_origin);
-	/* if (fabs(direction.x) < PROV)
-		ray->net_distance[0] = game->map2D.width + 1;
-	if (fabs(direction.y) < PROV)
-		ray->net_distance[1] = game->map2D.width + 1; */
-
 }
 
 /** PURPOSE : Get coordinates of array. */
