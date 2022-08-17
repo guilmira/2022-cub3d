@@ -66,11 +66,11 @@ void next_frame(void *g)
 		printf("												FRAME: 	 %i\n", frame);
 		frame++;
 	
-		if (game->minimap_state != FULL_MINIMAP)
+	/* 	if (game->minimap_state != FULL_MINIMAP)
 		{
 			frame_reset(0, game);
 			put_frame3D(game);
-		}
+		} */
 
 		if (game->minimap_state)
 		{

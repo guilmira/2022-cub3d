@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:55 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/15 09:14:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:53:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void get_delta(t_ray *ray, t_vector dir)
 		ray->delta[0] = fabs(1 / dir.x);
 	if (dir.y)
 		ray->delta[1] = fabs(1 / dir.y);
+
+	
 }
 
 void get_relative_distance(t_ray *ray, t_prog *game)
@@ -103,5 +105,7 @@ void init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game)
 	ray->delta[1] = 0;
 	ray->face = 0;
 	get_delta(ray, ray->dir);
+	
 	init_net_distance(ray, ray->dir, game);
+
 }

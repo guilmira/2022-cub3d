@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 07:53:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:02:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,22 @@ static void update_player_vision(int key, t_prog *game)
 	speed_multiplier = 30;
 	if (game->pl.flag_trance)
 		speed_multiplier = TRANCE_BOOST * 5;
+	printf("--------------\n");
+	log_vector(get_perpendicular(game->pl.vis));
+	printf("--------------\n");
 	plane_perpendicular = get_unit_vector(get_perpendicular(game->pl.vis));
 	plane_perpendicular = mul_vec(plane_perpendicular, speed_multiplier);
+	
 	if (key == key_lookright)
 		new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, invert_sense_vector(plane_perpendicular)));
 	else
 		new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, (plane_perpendicular)));
 	game->pl.vis = new_vision;
+	printf("--------------\n");
+	log_vector(plane_perpendicular);
+	log_vector(game->pl.vis);
+	log_vector(new_vision);
+	printf("--------------\n");
 }
 
 /** PURPOSE : control field of vision. */

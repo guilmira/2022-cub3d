@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/11 14:56:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:45:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void draw_vision_beam(double position[], t_vector vis, int angle, int ray_offset
 {
 	t_beam		beam;
 	double		plane_lenght;
+
 
 
 	init_beam(&beam, position, vis, game);
