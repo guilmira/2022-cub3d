@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/11 14:58:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:28:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,12 @@
 
 /** PURPOSE : Requires parser executed and game stored at heap.
  * 1. Initialize the dimensions of both of the windows.
- * 2. Create images dor both of the frameworks, 3D and 2D minimap. */
+ * 2. Create images for a single frameworks that will contain the 3D and 2D minimap. */
 void init_framework(t_prog *game)
 {
 	framework_dimensions(game);
 	create_image(game, 0, game->w1.size);
-	create_image(game, 1, game->w2.size);
 }
-
-//NEXT
-//fluent movement
-//parpadea un frame al hacer tab
-//poner recuadro
 
 void	framework_2D(t_prog *game);
 
@@ -44,13 +38,12 @@ int	main(int argc, char  **argv)
 	init_game(game);
 	parser(game, argc, argv);
 	init_framework(game);
-
 	init_map2D(game->map2D.map, game);
-
 	/* --------------------------------------------------------------- */
 
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */
+
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);

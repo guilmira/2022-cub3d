@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 11:12:26 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:26:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,10 @@
 # define RAYCAST_OFFSET 6
 # define FOV_DEGREE 30
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
-
-
-
-
+# define TOTAL_IMAGES 1
 /* References to slots of images in image[TOTAL_IMAGES + 1];
 CUB_3D for 3D and MAP_2D Minimap */
 #define CUB_3D 0
-#define MAP_2D 1
 /* Safe margin not to burst the window limits. */
 #define SAFE_MARGIN 30
 

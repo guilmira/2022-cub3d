@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 11:00:28 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:45:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog 
 	double			base_location[2];
 
 
-	image = game->image[MAP_2D];
+	image = game->image[CUB_3D];
 	if (map_position[0] < 0 || map_position[1] < 0)
 		return ;
 	
@@ -87,6 +87,7 @@ void	draw_wall2D(t_prog *game)
 		}
 		i = -1;
 	}
+
 }
 
 /** PURPOSE : Draw 2D image as main render.
@@ -103,9 +104,10 @@ void	framework_2D(t_prog *game)
 	/* double pos[2] = {1, 1};
 	draw_wall_unit(pos, game->map2D.pixel_per_block, game); */
 	draw_wall2D(game);
-	draw_player_position(game->image[MAP_2D], game->pl.position_coor, game->pl.vis, game); 
+
+	draw_player_position(game->image[CUB_3D], game->pl.position_coor, game->pl.vis, game); 
+
 	/* --------------------------------------------------------------- */
 	
-		mlx_image_to_window(game->mlx,\
-	game->image[MAP_2D], game->w2.origin[0], game->w2.origin[1]);
+	
 }

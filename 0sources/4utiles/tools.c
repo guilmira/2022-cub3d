@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/06 12:26:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:27:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,7 @@ double degree_to_radian(double degree)
 	return (degree * (double) M_PI / 180);
 }
 
-/** PURPOSE : Base times height.
- * Its starting point will be the lefmost inferior corner. */
-void draw_rectangle(int x, int y, int base, int height, t_prog *game)
-{
-	int			i;
-	int			j;
-	mlx_image_t	*image;
 
-	image = game->image[MAP_2D];
-	i = -1;
-	j = -1;
-	if (x < 0 || y < 0)
-		return ;
-	while (++j < height)
-	{
-		while (++i < base)
-			mlx_put_pixel(image, x + i, coor(y + j, game->w2.size[1]), BLUE);
-		i = -1;
-	}
-}
 
 
 

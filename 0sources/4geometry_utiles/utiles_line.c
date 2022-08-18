@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 08:45:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:36:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void put_lineH(double start[], double end[], int colour, t_prog *game)
 	mlx_image_t		*image;
 
 	i = -1;
-	image = game->image[MAP_2D];
+	image = game->image[CUB_3D];
 	counter = (int) end[0] - (int) start[0];
 	if (counter <= 0)
 		return ;
@@ -41,7 +41,7 @@ void put_lineV(double start[], int size, int colour, t_prog *game)
 	mlx_image_t		*image;
 
 	i = -1;
-	image = game->image[MAP_2D];
+	image = game->image[CUB_3D];
 	counter = (int) size;
 	if (counter <= 0)
 		return ;

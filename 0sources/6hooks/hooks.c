@@ -29,7 +29,7 @@ void	frame_reset(int window_number, t_prog *game)
 		ft_mlx_delete_image_safe(0, game);
 		create_image(game, 0, game->w1.size);
 	}
-	else if (window_number == 1)
+	else if (window_number == 1 && TOTAL_IMAGES > 1)
 	{
 		ft_mlx_delete_image_safe(1, game);
 		create_image(game, 1, game->w2.size);
@@ -50,33 +50,35 @@ void	speed_testing(int frame, t_prog *game)
 	}
 }
 
+static void reset_and_wash_frame(t_prog *game)
+{
+	static int	frame;
+
+	printf("												FRAME: 	 %i\n", frame);
+	frame++;
+	
+	frame_reset(0, game);
+	wash_screen(game, game->image[CUB_3D], game->w2, RED);
+	wash_screen(game, game->image[CUB_3D], game->w2, BLACK);
+}
 
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
 void next_frame(void *g)
 {
 	t_prog		*game;
-	static int	frame;
-
 	game = (t_prog *) g;
 
 	//speed_testing(frame, game);
 	
 	if (game->pl.flag_movement)
 	{
-		printf("												FRAME: 	 %i\n", frame);
-		frame++;
-	
+		reset_and_wash_frame(game);
 		if (game->minimap_state != FULL_MINIMAP)
-		{
-			frame_reset(0, game);
 			put_frame3D(game);
-		}
-
 		if (game->minimap_state)
-		{
-			frame_reset(1, game);
 			put_frame2D(game);
-		}
+		mlx_image_to_window(game->mlx, game->image[CUB_3D], game->w2.origin[0], game->w2.origin[1]);
+		game->pl.flag_movement = 0;
 	}
 }
 

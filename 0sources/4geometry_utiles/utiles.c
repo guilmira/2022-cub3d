@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/09 11:29:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:36:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void put_horizontal(double coordinate_y, double limit_x, int colour, t_prog *gam
 	int coor_y;
 	mlx_image_t *image;
 
-	image = game->image[MAP_2D];
+	image = game->image[CUB_3D];
 	i = -1;
 	if (coordinate_y == 0)
 		coordinate_y += SAFE_OFFSET;
@@ -70,7 +70,7 @@ void put_vertical(double coordinate_x, double limit_y, int colour, t_prog *game)
 	int coor_y;
 	mlx_image_t *image;
 
-	image = game->image[MAP_2D];
+	image = game->image[CUB_3D];
 	if (coordinate_x == image->width)
 		coordinate_x -= (SAFE_OFFSET);
 	j = -1;
@@ -91,7 +91,7 @@ void draw_centered_rectangle(double o_x, double o_y, int base, int height, t_pro
 	int y;
 	mlx_image_t *image;
 
-	image = game->image[MAP_2D];
+	image = game->image[CUB_3D];
 	if (o_x < 0 || o_y < 0)
 		return ;
 	i = -1;

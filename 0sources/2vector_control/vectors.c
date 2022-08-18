@@ -26,7 +26,7 @@ void draw_vector(t_vector vec, double origin[], uint32_t colour, t_prog *game)
 	t_vector	unit_vec;
 	mlx_image_t *image;
 
-	image = game->image[MAP_2D];
+	image = game->image[CUB_3D];
 	counter = get_module(vec);
 	unit_vec = get_unit_vector(vec);
 	x_pixel = origin[0] + unit_vec.x;
