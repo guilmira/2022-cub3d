@@ -43,16 +43,6 @@
 	}
 } */
 
-/** PURPOSE : pointers at images to NULL */
-static void init_image(t_prog *game)
-{
-	int	i;
-
-	i = -1;
-	while (++i < TOTAL_IMAGES + 1)
-		game->image[i] = NULL;
-}
-
 /** PURPOSE : init MLX and set pointers to NULL.
  * 1. mlx_returns a pointer (void *). 
  * The library functions need it in order to work.
@@ -68,7 +58,7 @@ void	init_game(t_prog *game)
 	game->file = 0;
 	game->minimap_state = MINIMAP_INTIAL_STATE;
 	/* --------------------------------------------------------------- */
-	init_image(game);
+	game->image[i] = NULL;
 //	movement_vector_init(MOVEMENT_PIXEL_UNIT, game);
 	game->pl.flag_movement = 1;
 	game->pl.flag_trance = 0;
