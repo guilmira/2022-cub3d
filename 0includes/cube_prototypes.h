@@ -137,7 +137,7 @@ void log_vector(t_vector v);
 void log_coor(double array[]);
 void log_d(double d);
 void log_beam(t_beam *beam);
-void print_map(char **map, t_prog *game);
+void print_map(char **map, t_prog *game, int **s_map);
 void log_coor_int(int i[]);
 
 

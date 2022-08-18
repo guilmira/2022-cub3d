@@ -16,10 +16,8 @@
 static void clear_map2D(t_prog *game)
 {
 	int j;
-	int i;
 	
 	j = -1;
-	i = -1;
 	while (++j < game->map2D.height)
 	{
 		free(game->map2D.layout[j]);

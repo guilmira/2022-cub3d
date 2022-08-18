@@ -33,13 +33,13 @@ static void	draw_grid(t_prog *game, double size_x, double size_y)
 static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
 {
 	int				j;
-	mlx_image_t		*image;
+	//mlx_image_t		*image;
 	double			line_end[2];
 	double			line_start[2];
 	double			base_location[2];
 
 
-	image = game->image[MAP_2D];
+	//image = game->image[MAP_2D];
 	if (map_position[0] < 0 || map_position[1] < 0)
 		return ;
 	
