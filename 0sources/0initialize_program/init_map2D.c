@@ -138,6 +138,7 @@ static void do_spaced_map_w(int height, int width, int val, t_prog *game)
 			game->map2D.s_layout[count][k] = 0;
 		if (flag == 1)
 			game->map2D.s_layout[count][k + 1] = 0;
+		count++;
 	}
 }
 
@@ -155,12 +156,6 @@ static void	build_spaced_layout(t_prog *game, int height, int width)
 		else
 			game->map2D.s_layout = allocate_all_layout(height + 1, subti);
 		do_spaced_map_h(height, subti, (int)ceil(val/2), game);
-		for(int x = 0; x < height + 1; x++)
-		{
-			for (int i = 0; i < subti; ++i)
-				printf("%d ", game->map2D.s_layout[x][i]);
-			printf("\n");
-		}
 	}	
 	else if(height < width)
 	{
@@ -174,7 +169,6 @@ static void	build_spaced_layout(t_prog *game, int height, int width)
 	}
 	else
 		game->map2D.s_layout = game->map2D.layout;
-	sleep(100);
 }
 /** PURPOSE : Translate parser map into a wall map. */
 void init_map2D(char **map, t_prog *game)
