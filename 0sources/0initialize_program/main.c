@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 13:30:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:50:40 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void init_framework(t_prog *game)
 
 void	framework_2D(t_prog *game);
 
+
+
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
@@ -30,7 +32,7 @@ int	main(int argc, char  **argv)
 {
 	t_prog	*game;
 	/* --------------------------------------------------------------- */
-	//atexit(ft_leaks);
+	atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);
@@ -39,6 +41,8 @@ int	main(int argc, char  **argv)
 	parser(game, argc, argv);
 	init_framework(game);
 	init_map2D(game->map2D.map, game);
+
+	
 	/* --------------------------------------------------------------- */
 
 	/* --------------------------------------------------------------- */

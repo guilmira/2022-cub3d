@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/15 18:01:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:05:34 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void cast_beam(t_beam *beam, t_prog *game)
 	//cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
 
 	/* --------ACTUAL----------------------------------------------------- */
-	raycast_barrage(beam, beam->aperture_units, beam->plane_left, game);
+	raycast_barrage(beam, beam->number_of_rays, beam->plane_left, game);
 	draw_vector(beam->vis, beam->position, RED, game);
 	/* --------ACTUAL----------------------------------------------------- */
 	

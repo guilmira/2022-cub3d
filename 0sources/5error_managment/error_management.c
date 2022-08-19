@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 12:34:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:52:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ static void clear_map2D(t_prog *game)
 	game->map2D.layout = NULL;
 }
 
+void clear_raycast(t_prog *game)
+{
+	if (game->rc)
+	{
+		if (game->rc->rc_vector)
+			free(game->rc->rc_vector);
+		if (game->rc->rc_distance)
+			free(game->rc->rc_distance);
+		if (game->rc->rc_wall_side)
+			free(game->rc->rc_wall_side);
+		free(game->rc);	
+	}
+}
+
 
 /** PURPOSE : Frees allocated memory in program. */
 static void clear_memory(t_prog *game)
@@ -47,6 +61,7 @@ static void clear_memory(t_prog *game)
 		if (game->EA)
 			free(game->EA);
 		clear_map2D(game);
+		clear_raycast(game);
 		free(game);
     }
 }

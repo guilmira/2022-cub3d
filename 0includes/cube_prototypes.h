@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 13:22:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:52:11 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	put_frame3D(t_prog *game);
 void	hk_keys(mlx_key_data_t key, void *g);
 
 /* PLAYER */
-void draw_player_position(mlx_image_t *image, double position[], t_vector vis, t_prog *game);
+void draw_player_position(mlx_image_t *image, t_prog *game);
 void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game);
 void fill_player_pos(t_prog *game, double player_pos[]);
 
@@ -141,5 +141,9 @@ void log_coor_int(int i[]);
 
 
 int	collision_wall_trigonometric(t_vector ray, double position[], t_grid *grid, t_prog *game);
+
+
+void clear_raycast(t_prog *game);
+
 
 #endif

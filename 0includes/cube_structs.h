@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 11:15:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:03:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_beam
 	t_vector	plane_left;
 	t_vector	plane_right;
 	t_vector	plane_segment;
-	double		aperture_units;
+	int			number_of_rays;
 }				t_beam;
 
 /** PURPOSE : Info of the player
@@ -97,6 +97,17 @@ typedef struct s_map
 	/* --------------- */
 }				t_map;
 
+/** PURPOSE : Result of the raycast. */
+typedef struct s_raycast
+{
+	t_vector	*rc_vector;
+	double		*rc_distance;
+	int			*rc_wall_side;
+	/* --------------- */
+	
+	/* --------------- */
+}				t_raycast;
+
 typedef struct s_program
 {
     /* ----- SHARED ---- */
@@ -115,6 +126,7 @@ typedef struct s_program
 	t_dim		w1;
 	t_dim		w2;
 	t_player	pl;
+	t_raycast   *rc;
 	//t_vector	wind_rose[MOVE_OPTIONS];
 	int			minimap_state;
 	/* ----- KIRIAM ---- */

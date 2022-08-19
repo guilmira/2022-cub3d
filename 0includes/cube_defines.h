@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 12:02:17 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 13:13:17 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 #define RAYCAST_LIMIT 30
 # define SAFE_OFFSET 0.0001
 //# define RAYCAST_OFFSET 100 // pixels per aperture
-# define RAYCAST_OFFSET 6
+# define RAYCAST_OFFSET 1
 # define FOV_DEGREE 30
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 # define TOTAL_IMAGES 1

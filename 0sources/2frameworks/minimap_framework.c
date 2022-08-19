@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 12:02:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:26:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,7 @@ void	framework_2D(t_prog *game)
 	/* double pos[2] = {1, 1};
 	draw_wall_unit(pos, game->map2D.pixel_per_block, game); */
 	draw_wall2D(game);
-
-	draw_player_position(game->image[CUB_3D], game->pl.position_coor, game->pl.vis, game); 
+	draw_player_position(game->image[CUB_3D], game); 
 
 	/* --------------------------------------------------------------- */
 	
