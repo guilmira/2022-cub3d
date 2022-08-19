@@ -6,19 +6,19 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 13:04:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:14:26 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Calculate segment base on division. */
-static t_vector calculate_plane_segment(t_vector plane_left, int aperture_units)
+static t_vector calculate_plane_segment(t_vector plane_left, int number_of_rays)
 {
 	t_vector segment;
 
-	segment.x = plane_left.x / aperture_units;
-	segment.y = plane_left.y / aperture_units;
+	segment.x = plane_left.x / number_of_rays;
+	segment.y = plane_left.y / number_of_rays;
 	return (segment);
 }
 

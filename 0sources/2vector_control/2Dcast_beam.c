@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 13:05:34 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:13:39 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	t_vector resultant_left;
 	t_vector resultant_right;
 	t_vector direction;
+	int i;
+	i = -1;
 
 	while (counter-- > 0)
 	{
@@ -29,16 +31,20 @@ void raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 		direction = get_unit_vector(resultant_left);
 		ray = raycast(direction, beam->position, game);
 	/* ----------REPRESENTACION GRAFICA----------------------------------------------------- */
+		game->rc->rc_vector[++i] = ray;
 		draw_vector(ray, beam->position, RED, game);
 	/* ----------CALCULO----------------------------------------------------- */
 		resultant_right = sub_vec(beam->vis, plane);
 		direction = get_unit_vector(resultant_right);
 		ray = raycast(direction, beam->position, game);
 	/* ----------REPRESENTACION GRAFICA----------------------------------------------------- */
+		game->rc->rc_vector[counter] = ray;
+		
 		draw_vector(ray, beam->position, RED, game);
 	/* --------RESTAR SEGMENTO Y REPETIR----------------------------------------------------- */
 		plane = sub_vec(plane, beam->plane_segment);
 	}
+
 }
 
 /** PURPOSE : Casting beam of rays from origin. 
@@ -53,12 +59,10 @@ void cast_beam(t_beam *beam, t_prog *game)
 /* 	double time_spent = 0.0;	
 	clock_t begin = clock(); */
 
-
-	//PARA BORRAR LLEGADO EL MOMENTO
-	//cast_barrage(beam, beam->aperture_units, beam->plane_left, game);
-
 	/* --------ACTUAL----------------------------------------------------- */
 	raycast_barrage(beam, beam->number_of_rays, beam->plane_left, game);
+
+
 	draw_vector(beam->vis, beam->position, RED, game);
 	/* --------ACTUAL----------------------------------------------------- */
 	

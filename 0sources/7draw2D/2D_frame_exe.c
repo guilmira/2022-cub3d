@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 12:30:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:13:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,15 @@ void	put_frame2D(t_prog *game)
 	{
 		framework_2D(game);
 	}
+	
+
+/* 	t_vector ray;
+	int i; 
+	i = -1;
+	while (++i < 250)
+	{
+		ray = game->rc->rc_vector[i];
+		draw_vector(ray, game->pl.position_coor, RED, game);
+	} */
 }
 
