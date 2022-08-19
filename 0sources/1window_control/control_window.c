@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 14:23:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 11:30:17 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:41:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour)
 void create_image(t_prog *game, int array_position, double size[])
 {
 	mlx_image_t	*image;
-
+	
 	image = mlx_new_image(game->mlx, (int) size[0], (int) size[1]);
 	if (!image)
 		ft_shutdown(EX3, game);

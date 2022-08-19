@@ -61,6 +61,7 @@ static void reset_and_wash_frame(t_prog *game)
 	wash_screen(game, game->image[CUB_3D], game->w2, RED);
 	wash_screen(game, game->image[CUB_3D], game->w2, BLACK);
 }
+	//NEXT te mete dos teclas porque lo detecta como pulsado. Por eso va de 2 frames en 2. un sleep lo quita
 
 /** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
 void next_frame(void *g)
@@ -72,6 +73,7 @@ void next_frame(void *g)
 	
 	if (game->pl.flag_movement)
 	{
+
 		reset_and_wash_frame(game);
 		if (game->minimap_state != FULL_MINIMAP)
 			put_frame3D(game);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/17 13:52:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:34:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,19 @@
 /** PURPOSE : general function to init variables. */
 void update_pixel_per_block(t_prog *game)
 {
-	game->map2D.pixel_per_block[0] = game->w2.size[0] / game->map2D.width;
-	game->map2D.pixel_per_block[1] = game->w2.size[1] / game->map2D.height;
+
+	if (!game->minimap_state)
+		return ;
+	else if (game->minimap_state == 2)
+	{
+		game->map2D.pixel_per_block[0] = game->w2.size[0] / game->map2D.width;
+		game->map2D.pixel_per_block[1] = game->w2.size[1] / game->map2D.height;
+	}
+	else
+	{
+		game->map2D.pixel_per_block[0] = game->w2.size[0] / game->map2D.width;
+		game->map2D.pixel_per_block[1] = game->w2.size[1] / game->map2D.height;
+	}
 }
 
 static void fill_vis(t_prog *game, char dir)
@@ -100,6 +111,7 @@ void init_map2D(char **map, t_prog *game)
 			else
 			{
 				update_player_position(j, i, game);
+				log_coor(game->pl.position_coor);
 				fill_vis(game, game->map2D.map[j][i]);
 			}
 
@@ -108,5 +120,5 @@ void init_map2D(char **map, t_prog *game)
 	}
 	game->map2D.layout = layout;
 	print_map(map, game);
-	update_pixel_per_block(game);
+
 }

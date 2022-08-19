@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 12:27:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:22:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			trgb_translate(int red, int blue, int green, int transparency);
 int			get_opposite(int colour_code);
 void		main_image_framework(t_prog *game);
 void		framework_2D(t_prog *game);
-void update_pixel_per_block(t_prog *game);
+void		update_pixel_per_block(t_prog *game);
 
 /* GEOMETRY TOOLS */
 void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size);

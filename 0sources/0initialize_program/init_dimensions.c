@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/05 10:55:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/19 12:01:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,19 @@ static t_dim copy_dim_struct(t_dim window_src)
 	return (win_return);
 }
 
+void	get_minimap_simetric_size(t_prog *game)
+{
+	game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
+	game->w2.size[1] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
+
+	while ((int) game->w2.size[0] % game->map2D.width != 0)
+		game->w2.size[0]++;
+	while ((int) game->w2.size[1] % game->map2D.height != 0)
+		game->w2.size[1]++;
+
+	game->w2.origin[0] = game->w1.size[0] - game->w2.size[0];
+	game->w2.origin[1] = game->w1.size[1] - game->w2.size[1];
+}
 
 
 /** PURPOSE : used to recalculate minimap dimensions.
@@ -42,10 +55,7 @@ void	minimap_dimensions(t_prog *game)
 		return ;
 	else if (game->minimap_state == 2)
 	{
-		game->w2.origin[0] = game->w1.size[0] - game->w1.size[0] / MINIMAP_WINDOW_RATIO;
-		game->w2.origin[1] = game->w1.size[1] - game->w1.size[1] / MINIMAP_WINDOW_RATIO;
-		game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
-		game->w2.size[1] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
+		get_minimap_simetric_size(game);
 		if (game->w2.size[0] - game->w2.origin[0] > game->w1.size[0] \
 		|| game->w2.size[1] - game->w2.origin[1] > game->w1.size[1])
 			ft_shutdown("Error.\nMinimap to big\n", game);
@@ -73,5 +83,4 @@ void	framework_dimensions(t_prog *game)
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */
 	update_pixel_per_block(game);
-
 }
