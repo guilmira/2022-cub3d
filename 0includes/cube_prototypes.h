@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 16:42:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:49:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		log_vector(t_vector v);
 void		log_coor(double array[]);
 void		log_d(double d);
 void		log_beam(t_beam *beam);
-void		print_map(char **map, t_prog *game);
+void		print_map(char **map, t_prog *game, int **s_map);
 void		log_coor_int(int i[]);
 void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size);
 

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 16:45:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:55:23 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ static void	build_spaced_layout(t_prog *game, int height, int width)
 {
 	float val;
 	int subti;
-
+	printf("AQUI\n");
 	if (height > width)
 	{
 		val = height - width;
@@ -166,6 +166,7 @@ static void	build_spaced_layout(t_prog *game, int height, int width)
 		else
 			game->map2D.s_layout = allocate_all_layout(height + 1, subti);
 		do_spaced_map_h(height, subti, (int)ceil(val/2), game);
+		printf("AQUIIII\n");
 	}	
 	else if(height < width)
 	{
@@ -213,6 +214,7 @@ void	init_map2D(char **map, t_prog *game)
 	}
 	game->map2D.layout = layout;
 	build_spaced_layout(game, game->map2D.height, game->map2D.width);
+	
 	//print_map(map, game, layout);
 	//update_pixel_per_block(game);
 }
