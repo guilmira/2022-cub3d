@@ -38,6 +38,49 @@ double	degree_to_radian(double degree)
 }
 
 
+int **copy_double_pointer(int **var, int height, int width)
+{
+	int		i;
+	int		x;
+	int	**aux;
+
+	aux = ft_calloc(sizeof(int *), height);
+	i = 0;
+	while(i < height)
+	{
+		x = 0;
+		aux[i] = ft_calloc(sizeof(int), width);
+		while (x < width)
+		{
+			aux[i][x] = var[i][x];
+			x++;
+		}
+		i++;
+	}
+	return(aux);
+}
+
+void	print_smap(int **s_map, int height, int width)
+{
+	int		i;
+	int		x;
+
+	i = 0;
+	printf("height:%d || width:%d\n", height, width);
+	while(i < height)
+	{
+		x = 0;
+		printf("| ");
+		while (x < width)
+		{
+			printf("%d ", s_map[i][x]);
+			x++;
+		}
+		printf("|\n");
+		i++;
+	}
+}
+
 
 
 

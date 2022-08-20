@@ -156,30 +156,49 @@ static void	build_spaced_layout(t_prog *game, int height, int width)
 {
 	float val;
 	int subti;
-	printf("AQUI\n");
+
+	printf("height:%d y width:%d\n", height, width);
 	if (height > width)
 	{
 		val = height - width;
 		subti = width + (ceil(val/2) * 2);
-		if (height % 2 == 0)
+		if (ceil(val) == 0)
 			game->map2D.s_layout = allocate_all_layout(height, subti);
 		else
 			game->map2D.s_layout = allocate_all_layout(height + 1, subti);
 		do_spaced_map_h(height, subti, (int)ceil(val/2), game);
-		printf("AQUIIII\n");
+		game->map2D.s_width = subti;
+        if (ceil(val) == 0)
+        {
+            game->map2D.s_height = height;
+        }
+        else
+        {
+            game->map2D.s_height = height + 1;
+        }
 	}	
 	else if(height < width)
 	{
 		val = width - height;
 		subti = height + (ceil(val/2) * 2);
-		if (width % 2 == 0)
+		if (ceil(val) == 0)
 			game->map2D.s_layout = allocate_all_layout(subti, width);
 		else
 			game->map2D.s_layout = allocate_all_layout(subti, width + 1);
 		do_spaced_map_w(subti, width, (int)ceil(val/2), game);
+		game->map2D.s_height = subti;
+        if (ceil(val) == 0)
+            game->map2D.s_width = width;
+        else
+            game->map2D.s_width = width + 1;
 	}
 	else
-		game->map2D.s_layout = game->map2D.layout;
+	{
+		game->map2D.s_layout = copy_double_pointer(game->map2D.layout, game->map2D.height, game->map2D.width);
+		game->map2D.s_height = game->map2D.height;
+		game->map2D.s_width = game->map2D.width;
+	}
+	print_smap(game->map2D.s_layout, game->map2D.s_height, game->map2D.s_width);
 }
 /** PURPOSE : Translate parser map into a wall map. */
 void	init_map2D(char **map, t_prog *game)

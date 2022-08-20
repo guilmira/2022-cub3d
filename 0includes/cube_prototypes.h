@@ -29,6 +29,8 @@ void		create_image(t_prog *game, int array_position, double size[]);
 void		framework_dimensions(t_prog *game);
 void		init_map2D(char **map, t_prog *game);
 void		minimap_dimensions(t_prog *game);
+int			**copy_double_pointer(int **var, int height, int width);
+void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int			trgb_translate(int red, int blue, int green, int transparency);

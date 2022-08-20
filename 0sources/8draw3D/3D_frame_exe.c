@@ -19,8 +19,8 @@ void	put_frame3D(t_prog *game)
 {
 	(void) game;
 
-	int	i;
-	i = -1;
+	/*int	i;
+	i = -1;*/
 	/* while (++i < 900)
 		solid_pixel(game->image[CUB_3D], 900, 600 + i, GREEN);
 		i = -1;

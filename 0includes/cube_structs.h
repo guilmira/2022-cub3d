@@ -88,6 +88,8 @@ typedef struct s_map
 	int		**s_layout;
 	int		height;
 	int		width;
+	int		s_height;
+	int		s_width;
 	int		pixel_per_block[D2];
 	/* --------------- */
 	char	**map;
