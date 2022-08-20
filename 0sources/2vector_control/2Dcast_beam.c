@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 14:13:39 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:14:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,34 @@ t_vector	 raycast(t_vector dir, double origin[], t_prog *game);
 /** PURPOSE : Cast barrage of vector, starting outwards an going inwards. */
 void raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 {
-	t_vector ray;
-	t_vector resultant_left;
-	t_vector resultant_right;
-	t_vector direction;
-	int i;
+	t_vector	ray;
+	t_vector	resultant;
+	t_vector	direction;
+	int			i;
+	
 	i = -1;
-
-	while (counter-- > 0)
+	//while (counter-- > 0)
+	while (++i < counter)
 	{
 	/* ----------CALCULO----------------------------------------------------- */
-		resultant_left = sum_vec(beam->vis, plane);
-		direction = get_unit_vector(resultant_left);
+		resultant = sum_vec(beam->vis, plane);
+		direction = get_unit_vector(resultant);
 		ray = raycast(direction, beam->position, game);
 	/* ----------REPRESENTACION GRAFICA----------------------------------------------------- */
-		game->rc->rc_vector[++i] = ray;
-		draw_vector(ray, beam->position, RED, game);
+		if (i < game->rc->number_of_rays)
+			game->rc->rc_vector[i] = ray;
+
+		//draw_vector(ray, beam->position, RED, game);
 	/* ----------CALCULO----------------------------------------------------- */
-		resultant_right = sub_vec(beam->vis, plane);
-		direction = get_unit_vector(resultant_right);
+		resultant = sub_vec(beam->vis, plane);
+		direction = get_unit_vector(resultant);
 		ray = raycast(direction, beam->position, game);
 	/* ----------REPRESENTACION GRAFICA----------------------------------------------------- */
-		game->rc->rc_vector[counter] = ray;
+		if (i < game->rc->number_of_rays)
+			game->rc->rc_vector[counter + (counter - 1) - i] = ray;
 		
-		draw_vector(ray, beam->position, RED, game);
+		//draw_vector(ray, beam->position, RED, game);
+
 	/* --------RESTAR SEGMENTO Y REPETIR----------------------------------------------------- */
 		plane = sub_vec(plane, beam->plane_segment);
 	}
@@ -55,18 +59,12 @@ void raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
  * 5. Recalculate plane vector and start loop. */
 void cast_beam(t_beam *beam, t_prog *game)
 {
-	
-/* 	double time_spent = 0.0;	
-	clock_t begin = clock(); */
-
 	/* --------ACTUAL----------------------------------------------------- */
 	raycast_barrage(beam, beam->number_of_rays, beam->plane_left, game);
-
-
-	draw_vector(beam->vis, beam->position, RED, game);
 	/* --------ACTUAL----------------------------------------------------- */
-	
 
+/* 	double time_spent = 0.0;	
+	clock_t begin = clock(); */
 /* 	clock_t end = clock();
 	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("The elapsed time is %f seconds\n", time_spent); */

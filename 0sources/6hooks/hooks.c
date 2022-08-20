@@ -75,10 +75,7 @@ void next_frame(void *g)
 	{
 			/* 			MAIN FUNCTION RAYCAST */
 		reset_and_wash_frame(game);
-
-		draw_vision_beam(game->pl.position_coor, game->pl.vis, FOV_DEGREE, RAYCAST_OFFSET, game);
-		
-		
+		main_raycast_calculation(FOV_DEGREE, RAYCAST_OFFSET, game);
 		if (game->minimap_state != FULL_MINIMAP)
 			put_frame3D(game);
 		if (game->minimap_state)

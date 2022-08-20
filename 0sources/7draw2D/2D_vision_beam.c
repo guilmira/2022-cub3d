@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 14:14:26 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:22:40 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,22 @@ static double calculate_number_of_rays(double plane_lenght, double ray_offset)
 }
 
 
-void	init_struct_raycast(int size, t_prog *game)
+/** PURPOSE : Initialize pointers to contain raycast information
+ * (for later drawing).*/
+void	init_struct_raycast(int number_of_rays, double position[], t_vector vision, t_prog *game)
 {
 	t_raycast	*rc;
 	size_t		heap_size;
 
-	heap_size = (size_t) size;
-	printf("SIZE %i\n", size);
+	heap_size = (size_t) number_of_rays;
 	rc = ft_calloc(1, sizeof(t_raycast));
 	rc->rc_vector = ft_calloc(heap_size, sizeof(t_vector));
 	rc->rc_distance = ft_calloc(heap_size, sizeof(double));
 	rc->rc_wall_side = ft_calloc(heap_size, sizeof(int));
-
+	rc->rc_origin_coor[0] = position[0];
+	rc->rc_origin_coor[0] = position[1];
+	rc->number_of_rays = number_of_rays;
+	rc->vision = vision;
 	game->rc = rc;
 }
 
@@ -57,19 +61,19 @@ void	init_struct_raycast(int size, t_prog *game)
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. 
  * 3. Find out plane x vector. ( <---------------- ).*/
-void draw_vision_beam(double position[], t_vector vis, int angle, int ray_offset, t_prog *game)
+void main_raycast_calculation(int angle, int ray_offset, t_prog *game)
 {
 	t_beam		beam;
 	double		plane_lenght;
 	double		rays;
 
 	clear_raycast(game);
-	init_beam(&beam, position, vis, game);
+	init_beam(&beam, game->pl.position_coor,  game->pl.vis, game);
 	beam.vis = raycast(beam.vis_dir, beam.position, game);
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
 	rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
 	beam.number_of_rays = (int) roundl(rays);
-	init_struct_raycast(beam.number_of_rays * 2, game);
+	init_struct_raycast(beam.number_of_rays * 2, beam.position, beam.vis, game);
 	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays); 
 	cast_beam(&beam, game);
 	game->pl.beam = beam;

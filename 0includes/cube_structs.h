@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 13:03:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:12:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,12 @@ typedef struct s_map
 /** PURPOSE : Result of the raycast. */
 typedef struct s_raycast
 {
+	t_vector	vision;
 	t_vector	*rc_vector;
 	double		*rc_distance;
 	int			*rc_wall_side;
+	double		rc_origin_coor[D2];
+	int			number_of_rays;
 	/* --------------- */
 	
 	/* --------------- */

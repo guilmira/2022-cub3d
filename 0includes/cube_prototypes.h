@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 12:52:11 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:21:59 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	collision_window(t_vector ray, double low_boundry[], double high_boundry[]);
 
 /* BEAM */
 void cast_beam(t_beam *beam, t_prog *game);
-void draw_vision_beam(double position[], t_vector vis, int angle, int ray_offset, t_prog *game);
+void main_raycast_calculation(int angle, int ray_offset, t_prog *game);
 double plane_lenght_and_direction(t_beam *beam, int angle);
 
 
