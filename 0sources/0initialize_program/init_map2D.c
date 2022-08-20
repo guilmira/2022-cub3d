@@ -129,7 +129,7 @@ static void do_spaced_map_w(int height, int width, int val, t_prog *game)
 		while (++k < width)
 			game->map2D.s_layout[count][k] = 0;
 		if (flag == 1)
-			game->map2D.s_layout[count][k + 1] = 0;
+			game->map2D.s_layout[count][width] = 0;
 	}
 	i = -1;
 	while (++i < game->map2D.height)
@@ -138,7 +138,7 @@ static void do_spaced_map_w(int height, int width, int val, t_prog *game)
 		while (++k < width)
 			game->map2D.s_layout[count][k] = game->map2D.layout[i][k];
 		if (flag == 1)
-			game->map2D.s_layout[count][k + 1] = 0;
+			game->map2D.s_layout[count][width] = 0;
 		count++;
 	}
 	while(count != height)
@@ -147,7 +147,7 @@ static void do_spaced_map_w(int height, int width, int val, t_prog *game)
 		while (++k < width)
 			game->map2D.s_layout[count][k] = 0;
 		if (flag == 1)
-			game->map2D.s_layout[count][k + 1] = 0;
+			game->map2D.s_layout[count][width] = 0;
 		count++;
 	}
 }
@@ -162,32 +162,28 @@ static void	build_spaced_layout(t_prog *game, int height, int width)
 	{
 		val = height - width;
 		subti = width + (ceil(val/2) * 2);
-		if (ceil(val) == 0)
+		if ((int)ceil(val) % 2 == 0)
 			game->map2D.s_layout = allocate_all_layout(height, subti);
 		else
 			game->map2D.s_layout = allocate_all_layout(height + 1, subti);
 		do_spaced_map_h(height, subti, (int)ceil(val/2), game);
 		game->map2D.s_width = subti;
-        if (ceil(val) == 0)
-        {
-            game->map2D.s_height = height;
-        }
-        else
-        {
-            game->map2D.s_height = height + 1;
-        }
+		if ((int)ceil(val) % 2 == 0)
+			game->map2D.s_height = height;
+		else
+			game->map2D.s_height = height + 1;
 	}	
 	else if(height < width)
 	{
 		val = width - height;
 		subti = height + (ceil(val/2) * 2);
-		if (ceil(val) == 0)
+		if ((int)ceil(val) % 2 == 0)
 			game->map2D.s_layout = allocate_all_layout(subti, width);
 		else
 			game->map2D.s_layout = allocate_all_layout(subti, width + 1);
 		do_spaced_map_w(subti, width, (int)ceil(val/2), game);
 		game->map2D.s_height = subti;
-        if (ceil(val) == 0)
+        if ((int)ceil(val) % 2 == 0)
             game->map2D.s_width = width;
         else
             game->map2D.s_width = width + 1;
