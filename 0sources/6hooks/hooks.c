@@ -12,78 +12,29 @@
 
 #include "cube.h"
 
-/** PURPOSE : manage window closing or 
- * exiting with other widgets/tools. */
-static void	hk_close(void *game)
-{
-	clean_exit(game);
-}
 
-/** PURPOSE : Clear framework and create a new image to write pixels into. 
- * Window_number is either 0 for the 3D or 1 for the 2D
-*/
-void	frame_reset(int window_number, t_prog *game)
-{
-	if (window_number == 0)
-	{
-		ft_mlx_delete_image_safe(0, game);
-		create_image(game, 0, game->w1.size);
-	}
-	else if (window_number == 1 && TOTAL_IMAGES > 1)
-	{
-		ft_mlx_delete_image_safe(1, game);
-		create_image(game, 1, game->w2.size);
-	}
-}
 
-void insta_player_vision(t_prog *game);
-void	speed_testing(int frame, t_prog *game)
-{
-	if (frame == 150)
-		clean_exit(game);
-	insta_player_vision(game);
-	if (frame == 0)
-	{
-	game->pl.vis.x = 1;
-	game->pl.vis.y = 1;
-
-	}
-}
-
-static void reset_and_wash_frame(t_prog *game)
-{
-	static int	frame;
-
-	printf("												FRAME: 	 %i\n", frame);
-	frame++;
-	
-	frame_reset(0, game);
-	wash_screen(game, game->image[CUB_3D], game->w2, RED);
-	wash_screen(game, game->image[CUB_3D], game->w2, BLACK);
-}
-	//NEXT te mete dos teclas porque lo detecta como pulsado. Por eso va de 2 frames en 2. un sleep lo quita
-
-/** PURPOSE : Convert pointer of program and execute 60 times each second the frame. */
-void next_frame(void *g)
+/** PURPOSE : Convert pointer of program and execute frames.
+ * 60 FPS. */
+void	next_frame(void *g)
 {
 	t_prog		*game;
-	game = (t_prog *) g;
 
-	//speed_testing(frame, game);
-	
+	game = (t_prog *) g;
 	if (game->pl.flag_movement)
 	{
-			/* 			MAIN FUNCTION RAYCAST */
 		reset_and_wash_frame(game);
 		main_raycast_calculation(FOV_DEGREE, RAYCAST_OFFSET, game);
 		if (game->minimap_state != FULL_MINIMAP)
 			put_frame3D(game);
 		if (game->minimap_state)
 			put_frame2D(game);
-		mlx_image_to_window(game->mlx, game->image[CUB_3D], game->w2.origin[0], game->w2.origin[1]);
+		mlx_image_to_window(game->mlx, game->image[CUB_3D], \
+		game->w2.origin[0], game->w2.origin[1]);
 		game->pl.flag_movement = 0;
 	}
 }
+
 
 /** PURPOSE : execute main routine of program.
  * mlx_loop and mlx_loop_hook will tried to be executed a total

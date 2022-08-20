@@ -6,40 +6,28 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/02 14:23:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 12:41:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:50:59 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-#define SIZE_OFFSET 1
-
-/** PURPOSE : Delete image tool. */
-void wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour)
+/** PURPOSE : Tool to safely clear an image and set pointer to null. */
+void	ft_mlx_delete_image_safe(int image_position, t_prog *game)
 {
-	int i;
-	int j;
-
-	i = -1;
-	j = 0;
-	(void) game;
-	while (++j <= window.size[1])
-	{
-		i = -1;
-		while (++i <= window.size[0] - SIZE_OFFSET)
-			solid_pixel(image, i, coor(j, window.size[1]), colour);
-	}
+	mlx_delete_image(game->mlx, game->image[image_position]);
+	game->image[image_position] = NULL;
 }
 
 /** PURPOSE : Create image manager. */
-void create_image(t_prog *game, int array_position, double size[])
+void	create_image(t_prog *game, int array_position, double size[])
 {
 	mlx_image_t	*image;
-	
+
 	image = mlx_new_image(game->mlx, (int) size[0], (int) size[1]);
 	if (!image)
 		ft_shutdown(EX3, game);
 	if (game->image[array_position])
 		ft_mlx_delete_image_safe(array_position, game);
-	game->image[array_position] = image; 
+	game->image[array_position] = image;
 }

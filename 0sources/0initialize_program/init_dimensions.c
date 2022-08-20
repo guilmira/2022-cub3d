@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 12:01:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:34:43 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 /** PURPOSE : calculate unit of measure for each framework. */
 static double	window_unit(double size, double divisor)
 {
-	return ( size / divisor);
+	return (size / divisor);
 }
 
 /** PURPOSE : copy struct. */
-static t_dim copy_dim_struct(t_dim window_src)
+static t_dim	copy_dim_struct(t_dim window_src)
 {
-	t_dim win_return;
+	t_dim	win_return;
 
 	win_return.origin[0] = window_src.origin[0];
 	win_return.origin[1] = window_src.origin[1];

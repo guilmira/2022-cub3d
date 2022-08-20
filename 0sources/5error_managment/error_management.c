@@ -6,18 +6,18 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 12:52:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:51:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Frees array of int. */
-static void clear_map2D(t_prog *game)
+static void	clear_map2D(t_prog *game)
 {
-	int j;
-	int i;
-	
+	int	j;
+	int	i;
+
 	j = -1;
 	i = -1;
 	while (++j < game->map2D.height)
@@ -30,7 +30,7 @@ static void clear_map2D(t_prog *game)
 	game->map2D.layout = NULL;
 }
 
-void clear_raycast(t_prog *game)
+void	clear_raycast(t_prog *game)
 {
 	if (game->rc)
 	{
@@ -40,13 +40,13 @@ void clear_raycast(t_prog *game)
 			free(game->rc->rc_distance);
 		if (game->rc->rc_wall_side)
 			free(game->rc->rc_wall_side);
-		free(game->rc);	
+		free(game->rc);
 	}
 }
 
 
 /** PURPOSE : Frees allocated memory in program. */
-static void clear_memory(t_prog *game)
+static void	clear_memory(t_prog *game)
 {
 	if (game)
 	{
@@ -63,7 +63,7 @@ static void clear_memory(t_prog *game)
 		clear_map2D(game);
 		clear_raycast(game);
 		free(game);
-    }
+	}
 }
 
 /** PURPOSE : Safely remove all images stored. */
@@ -103,7 +103,7 @@ void	ft_shutdown(char *error_msg, t_prog *game)
 
 void	freemat(char **mat)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (mat[++i])

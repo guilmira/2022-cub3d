@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 11:12:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:31:59 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_STRUCTS_H
 # define CUBE_STRUCTS_H
 
-#include "cube_defines.h"
+# include "cube_defines.h"
 /* ------------------------ STRUCTS ------------------------ */
 
 /** PURPOSE : struct of a vector, 2D representation.
@@ -31,7 +31,7 @@ typedef struct s_ray
 {
 	double		origin[D2];
 	t_vector	dir;
-	int 		position_2D[D2];
+	int			position_2D[D2];
 	double		delta[D2];
 	int			step[D2];
 	int			step_increase[D2];
@@ -44,9 +44,9 @@ typedef struct s_ray
 /** PURPOSE : Set of dimensions of window. */
 typedef struct s_dimensions
 {
-	double origin[D2];
-	double size[D2];
-	double unit[D2];
+	double		origin[D2];
+	double		size[D2];
+	double		unit[D2];
 }				t_dim;
 
 /** PURPOSE : Beam dimensions
@@ -80,7 +80,7 @@ typedef struct s_player
 	t_vector	vis;
 	t_beam		beam;
 	int			flag_movement; //activates if there is any kind of movement
-	int 		flag_trance; //activates if there is turbo
+	int			flag_trance; //activates if there is turbo
 }				t_player;
 
 /** PURPOSE : Map 2D given as an argument. */
@@ -91,9 +91,9 @@ typedef struct s_map
 	int		width;
 	int		pixel_per_block[D2];
 	/* --------------- */
-	char		**map;
-	int			map_x;
-	int			map_y;
+	char	**map;
+	int		map_x;
+	int		map_y;
 	/* --------------- */
 }				t_map;
 
@@ -116,7 +116,6 @@ typedef struct s_program
     /* ----- SHARED ---- */
 	mlx_t		*mlx;
 	mlx_image_t	*image[TOTAL_IMAGES + 1];
-	
 	t_map		map2D;
 	/*---- MAP_INFO ----*/
 	char		*NO;
@@ -134,7 +133,6 @@ typedef struct s_program
 	int			minimap_state;
 	/* ----- KIRIAM ---- */
 	int			file;
-	
 }               t_prog;
 
 

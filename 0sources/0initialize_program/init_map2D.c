@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 13:34:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 11:35:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : general function to init variables. */
-void update_pixel_per_block(t_prog *game)
+void	update_pixel_per_block(t_prog *game)
 {
 
 	if (!game->minimap_state)
@@ -30,7 +30,7 @@ void update_pixel_per_block(t_prog *game)
 	}
 }
 
-static void fill_vis(t_prog *game, char dir)
+static void	fill_vis(t_prog *game, char dir)
 {
 	if(dir == 'N')
 	{
@@ -59,26 +59,22 @@ static void	update_player_position(int j, int i, t_prog *game)
 {
 	game->pl.position[0] = i;
 	game->pl.position[1] = game->map2D.height - j - 1;
-
 	game->pl.position_coor[0] = game->pl.position[0] * (double) game->map2D.pixel_per_block[0] + ( (double) game->map2D.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = game->pl.position[1] * (double) game->map2D.pixel_per_block[1] + ( (double) game->map2D.pixel_per_block[1] / 2);
-
-/* 	game->pl.position_coor[0] = game->pl.position[0] * (double) game->map2D.pixel_per_block[0];
-	game->pl.position_coor[1] = game->pl.position[1] * (double) game->map2D.pixel_per_block[1]; */
 }
 
 /** PURPOSE : Work with array [j][i] as a cartesian system. */
-int shift_array(int y, int height)
+int	shift_array(int y, int height)
 {
 	return ((height - 1) - y);
 }
 
 /** PURPOSE : Allocate all memory for 2D array. */
-static int **allocate_all_layout(int height, int width)
+static int	**allocate_all_layout(int height, int width)
 {
-	int j;
+	int	j;
 	int	**layout;
-	
+
 	j = -1;
 	layout = ft_calloc(height, sizeof(int *));
 	while (++j < height)
@@ -87,13 +83,13 @@ static int **allocate_all_layout(int height, int width)
 }
 
 /** PURPOSE : Translate parser map into a wall map. */
-void init_map2D(char **map, t_prog *game)
+void	init_map2D(char **map, t_prog *game)
 {
 	int	j;
 	int	i;
 	int	**layout;
 	int	height;
-	
+
 	j = -1;
 	i = -1;
 	layout = NULL;
@@ -120,5 +116,4 @@ void init_map2D(char **map, t_prog *game)
 	}
 	game->map2D.layout = layout;
 	print_map(map, game);
-
 }

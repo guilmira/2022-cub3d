@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 11:16:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:03:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int is_minimap(t_prog *game)
 }
 
 /** PURPOSE : Correct minimap status and reset screen. */
-static void correct_minimap_value(t_prog *game)
+static void	correct_minimap_value(t_prog *game)
 {
 	game->minimap_state++;
 	if (game->minimap_state == 6)
@@ -32,7 +32,7 @@ static void correct_minimap_value(t_prog *game)
 }
 
 /** PURPOSE : Correct minimap status and reset screen. */
-void update_player_location(t_prog *game)
+void	update_player_location(t_prog *game)
 {
 	game->pl.position_coor[0] = (double) (game->pl.position[0]) * game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = (double) (game->pl.position[1]) * game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
@@ -41,30 +41,35 @@ void update_player_location(t_prog *game)
 /** PURPOSE : Executed when hitting tab. It executes twice */
 void	hook_control_minimap(t_prog *game)
 {
-		correct_minimap_value(game);
-		if (is_minimap(game))
-		{
-			game->pl.flag_movement = 1;
-			minimap_dimensions(game);
-			update_pixel_per_block(game);
-			update_player_location(game);
-		}
+	correct_minimap_value(game);
+	if (is_minimap(game))
+	{
+		game->pl.flag_movement = 1;
+		minimap_dimensions(game);
+		update_pixel_per_block(game);
+		update_player_location(game);
+	}
 }
 
 /** PURPOSE : Draws on the minimap the result of the raycast calculations. */
-static void draw_raycast(t_prog *game)
+static void	draw_raycast(t_prog *game)
 {
-	t_vector ray;
+	int			i;
+	t_vector	ray;
+	int			colour;
 
-	int i; 
+	colour = trgb_translate(255, 150, 0, 255);
 	i = -1;
 	while (++i < game->rc->number_of_rays)
 	{
 		ray = game->rc->rc_vector[i];
-		draw_vector(ray, game->pl.position_coor, RED, game);
+		ray.y = ray.y - 1; //ojo con este truco, habra que mirarlo
+		draw_vector(ray, game->pl.position_coor, colour, game);
 	}
 	ray = game->rc->vision;
-	draw_vector(ray, game->pl.position_coor, RED, game);
+	draw_vector(ray, game->pl.position_coor, colour, game);
+
+
 }
 
 /** PURPOSE : 60 frames per second function. 
