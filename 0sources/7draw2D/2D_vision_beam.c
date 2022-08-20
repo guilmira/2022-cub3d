@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:28:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:54:31 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static double	calculate_number_of_rays(double plane_lenght, double ray_offset)
 
 
 /** PURPOSE : Init beam as a straight vector pointing north. */
-static void	init_beam(t_beam *beam, double position[], t_vector dir, t_prog *game)
+static void	init_beam(t_beam *beam, double position[], \
+t_vector dir, t_prog *game)
 {
 	(void) game;
 	beam->vis_dir = dir;

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:25:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:18:11 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	draw_raycast(t_prog *game)
 }
 
 /** PURPOSE : 60 frames per second function. 
- * pl.flag_movement == 0 deactivates drawing until further movement. */
+ * pl.flag_movement to zero deactivates drawing until further movement. */
 void	put_frame2D(t_prog *game)
 {
 	if (game->minimap_state)
@@ -43,4 +43,3 @@ void	put_frame2D(t_prog *game)
 		draw_raycast(game);
 	}
 }
-

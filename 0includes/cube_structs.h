@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:27:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:22:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ typedef struct s_player
 	double		ratio;
 	t_vector	vis;
 	t_beam		beam;
-	int			flag_movement; //activates if there is any kind of movement
-	int			flag_trance; //activates if there is turbo
+	int			flag_movement;
+	int			flag_trance;
 }				t_player;
 
 /** PURPOSE : Map 2D given as an argument. */
@@ -127,23 +127,9 @@ typedef struct s_program
 	t_dim		w2;
 	t_player	pl;
 	t_raycast   *rc;
-	//t_vector	wind_rose[MOVE_OPTIONS];
 	int			minimap_state;
 	/* ----- KIRIAM ---- */
 	int			file;
 }               t_prog;
 
-
-
-
-/* LEGACY, OBSOLETO PARA BORRAR PRONTO */
-/* PURPOSE : Used as an auxiliar grid to calculate collisions. */
-typedef struct s_grid
-{
-	double	partial[2]; //const
-	double	delta[2]; //const
-
-	int		blocks[2];
-	double	distance[2];
-}				t_grid;
 #endif

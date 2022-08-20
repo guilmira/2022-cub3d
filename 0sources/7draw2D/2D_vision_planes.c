@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:14:20 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:18:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:54:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /** PURPOSE : Get plane vector, perpendicular to vision vector,
  * but is treated as only half of the plane. */
-t_vector	get_plane_vector(t_vector vis, double plane_lenght)
+static t_vector	get_plane_vector(t_vector vis, double plane_lenght)
 {
 	int			module;
 	t_vector	perpendicular;

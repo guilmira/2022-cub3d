@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:29:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 11:52:14 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:20:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ void	hk_close(void *game)
 {
 	clean_exit(game);
 }
-
-/* LEGACY of WASH SCREEN
-#define SIZE_OFFSET 1
-		while (++i <= window.size[0] - SIZE_OFFSET)
- */
 
 /** PURPOSE : Delete image tool. */
 static void	wash_screen(t_prog *game, mlx_image_t *image, \
@@ -37,7 +32,7 @@ t_dim window, int colour)
 	while (++j <= window.size[1])
 	{
 		i = -1;
-		while (++i <= window.size[0])
+		while (++i <= window.size[0] - WASH_SIZE_OFFSET)
 			solid_pixel(image, i, coor(j, window.size[1]), colour);
 	}
 }

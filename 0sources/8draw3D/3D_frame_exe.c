@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:48:19 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 11:47:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 13:26:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 void	put_frame3D(t_prog *game)
 {
 	(void) game;
-	//virtualize_3D(game);
-	int i;
-	i = -1;
-	while (++i < 900)
-		solid_pixel(game->image[CUB_3D], 900, 600 + i, GREEN);
-		i = -1;
-	while (++i < 900)
-		solid_pixel(game->image[CUB_3D], 100, 600 + i, GREEN);
+
 
 }
