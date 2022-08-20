@@ -6,13 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/17 18:37:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:51:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int is_wall2D(int j, int i, t_prog *game)
+/** PURPOSE : Check if at given coordinates, there is a wall. */
+static int is_wall2D(int j, int i, t_prog *game)
 {
 	if (j < 0 || i < 0)
 		return (1);
@@ -22,7 +23,8 @@ int is_wall2D(int j, int i, t_prog *game)
 		return (0);
 }
 
-t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, t_prog *game)
+/** PURPOSE : Get the final coordinates of the vecctor that has collided. */
+static t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, t_prog *game)
 {
 	t_vector vector;
 
@@ -39,7 +41,7 @@ t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, 
 	return (vector);
 }
 
-
+/** PURPOSE : Get vector that goes until that collision point that is found. */
 static void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 {
 	double		factor;
@@ -67,12 +69,19 @@ static void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog
 	(blocks_advanced, factor, ray, game);
 }
 
-void raycast_collision_routine(t_ray *ray, t_vector dir, t_prog *game)
+/** PURPOSE : Here is how the algorithm works: 
+ * 1. t_ray = structure with all the parameters initialized.
+ * 2. Loop for an ammmount of times at least as big as the bigger distance OX or OY.
+ * 3. Compare the net_distance. If OY grid distance is closer to the origin point 
+ * than the distance of OX, thats the one that we ll be looking at for a collision.
+ * 4. Increase step (or grid block) in said direcction.
+ * 5. Check if indeed there is a collision (a wall) at that location. If not, loop. */
+static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 {
 	int counter;
 
 	counter = -1;
-	while (++counter <= game->map2D.width + RAYCAST_LIMIT)
+	while (++counter <= game->map2D.width + game->map2D.height)
 	{
 
 		/* if (!counter)
@@ -102,18 +111,15 @@ void raycast_collision_routine(t_ray *ray, t_vector dir, t_prog *game)
 			break ;
 		}	
 	}
-
 }
 
-/** PURPOSE : Cast a ray from location to wall, following the direction vector. 
- * 1. Create ray structure with all the used parameters.
- * 2. Initialize said values.
- * 3. Usea DDA algorithm to move across the grid and find collision point. */
+/** PURPOSE : Cast a ray from location to wall, following the direction vector.
+ * Direction, position, and walls + DDA algorightm = collision point. */
 t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
 {
 	t_ray ray;
 
 	init_ray(&ray, origin, dir, game);
-	raycast_collision_routine(&ray, dir, game);
+	raycast_collision_algorithm(&ray, dir, game);
 	return (ray.resultant_vector);
 }

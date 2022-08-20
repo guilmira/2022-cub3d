@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 11:31:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:27:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ typedef struct s_dimensions
 typedef struct s_beam
 {
 	double		position[D2];
-	double		low_bound[D2];
-	double		high_bound[D2];
 	t_vector	vis;
 	t_vector	vis_dir;
 	t_vector	plane_left;

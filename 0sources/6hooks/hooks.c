@@ -12,8 +12,6 @@
 
 #include "cube.h"
 
-
-
 /** PURPOSE : Convert pointer of program and execute frames.
  * 60 FPS. */
 void	next_frame(void *g)
@@ -34,7 +32,6 @@ void	next_frame(void *g)
 		game->pl.flag_movement = 0;
 	}
 }
-
 
 /** PURPOSE : execute main routine of program.
  * mlx_loop and mlx_loop_hook will tried to be executed a total

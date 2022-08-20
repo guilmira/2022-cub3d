@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/17 18:38:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:24:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : correct vision by adding correct plane vector. */
-static void update_player_vision(int key, t_prog *game)
+static void	update_player_vision(int key, t_prog *game)
 {
 	t_vector	plane_perpendicular;
 	t_vector	new_vision;
@@ -24,7 +24,7 @@ static void update_player_vision(int key, t_prog *game)
 		speed_multiplier = TRANCE_BOOST * 5;
 	plane_perpendicular = get_unit_vector(get_perpendicular(game->pl.vis));
 	plane_perpendicular = mul_vec(plane_perpendicular, speed_multiplier);
-	
+
 	if (key == key_lookright)
 		new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, invert_sense_vector(plane_perpendicular)));
 	else

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 12:26:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:06:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 /** PURPOSE : Scale a 2D grid. */
 static void	draw_grid(t_prog *game, double size_x, double size_y)
 {
-	int nb;
-	int colour;
-	
+	int	nb;
+	int	colour;
+
 	colour = trgb_translate(255, 255, 255, GRID_TRANSPARENCY);
 	nb = -1;
 	while (++nb < game->map2D.height + 1)
-		put_horizontal(( nb * game->map2D.pixel_per_block[1]), size_x, colour, game);
+		put_horizontal(( nb * game->map2D.pixel_per_block[1]), \
+		size_x, colour, game);
 	nb = -1;
 	while (++nb < game->map2D.width + 1)
-		put_vertical(( nb * game->map2D.pixel_per_block[0]), size_y, colour, game);
+		put_vertical(( nb * game->map2D.pixel_per_block[0]), \
+		size_y, colour, game);
 }
 
 
@@ -41,7 +43,6 @@ static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog 
 	image = game->image[CUB_3D];
 	if (map_position[0] < 0 || map_position[1] < 0)
 		return ;
-	
 	translate_to_screen(map_position, base_location, pixel_per_block, game);
 	line_start[0] = base_location[0];
 	line_start[1] = base_location[1];
@@ -67,9 +68,9 @@ static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog 
 /** PURPOSE : Draw all the 2D wall to screen. */
 void	draw_wall2D(t_prog *game)
 {
-	int i;
-	int j;
-	double map_position[2];
+	int		i;
+	int		j;
+	double	map_position[2];
 
 	i = -1;
 	j = -1;
@@ -86,7 +87,6 @@ void	draw_wall2D(t_prog *game)
 		}
 		i = -1;
 	}
-
 }
 
 /** PURPOSE : Draw 2D image as main render.

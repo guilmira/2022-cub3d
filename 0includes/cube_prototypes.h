@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 11:54:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:30:14 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void		update_pixel_per_block(t_prog *game);
 void		hooks_and_loops(t_prog *game);
 void		reset_and_wash_frame(t_prog *game);
 void		hk_close(void *game);
-void		hook_control_minimap(t_prog *game);
 void		put_frame2D(t_prog *game);
 void		put_frame3D(t_prog *game);
 void		hk_keys(mlx_key_data_t key, void *g);
@@ -75,23 +74,15 @@ t_vector	div_vec(t_vector lhs, double escalar);
 /* VECTOR ARITHMETIC ADVANCED */
 t_vector	get_perpendicular(t_vector v);
 t_vector	invert_sense_vector(t_vector v);
-/* Initialize beam dimensions */
-void 		init_beam(t_beam *beam, double position[], t_vector dir, t_prog *game);
+
 
 /* RAY CASTING AND DDA ALGORITHM */
+void		main_raycast_calculation(int angle, int ray_offset, t_prog *game);
 void 		init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game);
 t_vector	raycast(t_vector dir, double origin[], t_prog *game);
 
-/* RAY CASTING */
-t_vector	cast_ray(t_vector direction, double position[], double low_boundry[], double high_boundry[], t_prog *game);
-
-/* COLLISION */
-int			collision_wall(t_vector ray, double position[], t_prog *game);
-int			collision_window(t_vector ray, double low_boundry[], double high_boundry[]);
-
 /* BEAM */
 void 		cast_beam(t_beam *beam, t_prog *game);
-void		main_raycast_calculation(int angle, int ray_offset, t_prog *game);
 double 		plane_lenght_and_direction(t_beam *beam, int angle);
 
 

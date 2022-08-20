@@ -13,15 +13,15 @@
 #include "cube.h"
 
 /** PURPOSE : Module of vector: sqrt(Vx^2 + Vy^2)  */
-double get_module(t_vector vec)
+double	get_module(t_vector vec)
 {
 	if (!vec.x && ! vec.y)
 		return (0);
-	return (sqrt( pow(vec.x, 2) + pow(vec.y, 2)) );
+	return (sqrt(pow(vec.x, 2) + pow(vec.y, 2)));
 }
 
 /** PURPOSE : Gets unit vector.  */
-t_vector get_unit_vector(t_vector vec)
+t_vector	get_unit_vector(t_vector vec)
 {
 	double			module;
 
@@ -35,13 +35,13 @@ t_vector get_unit_vector(t_vector vec)
  * V = Vx * a' + Vy* b'
  * a = sen(t) + cos(t)
  * b = -sen(t) + cos(t) */
-t_vector rotate_vector(t_vector vec, int angle)
+t_vector	rotate_vector(t_vector vec, int angle)
 {
-	t_vector rotate;
+	t_vector	rotate;
 
-	rotate.x = (double) ( vec.x * \
-	( cos(degree_to_radian(angle)) + sin(degree_to_radian(angle)) ) );
-	rotate.y = (double) ( vec.y * \
-	( cos(degree_to_radian(angle)) - sin(degree_to_radian(angle)) ) );
+	rotate.x = (double)(vec.x * \
+	(cos(degree_to_radian(angle)) + sin(degree_to_radian(angle))));
+	rotate.y = (double)(vec.y * \
+	(cos(degree_to_radian(angle)) - sin(degree_to_radian(angle))));
 	return (rotate);
 }

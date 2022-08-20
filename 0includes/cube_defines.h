@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/19 13:13:17 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:47:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@
 /* Player ratio of (see code) */
 # define PLAYER_RATIO 0.5
 
-#define RAYCAST_LIMIT 30
 # define SAFE_OFFSET 0.0001
 //# define RAYCAST_OFFSET 100 // pixels per aperture
 # define RAYCAST_OFFSET 1

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/18 11:36:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 12:16:59 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void put_lineV(double start[], int size, int colour, t_prog *game)
  * 						1001
  * 						1111
  * to an 1080 x 1900 (or whatever was set) on the screen. */ 
-void translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game)
+void	translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game)
 {
 	(void) game;
-	position_screen[0] = position_map[0] *  pixel_per_block[0];
-	position_screen[1] = position_map[1] *  pixel_per_block[1];
+	position_screen[0] = position_map[0] * pixel_per_block[0];
+	position_screen[1] = position_map[1] * pixel_per_block[1];
 }
