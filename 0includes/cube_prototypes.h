@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 13:11:02 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:20:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void		fill_player_pos(t_prog *game, double player_pos[]);
 void		vison_control(mlx_key_data_t key, t_prog *game);
 void		movement_control(mlx_key_data_t key, t_prog *game);
 /* TOOLS */
-void 		draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
+void		draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 
 //To remove from here before evaluation
 void		ft_leaks(void);

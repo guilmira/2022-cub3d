@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 11:35:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:39:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void	init_map2D(char **map, t_prog *game)
 				log_coor(game->pl.position_coor);
 				fill_vis(game, game->map2D.map[j][i]);
 			}
-
 		}
 		i = -1;
 	}
