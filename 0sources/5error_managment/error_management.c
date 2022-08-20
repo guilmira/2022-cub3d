@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:17:31 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:46:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 static void	clear_map2D(t_prog *game)
 {
 	int	j;
-	int	i;
 
 	j = -1;
-	i = -1;
 	while (++j < game->map2D.height)
 	{
 		free(game->map2D.layout[j]);

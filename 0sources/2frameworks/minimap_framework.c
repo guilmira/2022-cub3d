@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 13:19:16 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:46:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,10 @@ static void	draw_grid(t_prog *game, double size_x, double size_y)
 static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
 {
 	int				j;
-	mlx_image_t		*image;
 	double			line_end[2];
 	double			line_start[2];
 	double			base_location[2];
 
-
-	image = game->image[CUB_3D];
 	if (map_position[0] < 0 || map_position[1] < 0)
 		return ;
 	translate_to_screen(map_position, base_location, pixel_per_block, game);

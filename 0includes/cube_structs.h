@@ -85,6 +85,7 @@ typedef struct s_player
 typedef struct s_map
 {
 	int		**layout;
+	int		**s_layout;
 	int		height;
 	int		width;
 	int		pixel_per_block[D2];

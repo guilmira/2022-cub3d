@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/15 18:02:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/20 16:46:24 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void log_beam(t_beam *beam)
 	printf("The elapsed time is %f seconds\n", time_spent); */
 
 
-void print_map(char **map, t_prog *game)
+/* void print_map(char **map, t_prog *game, int **s_map)
 {
 
 	(void) map;
@@ -102,13 +102,12 @@ void print_map(char **map, t_prog *game)
 	for (int j = 0; j < game->map2D.height; j++)
 	{
 		for (int i = 0; i < game->map2D.width; i++)
-			printf("%i ", game->map2D.layout[j][i]);
-		
+			printf("%i ", s_map[j][i]);
 		printf("\n");
 	}
 	printf("altura %i\n", game->map2D.height);
 	printf("anchura %i\n", game->map2D.width);
-}
+} */
 
 
 /* Just for testing */
