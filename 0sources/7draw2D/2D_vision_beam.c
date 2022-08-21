@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:54:31 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/21 21:23:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ void	main_raycast_calculation(int angle, int ray_offset, t_prog *game)
 	t_beam		beam;
 	double		plane_lenght;
 	double		rays;
+	int face;
 
 	clear_raycast(game);
 	init_beam(&beam, game->pl.position_coor, game->pl.vis, game);
-	beam.vis = raycast(beam.vis_dir, beam.position, game);
+	beam.vis = raycast(&face, beam.vis_dir, beam.position, game);
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
 	rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
 	beam.number_of_rays = (int) roundl(rays);

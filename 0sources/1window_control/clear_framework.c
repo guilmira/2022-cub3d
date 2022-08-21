@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:29:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 13:20:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/21 20:30:30 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	hk_close(void *game)
 }
 
 /** PURPOSE : Delete image tool. */
-static void	wash_screen(t_prog *game, mlx_image_t *image, \
+void	wash_screen(t_prog *game, mlx_image_t *image, \
 t_dim window, int colour)
 {
 	int	i;
@@ -61,6 +61,6 @@ void	reset_and_wash_frame(t_prog *game)
 	printf("												FRAME: 	 %i\n", frame);
 	frame++;
 	frame_reset(0, game);
-	wash_screen(game, game->image[CUB_3D], game->w2, RED);
-	wash_screen(game, game->image[CUB_3D], game->w2, BLACK);
+	wash_screen(game, game->image[CUB_3D], game->w1, RED);
+	wash_screen(game, game->image[CUB_3D], game->w1, BLACK);
 }

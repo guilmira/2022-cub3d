@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 13:17:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:55:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 void	init_framework(t_prog *game)
 {
 	framework_dimensions(game);
-	create_image(game, 0, game->w1.size);
 }
 
 void	framework_2D(t_prog *game);

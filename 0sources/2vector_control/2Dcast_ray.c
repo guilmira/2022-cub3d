@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:51:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/21 21:20:16 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,12 @@ static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 
 /** PURPOSE : Cast a ray from location to wall, following the direction vector.
  * Direction, position, and walls + DDA algorightm = collision point. */
-t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
+t_vector	 raycast(int *face, t_vector dir, double origin[], t_prog *game)
 {
 	t_ray ray;
 
 	init_ray(&ray, origin, dir, game);
 	raycast_collision_algorithm(&ray, dir, game);
+	*face = ray.face;
 	return (ray.resultant_vector);
 }
