@@ -145,7 +145,7 @@ int	getcoords(t_prog *game, t_list *aux_lst)
 
 	x = 0;
 	game->map2D.map_y = get_maxlen(game, aux_lst);
-	while (aux_lst->next)
+	while (1)
 	{
 		l = 0;
 		while (((char *)aux_lst->content)[l])
@@ -159,6 +159,8 @@ int	getcoords(t_prog *game, t_list *aux_lst)
 		}
 		if (l > x)
 			x = l;
+		if(!aux_lst->next)
+			break;
 		aux_lst = aux_lst->next;
 	}
 	game->map2D.map_x = x;

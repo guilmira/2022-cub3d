@@ -173,7 +173,7 @@ static void	build_spaced_layout(t_prog *game, int height, int width)
 		else
 			game->map2D.s_height = height + 1;
 	}	
-	else if(height < width)
+	else if (height < width)
 	{
 		val = width - height;
 		subti = height + (ceil(val/2) * 2);
@@ -229,7 +229,8 @@ void	init_map2D(char **map, t_prog *game)
 	}
 	game->map2D.layout = layout;
 	build_spaced_layout(game, game->map2D.height, game->map2D.width);
-	
+	// freemat(game->map2D.layout);
+	// game->map2D.layout = game->map2D.s_layout;
 	//print_map(map, game, layout);
 	//update_pixel_per_block(game);
 }
