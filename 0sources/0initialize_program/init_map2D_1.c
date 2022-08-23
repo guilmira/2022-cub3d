@@ -31,10 +31,7 @@ static void do_spaced_map_h(int height, int width, int flag, t_prog *game)
 			count++;
 		}
 		while(count != width)
-		{
-			game->map2D.s_layout[i][count] = 0;
-			count++;
-		}
+			game->map2D.s_layout[i][count++] = 0;
 	}
 	k = -1;
 	if (flag == 1)
