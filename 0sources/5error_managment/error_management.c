@@ -109,6 +109,16 @@ void	freemat(char **mat)
 	free(mat);
 }
 
+void	freemat_int(int **mat, int len)
+{
+	int	i;
+
+	i = -1;
+	while (++i < len)
+		free(mat[i]);
+	free(mat);
+}
+
 void	ft_leaks(void)
 {
 	system("leaks -quiet cube");

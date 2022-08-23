@@ -52,6 +52,7 @@ void		hk_keys(mlx_key_data_t key, void *g);
 void		clean_exit(t_prog *game);
 void		ft_shutdown(char *error_msg, t_prog *game);
 void		freemat(char **mat);
+void		freemat_int(int **mat, int len);
 void		ft_mlx_delete_image_safe(int image_position, t_prog *game);
 
 /* ------------------------ RAYCAST ------------------------ */
