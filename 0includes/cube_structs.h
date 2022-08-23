@@ -86,6 +86,7 @@ typedef struct s_map
 {
 	int		**layout;
 	int		**s_layout;
+	int		val;
 	int		height;
 	int		width;
 	int		s_height;

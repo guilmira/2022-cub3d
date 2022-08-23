@@ -22,6 +22,8 @@ void		fill_lst(t_prog *game, t_list **aux_lst);
 int			parselst(t_prog *game, t_list *aux_lst);
 void		printlist(t_list *list);
 int			map_build(int data_len, t_prog *game, t_list *aux_lst);
+void		build_spaced_layout(t_prog *game, int height, int width);
+int			**allocate_all_layout(int height, int width);
 
 /* STRUCT INIT */
 void		init_game(t_prog *game);

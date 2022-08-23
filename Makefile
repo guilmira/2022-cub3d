@@ -29,7 +29,7 @@ INCLUDES		= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
 FLAGS_MLX		= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./0sources
-FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D.c init_variables.c init_dimensions.c)
+FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_variables.c init_dimensions.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c clear_framework.c)
 FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c minimap_framework.c)
 FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vectors.c vector_tools.c vector_arithmetic.c vector_arith_advanced.c 2Dcast_beam.c 2Dcast_ray.c 2Dinit_ray.c)
