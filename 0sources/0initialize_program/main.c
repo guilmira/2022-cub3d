@@ -6,20 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/21 17:55:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:38:28 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-/** PURPOSE : Requires parser executed and game stored at heap.
- * 1. Initialize the dimensions of both of the windows.
- * 2. Create images for a single frameworks that will contain
- * the 3D and 2D minimap. */
-void	init_framework(t_prog *game)
-{
-	framework_dimensions(game);
-}
 
 void	framework_2D(t_prog *game);
 
@@ -37,7 +28,7 @@ int	main(int argc, char **argv)
 	/* --------------------------------------------------------------- */
 	init_game(game);
 	parser(game, argc, argv);
-	init_framework(game);
+	framework_dimensions(game);
 	init_map2D(game->map2D.map, game);
 	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);

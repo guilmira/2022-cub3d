@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 16:24:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:08:17 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_beam
 	t_vector	plane_segment;
 	int			number_of_rays;
 }				t_beam;
+
 
 /** PURPOSE : Info of the player
  * Where is located, where is it looking at. */

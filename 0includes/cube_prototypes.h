@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/21 21:19:48 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:58:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,14 @@ double		degree_to_radian(double degree);
 double		coor(double y, double size_y);
 void		solid_pixel(mlx_image_t *image, \
 int coor_x, int coor_y, uint32_t colour);
+
+
+/* ------------------------ 3D CUBE ------------------------ */
+void	draw_first_layer(t_prog *game);
+void	draw_3D_walls(t_prog *game);
+
+
+
 
 //descolgada
 void		translate_to_screen(double position_map[], \
