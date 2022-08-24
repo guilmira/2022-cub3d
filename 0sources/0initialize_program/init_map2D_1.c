@@ -100,7 +100,7 @@ static void buildheight(t_prog *game, int height, int width)
 		game->map2D.s_height = height;
 	else
 		game->map2D.s_height = height + 1;
-	game->pl.position[0] += val;
+	game->pl.position[0] += game->map2D.val;
 }
 
 static void buildwidth(t_prog *game, int height, int width)
@@ -131,7 +131,7 @@ static void buildwidth(t_prog *game, int height, int width)
         game->map2D.s_width = width + 1;
     	game->pl.position[0] += 1;
     }
-    game->pl.position[1] += val;
+    game->pl.position[1] = (game->map2D.s_height - game->map2D.val - game->pl.position[1]);
 }
 
 void	build_spaced_layout(t_prog *game, int height, int width)
@@ -146,6 +146,7 @@ void	build_spaced_layout(t_prog *game, int height, int width)
 		game->map2D.s_layout = copy_double_pointer(game->map2D.layout, game->map2D.height, game->map2D.width);
 		game->map2D.s_height = game->map2D.height;
 		game->map2D.s_width = game->map2D.width;
+		game->pl.position[1] = game->map2D.s_height - game->pl.position[1] - 1;
 	}
 	print_smap(game->map2D.s_layout, game->map2D.s_height, game->map2D.s_width);
 }
