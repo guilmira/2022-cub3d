@@ -81,11 +81,12 @@ void	main_raycast_calculation(int angle, int ray_offset, t_prog *game)
 	t_beam		beam;
 	double		plane_lenght;
 	double		rays;
-	int face;
+	t_data		aux;
 
 	clear_raycast(game);
 	init_beam(&beam, game->pl.position_coor, game->pl.vis, game);
-	beam.vis = raycast(&face, beam.vis_dir, beam.position, game);
+	beam.vis = raycast(&aux, beam.vis_dir, beam.position, game); //falta por hacer NEXT, de ahi e hueco
+	
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
 	rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
 	beam.number_of_rays = (int) roundl(rays);

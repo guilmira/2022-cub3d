@@ -23,8 +23,8 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	t_vector	ray;
 	t_vector	resultant;
 	t_vector	direction;
+	t_data		aux;
 	int			i;
-	int face;
 
 	ray.x = 0;
 	ray.y = 0;
@@ -34,22 +34,24 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	{
 		resultant = sum_vec(beam->vis, plane);
 		direction = get_unit_vector(resultant);
-		ray = raycast(&face, direction, beam->position, game);
+		ray = raycast(&aux, direction, beam->position, game);
 		if (i < game->rc->number_of_rays)
 		{
 			game->rc->rc_vector[i] = ray;
+			game->rc->rc_distance[i] = aux.distance;
 			game->rc->rc_distance[i] = get_module(ray);
-			game->rc->rc_wall_side[i] = face;
+			game->rc->rc_wall_side[i] = aux.face;
 		}
 	/* --------RESTAR SEGMENTO Y REPETIR----------------------------------------------------- */
 		resultant = sub_vec(beam->vis, plane);
 		direction = get_unit_vector(resultant);
-		ray = raycast(&face, direction, beam->position, game);
+		ray = raycast(&aux, direction, beam->position, game);
 		if (i < game->rc->number_of_rays)
 		{
 			game->rc->rc_vector[counter + (counter - 1) - i] = ray;
-			game->rc->rc_distance[counter + (counter - 1) - i] = get_module(ray);
-			game->rc->rc_wall_side[counter + (counter - 1) - i] = face;
+			game->rc->rc_distance[counter + (counter - 1) - i] = aux.distance;
+			//game->rc->rc_distance[counter + (counter - 1) - i] = get_module(ray);
+			game->rc->rc_wall_side[counter + (counter - 1) - i] = aux.face;
 		}
 		plane = sub_vec(plane, beam->plane_segment);
 	}

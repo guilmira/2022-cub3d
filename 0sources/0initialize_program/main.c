@@ -14,6 +14,9 @@
 
 void	framework_2D(t_prog *game);
 
+//NEXT mas prioritario
+//posicion
+
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */

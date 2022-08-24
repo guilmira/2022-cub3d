@@ -115,12 +115,16 @@ static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 
 /** PURPOSE : Cast a ray from location to wall, following the direction vector.
  * Direction, position, and walls + DDA algorightm = collision point. */
-t_vector	 raycast(int *face, t_vector dir, double origin[], t_prog *game)
+t_vector	 raycast(t_data *aux, t_vector dir, double origin[], t_prog *game)
 {
-	t_ray ray;
-
+	t_ray		ray;
+	
 	init_ray(&ray, origin, dir, game);
 	raycast_collision_algorithm(&ray, dir, game);
-	*face = ray.face;
+	aux->face = ray.face;
+	if (ray.face == 1)
+		aux->distance = ray.net_distance[0];
+	if (ray.face == 2)
+		aux->distance = ray.net_distance[1];
 	return (ray.resultant_vector);
 }
