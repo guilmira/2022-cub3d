@@ -96,7 +96,6 @@ typedef struct s_map
 	/* --------------- */
 }				t_map;
 
-
 /** PURPOSE : Assist struct raycast. */
 typedef struct s_data
 {
