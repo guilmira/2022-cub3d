@@ -22,13 +22,14 @@ void	next_frame(void *g)
 	if (game->pl.flag_movement)
 	{
 		reset_and_wash_frame(game);
+
 		main_raycast_calculation(FOV_DEGREE, RAYCAST_OFFSET, game);
-		if (game->minimap_state != FULL_MINIMAP)
-			put_frame3D(game);
+/* 		if (game->minimap_state != FULL_MINIMAP)
+			put_frame3D(game); */
 		if (game->minimap_state)
 			put_frame2D(game);
 		mlx_image_to_window(game->mlx, game->image[CUB_3D], \
-		game->w2.origin[0], game->w2.origin[1]);
+		game->w1.origin[0], game->w1.origin[1]);
 		game->pl.flag_movement = 0;
 	}
 }

@@ -114,11 +114,13 @@ void	init_map2D(char **map, t_prog *game)
 		i = -1;
 	}
 	game->map2D.layout = layout;
+
 	build_spaced_layout(game, game->map2D.height, game->map2D.width);
-	//freemat_int(game->map2D.layout, game->map2D.width);
-	//game->map2D.layout = copy_double_pointer(game->map2D.s_layout, game->map2D.s_height, game->map2D.s_width);
-	//game->map2D.height = game->map2D.s_height;
-	//game->map2D.width = game->map2D.s_width;
+	freemat_int(game->map2D.layout, game->map2D.height);
+	game->map2D.layout = copy_double_pointer(game->map2D.s_layout, game->map2D.s_height, game->map2D.s_width);
+	
+	game->map2D.height = game->map2D.s_height;
+	game->map2D.width = game->map2D.s_width;
 	//print_map(map, game, layout);
-	//update_pixel_per_block(game);
+	update_pixel_per_block(game);
 }

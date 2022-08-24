@@ -115,7 +115,10 @@ void	freemat_int(int **mat, int len)
 
 	i = -1;
 	while (++i < len)
+	{
+
 		free(mat[i]);
+	}
 	free(mat);
 }
 

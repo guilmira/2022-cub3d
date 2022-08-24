@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:51:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/21 21:20:16 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 static int is_wall2D(int j, int i, t_prog *game)
 {
 	if (j < 0 || i < 0)
+		return (1);
+	if (i >= game->map2D.height || j >= game->map2D.width)
 		return (1);
 	if (game->map2D.layout[j][i])
 		return (1);
@@ -67,6 +69,7 @@ static void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog
 	factor = dir.y / dir.x;
 	ray->resultant_vector = final_raycasted_vector\
 	(blocks_advanced, factor, ray, game);
+
 }
 
 /** PURPOSE : Here is how the algorithm works: 
@@ -83,12 +86,13 @@ static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 	counter = -1;
 	while (++counter <= game->map2D.width + game->map2D.height)
 	{
-
 		/* if (!counter)
 			printf("EMPIEZA------------------------------------------------------------------\n");
 		printf("%f frente a %f\n", ray->net_distance[0], ray->net_distance[1]); */
+
 		if (ray->net_distance[1] < ray->net_distance[0])
 		{
+			
 			//printf("me fijo en OY\n");
 			ray->step[1] += ray->step_increase[1];
 			ray->net_distance[1] += ray->delta[1];
@@ -96,10 +100,12 @@ static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 		}
 		else
 		{
+				
 			//printf("me fijo en OX\n");
 			ray->step[0] += ray->step_increase[0];
 			ray->net_distance[0] += ray->delta[0];
 			ray->face = 1;
+			
 		}
 		if (is_wall2D(ray->step[1], ray->step[0], game))
 		{
@@ -110,16 +116,23 @@ static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 			//printf("pego coordenaadas (%i ,%i )en cara%i\n", ray->step[0], ray->step[1], ray->face); //2 es vertical
 			break ;
 		}	
+
 	}
 }
 
 /** PURPOSE : Cast a ray from location to wall, following the direction vector.
  * Direction, position, and walls + DDA algorightm = collision point. */
-t_vector	 raycast(t_vector dir, double origin[], t_prog *game)
+t_vector	 raycast(t_data *aux, t_vector dir, double origin[], t_prog *game)
 {
-	t_ray ray;
-
+	t_ray		ray;
+	
 	init_ray(&ray, origin, dir, game);
+
 	raycast_collision_algorithm(&ray, dir, game);
+	aux->face = ray.face;
+	if (ray.face == 1)
+		aux->distance = ray.net_distance[0];
+	if (ray.face == 2)
+		aux->distance = ray.net_distance[1];
 	return (ray.resultant_vector);
 }

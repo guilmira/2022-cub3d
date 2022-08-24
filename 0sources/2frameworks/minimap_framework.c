@@ -18,6 +18,8 @@ static void	draw_grid(t_prog *game, double size_x, double size_y)
 	int	nb;
 	int	colour;
 
+	
+
 	colour = trgb_translate(255, 255, 255, GRID_TRANSPARENCY);
 	nb = -1;
 	while (++nb < game->map2D.height + 1)
@@ -94,6 +96,7 @@ void	framework_2D(t_prog *game)
 {
 	if (!game->minimap_state)
 		return ;
+
 	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	/* --------------------------------------------------------------- */

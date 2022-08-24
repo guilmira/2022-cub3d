@@ -6,24 +6,21 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:48:19 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 13:29:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:29:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : Raise 3D images.
- * 1. Build image.
- * 2. Put to window. */
+
+/** PURPOSE : raise 3D from raycast results.
+ * 1. Draw first layer of the 3D: floor and horizon sky.
+ * 2. Draw walls depending on ray distance collison. */
 void	put_frame3D(t_prog *game)
 {
-	(void) game;
-
-	/*int	i;
-	i = -1;*/
-	/* while (++i < 900)
-		solid_pixel(game->image[CUB_3D], 900, 600 + i, GREEN);
-		i = -1;
-	while (++i < 900)
-		solid_pixel(game->image[CUB_3D], 100, 600 + i, GREEN); */
+	draw_first_layer(game);
+	draw_3D_walls(game);
+	//draw_player(game);
+	//draw_player_left_hud(game);
+	//draw_gameplay_aid(game);
 }
