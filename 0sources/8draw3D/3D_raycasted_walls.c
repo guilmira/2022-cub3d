@@ -37,7 +37,7 @@ void centered_vertical(double x, int size, int colour, t_prog *game)
 		(int) (start[0]), y, colour);
 	}
 }
-#define CONSTANT 2000
+#define CONSTANT 1200
 
 int get_wall_size(int distance, t_prog *game)
 {
