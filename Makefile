@@ -14,7 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra  -Werror   -O3 -fsanitize=address   #-g
-ARG			= easy_map4.cub
+ARG			= easy_map3.cub
 #ARG			= default.cub
 
 #time ./cube default.cub
