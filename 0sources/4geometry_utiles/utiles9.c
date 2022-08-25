@@ -127,3 +127,20 @@ void insta_player_vision(t_prog *game)
 
 	game->pl.vis = new_vision;
 }
+
+void log_arrays(t_prog *game)
+{
+	int i;
+
+	i = -1;
+			printf("rayos %i \n" , game->rc->number_of_rays);
+			printf("rayos /mitad: %i \n" , game->rc->number_of_rays / 2);
+
+	while (++i < game->rc->number_of_rays + 1)
+	{
+		if (i % 10 == 0)
+			printf("\n");
+		printf("%.2f ", game->rc->rc_distance[i]);
+	}
+		printf("\n");
+}

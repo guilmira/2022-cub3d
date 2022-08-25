@@ -59,12 +59,42 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	}
 }
 
+void	rearrange_array(t_data *aux, t_prog *game)
+{
+	int i;
+	int middle_value;
+	
+	i = -1;
+	middle_value = game->rc->number_of_rays / 2;
+	i =  game->rc->number_of_rays;
+	while (--i < game->rc->number_of_rays)
+	{
+		
+		game->rc->rc_distance[i + 1] = game->rc->rc_distance[i];
+		game->rc->rc_wall_side[i + 1] = game->rc->rc_wall_side[i];
+		if (i == middle_value)
+			break;
+	}
+	game->rc->rc_distance[middle_value] = aux->distance;
+	game->rc->rc_wall_side[middle_value] = aux->face;
+
+}
+
+
+
+void log_arrays(t_prog *game);
+
 /** PURPOSE : Casting beam of rays from origin. 
  The barrage its what we call the rapid succesion of vectors calculated from 
  left to right and that they generate the beam. */
-void	cast_beam(t_beam *beam, t_prog *game)
+void	cast_beam(t_beam *beam, t_data *aux, t_prog *game)
 {
 	raycast_barrage(beam, beam->number_of_rays, beam->plane_left, game);
+	//printf("distance : %.2f", aux->distance);
+	//log_arrays(game);
+	rearrange_array(aux, game);
+	//log_arrays(game);
+
 }
 
 /* 	double time_spent = 0.0;	

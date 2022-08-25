@@ -52,6 +52,8 @@ t_vector dir, t_prog *game)
 	beam->position[1] = position[1];
 }
 
+#define VISION_RAY 1
+
 /** PURPOSE : Initialize pointers to contain raycast information
  * (for later drawing).*/
 static void	init_struct_raycast(int number_of_rays, double position[], \
@@ -60,7 +62,7 @@ t_vector vision, t_prog *game)
 	t_raycast	*rc;
 	size_t		heap_size;
 
-	heap_size = (size_t) number_of_rays;
+	heap_size = (size_t) number_of_rays + VISION_RAY;
 	rc = ft_calloc(1, sizeof(t_raycast));
 	rc->rc_vector = ft_calloc(heap_size, sizeof(t_vector));
 	rc->rc_distance = ft_calloc(heap_size, sizeof(double));
@@ -86,15 +88,14 @@ void	main_raycast_calculation(int angle, int ray_offset, t_prog *game)
 	clear_raycast(game);
 	init_beam(&beam, game->pl.position_coor, game->pl.vis, game);
 
-	beam.vis = raycast(&aux, beam.vis_dir, beam.position, game); //falta por hacer NEXT, de ahi e hueco
+	beam.vis = raycast(&aux, beam.vis_dir, beam.position, game);
 	
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
 	rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
 	beam.number_of_rays = (int) roundl(rays);
 	init_struct_raycast(beam.number_of_rays * 2, beam.position, beam.vis, game);
-	beam.plane_segment = \
-	calculate_plane_segment(beam.plane_left, beam.number_of_rays);
-	cast_beam(&beam, game);
+	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays);
+	cast_beam(&beam, &aux, game);
 	game->pl.beam = beam;
 	game->pl.flag_movement = 0;
 }
