@@ -36,6 +36,8 @@ void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int			trgb_translate(int red, int blue, int green, int transparency);
+int get_trgb_shadowed(int colour_code);
+
 int			get_opposite(int colour_code);
 void		framework_2D(t_prog *game);
 void		update_pixel_per_block(t_prog *game);

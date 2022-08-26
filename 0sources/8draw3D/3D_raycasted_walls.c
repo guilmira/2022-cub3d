@@ -12,8 +12,6 @@
 
 #include "cube.h"
 
-//block size
-
 static void centered_vertical(double x, int size, int colour, t_prog *game)
 {
 	int				i;
@@ -41,10 +39,21 @@ static void centered_vertical(double x, int size, int colour, t_prog *game)
 }
 #define CONSTANT 2000
 
+#define MIN_DIST 1
+
 static int get_wall_size(int distance, t_prog *game)
 {
-	(void) game;
-	return (CONSTANT / distance);
+	int	ret;
+	int	max_size;
+
+	max_size = (game->w1.size[1] / 4) - SAFE_OFFSET;
+	if (distance < MIN_DIST)
+		return (max_size);
+	ret = CONSTANT / distance;
+	if (ret > max_size)
+		return (max_size);
+	else
+		return (ret);
 }
 
 /** PURPOSE : check if the wall hits on OX axis or OY axis.
@@ -59,19 +68,37 @@ static int is_shadowed(int value)
 }
 
 /** PURPOSE : choose what shade to put on wall. */
-static int choose_shadow_colour(int wall_value)
+static int choose_shadow_colour(int wall_value, int size, t_prog *game)
 {
 	int	colour_normal;
+	int	colour_far;
 	int	colour_shadowed;
+	int	colour_far_shadowed;
+	(void) size;
+	(void) game;
 
 	colour_normal = BLUE;
-	colour_shadowed = trgb_translate(0, 0, 255, 120);
+	colour_far = trgb_translate(0, 255, 0, 0);
+	colour_shadowed = get_trgb_shadowed(colour_normal);
+	colour_far_shadowed = get_trgb_shadowed(colour_far);
+
 	if (is_shadowed(wall_value))
 		return (colour_shadowed);
 	else
 		return (colour_normal);
+
+/* 	if (is_shadowed(wall_value) && size < game->w1.size[1] / 3)
+		return (colour_shadowed);
+	else if (is_shadowed(wall_value))
+		return (colour_far_shadowed);
+	else if (size < game->w1.size[1] / 3)
+		return (colour_far);
+	else
+		return (colour_normal); */
 }
 
+
+// de x te estas pasando
 /** PURPOSE : draw*/
 static void draw_wall_vertical_unit(int i, int wall_side, double distance, int wall_ox_width, t_prog *game)
 {
@@ -85,7 +112,7 @@ static void draw_wall_vertical_unit(int i, int wall_side, double distance, int w
 	while (++pixel_ox_counter < wall_ox_width)
 	{
 		pixel_ox = (wall_ox_width * i) + pixel_ox_counter;
-		wall_colour = choose_shadow_colour(wall_side);
+		wall_colour = choose_shadow_colour(wall_side, size, game );
 		centered_vertical(pixel_ox, size, wall_colour, game);
 	}
 }
