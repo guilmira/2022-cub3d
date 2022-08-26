@@ -40,7 +40,6 @@ int	trgb_translate(int red, int green, int blue, int transparency)
 	return (result | red | green | blue | transparency);
 }
 
-//after change in minilib, testing of this functions is very much NEEDED
 int	get_red(int colour_code)
 {
 	return ((colour_code & 0xFF000000) >> 24);
@@ -68,4 +67,18 @@ int	get_opposite(int colour_code)
 	(255 - get_green(colour_code)),\
 	(255 - get_blue(colour_code)),\
 	get_transparent(colour_code) ));
+}
+
+int get_trgb_shadowed(int colour_code)
+{
+	int red;
+	int green;
+	int blue;
+	int shadowed_transparency;
+
+	red = get_red(colour_code);
+	green = get_green(colour_code);
+	blue = get_blue(colour_code);
+	shadowed_transparency = SHADOWED_TRANSPARENCY;
+	return (trgb_translate(red, green, blue, SHADOWED_TRANSPARENCY));
 }

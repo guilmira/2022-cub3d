@@ -12,12 +12,12 @@
 
 #include "cube.h"
 
-void centered_vertical(double x, int size, int colour, t_prog *game)
+static void centered_vertical(double x, int size, int colour, t_prog *game)
 {
 	int				i;
 	int				y;
 	int				counter;
-	double start[D2];	
+	double			start[D2];	
 
 	i = -1;
 	counter = (int) size;
@@ -39,52 +39,104 @@ void centered_vertical(double x, int size, int colour, t_prog *game)
 }
 #define CONSTANT 1200
 
-int get_wall_size(int distance, t_prog *game)
+#define MIN_DIST 1
+
+static int get_wall_size(int distance, t_prog *game)
 {
-	(void) game;
-	return (CONSTANT / distance);
+	int	ret;
+	int	max_size;
+
+	max_size = (game->w1.size[1] / 4) - SAFE_OFFSET;
+	if (distance < MIN_DIST)
+		return (max_size);
+	ret = CONSTANT / distance;
+	if (ret > max_size)
+		return (max_size);
+	else
+		return (ret);
 }
 
+/** PURPOSE : check if the wall hits on OX axis or OY axis.
+ * 2 OX axis (vertical vector that hits on an horizontal)
+ * 1 OXY axis (horizontal vector that hits on a vertical) */
+static int is_shadowed(int value)
+{
+	if (value == 2)
+		return (1);
+	else
+		return (0);
+}
+
+/** PURPOSE : choose what shade to put on wall. */
+static int choose_shadow_colour(int wall_value, int size, t_prog *game)
+{
+	int	colour_normal;
+	int	colour_far;
+	int	colour_shadowed;
+	int	colour_far_shadowed;
+	(void) size;
+	(void) game;
+
+	colour_normal = BLUE;
+	colour_far = trgb_translate(0, 255, 0, 0);
+	colour_shadowed = get_trgb_shadowed(colour_normal);
+	colour_far_shadowed = get_trgb_shadowed(colour_far);
+
+	if (is_shadowed(wall_value))
+		return (colour_shadowed);
+	else
+		return (colour_normal);
+
+/* 	if (is_shadowed(wall_value) && size < game->w1.size[1] / 3)
+		return (colour_shadowed);
+	else if (is_shadowed(wall_value))
+		return (colour_far_shadowed);
+	else if (size < game->w1.size[1] / 3)
+		return (colour_far);
+	else
+		return (colour_normal); */
+}
+
+
+// de x te estas pasando
+/** PURPOSE : draw*/
+static void draw_wall_vertical_unit(int i, int wall_side, double distance, int wall_ox_width, t_prog *game)
+{
+	int	size;
+	int	pixel_ox;
+	int	wall_colour;
+	int	pixel_ox_counter;
+	
+	pixel_ox_counter = -1;
+	size = get_wall_size(distance, game);
+	while (++pixel_ox_counter < wall_ox_width)
+	{
+		pixel_ox = (wall_ox_width * i) + pixel_ox_counter;
+		wall_colour = choose_shadow_colour(wall_side, size, game );
+		centered_vertical(pixel_ox, size, wall_colour, game);
+	}
+}
+
+
+//3 shades of blue for deepth
+
 /** PURPOSE : walls are represented adding vertical lines of different
- * lenght deoending on distance to player.*/
+ * lenght depending on distance to player.*/
 void	draw_3D_walls(t_prog *game)
 {
 	int	i;
-	i = -1;
 	int screen_width;
-	int wall_ox_unit;
-	int pixel_ox_counter;
-	int size;
-	int pixel_ox;
-	int shadowed;
-	int colour_shadowed;
-	int colour_normal;
-
-	colour_normal = BLUE;
-	colour_shadowed = trgb_translate(0, 0, 255, 120);
-
-	shadowed = 0;
-	pixel_ox_counter = -1;
+	int wall_ox_width;
+	
 	screen_width = game->w1.size[0];
-	wall_ox_unit = screen_width / game->rc->number_of_rays;
-	while (++i < game->rc->number_of_rays)
+	wall_ox_width = screen_width / game->rc->number_of_rays;
+	i = -1;
+	while (++i < game->rc->number_of_rays + 1)
 	{
-		
-		size = get_wall_size(game->rc->rc_distance[i], game);
-		while (++pixel_ox_counter < wall_ox_unit)
-		{
-			if (game->rc->rc_wall_side[i] == 2)
-				shadowed++;
-			else
-				shadowed = 0;
-			pixel_ox = (wall_ox_unit * i) + pixel_ox_counter;
-			if (shadowed)
-				centered_vertical(pixel_ox, size, colour_normal, game);
-			else
-				centered_vertical(pixel_ox, size, colour_shadowed, game);
-
-		}
-		pixel_ox_counter = -1;
-
+		//printf("here %i\n", game->rc->number_of_rays);
+		/* if (i == game->rc->number_of_rays / 2)
+			draw_wall_vertical_unit(i, game->rc->rc_, game->rc->rc_distance[i], wall_ox_width, game); */
+		//printf("%.2f ", game->rc->rc_distance[i]);
+		draw_wall_vertical_unit(i, game->rc->rc_wall_side[i], game->rc->rc_distance[i], wall_ox_width, game);
 	}
 }

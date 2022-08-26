@@ -31,7 +31,9 @@
 # define MINIMAP_INTIAL_STATE 4
 # define FULL_MINIMAP 4
 
+/* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
 
+#define SHADOWED_TRANSPARENCY 120
 /* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
 # define TRANCE_BOOST 10
 /* Corner minimap DIMENSIONS */
