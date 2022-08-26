@@ -131,7 +131,7 @@ static void buildwidth(t_prog *game, int height, int width)
         game->map2D.s_width = width + 1;
     	game->pl.position[0] += 1;
     }
-    game->pl.position[1] = (game->map2D.s_height - game->map2D.val - game->pl.position[1]);
+    game->pl.position[1] = (game->map2D.s_height - game->map2D.val - game->pl.position[1] - 1);
 }
 
 void	build_spaced_layout(t_prog *game, int height, int width)
