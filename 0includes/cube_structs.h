@@ -78,6 +78,8 @@ typedef struct s_player
 	double		ratio;
 	t_vector	vis;
 	t_beam		beam;
+	t_vector 	plane_perpendicular;
+	int			flag_vis_perpend;
 	int			flag_movement;
 	int			flag_trance;
 }				t_player;
