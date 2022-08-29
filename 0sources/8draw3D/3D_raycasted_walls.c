@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+segfaults modificando raycast offset
 #include "cube.h"
 
 static void centered_vertical(double x, int size, int colour, t_prog *game)
