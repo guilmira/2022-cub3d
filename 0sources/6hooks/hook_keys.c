@@ -21,14 +21,6 @@ void	update_player_location(t_prog *game)
 	game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2) - 1;
 }
 
-/*void	update_player_location(t_prog *game)
-{
-	game->pl.position_coor[0] = (double)(game->pl.position[0]) * 
-	game->map2D.pixel_per_block[0];
-	game->pl.position_coor[1] = (double)(game->map2D.map_y - (game->pl.position[1])) * 
-	game->map2D.pixel_per_block[1];
-}*/
-
 /** PURPOSE : Is there os is there not a minimap. */
 static int	is_minimap(t_prog *game)
 {
