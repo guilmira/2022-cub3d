@@ -63,6 +63,8 @@ void		main_raycast_calculation(int angle, t_prog *game);
 void		init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game);
 t_vector	raycast(t_data *aux, t_vector dir, double origin[], t_prog *game);
 void		clear_raycast(t_prog *game);
+double	calculate_plane_lenght(double angle, t_vector vis);
+
 /* BEAM */
 void		cast_beam(t_beam *beam, t_data *aux, t_prog *game);
 double		plane_lenght_and_direction(t_beam *beam, int angle);

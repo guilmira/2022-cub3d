@@ -12,21 +12,6 @@
 
 #include "cube.h"
 
-/** PURPOSE : Total horizontal plane lenght. 
- * 1. Get module of vision vector. 
- * 2. Pass it to radian. 
- * 3. tan(thetha) = opposite/ adyacent
- * 4. Therefore: result = adyacent * tan(thetha) */
-static double	calculate_plane_lenght(double angle, t_vector vis)
-{
-	double	theta;
-	double	vis_module;
-
-	vis_module = get_module(vis);
-	theta = degree_to_radian(angle / 2);
-	
-	return (vis_module * tan(theta));
-}
 
 
 /** PURPOSE : correct vision by adding correct plane vector. */

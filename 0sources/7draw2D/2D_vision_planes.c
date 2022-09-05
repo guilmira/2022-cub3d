@@ -27,12 +27,13 @@ static t_vector	get_plane_vector(t_vector vis, double plane_lenght)
 	return (mul_vec(perpendicular_dir, module));
 }
 
-/** PURPOSE : Total horizontal plane lenght. 
+/** PURPOSE : Total horizontal plane lenght
+ * It is assumed that we recieved a full vision angle, therefore is halved. 
  * 1. Get module of vision vector. 
  * 2. Pass it to radian. 
- * 3. tan(thetha) = opposite/ adyacent
+ * 3. tan(thetha) = opposite / adyacent.
  * 4. Therefore: result = adyacent * tan(thetha) */
-static double	calculate_plane_lenght(double angle, t_vector vis)
+double	calculate_plane_lenght(double angle, t_vector vis)
 {
 	double	theta;
 	double	vis_module;
