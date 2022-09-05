@@ -43,7 +43,7 @@
 
 # define SAFE_OFFSET 0.0001
 //# define RAYCAST_OFFSET 100 // pixels per aperture
-# define RAYCAST_OFFSET 1 //ver en 1000 posible seg fault en 600 y 300
+# define RAYCAST_OFFSET 10000000 //ver en 1000 posible seg fault en 600 y 300
 # define FOV_DEGREE 30
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 

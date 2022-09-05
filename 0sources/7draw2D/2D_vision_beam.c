@@ -29,13 +29,13 @@ static t_vector	calculate_plane_segment(t_vector plane_left, int number_of_rays)
  *      |      |      | 
  *      |      |      |
  * rayoffset = 4 ( - ) */
-static double	calculate_number_of_rays(double plane_lenght, double ray_offset)
+/* static double	calculate_number_of_rays(double plane_lenght, double ray_offset)
 {
 	double	aperture_units;
 
 	aperture_units = (double)(plane_lenght / ray_offset);
 	return (aperture_units);
-}
+} */
 
 
 /** PURPOSE : Init beam as a straight vector pointing north. */
@@ -87,14 +87,22 @@ void	main_raycast_calculation(int angle, int ray_offset, t_prog *game)
 
 	clear_raycast(game);
 	init_beam(&beam, game->pl.position_coor, game->pl.vis, game);
-
 	beam.vis = raycast(&aux, beam.vis_dir, beam.position, game);
 	
+
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
-	rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
+
+
+	//rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
+(void) ray_offset;
+	rays = game->w1.size[0] / 2;
+
+
 	beam.number_of_rays = (int) roundl(rays);
-	//beam.number_of_rays = game->w1.size[1];
+
+
 	init_struct_raycast(beam.number_of_rays * 2, beam.position, beam.vis, game);
+	
 	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays);
 	cast_beam(&beam, &aux, game);
 	game->pl.beam = beam;

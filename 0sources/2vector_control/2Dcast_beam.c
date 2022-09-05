@@ -33,7 +33,7 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	while (++i < counter)
 	{
 
-		resultant = sum_vec(beam->vis, plane);
+		resultant = sum_vec(beam->vis_dir, plane);
 		direction = get_unit_vector(resultant);
 
 		ray = raycast(&aux, direction, beam->position, game);
@@ -45,7 +45,7 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 			game->rc->rc_wall_side[i] = aux.face;
 		}
 	/* --------RESTAR SEGMENTO Y REPETIR----------------------------------------------------- */
-		resultant = sub_vec(beam->vis, plane);
+		resultant = sub_vec(beam->vis_dir, plane);
 		direction = get_unit_vector(resultant);
 		ray = raycast(&aux, direction, beam->position, game);
 		if (i < game->rc->number_of_rays)
@@ -90,10 +90,7 @@ void log_arrays(t_prog *game);
 void	cast_beam(t_beam *beam, t_data *aux, t_prog *game)
 {
 	raycast_barrage(beam, beam->number_of_rays, beam->plane_left, game);
-	//printf("distance : %.2f", aux->distance);
-	//log_arrays(game);
 	rearrange_array(aux, game);
-	//log_arrays(game);
 
 }
 
