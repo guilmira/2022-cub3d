@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/05 16:03:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:06:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int			rgb_t_translate(int red, int green, int blue, int transparency);
-int get_rgb_shadowed(int colour_code);
-
+int			get_rgb_shadowed(int colour_code);
+int			choose_wall_shade(int wall_value, int size, t_prog *game);
 int			get_opposite(int colour_code);
 void		framework_2D(t_prog *game);
 void		update_pixel_per_block(t_prog *game);

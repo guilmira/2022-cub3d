@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:49:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/05 14:45:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:26:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,35 @@ static void centered_vertical(double x, int size, int colour, t_prog *game)
 #define CONSTANT 2000
 #define MIN_DIST 1
 
-/** PURPOSE : calculate wall height. */
-static int get_wall_size(int distance, t_prog *game)
+static double get_height_constant(t_prog *game)
 {
-	int	ret;
-	int	max_size;
+	double height;
+	
+	(void) game;
+	height = CONSTANT;
+	return (height);
+}
 
+
+/** PURPOSE : calculate wall height. */
+static double get_wall_size(double distance, t_prog *game)
+{
+	double	ret;
+	int		max_size;
+	double	height;
+
+	height = get_height_constant(game);
 	max_size = (game->w1.size[1] / 4) - SAFE_OFFSET;
 	if (distance < MIN_DIST)
 		return (max_size);
-	ret = CONSTANT / distance;
+	ret = height / distance;
+	//printf("dist: %d\n", distance);
+	ret = (int) ret;
 	if (ret > max_size)
 		return (max_size);
 	else
 		return (ret);
 }
-
-int choose_wall_shade(int wall_value, int size, t_prog *game);
-
 
 /** PURPOSE : draw a vertical line of calculated size. */
 static void draw_wall_vertical_unit(int i, int wall_side, double distance, t_prog *game)
