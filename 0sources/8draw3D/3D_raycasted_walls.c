@@ -132,12 +132,8 @@ void	draw_3D_walls(t_prog *game)
 	screen_width = game->w1.size[0];
 	wall_ox_width = screen_width / game->rc->number_of_rays;
 	i = -1;
-	while (++i < game->rc->number_of_rays + 1)
+	while (++i < game->rc->number_of_rays)
 	{
-		//printf("here %i\n", game->rc->number_of_rays);
-		/* if (i == game->rc->number_of_rays / 2)
-			draw_wall_vertical_unit(i, game->rc->rc_, game->rc->rc_distance[i], wall_ox_width, game); */
-		//printf("%.2f ", game->rc->rc_distance[i]);
 		draw_wall_vertical_unit(i, game->rc->rc_wall_side[i], game->rc->rc_distance[i], wall_ox_width, game);
 	}
 }
