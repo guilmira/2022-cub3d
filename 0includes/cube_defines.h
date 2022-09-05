@@ -34,18 +34,24 @@
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
 
 #define SHADOWED_TRANSPARENCY 120
+
+
 /* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
 # define TRANCE_BOOST 10
+#define VISION_ANGLE_ROTATION 2
+
 /* Corner minimap DIMENSIONS */
 # define SPACES_AT_BORDER 2
 
 # define PLAYER_RATIO 0.5
 
 # define SAFE_OFFSET 0.0001
-//# define RAYCAST_OFFSET 100 // pixels per aperture
-# define RAYCAST_OFFSET 10000000 //ver en 1000 posible seg fault en 600 y 300
 # define FOV_DEGREE 30
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
+
+/* Raycast related. */
+#define VISION_RAY 1
+
 
 /* Safe margin not to burst the window limits. */
 # define SAFE_MARGIN 30

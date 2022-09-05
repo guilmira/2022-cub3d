@@ -52,8 +52,6 @@ t_vector dir, t_prog *game)
 	beam->position[1] = position[1];
 }
 
-#define VISION_RAY 1
-
 /** PURPOSE : Initialize pointers to contain raycast information
  * (for later drawing).*/
 static void	init_struct_raycast(int number_of_rays, double position[], \
@@ -78,7 +76,7 @@ t_vector vision, t_prog *game)
  * 1. Straight forward direction from point of origin.
  * 2. Side vectors depending of angle of vision. 
  * 3. Find out plane x vector. ( <---------------- ).*/
-void	main_raycast_calculation(int angle, int ray_offset, t_prog *game)
+void	main_raycast_calculation(int angle, t_prog *game)
 {
 	t_beam		beam;
 	double		plane_lenght;
@@ -88,23 +86,13 @@ void	main_raycast_calculation(int angle, int ray_offset, t_prog *game)
 	clear_raycast(game);
 	init_beam(&beam, game->pl.position_coor, game->pl.vis, game);
 	beam.vis = raycast(&aux, beam.vis_dir, beam.position, game);
-	
-
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
-
-
-	//rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
-(void) ray_offset;
-	rays = game->w1.size[0] / 2;
-
-
+	rays = game->w1.size[0];
 	beam.number_of_rays = (int) roundl(rays);
-
-
-	init_struct_raycast(beam.number_of_rays * 2, beam.position, beam.vis, game);
-	
-	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays);
+	init_struct_raycast(beam.number_of_rays, beam.position, beam.vis, game);
+	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays / 2);
 	cast_beam(&beam, &aux, game);
+
 	game->pl.beam = beam;
 	game->pl.flag_movement = 0;
 }

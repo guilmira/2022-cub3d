@@ -59,7 +59,7 @@ void		ft_mlx_delete_image_safe(int image_position, t_prog *game);
 
 /* ------------------------ RAYCAST ------------------------ */
 /* RAY CASTING AND DDA ALGORITHM */
-void		main_raycast_calculation(int angle, int ray_offset, t_prog *game);
+void		main_raycast_calculation(int angle, t_prog *game);
 void		init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game);
 t_vector	raycast(t_data *aux, t_vector dir, double origin[], t_prog *game);
 void		clear_raycast(t_prog *game);
@@ -128,5 +128,5 @@ void		log_beam(t_beam *beam);
 void		print_map(char **map, t_prog *game, int **s_map);
 void		log_coor_int(int i[]);
 void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size);
-
+void log_arrays(t_prog *game);
 #endif
