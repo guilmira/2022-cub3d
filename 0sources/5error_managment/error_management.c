@@ -48,6 +48,7 @@ static void	clear_memory(t_prog *game)
 {
 	if (game)
 	{
+
 		if (game->map2D.map)
 			freemat(game->map2D.map);
 		if (game->NO)
@@ -58,6 +59,7 @@ static void	clear_memory(t_prog *game)
 			free(game->WE);
 		if (game->EA)
 			free(game->EA);
+			//NEXT: proteger el clear map2D, necesita meter un if
 		clear_map2D(game);
 		clear_raycast(game);
 		free(game);

@@ -86,22 +86,20 @@ static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 	counter = -1;
 	while (++counter <= game->map2D.width + game->map2D.height)
 	{
-		/* if (!counter)
+/* 		if (!counter)
 			printf("EMPIEZA------------------------------------------------------------------\n");
 		printf("%f frente a %f\n", ray->net_distance[0], ray->net_distance[1]); */
 
-		if (ray->net_distance[1] < ray->net_distance[0])
+
+		if (ray->net_distance[1] < ray->net_distance[0] || !ray->delta[0])
 		{
 			
-			//printf("me fijo en OY\n");
 			ray->step[1] += ray->step_increase[1];
 			ray->net_distance[1] += ray->delta[1];
 			ray->face = 2;
 		}
 		else
 		{
-				
-			//printf("me fijo en OX\n");
 			ray->step[0] += ray->step_increase[0];
 			ray->net_distance[0] += ray->delta[0];
 			ray->face = 1;
@@ -113,7 +111,6 @@ static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 				get_resultant_vector(ray, 0, dir, game);
 			if (ray->face == 2)
 				get_resultant_vector(ray, 1, dir, game);
-			//printf("pego coordenaadas (%i ,%i )en cara%i\n", ray->step[0], ray->step[1], ray->face); //2 es vertical
 			break ;
 		}	
 
@@ -127,7 +124,6 @@ t_vector	 raycast(t_data *aux, t_vector dir, double origin[], t_prog *game)
 	t_ray		ray;
 	
 	init_ray(&ray, origin, dir, game);
-
 	raycast_collision_algorithm(&ray, dir, game);
 	aux->face = ray.face;
 	if (ray.face == 1)

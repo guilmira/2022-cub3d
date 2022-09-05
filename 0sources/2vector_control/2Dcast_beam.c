@@ -57,7 +57,8 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	}
 }
 
-void	rearrange_array(t_data *aux, t_prog *game)
+/** PURPOSE : Arrange array so vision vector falls in the middle. */
+static void	rearrange_array(t_data *aux, t_prog *game)
 {
 	int i;
 	int middle_value;
@@ -67,7 +68,6 @@ void	rearrange_array(t_data *aux, t_prog *game)
 	i =  game->rc->number_of_rays;
 	while (--i < game->rc->number_of_rays)
 	{
-		
 		game->rc->rc_distance[i + 1] = game->rc->rc_distance[i];
 		game->rc->rc_wall_side[i + 1] = game->rc->rc_wall_side[i];
 		if (i == middle_value)
