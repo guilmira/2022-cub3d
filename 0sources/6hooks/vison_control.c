@@ -23,7 +23,6 @@ static void	update_player_vision(int key, t_prog *game)
 	if (game->pl.flag_trance)
 		speed_multiplier = TRANCE_BOOST * 5;
 	plane_perpendicular = get_unit_vector(get_perpendicular(game->pl.vis));
-	log_vector(plane_perpendicular);
 	plane_perpendicular = mul_vec(plane_perpendicular, speed_multiplier);
 
 	if (key == key_lookright)

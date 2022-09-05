@@ -93,6 +93,7 @@ void	main_raycast_calculation(int angle, int ray_offset, t_prog *game)
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
 	rays = calculate_number_of_rays(plane_lenght, (double) ray_offset);
 	beam.number_of_rays = (int) roundl(rays);
+	//beam.number_of_rays = game->w1.size[1];
 	init_struct_raycast(beam.number_of_rays * 2, beam.position, beam.vis, game);
 	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays);
 	cast_beam(&beam, &aux, game);
