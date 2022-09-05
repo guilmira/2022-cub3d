@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 16:46:13 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:55:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	draw_grid(t_prog *game, double size_x, double size_y)
 
 	
 
-	colour = trgb_translate(255, 255, 255, GRID_TRANSPARENCY);
+	colour = rgb_t_translate(255, 255, 255, GRID_TRANSPARENCY);
 	nb = -1;
 	while (++nb < game->map2D.height + 1)
 		put_horizontal(( nb * game->map2D.pixel_per_block[1]), \

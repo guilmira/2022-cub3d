@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/22 16:58:41 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:03:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int			**copy_double_pointer(int **var, int height, int width);
 void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
-int			trgb_translate(int red, int blue, int green, int transparency);
-int get_trgb_shadowed(int colour_code);
+int			rgb_t_translate(int red, int green, int blue, int transparency);
+int get_rgb_shadowed(int colour_code);
 
 int			get_opposite(int colour_code);
 void		framework_2D(t_prog *game);

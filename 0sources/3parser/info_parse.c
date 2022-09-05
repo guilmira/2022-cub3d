@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/07/05 14:43:31 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:55:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ int		catch_number(char *info)
 		freemat(data_colour);
 		return(-1);
 	}
-	colour = trgb_translate(0, ft_atoi(data_colour[0]), ft_atoi(data_colour[1]), ft_atoi(data_colour[2]));
+	colour = rgb_t_translate(0, ft_atoi(data_colour[0]), ft_atoi(data_colour[1]), ft_atoi(data_colour[2]));
 	freemat(data_colour);
 	free(aux);
 	return(colour);

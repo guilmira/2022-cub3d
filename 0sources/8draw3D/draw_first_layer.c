@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/22 16:46:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:55:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	draw_first_layer(t_prog *game)
 
 	origin[0] = 0;
 	origin[1] = 0;
-	colour_floor = trgb_translate(120, 20, 20, 255);
-	colour_sky = trgb_translate(0, 40, 40, 255);
+	colour_floor = rgb_t_translate(120, 20, 20, 255);
+	colour_sky = rgb_t_translate(0, 40, 40, 255);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
 	origin[1] = game->w1.size[1] / 2;
 	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
