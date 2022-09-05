@@ -38,8 +38,8 @@ static void centered_vertical(double x, int size, int colour, t_prog *game)
 		(int) (start[0]), y, colour);
 	}
 }
-#define CONSTANT 2000
 
+#define CONSTANT 2000
 #define MIN_DIST 1
 
 static int get_wall_size(int distance, t_prog *game)
@@ -99,23 +99,17 @@ static int choose_shadow_colour(int wall_value, int size, t_prog *game)
 }
 
 
-// de x te estas pasando
-/** PURPOSE : draw*/
-static void draw_wall_vertical_unit(int i, int wall_side, double distance, int wall_ox_width, t_prog *game)
+/** PURPOSE : draw a vertical line of calculated size. */
+static void draw_wall_vertical_unit(int i, int wall_side, double distance, t_prog *game)
 {
 	int	size;
 	int	pixel_ox;
 	int	wall_colour;
-	int	pixel_ox_counter;
-	
-	pixel_ox_counter = -1;
+
 	size = get_wall_size(distance, game);
-	while (++pixel_ox_counter < wall_ox_width)
-	{
-		pixel_ox = (wall_ox_width * i) + pixel_ox_counter;
-		wall_colour = choose_shadow_colour(wall_side, size, game );
-		centered_vertical(pixel_ox, size, wall_colour, game);
-	}
+	pixel_ox = i;
+	wall_colour = choose_shadow_colour(wall_side, size, game);
+	centered_vertical(pixel_ox, size, wall_colour, game);
 }
 
 
@@ -126,14 +120,11 @@ static void draw_wall_vertical_unit(int i, int wall_side, double distance, int w
 void	draw_3D_walls(t_prog *game)
 {
 	int	i;
-	int screen_width;
-	int wall_ox_width;
-	
-	screen_width = game->w1.size[0];
-	wall_ox_width = screen_width / game->rc->number_of_rays;
+
 	i = -1;
 	while (++i < game->rc->number_of_rays)
 	{
-		draw_wall_vertical_unit(i, game->rc->rc_wall_side[i], game->rc->rc_distance[i], wall_ox_width, game);
+		draw_wall_vertical_unit(i, game->rc->rc_wall_side[i],\
+		game->rc->rc_distance[i], game);
 	}
 }
