@@ -78,6 +78,8 @@ typedef struct s_player
 	double		ratio;
 	t_vector	vis;
 	t_beam		beam;
+	t_vector 	plane_perpendicular;
+	int			flag_vis_perpend;
 	int			flag_movement;
 	int			flag_trance;
 }				t_player;
@@ -93,6 +95,7 @@ typedef struct s_map
 	int		s_height;
 	int		s_width;
 	int		pixel_per_block[D2];
+	int		pixel_per_b_screen[D2];
 	/* --------------- */
 	char	**map;
 	int		map_x;

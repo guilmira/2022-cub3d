@@ -6,16 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:24:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:49:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-
-
 /** PURPOSE : correct vision by adding correct plane vector. */
-static void	update_player_vision(int key, t_prog *game)
+static void update_player_vision(int key, t_prog *game)
 {
 	t_vector	plane_perpendicular;
 	t_vector	original_vision;
@@ -43,10 +41,6 @@ void	vison_control(mlx_key_data_t key, t_prog *game)
 	game->pl.flag_movement = 1;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		update_player_vision(key_lookright, game);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		update_player_vision(key_lookright, game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
-		update_player_vision(key_lookleft, game);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_A))
 		update_player_vision(key_lookleft, game);
 }

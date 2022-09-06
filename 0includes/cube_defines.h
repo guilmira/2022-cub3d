@@ -44,6 +44,8 @@
 # define SPACES_AT_BORDER 2
 
 # define PLAYER_RATIO 0.5
+# define VISUAL_BLOCKS_W 10
+# define VISUAL_BLOCKS_H 10
 
 # define SAFE_OFFSET 0.0001
 # define FOV_DEGREE 30

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/05 16:06:13 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:49:19 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ void		fill_player_pos(t_prog *game, double player_pos[]);
 /* MOVEMENT */
 void		vison_control(mlx_key_data_t key, t_prog *game);
 void		movement_control(mlx_key_data_t key, t_prog *game);
+int			wall_coll(t_prog *game, double new_pos[]);
+void		filter_final_pos(t_prog *game, double new_pos[], int flag);
 /* TOOLS */
 void		draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 

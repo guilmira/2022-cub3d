@@ -83,4 +83,6 @@ void	framework_dimensions(t_prog *game)
 	/* --------------------------------------------------------------- */
 	/* --------------------------------------------------------------- */
 	update_pixel_per_block(game);
+	game->map2D.pixel_per_b_screen[0] = game->w2.size[0] / VISUAL_BLOCKS_W;
+	game->map2D.pixel_per_b_screen[1] = game->w2.size[1] / VISUAL_BLOCKS_H;
 }
