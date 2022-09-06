@@ -13,19 +13,19 @@
 #include "cube.h"
 
 /** PURPOSE : Frees array of int. */
-static void	clear_map2D(t_prog *game)
+static void	clear_map2D(int **map, int height)
 {
 	int	j;
 
 	j = -1;
-	while (++j < game->map2D.height)
+	while (++j < height)
 	{
-		free(game->map2D.layout[j]);
-		game->map2D.layout[j] = NULL;
+		free(map[j]);
+		map[j] = NULL;
 	}
-	if (game->map2D.layout)
-		free(game->map2D.layout);
-	game->map2D.layout = NULL;
+	if (map)
+		free(map);
+	map = NULL;
 }
 
 void	clear_raycast(t_prog *game)
@@ -58,7 +58,8 @@ static void	clear_memory(t_prog *game)
 			free(game->WE);
 		if (game->EA)
 			free(game->EA);
-		clear_map2D(game);
+		clear_map2D(game->map2D.layout, game->map2D.height);
+		clear_map2D(game->map2D.s_layout, game->map2D.s_height);
 		clear_raycast(game);
 		free(game);
 	}
