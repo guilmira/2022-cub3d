@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/08/04 08:18:17 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:26:52 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,7 @@ static void abort_crapping(t_prog *game)
 			game->pl.position_coor[1] = game->pl.position_coor[1] - (game->map2D.pixel_per_block[1]/10);
 		if(flag == 4) //bottom
 			game->pl.position_coor[1] = game->pl.position_coor[1] + (game->map2D.pixel_per_block[1]/10);
-		/*if(flag == 5) //bottom
-		{
-			game->pl.position_coor[0] = game->pl.position_coor[0] + (game->map2D.pixel_per_block[0]/2);
-			game->pl.position_coor[0] = game->pl.position_coor[0] + (game->map2D.pixel_per_block[0]/2);
-		}
-		if(flag == 6) //bottom
-		{
-
-			game->pl.position_coor[0] = game->pl.position_coor[0] - (game->map2D.pixel_per_block[0]/2);
-		}*/
-		printf("%d\n", flag);
+	
 		flag = wall_coll(game, game->pl.position_coor);
 	}
 	game->pl.position[0] = floor(game->pl.position_coor[0] / game->map2D.pixel_per_block[0]);
@@ -58,7 +48,7 @@ void filter_final_pos(t_prog *game, double new_pos[], int flag)
 		game->pl.position_coor[1] = new_pos[1];
 		game->pl.position[1] = game->map2D.map_y - round(new_pos[1] / game->map2D.pixel_per_block[1]);
 	}
-	if (flag == 3 || flag == 4)
+	if (flag == 3 || flag == 4)
 	{
 		game->pl.position_coor[0] = new_pos[0];
 		game->pl.position[0] = round(new_pos[0] / game->map2D.pixel_per_block[0]);

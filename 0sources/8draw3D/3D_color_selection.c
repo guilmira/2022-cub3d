@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 14:40:12 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/05 16:04:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:34:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ static int is_shadowed(int value)
 		return (0);
 }
 
+
+//sky_clr
+//floor_clr
+
 /** PURPOSE : choose what shade to put on wall. 
  * 0 - normal
  * 1 - far
@@ -38,7 +42,7 @@ int choose_wall_shade(int wall_value, int size, t_prog *game)
 	colour[1] = rgb_t_translate(0, 0, 190, 255);
 	colour[2] = get_rgb_shadowed(colour[0]);
 	colour[3] =  get_rgb_shadowed(colour[1]);
-
+	
 	if (is_shadowed(wall_value) && size < game->w1.size[1] / 15)
 		return (colour[3]);
 	else if (is_shadowed(wall_value))
