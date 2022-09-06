@@ -74,8 +74,16 @@ void	framework_dimensions(t_prog *game)
 	/* --------------------------------------------------------------- */
 	game->w1.origin[0] = 0;
 	game->w1.origin[1] = 0;
-	game->w1.size[0] = OX_WINDOW; //NEXT : parsear, que no sea decimal, que sean cuadrados, mas cosas que se te ocurra
-	game->w1.size[1] = OY_WINDOW;
+	if (OX_WINDOW > OY_WINDOW)
+	{
+		game->w1.size[0] = OY_WINDOW;
+		game->w1.size[1] = OY_WINDOW;
+	}
+	else
+	{
+		game->w1.size[0] = OX_WINDOW;
+		game->w1.size[1] = OX_WINDOW;
+	}
 	game->w1.unit[0] = window_unit(game->w1.size[0], game->map2D.width);
 	game->w1.unit[1] = window_unit(game->w1.size[1], game->map2D.height);
 	/* --------------------------------------------------------------- */

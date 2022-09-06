@@ -21,13 +21,14 @@ static void abort_crapping(t_prog *game)
 	{
 		if(flag == 1)//right
 			game->pl.position_coor[0] = game->pl.position_coor[0] - (game->map2D.pixel_per_block[0]/10);
-		if(flag == 2)//left
+		else if(flag == 2)//left
 			game->pl.position_coor[0] = game->pl.position_coor[0] + (game->map2D.pixel_per_block[0]/10);
-		if(flag == 3) //top
+		else if(flag == 3) //top
 			game->pl.position_coor[1] = game->pl.position_coor[1] - (game->map2D.pixel_per_block[1]/10);
-		if(flag == 4) //bottom
+		else if(flag == 4) //bottom
 			game->pl.position_coor[1] = game->pl.position_coor[1] + (game->map2D.pixel_per_block[1]/10);
-	
+		else
+			break ;
 		flag = wall_coll(game, game->pl.position_coor);
 	}
 	game->pl.position[0] = floor(game->pl.position_coor[0] / game->map2D.pixel_per_block[0]);

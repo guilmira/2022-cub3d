@@ -14,8 +14,8 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -O3 -fsanitize=address #-Werror   #-g
-ARG			= easy_map4.cub
-#ARG			= default.cub
+ARG			= maps/easy_map4.cub
+#ARG			= maps/default.cub
 
 #time ./cube default.cub
 # 8.64 real         7.62 user         0.93 sys   reseteando each frame
