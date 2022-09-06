@@ -19,7 +19,6 @@ void filter_final_pos(t_prog *game, double new_pos[], int flag, double prev_pos[
 
 	prev_pos_c[0] = game->pl.position[0];
 	prev_pos_c[1] = game->pl.position[1];
-	printf("1:%f %f \n", prev_pos_c[0], prev_pos_c[1]);
 	if (flag == 0)
 	{
 		game->pl.position_coor[0] = new_pos[0];
@@ -41,11 +40,11 @@ void filter_final_pos(t_prog *game, double new_pos[], int flag, double prev_pos[
 		wall_coll(game, game->pl.position_coor) == 2 ||
 		wall_coll(game, game->pl.position_coor) == 5)
 	{
-		game->pl.position_coor[0] = prev_pos_c[0];
-		game->pl.position_coor[1] = prev_pos_c[1];
-		printf("2:%f %f \n", prev_pos_c[0], prev_pos_c[1]);
-		game->pl.position[0] = prev_pos[0];
-		game->pl.position[1] = prev_pos[1];
+		printf("Estoy harto\n");
+		game->pl.position[0] = prev_pos_c[0];
+		game->pl.position[1] = prev_pos_c[1];
+		game->pl.position_coor[0] = prev_pos[0];
+		game->pl.position_coor[1] = prev_pos[1];
 	}
 }
  
