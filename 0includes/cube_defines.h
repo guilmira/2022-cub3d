@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 16:39:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:29:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 # define TITLE_WINDOW "CUBE"
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
- 						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1020
-# define OY_WINDOW 1020
+ 						Mac Screen: 2560 x 1440p 						*/
+# define OX_WINDOW 1000
+# define OY_WINDOW 1000
+//1 y 1 pera
 /* Minimap size ratio */
 # define MINIMAP_WINDOW_RATIO 4
-
-//NEXT NO PERMITIR Bajo ningun concepto OY > OX
 
 /* 								 MAP INTITAL STATE
 				0 - no minimap
@@ -32,10 +31,7 @@
 # define FULL_MINIMAP 4
 
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
-
 #define SHADOWED_TRANSPARENCY 120
-
-
 /* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
 # define TRANCE_BOOST 10
 #define VISION_ANGLE_ROTATION 2
@@ -70,6 +66,7 @@
 # define CUB_3D 0
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
+# define EX0	"Error.\nDefines not according to standard. Check file cube_defines.h\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"
 # define EX3	"Error.\nCould not generate image.\n"
 /* ------------------------ STANDARD DEFINES ------------------------ */

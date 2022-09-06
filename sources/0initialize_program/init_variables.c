@@ -22,13 +22,32 @@ static void	init_image(t_prog *game)
 		game->image[i] = NULL;
 }
 
+static void parser_defines(t_prog *game)
+{
+	if (OY_WINDOW < 800)
+		ft_shutdown(EX0, game);
+	if (OX_WINDOW > OY_WINDOW)
+		ft_shutdown(EX0, game);
+	if (OX_WINDOW != OY_WINDOW)
+		ft_shutdown(EX0, game);
+	
+}
+
+
 /** PURPOSE : init MLX and set pointers to NULL.
  * 1. mlx_returns a pointer (void *). 
  * The library functions need it in order to work.
  * 2. Inits the rest of the variables within the struct. */
 void	init_game(t_prog *game)
 {
-	game->mlx = mlx_init(OX_WINDOW, OY_WINDOW, TITLE_WINDOW, 1);
+	int32_t ox_size;
+	int32_t oy_size;
+
+	game->mlx = NULL;
+	ox_size = OX_WINDOW;
+	oy_size = OY_WINDOW;
+	parser_defines(game);
+	game->mlx = mlx_init(ox_size, oy_size, TITLE_WINDOW, 1);
 	if (!game->mlx)
 		ft_shutdown("Error.\nMLX could not be initialized\n", game);
 	/* --------------------------------------------------------------- */
