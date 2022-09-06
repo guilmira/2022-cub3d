@@ -13,7 +13,7 @@
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -O3 #-fsanitize=address #-Werror   #-g
+CFLAGS		= -Wall -Wextra -O3 -fsanitize=address #-Werror   #-g
 ARG			= easy_map4.cub
 #ARG			= default.cub
 

@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 {
 	t_prog	*game;
 	/* --------------------------------------------------------------- */
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);
@@ -33,8 +33,6 @@ int	main(int argc, char **argv)
 	parser(game, argc, argv);
 	framework_dimensions(game);
 	init_map2D(game->map2D.map, game);
-	
-		
 	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);
 	clean_exit(game);

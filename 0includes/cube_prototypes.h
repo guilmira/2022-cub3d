@@ -117,7 +117,7 @@ void		fill_player_pos(t_prog *game, double player_pos[]);
 void		vison_control(mlx_key_data_t key, t_prog *game);
 void		movement_control(mlx_key_data_t key, t_prog *game);
 int			wall_coll(t_prog *game, double new_pos[]);
-void		filter_final_pos(t_prog *game, double new_pos[], int flag, double prev_pos[]);
+void		filter_final_pos(t_prog *game, double new_pos[], int flag);
 /* TOOLS */
 void		draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 

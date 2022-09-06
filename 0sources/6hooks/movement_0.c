@@ -49,7 +49,7 @@ static void move_position(t_vector v, t_prog *game, int key)
 	flag = wall_coll(game, new_pos);
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
-	filter_final_pos(game, new_pos, flag, game->pl.position_coor);
+	filter_final_pos(game, new_pos, flag);
 }
 
 /** PURPOSE : correct position by adding correct vector. */
