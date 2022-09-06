@@ -14,9 +14,6 @@
 
 void	framework_2D(t_prog *game);
 
-//NEXT mas prioritario
-//posicion
-
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
@@ -33,8 +30,6 @@ int	main(int argc, char **argv)
 	parser(game, argc, argv);
 	framework_dimensions(game);
 	init_map2D(game->map2D.map, game);
-	
-		
 	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);
 	clean_exit(game);

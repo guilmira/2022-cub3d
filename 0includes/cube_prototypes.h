@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/22 16:58:41 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 16:06:13 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int			**copy_double_pointer(int **var, int height, int width);
 void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
-int			trgb_translate(int red, int blue, int green, int transparency);
-int get_trgb_shadowed(int colour_code);
-
+int			rgb_t_translate(int red, int green, int blue, int transparency);
+int			get_rgb_shadowed(int colour_code);
+int			choose_wall_shade(int wall_value, int size, t_prog *game);
 int			get_opposite(int colour_code);
 void		framework_2D(t_prog *game);
 void		update_pixel_per_block(t_prog *game);
@@ -59,10 +59,12 @@ void		ft_mlx_delete_image_safe(int image_position, t_prog *game);
 
 /* ------------------------ RAYCAST ------------------------ */
 /* RAY CASTING AND DDA ALGORITHM */
-void		main_raycast_calculation(int angle, int ray_offset, t_prog *game);
+void		main_raycast_calculation(int angle, t_prog *game);
 void		init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game);
 t_vector	raycast(t_data *aux, t_vector dir, double origin[], t_prog *game);
 void		clear_raycast(t_prog *game);
+double	calculate_plane_lenght(double angle, t_vector vis);
+
 /* BEAM */
 void		cast_beam(t_beam *beam, t_data *aux, t_prog *game);
 double		plane_lenght_and_direction(t_beam *beam, int angle);
@@ -128,5 +130,5 @@ void		log_beam(t_beam *beam);
 void		print_map(char **map, t_prog *game, int **s_map);
 void		log_coor_int(int i[]);
 void		coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size);
-
+void log_arrays(t_prog *game);
 #endif

@@ -12,24 +12,28 @@
 
 #include "cube.h"
 
+
+
 /** PURPOSE : correct vision by adding correct plane vector. */
 static void	update_player_vision(int key, t_prog *game)
 {
 	t_vector	plane_perpendicular;
-	t_vector	new_vision;
-	double		speed_multiplier;
+	t_vector	original_vision;
+	double		angle_rotation;
+	double		lenght;
 
-	speed_multiplier = 30;
+	original_vision = game->pl.vis;
+	angle_rotation = VISION_ANGLE_ROTATION;
+	plane_perpendicular = get_unit_vector(get_perpendicular(original_vision));
 	if (game->pl.flag_trance)
-		speed_multiplier = TRANCE_BOOST * 5;
-	plane_perpendicular = get_unit_vector(get_perpendicular(game->pl.vis));
-	plane_perpendicular = mul_vec(plane_perpendicular, speed_multiplier);
-
+		angle_rotation = TRANCE_BOOST; //it will be halved
+	lenght = calculate_plane_lenght(angle_rotation, original_vision);
+	lenght = fabs(lenght);
+	plane_perpendicular = mul_vec(plane_perpendicular, lenght);
 	if (key == key_lookright)
-		new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, invert_sense_vector(plane_perpendicular)));
+		game->pl.vis = get_unit_vector(sum_vec(original_vision, invert_sense_vector(plane_perpendicular)));
 	else
-		new_vision = get_unit_vector(sum_vec(game->pl.beam.vis, (plane_perpendicular)));
-	game->pl.vis = new_vision;
+		game->pl.vis = get_unit_vector(sum_vec(original_vision, (plane_perpendicular)));	
 }
 
 /** PURPOSE : control field of vision. */
