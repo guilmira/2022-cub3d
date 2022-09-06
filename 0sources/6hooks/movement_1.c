@@ -27,11 +27,8 @@ static void abort_crapping(t_prog *game)
 			game->pl.position_coor[1] = game->pl.position_coor[1] - (game->map2D.pixel_per_block[1]/10);
 		else if(flag == 4) //bottom
 			game->pl.position_coor[1] = game->pl.position_coor[1] + (game->map2D.pixel_per_block[1]/10);
-<<<<<<< HEAD
-=======
 		else
 			break ;
->>>>>>> main
 		flag = wall_coll(game, game->pl.position_coor);
 	}
 	game->pl.position[0] = floor(game->pl.position_coor[0] / game->map2D.pixel_per_block[0]);

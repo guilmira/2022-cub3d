@@ -15,9 +15,17 @@
 /** PURPOSE : Correct minimap status and reset screen. */
 void	update_player_location(t_prog *game)
 {
-	game->pl.position_coor[0] = (double)(game->pl.position[0]) * 
+	int pos_x;
+	int pos_y;
+
+	pos_x = game->pl.position[0];
+	pos_y = game->pl.position[1];
+	while(game->map2D.layout[pos_y][pos_x] == '1')
+		pos_x--;
+	printf("%d %d\n", pos_y, pos_x);
+	game->pl.position_coor[0] = (double)(pos_x) * 
 	game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
-	game->pl.position_coor[1] = (double)(game->map2D.map_y - (game->pl.position[1])) * \
+	game->pl.position_coor[1] = (double)(game->map2D.map_y - (pos_y)) * \
 	game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2) - 1;
 }
 

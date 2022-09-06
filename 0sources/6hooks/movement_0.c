@@ -36,16 +36,14 @@ static void move_position(t_vector v, t_prog *game, int key)
 		speed_multiplier = 1;
 	if (key == 0)
 	{
-		new_pos[0] = game->pl.position_coor[0] + (v.x/126) * speed_multiplier;
-		new_pos[1] = game->pl.position_coor[1] + (v.y/126) * speed_multiplier;
+		new_pos[0] = game->pl.position_coor[0] + (v.x) * speed_multiplier;
+		new_pos[1] = game->pl.position_coor[1] + (v.y) * speed_multiplier;
 	}
 	else
 	{
-		new_pos[0] = game->pl.position_coor[0] - (v.x/126) * speed_multiplier;
-		new_pos[1] = game->pl.position_coor[1] - (v.y/126) * speed_multiplier;
+		new_pos[0] = game->pl.position_coor[0] - (v.x) * speed_multiplier;
+		new_pos[1] = game->pl.position_coor[1] - (v.y) * speed_multiplier;
 	}
-	/* log_coor_int(game->pl.position); //NEXT
-	log_coor(game->pl.position_coor); //NEXT */
 	flag = wall_coll(game, new_pos);
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
@@ -56,17 +54,12 @@ static void move_position(t_vector v, t_prog *game, int key)
 static void update_player_position(int key, t_prog *game)
 {
 	int i;
-	int x;
 
 	i = -1;
 	while (++i < 8)
 	{
 		if (key == i)
-		{
-			x = -1;
-			while(++x < 126) //NEXT que es el 126?
 				move_position(game->pl.vis, game, key);
-		}
 	}
 }
 
