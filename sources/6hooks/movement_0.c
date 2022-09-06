@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement_0.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/08/04 08:18:17 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:13:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void update_player_position(int key, t_prog *game)
 		if (key == i)
 		{
 			x = -1;
-			while(++x < 126) //NEXT que es el 126?
+			while(++x < 126)
 				move_position(game->pl.vis, game, key);
 		}
 	}
