@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
+/*   movement_0.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/04 08:18:17 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
+/*   Updated: 2022/08/04 08:18:17 by jsanfeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,50 +23,6 @@ static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game
 	return (0);
 }
 
-static void filter_final_pos(t_prog *game, double new_pos[], int flag)
-{
-	if (flag == 0)
-	{
-		game->pl.position_coor[0] = new_pos[0];
-		game->pl.position_coor[1] = new_pos[1];
-		game->pl.position[0] = round(new_pos[0] / game->map2D.pixel_per_block[0]);
-		game->pl.position[1] = game->map2D.map_y - round(new_pos[1] / game->map2D.pixel_per_block[1]);
-	}
-	if (flag == 1)
-	{
-		game->pl.position_coor[1] = new_pos[1];
-		game->pl.position[1] = game->map2D.map_y - round(new_pos[1] / game->map2D.pixel_per_block[1]);
-	}
-	if (flag == 2)
-	{
-		game->pl.position_coor[0] = new_pos[0];
-		game->pl.position[0] = round(new_pos[0] / game->map2D.pixel_per_block[0]);
-	}
-}
-
-static int wall_coll(t_prog *game, double new_pos[])
-{
-	int pos[6];
-
-
-	pos[0] = floor((new_pos[0] + (game->pl.ratio)) / game->map2D.pixel_per_block[0]);
-	pos[1] = floor((new_pos[0] - (game->pl.ratio)) / game->map2D.pixel_per_block[0]);
-	pos[2] = floor(new_pos[0] / game->map2D.pixel_per_block[0]);
-	pos[3] = ceil((new_pos[1] + game->pl.ratio) / game->map2D.pixel_per_block[1]) - 1;
-	pos[4] = ceil((new_pos[1] - game->pl.ratio) / game->map2D.pixel_per_block[1]) - 1;
-	pos[5] = ceil(new_pos[1] / game->map2D.pixel_per_block[1]) - 1;
-	if ((game->map2D.layout[pos[5]][pos[0]] == 1 && game->map2D.layout[pos[4]][pos[2]] == 1) 
-		|| (game->map2D.layout[pos[5]][pos[0]] == 1 && game->map2D.layout[pos[3]][pos[2]] == 1))
-		return(5);
-	if ((game->map2D.layout[pos[5]][pos[1]] == 1 && game->map2D.layout[pos[4]][pos[2]] == 1) 
-		|| (game->map2D.layout[pos[3]][pos[2]] == 1 && game->map2D.layout[pos[5]][pos[1]] == 1))
-		return(5);
-	if (game->map2D.layout[pos[5]][pos[0]] == 1 || game->map2D.layout[pos[5]][pos[1]] == 1)
-		return(1);
-	if (game->map2D.layout[pos[3]][pos[2]] == 1 || game->map2D.layout[pos[4]][pos[2]] == 1)
-		return(2);
-	return(0);
-}
 /** PURPOSE : calculate new coordinates. */
 static void move_position(t_vector v, t_prog *game, int key)
 {
@@ -93,7 +49,7 @@ static void move_position(t_vector v, t_prog *game, int key)
 	flag = wall_coll(game, new_pos);
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
-	filter_final_pos(game, new_pos, flag);
+	filter_final_pos(game, new_pos, flag, game->pl.position_coor);
 }
 
 /** PURPOSE : correct position by adding correct vector. */

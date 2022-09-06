@@ -36,7 +36,7 @@ void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int			trgb_translate(int red, int blue, int green, int transparency);
-int get_trgb_shadowed(int colour_code);
+int			get_trgb_shadowed(int colour_code);
 
 int			get_opposite(int colour_code);
 void		framework_2D(t_prog *game);
@@ -116,6 +116,8 @@ void		fill_player_pos(t_prog *game, double player_pos[]);
 /* MOVEMENT */
 void		vison_control(mlx_key_data_t key, t_prog *game);
 void		movement_control(mlx_key_data_t key, t_prog *game);
+int			wall_coll(t_prog *game, double new_pos[]);
+void		filter_final_pos(t_prog *game, double new_pos[], int flag, double prev_pos[]);
 /* TOOLS */
 void		draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 

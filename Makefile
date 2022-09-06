@@ -13,9 +13,9 @@
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra  #-Werror   -O3 -fsanitize=address   #-g
-ARG			= easy_map4.cub
-#ARG			= default.cub
+CFLAGS		= -Wall -Wextra -O3 -fsanitize=address #-Werror   #-g
+#ARG			= easy_map3.cub
+ARG			= default.cub
 
 #time ./cube default.cub
 # 8.64 real         7.62 user         0.93 sys   reseteando each frame
@@ -37,7 +37,7 @@ FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c map_parse.c)
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles_line.c utiles9.c )
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
-FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement.c vison_control.c hook_keys.c hooks.c)
+FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c vison_control.c hook_keys.c hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c frame_player_position.c character_intital.c)
 FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c)
 #--------------------------------------------------------------------------------------------------------------SOURCES
