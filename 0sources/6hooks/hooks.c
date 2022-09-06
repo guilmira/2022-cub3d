@@ -23,7 +23,7 @@ void	next_frame(void *g)
 	{
 		reset_and_wash_frame(game);
 
-		main_raycast_calculation(FOV_DEGREE, RAYCAST_OFFSET, game);
+		main_raycast_calculation(FOV_DEGREE, game);
 		 if (game->minimap_state != FULL_MINIMAP)
 			put_frame3D(game); 
 		if (game->minimap_state)

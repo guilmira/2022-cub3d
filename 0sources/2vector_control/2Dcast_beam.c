@@ -33,7 +33,7 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	while (++i < counter)
 	{
 
-		resultant = sum_vec(beam->vis, plane);
+		resultant = sum_vec(beam->vis_dir, plane);
 		direction = get_unit_vector(resultant);
 
 		ray = raycast(&aux, direction, beam->position, game);
@@ -41,25 +41,24 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 		{
 			game->rc->rc_vector[i] = ray;
 			game->rc->rc_distance[i] = aux.distance;
-			//game->rc->rc_distance[i] = get_module(ray);
 			game->rc->rc_wall_side[i] = aux.face;
 		}
 	/* --------RESTAR SEGMENTO Y REPETIR----------------------------------------------------- */
-		resultant = sub_vec(beam->vis, plane);
+		resultant = sub_vec(beam->vis_dir, plane);
 		direction = get_unit_vector(resultant);
 		ray = raycast(&aux, direction, beam->position, game);
 		if (i < game->rc->number_of_rays)
 		{
 			game->rc->rc_vector[counter + (counter - 1) - i] = ray;
 			game->rc->rc_distance[counter + (counter - 1) - i] = aux.distance;
-			//game->rc->rc_distance[counter + (counter - 1) - i] = get_module(ray);
 			game->rc->rc_wall_side[counter + (counter - 1) - i] = aux.face;
 		}
 		plane = sub_vec(plane, beam->plane_segment);
 	}
 }
 
-void	rearrange_array(t_data *aux, t_prog *game)
+/** PURPOSE : Arrange array so vision vector falls in the middle. */
+static void	rearrange_array(t_data *aux, t_prog *game)
 {
 	int i;
 	int middle_value;
@@ -69,7 +68,6 @@ void	rearrange_array(t_data *aux, t_prog *game)
 	i =  game->rc->number_of_rays;
 	while (--i < game->rc->number_of_rays)
 	{
-		
 		game->rc->rc_distance[i + 1] = game->rc->rc_distance[i];
 		game->rc->rc_wall_side[i + 1] = game->rc->rc_wall_side[i];
 		if (i == middle_value)
@@ -77,23 +75,17 @@ void	rearrange_array(t_data *aux, t_prog *game)
 	}
 	game->rc->rc_distance[middle_value] = aux->distance;
 	game->rc->rc_wall_side[middle_value] = aux->face;
-
 }
 
 
-
-void log_arrays(t_prog *game);
 
 /** PURPOSE : Casting beam of rays from origin. 
  The barrage its what we call the rapid succesion of vectors calculated from 
  left to right and that they generate the beam. */
 void	cast_beam(t_beam *beam, t_data *aux, t_prog *game)
 {
-	raycast_barrage(beam, beam->number_of_rays, beam->plane_left, game);
-	//printf("distance : %.2f", aux->distance);
-	//log_arrays(game);
+	raycast_barrage(beam, beam->number_of_rays / 2, beam->plane_left, game);
 	rearrange_array(aux, game);
-	//log_arrays(game);
 
 }
 

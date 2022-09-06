@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/21 20:30:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/05 15:55:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	draw_raycast(t_prog *game)
 	t_vector	ray;
 	int			colour;
 
-	colour = trgb_translate(255, 150, 0, 255);
+	colour = rgb_t_translate(255, 150, 0, 255);
 	i = -1;
 	while (++i < game->rc->number_of_rays)
 	{

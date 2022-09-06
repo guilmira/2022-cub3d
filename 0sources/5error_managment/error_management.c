@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 16:46:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:48:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	clear_memory(t_prog *game)
 {
 	if (game)
 	{
+
 		if (game->map2D.map)
 			freemat(game->map2D.map);
 		if (game->NO)

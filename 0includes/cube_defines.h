@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 13:24:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:25:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define OX_WINDOW 1020
 # define OY_WINDOW 1020
 /* Minimap size ratio */
-# define MINIMAP_WINDOW_RATIO 3
+# define MINIMAP_WINDOW_RATIO 4
 
 //NEXT NO PERMITIR Bajo ningun concepto OY > OX
 
@@ -34,8 +34,12 @@
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
 
 #define SHADOWED_TRANSPARENCY 120
+
+
 /* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
 # define TRANCE_BOOST 10
+#define VISION_ANGLE_ROTATION 2
+
 /* Corner minimap DIMENSIONS */
 # define SPACES_AT_BORDER 2
 
@@ -44,10 +48,12 @@
 # define VISUAL_BLOCKS_H 10
 
 # define SAFE_OFFSET 0.0001
-//# define RAYCAST_OFFSET 100 // pixels per aperture
-# define RAYCAST_OFFSET 1
 # define FOV_DEGREE 30
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
+
+/* Raycast related. */
+#define VISION_RAY 1
+
 
 /* Safe margin not to burst the window limits. */
 # define SAFE_MARGIN 30

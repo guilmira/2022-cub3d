@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/08/22 16:50:09 by guilmira         ###   ########.fr        #
+#    Updated: 2022/09/05 14:41:20 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -O3 -fsanitize=address #-Werror   #-g
-ARG			= easy_map4.cub
-#ARG			= default.cub
+ARG			= maps/easy_map4.cub
+#ARG			= maps/default.cub
 
 #time ./cube default.cub
 # 8.64 real         7.62 user         0.93 sys   reseteando each frame
@@ -39,7 +39,7 @@ FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles_line.c utile
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c vison_control.c hook_keys.c hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c frame_player_position.c character_intital.c)
-FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c)
+FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c 3D_color_selection.c)
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	$(FOLDER0)\
 				$(FOLDER1)\
