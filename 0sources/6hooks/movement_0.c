@@ -44,9 +44,9 @@ static void move_position(t_vector v, t_prog *game, int key)
 		new_pos[0] = game->pl.position_coor[0] - (v.x) * speed_multiplier;
 		new_pos[1] = game->pl.position_coor[1] - (v.y) * speed_multiplier;
 	}
-	flag = wall_coll(game, new_pos);
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
+	flag = wall_coll(game, new_pos);
 	filter_final_pos(game, new_pos, flag);
 }
 

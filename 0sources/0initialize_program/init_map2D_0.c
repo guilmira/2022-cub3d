@@ -55,7 +55,7 @@ static void	fill_vis(t_prog *game, char dir)
 }
 
 /** PURPOSE : Define intial location of player position in pixel screen. */
-static void	update_player_position(int j, int i, t_prog *game)
+static void	set_player_position(int j, int i, t_prog *game)
 {
 	game->pl.position[0] = i;
 	game->pl.position[1] = game->map2D.height - j - 1;
@@ -106,7 +106,7 @@ void	init_map2D(char **map, t_prog *game)
 				layout[shift_array(j, height)][i] = 0;
 			else
 			{
-				update_player_position(j, i, game);
+				set_player_position(j, i, game);
 				fill_vis(game, game->map2D.map[j][i]);
 			}
 		}
@@ -122,7 +122,5 @@ void	init_map2D(char **map, t_prog *game)
 	game->map2D.height = game->map2D.s_height;
 	game->map2D.width = game->map2D.s_width;
 	log_coor_int(game->pl.position);
-	//print_map(map, game, layout);
 	update_pixel_per_block(game);
-	update_player_position(game->pl.position[1], game->pl.position[0], game);
 }

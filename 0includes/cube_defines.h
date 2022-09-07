@@ -18,10 +18,10 @@
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1020
-# define OY_WINDOW 1020
+# define OX_WINDOW 1200
+# define OY_WINDOW 1200
 /* Minimap size ratio */
-# define MINIMAP_WINDOW_RATIO 4
+# define MINIMAP_WINDOW_RATIO 3
 
 //NEXT NO PERMITIR Bajo ningun concepto OY > OX
 
@@ -56,7 +56,7 @@
 
 
 /* Safe margin not to burst the window limits. */
-# define SAFE_MARGIN 30
+# define SAFE_MARGIN 0.1
 
 /* Safe margin not to wash the window limits. */
 # define WASH_SIZE_OFFSET 1

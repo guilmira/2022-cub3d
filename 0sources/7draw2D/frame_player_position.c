@@ -23,7 +23,7 @@ void	draw_player_position(mlx_image_t *image, t_prog *game)
 	position[1] = game->pl.position_coor[1];
 	if (position[0] <= 0 || position[1] <= 0)
 		ft_shutdown(EX, game);
-	game->pl.ratio = (PLAYER_RATIO * game->map2D.pixel_per_block[1]);
+	game->pl.ratio = (PLAYER_RATIO * game->map2D.pixel_per_block[0]);
 	draw_2d_player(image, position, game->pl.ratio, GREEN + RED, game);
 	draw_centered_rectangle(position[0], position[1], x_size, y_size, game);
 }
