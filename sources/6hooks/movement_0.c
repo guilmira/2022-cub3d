@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/09/06 17:14:15 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:18:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,29 @@ static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game
 }
 
 /** PURPOSE : calculate new coordinates. */
-static void move_position(t_vector v, t_prog *game, int key)
+static void move_position(double v[], t_prog *game, int key)
 {
 	double new_pos[2];
 	double speed_multiplier;
 	int flag;
 
 	if (game->pl.flag_trance)
-		speed_multiplier = TRANCE_BOOST;
+		speed_multiplier = WIND_MODE;
 	else
 		speed_multiplier = 1;
 	if (key == 0)
 	{
-		new_pos[0] = game->pl.position_coor[0] + (v.x) * speed_multiplier;
-		new_pos[1] = game->pl.position_coor[1] + (v.y) * speed_multiplier;
+		new_pos[0] = game->pl.position_coor[0] + (v[0]) * speed_multiplier;
+		new_pos[1] = game->pl.position_coor[1] + (v[1]) * speed_multiplier;
 	}
 	else
 	{
-		new_pos[0] = game->pl.position_coor[0] - (v.x) * speed_multiplier;
-		new_pos[1] = game->pl.position_coor[1] - (v.y) * speed_multiplier;
+		new_pos[0] = game->pl.position_coor[0] - (v[0]) * speed_multiplier;
+		new_pos[1] = game->pl.position_coor[1] - (v[1]) * speed_multiplier;
 	}
-	/* log_coor_int(game->pl.position); //NEXT
-	log_coor(game->pl.position_coor); //NEXT */
-	flag = wall_coll(game, new_pos);
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
+	flag = wall_coll(game, new_pos);
 	filter_final_pos(game, new_pos, flag);
 }
 
@@ -56,12 +54,31 @@ static void move_position(t_vector v, t_prog *game, int key)
 static void update_player_position(int key, t_prog *game)
 {
 	int i;
+	int x;
+	int speed;
+	double vp[2];
 
 	i = -1;
+	if (game->minimap_state == 2)
+	{
+		speed = PLAYER_SPEED;
+		vp[0] = ((game->pl.vis.x) / game->map2D.pixel_per_block[0]);
+		vp[1] = ((game->pl.vis.y) / game->map2D.pixel_per_block[1]);
+	}
+	else if(game->minimap_state == 4)
+	{
+		speed = PLAYER_SPEED * 4.5;
+		vp[0] = ((game->pl.vis.x) / game->map2D.pixel_per_block[0]);
+		vp[1] = ((game->pl.vis.y) / game->map2D.pixel_per_block[1]);
+	}
+	x = 0;
 	while (++i < 8)
 	{
 		if (key == i)
-			move_position(game->pl.vis, game, key);
+		{
+			while(x++ < speed)
+				move_position(vp, game, key);
+		}
 	}
 }
 

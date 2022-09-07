@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:49:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 15:48:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:10:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static double get_wall_size(double distance, t_prog *game)
 	if (distance < MIN_DIST)
 		return (max_size);
 	ret = height / distance;
-	//printf("dist: %d\n", distance);
 	ret = (int) ret;
 	if (ret > max_size)
 		return (max_size);

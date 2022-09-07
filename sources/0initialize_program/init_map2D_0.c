@@ -122,7 +122,6 @@ void	init_map2D(char **map, t_prog *game)
 	game->map2D.height = game->map2D.s_height;
 	game->map2D.width = game->map2D.s_width;
 	log_coor_int(game->pl.position);
-	//print_map(map, game, layout);
 	update_pixel_per_block(game);
 	update_player_position(game->pl.position[1], game->pl.position[0], game);
 }

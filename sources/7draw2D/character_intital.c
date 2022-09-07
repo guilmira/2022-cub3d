@@ -15,6 +15,8 @@
 
 void fill_vis(t_prog *game, char dir);
 
+//NOT USED
+
 void	fill_player_pos(t_prog *game, double player_pos[])
 {
 	int i[2];
