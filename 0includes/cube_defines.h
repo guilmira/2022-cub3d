@@ -51,6 +51,9 @@
 # define FOV_DEGREE 30
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 
+/* Player related. */
+#define PLAYER_SPEED 6
+
 /* Raycast related. */
 #define VISION_RAY 1
 

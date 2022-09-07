@@ -58,7 +58,7 @@ static void	fill_vis(t_prog *game, char dir)
 static void	set_player_position(int j, int i, t_prog *game)
 {
 	game->pl.position[0] = i;
-	game->pl.position[1] = game->map2D.height - j - 1;
+	game->pl.position[1] = game->map2D.height - j;
 	game->pl.position_coor[0] = game->pl.position[0] * (double) game->map2D.pixel_per_block[0] + ( (double) game->map2D.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = game->pl.position[1] * (double) game->map2D.pixel_per_block[1] + ( (double) game->map2D.pixel_per_block[1] / 2);
 }
