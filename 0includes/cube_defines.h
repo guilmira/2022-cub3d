@@ -19,9 +19,9 @@
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
 # define OX_WINDOW 1200
-# define OY_WINDOW 1200
+# define OY_WINDOW 1900
 /* Minimap size ratio */
-# define MINIMAP_WINDOW_RATIO 3
+# define MINIMAP_WINDOW_RATIO 4
 
 //NEXT NO PERMITIR Bajo ningun concepto OY > OX
 
@@ -52,7 +52,7 @@
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 
 /* Player related. */
-#define PLAYER_SPEED 6
+#define PLAYER_SPEED 12
 
 /* Raycast related. */
 #define VISION_RAY 1
