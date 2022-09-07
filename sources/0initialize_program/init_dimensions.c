@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 11:34:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:03:43 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,8 @@ void	framework_dimensions(t_prog *game)
 	/* --------------------------------------------------------------- */
 	game->w1.origin[0] = 0;
 	game->w1.origin[1] = 0;
-	if (OX_WINDOW > OY_WINDOW)
-	{
-		game->w1.size[0] = OY_WINDOW;
-		game->w1.size[1] = OY_WINDOW;
-	}
-	else
-	{
-		game->w1.size[0] = OX_WINDOW;
-		game->w1.size[1] = OX_WINDOW;
-	}
+	game->w1.size[1] = OY_WINDOW;
+	game->w1.size[0] = game->w1.size[1];
 	game->w1.unit[0] = window_unit(game->w1.size[0], game->map2D.width);
 	game->w1.unit[1] = window_unit(game->w1.size[1], game->map2D.height);
 	/* --------------------------------------------------------------- */

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 16:25:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:03:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 /* Minimap size ratio */
 # define MINIMAP_WINDOW_RATIO 4
 
-//NEXT NO PERMITIR Bajo ningun concepto OY > OX
-
 /* 								 MAP INTITAL STATE
 				0 - no minimap
 2 - minimap corner         4 - full minimap 						*/
@@ -32,10 +30,7 @@
 # define FULL_MINIMAP 4
 
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
-
 #define SHADOWED_TRANSPARENCY 120
-
-
 /* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
 # define TRANCE_BOOST 10
 #define VISION_ANGLE_ROTATION 2
@@ -70,6 +65,7 @@
 # define CUB_3D 0
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
+# define EX0	"Error.\nDefines not according to standard. Check file cube_defines.h\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"
 # define EX3	"Error.\nCould not generate image.\n"
 /* ------------------------ STANDARD DEFINES ------------------------ */

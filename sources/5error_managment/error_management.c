@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 15:48:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:23:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ static void	clear_images(t_prog *game)
 void	clean_exit(t_prog *game)
 {
 	clear_images(game);
-	mlx_terminate(game->mlx);
+	if (game->mlx)
+		mlx_terminate(game->mlx);
 	clear_memory(game);
 	exit(0);
 }
@@ -96,7 +97,8 @@ void	clean_exit(t_prog *game)
 void	ft_shutdown(char *error_msg, t_prog *game)
 {
 	clear_images(game);
-	mlx_terminate(game->mlx);
+	if (game->mlx)
+		mlx_terminate(game->mlx);
 	clear_memory(game);
 	ft_shut(error_msg);
 }
