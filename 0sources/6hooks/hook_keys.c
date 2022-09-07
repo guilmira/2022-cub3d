@@ -15,30 +15,9 @@
 /** PURPOSE : Correct minimap status and reset screen. */
 void	update_player_location(t_prog *game)
 {
-	/*int coor_x;
-	int coor_y;
-	int count;
-
-	coor_x = game->pl.position[0];
-	coor_y = game->pl.position[1];
-	count = 1;
-	while (42)
-	{
-		if (game->map2D.layout[coor_y][coor_x] == 0)
-			break ;
-		else if (game->map2D.layout[coor_y][coor_x - count] == 0)
-			coor_x -= count;
-		else if (game->map2D.layout[coor_y][coor_x + count] == 0)
-			coor_x += count;
-		else if (game->map2D.layout[coor_y - count][coor_x] == 0)
-			coor_y -= count;
-		else if (game->map2D.layout[coor_y + count][coor_x] == 0)
-			coor_y += count;
-		count++;
-	}*/
-	game->pl.position_coor[0] = (double)(game->pl.position[0]/*coor_x*/) * 
+	game->pl.position_coor[0] = (double)(game->pl.position[0]) * 
 	game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
-	game->pl.position_coor[1] = (double)(game->map2D.map_y - (game->pl.position[1]/*coor_y*/)) * \
+	game->pl.position_coor[1] = (double)(game->map2D.map_y - (game->pl.position[1] + 1)) * 
 	game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
 }
 
