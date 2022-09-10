@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:49:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 15:21:39 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/10 15:48:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void centered_vertical(double x, int size, int colour, t_prog *game)
 	}
 }
 
-#define CONSTANT 2000 //constant for a perpendicular distance
+#define CONSTANT 1200 //constant for a perpendicular distance
 //#define CONSTANT 8000 //for a fisheye
 #define MIN_DIST 1
 
