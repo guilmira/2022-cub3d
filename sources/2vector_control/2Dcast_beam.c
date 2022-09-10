@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/21 21:19:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/10 15:40:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 		if (i < game->rc->number_of_rays)
 		{
 			game->rc->rc_vector[i] = ray;
+			//game->rc->rc_distance[i] = get_module(ray);
 			game->rc->rc_distance[i] = aux.distance;
 			game->rc->rc_wall_side[i] = aux.face;
 		}
@@ -50,6 +51,7 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 		if (i < game->rc->number_of_rays)
 		{
 			game->rc->rc_vector[counter + (counter - 1) - i] = ray;
+			//game->rc->rc_distance[counter + (counter - 1) - i] = get_module(ray);
 			game->rc->rc_distance[counter + (counter - 1) - i] = aux.distance;
 			game->rc->rc_wall_side[counter + (counter - 1) - i] = aux.face;
 		}
@@ -73,6 +75,7 @@ static void	rearrange_array(t_data *aux, t_prog *game)
 		if (i == middle_value)
 			break;
 	}
+	//game->rc->rc_distance[middle_value] = get_module(aux->vector);
 	game->rc->rc_distance[middle_value] = aux->distance;
 	game->rc->rc_wall_side[middle_value] = aux->face;
 }
@@ -86,6 +89,7 @@ void	cast_beam(t_beam *beam, t_data *aux, t_prog *game)
 {
 	raycast_barrage(beam, beam->number_of_rays / 2, beam->plane_left, game);
 	rearrange_array(aux, game);
+	//log_arrays(game);
 
 }
 

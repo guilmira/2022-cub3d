@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/22 17:08:17 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/08 14:22:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,9 @@ typedef struct s_map
 /** PURPOSE : Assist struct raycast. */
 typedef struct s_data
 {
-	int		face;
-	double	distance;
+	int			face;
+	double		distance;
+	t_vector	vector;
 }				t_data;
 
 /** PURPOSE : Result of the raycast. */

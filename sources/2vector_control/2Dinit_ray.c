@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:55 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/17 18:37:48 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/10 15:35:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void get_delta(t_ray *ray, t_vector dir)
 	
 }
 
+/** PURPOSE : Get distance at the beginnig of the coordinate. */
 void get_relative_distance(t_ray *ray, t_prog *game)
 {
 	ray->relative_distance[0] = 0;

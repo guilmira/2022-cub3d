@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/21 21:23:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/08 14:32:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,9 @@ void	main_raycast_calculation(int angle, t_prog *game)
 	clear_raycast(game);
 	init_beam(&beam, game->pl.position_coor, game->pl.vis, game);
 	beam.vis = raycast(&aux, beam.vis_dir, beam.position, game);
+	aux.vector = beam.vis;
 	plane_lenght = plane_lenght_and_direction(&beam, angle);
-	rays = game->w1.size[0] - 1;
+	rays = game->w1.size[0];
 	beam.number_of_rays = (int) roundl(rays);
 	init_struct_raycast(beam.number_of_rays, beam.position, beam.vis, game);
 	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays / 2);
