@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/08 14:22:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:47:01 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_data
 	int			face;
 	double		distance;
 	t_vector	vector;
+	int			wall_hit[D2];
 }				t_data;
 
 /** PURPOSE : Result of the raycast. */
@@ -117,6 +118,8 @@ typedef struct s_raycast
 	t_vector	*rc_vector;
 	double		*rc_distance;
 	int			*rc_wall_side;
+	int			*rc_wall_hit_x;
+	int			*rc_wall_hit_y;
 	double		rc_origin_coor[D2];
 	int			number_of_rays;
 }				t_raycast;
