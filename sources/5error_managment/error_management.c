@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 18:23:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/10 16:48:28 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void	clear_raycast(t_prog *game)
 			free(game->rc->rc_distance);
 		if (game->rc->rc_wall_side)
 			free(game->rc->rc_wall_side);
+		if (game->rc->rc_wall_hit_x)
+			free(game->rc->rc_wall_hit_x);
+		if (game->rc->rc_wall_hit_y)
+			free(game->rc->rc_wall_hit_y);
 		free(game->rc);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/21 21:20:16 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/10 17:24:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,11 @@ t_vector	 raycast(t_data *aux, t_vector dir, double origin[], t_prog *game)
 	raycast_collision_algorithm(&ray, dir, game);
 	aux->face = ray.face;
 	if (ray.face == 1)
-		aux->distance = ray.net_distance[0];
+		aux->distance = ray.net_distance[0] - ray.delta[0];
 	if (ray.face == 2)
-		aux->distance = ray.net_distance[1];
+		aux->distance = ray.net_distance[1] - ray.delta[1];
+		
+	aux->wall_hit[0] = ray.step[0];
+	aux->wall_hit[1] = ray.step[1];
 	return (ray.resultant_vector);
 }

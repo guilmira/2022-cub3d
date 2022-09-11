@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/07 17:24:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/08 14:33:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@
 # define VISUAL_BLOCKS_H 10
 
 /* Player related. */
-# define PLAYER_SPEED 12
+# define PLAYER_SPEED 8
 # define TRANCE_BOOST 10
-# define WIND_MODE 4
+# define WIND_MODE 8
 # define VISION_ANGLE_ROTATION 2
 
 

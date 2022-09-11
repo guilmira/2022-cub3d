@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:48:19 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/22 17:29:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/10 15:44:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	put_frame3D(t_prog *game)
 {
 	draw_first_layer(game);
+	
 	draw_3D_walls(game);
 	//draw_player(game);
 	//draw_player_left_hud(game);
