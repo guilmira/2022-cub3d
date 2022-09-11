@@ -21,7 +21,7 @@
 # define OX_WINDOW 1200
 # define OY_WINDOW 1200
 /* Minimap size ratio */
-# define MINIMAP_WINDOW_RATIO 3
+# define MINIMAP_WINDOW_RATIO 6
 
 /* 								 MAP INTITAL STATE
 				0 - no minimap
