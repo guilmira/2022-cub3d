@@ -13,15 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : evaluate if movement gets close to window limit. */
-static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game)
-{
-	(void) game;
-	if (new_pos[0] + margin >= win.size[0] || new_pos[0] - margin <= 0)
-		return (1);
-	if (new_pos[1] + margin >= win.size[1] || new_pos[1] - margin <= 0)
-		return (1);
-	return (0);
-}
+
 
 /** PURPOSE : calculate new coordinates. */
 static void move_position(double v[], t_prog *game, int key, int pixel_per_block[])
@@ -36,16 +28,14 @@ static void move_position(double v[], t_prog *game, int key, int pixel_per_block
 		speed_multiplier = 0.01;
 	if (key == 0)
 	{
-		new_pos[0] = game->pl.position_coor[0] + (v[0]) * speed_multiplier;
-		new_pos[1] = game->pl.position_coor[1] + (v[1]) * speed_multiplier;
+		new_pos[0] = game->pl.v_position_coor[0] + (v[0]) * speed_multiplier;
+		new_pos[1] = game->pl.v_position_coor[1] + (v[1]) * speed_multiplier;
 	}
 	else
 	{
-		new_pos[0] = game->pl.position_coor[0] - (v[0]) * speed_multiplier;
-		new_pos[1] = game->pl.position_coor[1] - (v[1]) * speed_multiplier;
+		new_pos[0] = game->pl.v_position_coor[0] - (v[0]) * speed_multiplier;
+		new_pos[1] = game->pl.v_position_coor[1] - (v[1]) * speed_multiplier;
 	}
-	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
-		return ;
 	flag = wall_coll(game, new_pos, pixel_per_block);
 	filter_final_pos(game, new_pos, flag, pixel_per_block);
 }
@@ -61,7 +51,7 @@ static void update_player_position(int key, t_prog *game)
 
 	i = -1;
 	speed = PLAYER_SPEED * 2;
-	if (game->map2D.v_pixel_per_block[0])
+	if (game->map2D.v_pixel_per_block[0] != 0)
 	{	
 		pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
 		pixel_per_block[1] = game->map2D.v_pixel_per_block[1];

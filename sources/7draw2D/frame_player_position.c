@@ -19,8 +19,17 @@ void	draw_player_position(mlx_image_t *image, t_prog *game)
 {
 	double	position[D2];
 
-	position[0] = game->pl.position_coor[0];
-	position[1] = game->pl.position_coor[1];
+	if (game->minimap_state != 2)
+	{
+		position[0] = game->pl.v_position_coor[0];
+		position[1] = game->pl.v_position_coor[1];
+	}
+	else
+	{
+		update_player_location(game);
+		position[0] = game->pl.position_coor[0];
+		position[1] = game->pl.position_coor[1];
+	}
 	if (position[0] <= 0 || position[1] <= 0)
 		ft_shutdown(EX, game);
 	game->pl.ratio = (PLAYER_RATIO * game->map2D.pixel_per_block[0]);

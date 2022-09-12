@@ -59,7 +59,7 @@
 
 
 /* Safe margin not to burst the window limits. */
-# define SAFE_MARGIN 0.1
+# define SAFE_MARGIN 0.01
 
 /* Safe margin not to wash the window limits. */
 # define WASH_SIZE_OFFSET 1

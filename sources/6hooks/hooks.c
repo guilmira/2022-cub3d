@@ -25,7 +25,7 @@ void	next_frame(void *g)
 
 		main_raycast_calculation(FOV_DEGREE, game);
 		if (game->minimap_state != FULL_MINIMAP)
-			put_frame3D(game); 
+			put_frame3D(game);
 		if (game->minimap_state)
 			put_frame2D(game);
 		mlx_image_to_window(game->mlx, game->image[CUB_3D], \

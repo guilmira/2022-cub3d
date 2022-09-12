@@ -61,6 +61,8 @@ static void	update_player_position(int j, int i, t_prog *game)
 	game->pl.position[1] = game->map2D.height - j - 1;
 	game->pl.position_coor[0] = game->pl.position[0] * (double) game->map2D.pixel_per_block[0] + ( (double) game->map2D.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = game->pl.position[1] * (double) game->map2D.pixel_per_block[1] + ( (double) game->map2D.pixel_per_block[1] / 2);
+	game->pl.v_position_coor[0] = game->pl.position_coor[0];
+	game->pl.v_position_coor[1] = game->pl.position_coor[1];
 }
 
 /** PURPOSE : Work with array [j][i] as a cartesian system. */
