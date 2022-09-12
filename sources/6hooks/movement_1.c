@@ -15,17 +15,19 @@
 static void abort_crapping(t_prog *game)
 {
 	int flag;
+	int count;
 
 	flag = wall_coll(game, game->pl.position_coor);
-	while (wall_coll(game, game->pl.position_coor) != 0)
+	count = 0;
+	while (wall_coll(game, game->pl.position_coor) != 0 && count++ < 250)
 	{
-		if(flag == 1)//right
+		if (flag == 1)//right
 			game->pl.position_coor[0] -= CORRECTION_PIXEL_NBR;
-		else if(flag == 2)//left
+		else if (flag == 2)//left
 			game->pl.position_coor[0] += CORRECTION_PIXEL_NBR;
-		else if(flag == 3) //top
+		else if (flag == 3) //top
 			game->pl.position_coor[1] -= CORRECTION_PIXEL_NBR;
-		else if(flag == 4) //bottom
+		else if (flag == 4) //bottom
 			game->pl.position_coor[1] += CORRECTION_PIXEL_NBR;
 		else
 			break ;
@@ -63,14 +65,14 @@ int wall_coll(t_prog *game, double new_pos[])
 {
 	int pos[6];
 
-	if (game->minimap_state == 2 && game->map2D.pixel_per_block[0] < 4)
+	if (game->map2D.pixel_per_block[0] < 5)
 	{
 		pos[0] = floor((new_pos[0] + (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
 		pos[1] = floor((new_pos[0] - (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
 		pos[2] = floor(new_pos[0] / game->map2D.pixel_per_block[0]);
-		pos[3] = ceil((new_pos[1] + game->pl.ratio - 1) / game->map2D.pixel_per_block[1]);
-		pos[4] = ceil((new_pos[1] - game->pl.ratio - 1) / game->map2D.pixel_per_block[1]);
-		pos[5] = ceil(new_pos[1] / game->map2D.pixel_per_block[1]);
+		pos[3] = ceil((new_pos[1] + game->pl.ratio - 1) / game->map2D.pixel_per_block[1] - 0.5);
+		pos[4] = ceil((new_pos[1] - game->pl.ratio - 1) / game->map2D.pixel_per_block[1] - 0.5);
+		pos[5] = ceil(new_pos[1] / game->map2D.pixel_per_block[1] - 1);
 	}
 	else
 	{
@@ -84,7 +86,7 @@ int wall_coll(t_prog *game, double new_pos[])
 	if ((game->map2D.layout[pos[5]][pos[0]] == 1 && game->map2D.layout[pos[4]][pos[2]] == 1) 
 		|| (game->map2D.layout[pos[5]][pos[0]] == 1 && game->map2D.layout[pos[3]][pos[2]] == 1))
 		return(5);
-	if ((game->map2D.layout[pos[5]][pos[1]] == 1 && game->map2D.layout[pos[4]][pos[2]] == 1) 
+	if ((game->map2D.layout[pos[5]][pos[1]] == 1 && game->map2D.layout[pos[4]][pos[1]] == 1) 
 		|| (game->map2D.layout[pos[3]][pos[2]] == 1 && game->map2D.layout[pos[5]][pos[1]] == 1))
 		return(5);
 	if (game->map2D.layout[pos[5]][pos[0]] == 1)

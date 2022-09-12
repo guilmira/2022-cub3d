@@ -67,7 +67,7 @@ static void update_player_position(int key, t_prog *game)
 	}
 	else if(game->minimap_state == 4)
 	{
-		speed = PLAYER_SPEED;
+		speed = PLAYER_SPEED * 3;
 		vp[0] = ((game->pl.vis.x) / game->map2D.pixel_per_block[0]);
 		vp[1] = ((game->pl.vis.y) / game->map2D.pixel_per_block[1]);
 	}
