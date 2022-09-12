@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/09/07 17:14:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:06:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,23 @@ static void abort_crapping(t_prog *game, int pixel_per_block[])
 		flag = wall_coll(game, game->pl.position_coor, pixel_per_block);
 	}
 	game->pl.position[0] = floor(game->pl.position_coor[0] / pixel_per_block[0]);
-	game->pl.position[1] = ceil(game->pl.position_coor[1] / pixel_per_block[1]);
+	game->pl.position[1] = ceil(game->pl.position_coor[1] / pixel_per_block[1]) - 1;
 }
 
 void filter_final_pos(t_prog *game, double new_pos[], int flag, int pixel_per_block[])
 {
-	printf("%d\n", flag);
 	if (flag == 0)
 	{
 		game->pl.position_coor[0] = new_pos[0];
 		game->pl.position_coor[1] = new_pos[1];
 		game->pl.position[0] = floor(new_pos[0] / pixel_per_block[0]);
-		game->pl.position[1] = game->map2D.map_y - ceil(new_pos[1] / pixel_per_block[1]);
+		game->pl.position[1] = ceil(new_pos[1] / pixel_per_block[1]) - 1;
+	log_coor_int(game->pl.position);
 	}
 	if (flag == 1 || flag == 2)
 	{
 		game->pl.position_coor[1] = new_pos[1];
-		game->pl.position[1] = game->map2D.map_y - ceil(new_pos[1] / pixel_per_block[1]);
+		game->pl.position[1] = ceil(new_pos[1] / pixel_per_block[1]) - 1;
 	}
 	if (flag == 3 || flag == 4)
 	{

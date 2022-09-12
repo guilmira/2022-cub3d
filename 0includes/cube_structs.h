@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 16:47:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:11:38 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_player
 {
 	int			position[D2];
 	double		position_coor[D2];
+	//double		v_position_coor[D2];
 	double		ratio;
 	t_vector	vis;
 	t_beam		beam;

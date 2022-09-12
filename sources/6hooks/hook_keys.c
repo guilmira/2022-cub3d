@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 17:14:48 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 12:59:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /** PURPOSE : Correct minimap status and reset screen. */
 void	update_player_location(t_prog *game)
 {
+	
 	game->pl.position_coor[0] = (double)(game->pl.position[0]) * 
 	game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = (double)(game->map2D.map_y - (game->pl.position[1] + 1)) * 
