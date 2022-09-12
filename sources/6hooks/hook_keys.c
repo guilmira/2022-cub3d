@@ -46,7 +46,9 @@ static void	correct_minimap_value(t_prog *game)
 static void	hook_control_minimap(t_prog *game)
 {
 	correct_minimap_value(game);
-	if (is_minimap(game))
+	game->map2D.v_pixel_per_block[0] = 0;
+	game->map2D.v_pixel_per_block[1] = 0;
+	if (is_minimap(game) == 1)
 	{
 		game->pl.flag_movement = 1;
 		minimap_dimensions(game);
@@ -57,8 +59,10 @@ static void	hook_control_minimap(t_prog *game)
 	{
 		game->pl.flag_movement = 1;
 		minimap_dimensions(game);
+		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
+		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
 		update_pixel_per_block(game);
-		update_player_location(game);
+		//update_player_location(game);
 	}
 }
 
