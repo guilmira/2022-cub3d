@@ -45,10 +45,8 @@ static void	correct_minimap_value(t_prog *game)
 /** PURPOSE : Executed when hitting tab. It executes twice */
 static void	hook_control_minimap(t_prog *game)
 {
-	game->map2D.v_pixel_per_block[0] = 0;
-	game->map2D.v_pixel_per_block[1] = 0;
 	correct_minimap_value(game);
-	if (is_minimap(game) == 1)
+	if (is_minimap(game))
 	{
 		game->pl.flag_movement = 1;
 		minimap_dimensions(game);
@@ -59,8 +57,6 @@ static void	hook_control_minimap(t_prog *game)
 	{
 		game->pl.flag_movement = 1;
 		minimap_dimensions(game);
-		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
-		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
 		update_pixel_per_block(game);
 		update_player_location(game);
 	}
