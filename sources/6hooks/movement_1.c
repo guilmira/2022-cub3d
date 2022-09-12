@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/09/12 13:06:49 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:20:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void filter_final_pos(t_prog *game, double new_pos[], int flag, int pixel_per_bl
 		game->pl.position_coor[1] = new_pos[1];
 		game->pl.position[0] = floor(new_pos[0] / pixel_per_block[0]);
 		game->pl.position[1] = ceil(new_pos[1] / pixel_per_block[1]) - 1;
-	log_coor_int(game->pl.position);
 	}
 	if (flag == 1 || flag == 2)
 	{

@@ -6,20 +6,67 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 12:59:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 14:04:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+
 /** PURPOSE : Correct minimap status and reset screen. */
 void	update_player_location(t_prog *game)
 {
-	
-	game->pl.position_coor[0] = (double)(game->pl.position[0]) * 
+	double coor_final[D2];
+	double coor_base[D2];
+	double coor_fraccion[D2];
+
+
+	/* game->pl.position_coor[0] = (double)(game->pl.position[0]) * 
 	game->map2D.pixel_per_block[0] + (game->map2D.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = (double)(game->map2D.map_y - (game->pl.position[1] + 1)) * 
-	game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2);
+	game->map2D.pixel_per_block[1] + (game->map2D.pixel_per_block[1] / 2); */
+
+
+	game->pl.v_position_coor[0] = game->pl.position_coor[0];
+	game->pl.v_position_coor[1] = game->pl.position_coor[1];
+
+
+	coor_base[0] = (double)(game->pl.position[0]) * game->map2D.pixel_per_block[0];
+	coor_base[1] = (double) game->pl.position[1] * game->map2D.pixel_per_block[1];
+
+	
+	double coor_base_old[D2];
+
+	coor_base_old[0] = (double)(game->pl.position[0]) * game->map2D.v_pixel_per_block[0];
+	coor_base_old[1] = (double) game->pl.position[1] * game->map2D.v_pixel_per_block[1];
+	//coor_base[0] = 3 * game->map2D.pixel_per_block[0];
+	//coor_base[0] = 3 * game->map2D.pixel_per_block[1];
+
+
+	double coor_factor[D2];
+
+	coor_factor[0] = (game->pl.v_position_coor[0] - coor_base_old[0]) / game->map2D.v_pixel_per_block[0];
+	coor_factor[1] = (game->pl.v_position_coor[1] - coor_base_old[1]) / game->map2D.v_pixel_per_block[1];
+
+	printf("here %f y %i \n ", (game->pl.v_position_coor[0] - coor_base_old[0]),  game->map2D.v_pixel_per_block[0]);
+	
+	log_coor(coor_factor);
+
+	coor_fraccion[0] = coor_factor[0] *  game->map2D.pixel_per_block[0];
+	coor_fraccion[1] =  coor_factor[1] * game->map2D.pixel_per_block[1];
+
+
+
+	coor_final[0] = coor_base[0] + coor_fraccion[0];
+	coor_final[1] = coor_base[1] + coor_fraccion[1];
+	//coor_final[0] = 1;
+	//coor_final[1] = 1;
+
+	game->pl.position_coor[0] = coor_final[0];
+	game->pl.position_coor[1] = coor_final[1];
+
+	log_coor_int(game->pl.position);
+	log_coor(game->pl.position_coor);
 }
 
 /** PURPOSE : Is there os is there not a minimap. */
@@ -63,7 +110,7 @@ static void	hook_control_minimap(t_prog *game)
 		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
 		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
 		update_pixel_per_block(game);
-		//update_player_location(game);
+		update_player_location(game);
 	}
 }
 

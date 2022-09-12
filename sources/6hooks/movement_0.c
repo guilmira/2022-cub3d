@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/09/12 13:01:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:20:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ static void update_player_position(int key, t_prog *game)
  * Or combination of the above. */
 void	movement_control(mlx_key_data_t key, t_prog *game)
 {
-	log_coor_int(game->pl.position);
-
 	(void) key;
 	game->pl.flag_movement = 1;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
