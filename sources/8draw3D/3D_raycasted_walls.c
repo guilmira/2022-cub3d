@@ -36,7 +36,7 @@ static void centered_vertical(double x, int size, int colour, t_prog *game)
 	}
 }
 
-#define CONSTANT 1200 //constant for a perpendicular distance
+#define CONSTANT 300 //constant for a perpendicular distance
 //#define CONSTANT 8000 //for a fisheye
 #define MIN_DIST 1
 

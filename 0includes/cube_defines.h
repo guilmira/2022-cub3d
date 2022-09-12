@@ -39,7 +39,7 @@
 # define VISUAL_BLOCKS_H 10
 
 /* Player related. */
-# define PLAYER_SPEED 8
+# define PLAYER_SPEED 250
 # define TRANCE_BOOST 10
 # define WIND_MODE 8
 # define VISION_ANGLE_ROTATION 2
@@ -68,7 +68,7 @@
 # define GRID_TRANSPARENCY 15
 
 /* From abort_crapping constant nbr that makes correction */
-# define CORRECTION_PIXEL_NBR 0.1
+# define CORRECTION_PIXEL_NBR 0.5
 /* ------------------------ BASE DEFINES ------------------------ */
 /* Not meant to be modified. */
 # define D2 2

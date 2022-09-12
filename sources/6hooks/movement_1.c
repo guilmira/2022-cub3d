@@ -37,6 +37,7 @@ static void abort_crapping(t_prog *game)
 
 void filter_final_pos(t_prog *game, double new_pos[], int flag)
 {
+	printf("%d\n", flag);
 	if (flag == 0)
 	{
 		game->pl.position_coor[0] = new_pos[0];
@@ -62,12 +63,24 @@ int wall_coll(t_prog *game, double new_pos[])
 {
 	int pos[6];
 
-	pos[0] = floor((new_pos[0] + (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
-	pos[1] = floor((new_pos[0] - (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
-	pos[2] = floor(new_pos[0] / game->map2D.pixel_per_block[0]);
-	pos[3] = ceil((new_pos[1] + game->pl.ratio - 1) / game->map2D.pixel_per_block[1] - 1);
-	pos[4] = ceil((new_pos[1] - game->pl.ratio - 1) / game->map2D.pixel_per_block[1] - 1);
-	pos[5] = ceil(new_pos[1] / game->map2D.pixel_per_block[1] - 1);
+	if (game->minimap_state == 2 && game->map2D.pixel_per_block[0] < 4)
+	{
+		pos[0] = floor((new_pos[0] + (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
+		pos[1] = floor((new_pos[0] - (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
+		pos[2] = floor(new_pos[0] / game->map2D.pixel_per_block[0]);
+		pos[3] = ceil((new_pos[1] + game->pl.ratio - 1) / game->map2D.pixel_per_block[1]);
+		pos[4] = ceil((new_pos[1] - game->pl.ratio - 1) / game->map2D.pixel_per_block[1]);
+		pos[5] = ceil(new_pos[1] / game->map2D.pixel_per_block[1]);
+	}
+	else
+	{
+		pos[0] = floor((new_pos[0] + (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
+		pos[1] = floor((new_pos[0] - (game->pl.ratio - 1)) / game->map2D.pixel_per_block[0]);
+		pos[2] = floor(new_pos[0] / game->map2D.pixel_per_block[0]);
+		pos[3] = ceil((new_pos[1] + game->pl.ratio - 1) / game->map2D.pixel_per_block[1] - 1);
+		pos[4] = ceil((new_pos[1] - game->pl.ratio - 1) / game->map2D.pixel_per_block[1] - 1);
+		pos[5] = ceil(new_pos[1] / game->map2D.pixel_per_block[1] - 1);
+	}
 	if ((game->map2D.layout[pos[5]][pos[0]] == 1 && game->map2D.layout[pos[4]][pos[2]] == 1) 
 		|| (game->map2D.layout[pos[5]][pos[0]] == 1 && game->map2D.layout[pos[3]][pos[2]] == 1))
 		return(5);

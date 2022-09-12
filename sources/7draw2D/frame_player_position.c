@@ -25,5 +25,8 @@ void	draw_player_position(mlx_image_t *image, t_prog *game)
 		ft_shutdown(EX, game);
 	game->pl.ratio = (PLAYER_RATIO * game->map2D.pixel_per_block[0]);
 	draw_2d_player(image, position, game->pl.ratio, GREEN + RED, game);
-	draw_centered_rectangle(position[0], position[1], x_size, y_size, game);
+	if (game->minimap_state == 4)
+		draw_centered_rectangle(position[0], position[1], x_size, y_size, game);
+	if (game->minimap_state == 2)
+		draw_centered_rectangle(position[0], position[1], 1, 1, game);
 }

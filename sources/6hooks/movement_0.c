@@ -31,9 +31,9 @@ static void move_position(double v[], t_prog *game, int key)
 	int flag;
 
 	if (game->pl.flag_trance)
-		speed_multiplier = WIND_MODE;
+		speed_multiplier = (WIND_MODE * 0.01);
 	else
-		speed_multiplier = 1;
+		speed_multiplier = 0.01;
 	if (key == 0)
 	{
 		new_pos[0] = game->pl.position_coor[0] + (v[0]) * speed_multiplier;
@@ -67,7 +67,7 @@ static void update_player_position(int key, t_prog *game)
 	}
 	else if(game->minimap_state == 4)
 	{
-		speed = PLAYER_SPEED * 4.5;
+		speed = PLAYER_SPEED;
 		vp[0] = ((game->pl.vis.x) / game->map2D.pixel_per_block[0]);
 		vp[1] = ((game->pl.vis.y) / game->map2D.pixel_per_block[1]);
 	}
