@@ -21,7 +21,7 @@
 # define OX_WINDOW 1200
 # define OY_WINDOW 1200
 /* Minimap size ratio */
-# define MINIMAP_WINDOW_RATIO 2
+# define MINIMAP_WINDOW_RATIO 5
 
 /* 								 MAP INTITAL STATE
 				0 - no minimap
@@ -86,5 +86,6 @@
 # define BLUE	0x0000FFFF
 # define BLACK	0x000000FF
 # define WHITE	0xFFFFFFFF
+# define YELLOW 0xFFBB2DFF
 
 #endif

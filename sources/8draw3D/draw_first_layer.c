@@ -72,8 +72,8 @@ void	draw_first_layer(t_prog *game)
 
 	origin[0] = 0;
 	origin[1] = 0;
-	colour_floor = rgb_t_translate(120, 20, 20, 255);
-	colour_sky = rgb_t_translate(0, 40, 40, 255);
+	colour_floor = rgb_t_translate(151, 151, 151, 255);
+	colour_sky = rgb_t_translate(40, 40, 40, 255);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
 	sky_texture = mlx_load_png("textures/landscape.png");
 	//draw_texture(game->w1.size[1] / 2, game, sky_texture->pixels);

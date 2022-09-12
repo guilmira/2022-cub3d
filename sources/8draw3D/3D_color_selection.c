@@ -38,8 +38,8 @@ int choose_wall_shade(int wall_value, int size, t_prog *game)
 	(void) size;
 	(void) game;
 
-	colour[0] = BLUE;
-	colour[1] = rgb_t_translate(0, 0, 190, 255);
+	colour[0] = YELLOW;
+	colour[1] = rgb_t_translate(255, 180, 40, 255);
 	colour[2] = get_rgb_shadowed(colour[0]);
 	colour[3] =  get_rgb_shadowed(colour[1]);
 	
