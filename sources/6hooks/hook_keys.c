@@ -6,13 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 15:30:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:30:54 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-//merge bien
+//merge bien vgit
 
 /** PURPOSE : Correct minimap status and reset screen. */
 void	update_player_location(t_prog *game)
