@@ -49,6 +49,7 @@ void		hk_close(void *game);
 void		put_frame2D(t_prog *game);
 void		put_frame3D(t_prog *game);
 void		hk_keys(mlx_key_data_t key, void *g);
+void		update_player_location(t_prog *game);
 
 /* CLEAR MEMORY */
 void		clean_exit(t_prog *game);

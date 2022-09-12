@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 13:01:23 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/12 13:20:12 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static void	update_player_position(int j, int i, t_prog *game)
 	game->pl.position[1] = game->map2D.height - j - 1;
 	game->pl.position_coor[0] = game->pl.position[0] * (double) game->map2D.pixel_per_block[0] + ( (double) game->map2D.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = game->pl.position[1] * (double) game->map2D.pixel_per_block[1] + ( (double) game->map2D.pixel_per_block[1] / 2);
+	game->pl.v_position_coor[0] = game->pl.position_coor[0];
+	game->pl.v_position_coor[1] = game->pl.position_coor[1];
 }
 
 /** PURPOSE : Work with array [j][i] as a cartesian system. */
@@ -121,7 +123,7 @@ void	init_map2D(char **map, t_prog *game)
 	
 	game->map2D.height = game->map2D.s_height;
 	game->map2D.width = game->map2D.s_width;
-	log_coor_int(game->pl.position);
+
 	update_pixel_per_block(game);
 	update_player_position(game->pl.position[1], game->pl.position[0], game);
 }
