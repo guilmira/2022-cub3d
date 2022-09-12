@@ -34,12 +34,12 @@
 /* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
 
 
-# define PLAYER_RATIO 0.5
+# define PLAYER_RATIO 0.25
 # define VISUAL_BLOCKS_W 10
 # define VISUAL_BLOCKS_H 10
 
 /* Player related. */
-# define PLAYER_SPEED 250
+# define PLAYER_SPEED 500
 # define TRANCE_BOOST 10
 # define WIND_MODE 8
 # define VISION_ANGLE_ROTATION 2

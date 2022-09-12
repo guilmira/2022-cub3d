@@ -95,6 +95,7 @@ typedef struct s_map
 	int		s_height;
 	int		s_width;
 	int		pixel_per_block[D2];
+	int		v_pixel_per_block[D2];
 	/* --------------- */
 	char	**map;
 	int		map_x;

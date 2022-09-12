@@ -36,7 +36,7 @@ static void centered_vertical(double x, int size, int colour, t_prog *game)
 	}
 }
 
-#define CONSTANT 450 //constant for a perpendicular distance
+#define CONSTANT 800 //constant for a perpendicular distance
 //#define CONSTANT 8000 //for a fisheye
 #define MIN_DIST 1
 
@@ -58,11 +58,10 @@ static double get_wall_size(double distance, t_prog *game)
 	double	height;
 
 	height = get_height_constant(game);
-	max_size = (game->w1.size[1] / 3) - SAFE_OFFSET;
+	max_size = (game->w1.size[1] / 2) - SAFE_OFFSET;
 	if (distance < MIN_DIST)
 		return (max_size);
 	ret = height / distance;
-	ret = (int) ret;
 	if (ret > max_size)
 		return (max_size);
 	else

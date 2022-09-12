@@ -24,7 +24,7 @@ static int	window_limit(double new_pos[], t_dim win, double margin, t_prog *game
 }
 
 /** PURPOSE : calculate new coordinates. */
-static void move_position(double v[], t_prog *game, int key)
+static void move_position(double v[], t_prog *game, int key, int pixel_per_block[])
 {
 	double new_pos[2];
 	double speed_multiplier;
@@ -46,8 +46,8 @@ static void move_position(double v[], t_prog *game, int key)
 	}
 	if (window_limit(new_pos, game->w2, (double) SAFE_MARGIN, game))
 		return ;
-	flag = wall_coll(game, new_pos);
-	filter_final_pos(game, new_pos, flag);
+	flag = wall_coll(game, new_pos, pixel_per_block);
+	filter_final_pos(game, new_pos, flag, pixel_per_block);
 }
 
 /** PURPOSE : correct position by adding correct vector. */
@@ -56,28 +56,30 @@ static void update_player_position(int key, t_prog *game)
 	int i;
 	int x;
 	int speed;
+	int pixel_per_block[2];
 	double vp[2];
 
 	i = -1;
-	if (game->minimap_state == 2)
-	{
-		speed = PLAYER_SPEED;
-		vp[0] = ((game->pl.vis.x) / game->map2D.pixel_per_block[0]);
-		vp[1] = ((game->pl.vis.y) / game->map2D.pixel_per_block[1]);
+	speed = PLAYER_SPEED * 2;
+	if (game->map2D.v_pixel_per_block[0])
+	{	
+		pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
+		pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
 	}
-	else if(game->minimap_state == 4)
+	else
 	{
-		speed = PLAYER_SPEED * 3;
-		vp[0] = ((game->pl.vis.x) / game->map2D.pixel_per_block[0]);
-		vp[1] = ((game->pl.vis.y) / game->map2D.pixel_per_block[1]);
+		pixel_per_block[0] = game->map2D.pixel_per_block[0];
+		pixel_per_block[1] = game->map2D.pixel_per_block[1];
 	}
+	vp[0] = ((game->pl.vis.x) / pixel_per_block[0]);
+	vp[1] = ((game->pl.vis.y) / pixel_per_block[1]);
 	x = 0;
 	while (++i < 8)
 	{
 		if (key == i)
 		{
 			while(x++ < speed)
-				move_position(vp, game, key);
+				move_position(vp, game, key, pixel_per_block);
 		}
 	}
 }
