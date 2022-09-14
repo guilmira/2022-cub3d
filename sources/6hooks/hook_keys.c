@@ -78,13 +78,14 @@ static void	hook_control_minimap(t_prog *game)
 	{
 		game->w1.size[1] = OY_WINDOW;
 		game->w1.size[0] = game->w1.size[1];
+		mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
 		game->pl.flag_movement = 1;
 		minimap_dimensions(game);
 		game->map2D.pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
 		game->map2D.pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
 		update_pixel_per_block(game);
 	}
-	else if (is_minimap(game) == 2)
+	else
 	{
 		game->w1.size[1] = OY_WINDOW;
 		game->w1.size[0] = game->w1.size[1];
@@ -92,6 +93,7 @@ static void	hook_control_minimap(t_prog *game)
 		minimap_dimensions(game);
 		game->w1.size[1] = OY_WINDOW;
 		game->w1.size[0] = OX_WINDOW;
+		mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
 		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
 		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
 		update_pixel_per_block(game);
