@@ -34,8 +34,6 @@ static t_dim	copy_dim_struct(t_dim window_src)
 
 void	get_minimap_simetric_size(t_prog *game)
 {
-	game->w1.size[1] = OY_WINDOW;
-	game->w1.size[0] = game->w1.size[1];
 	game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
 	game->w2.size[1] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
 
@@ -46,8 +44,6 @@ void	get_minimap_simetric_size(t_prog *game)
 
 	game->w2.origin[0] = game->w1.size[0] - game->w2.size[0];
 	game->w2.origin[1] = game->w1.size[1] - game->w2.size[1];
-	game->w1.size[1] = OY_WINDOW;
-	game->w1.size[0] = OX_WINDOW;
 }
 
 
