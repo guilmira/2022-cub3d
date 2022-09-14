@@ -57,6 +57,8 @@ void		ft_shutdown(char *error_msg, t_prog *game);
 void		freemat(char **mat);
 void		freemat_int(int **mat, int len);
 void		ft_mlx_delete_image_safe(int image_position, t_prog *game);
+void		clear_map2D(int **map, int height);
+void		clear_uint8(uint8_t **map, int height);
 
 /* ------------------------ RAYCAST ------------------------ */
 /* RAY CASTING AND DDA ALGORITHM */
@@ -109,7 +111,7 @@ void	draw_3D_walls(t_prog *game);
 
 //descolgada
 void		translate_to_screen(double position_map[], \
-double position_screen[], int pixel_per_block[], t_prog *game);
+double		position_screen[], int pixel_per_block[], t_prog *game);
 
 /* ------------------------ PLAYER AND MOVEMENT ------------------------ */
 /* PLAYER */

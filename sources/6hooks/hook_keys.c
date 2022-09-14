@@ -42,7 +42,6 @@ void	update_player_location(t_prog *game)
 
 	game->pl.position_coor[0] = coor_final[0];
 	game->pl.position_coor[1] = coor_final[1];
-
 }
 
 /** PURPOSE : Is there os is there not a minimap. */

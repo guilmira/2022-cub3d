@@ -13,7 +13,22 @@
 #include "cube.h"
 
 /** PURPOSE : Frees array of int. */
-static void	clear_map2D(int **map, int height)
+void	clear_map2D(int **map, int height)
+{
+	int	j;
+
+	j = -1;
+	while (++j < height)
+	{
+		free(map[j]);
+		map[j] = NULL;
+	}
+	if (map)
+		free(map);
+	map = NULL;
+}
+
+void	clear_uint8(uint8_t **map, int height)
 {
 	int	j;
 
