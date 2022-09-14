@@ -26,10 +26,10 @@ static void parser_defines(t_prog *game)
 {
 	if (OY_WINDOW < 800)
 		ft_shutdown(EX0, game);
-	if (OX_WINDOW > OY_WINDOW)
+	/*if (OX_WINDOW > OY_WINDOW)
 		ft_shutdown(EX0, game);
 	if (OX_WINDOW != OY_WINDOW)
-		ft_shutdown(EX0, game);
+		ft_shutdown(EX0, game);*/
 	
 }
 

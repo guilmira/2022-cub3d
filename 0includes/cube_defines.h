@@ -18,8 +18,8 @@
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1200
-# define OY_WINDOW 1200
+# define OX_WINDOW 1560
+# define OY_WINDOW 940
 /* Minimap size ratio */
 # define MINIMAP_WINDOW_RATIO 5
 

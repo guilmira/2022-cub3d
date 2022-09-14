@@ -77,8 +77,8 @@ void	draw_first_layer(t_prog *game)
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
 	sky_texture = mlx_load_png("textures/landscape.png");
 	//draw_texture(game->w1.size[1] / 2, game, sky_texture->pixels);
-	mlx_draw_texture(game->image[0], sky_texture, 0, 0);
+	//mlx_draw_texture(game->image[0], sky_texture, 0, 0);
 	mlx_delete_texture(sky_texture);
 	origin[1] = game->w1.size[1] / 2;
-	//draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
+	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
 }
