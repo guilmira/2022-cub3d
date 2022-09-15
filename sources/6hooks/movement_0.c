@@ -89,9 +89,13 @@ void	movement_control(mlx_key_data_t t_key, t_prog *game)
 	}
 	else
 	{
-		game->pl.key[MLX_KEY_W] = 0;
-		game->pl.key[MLX_KEY_S] = 0;
-		game->pl.key[MLX_KEY_RIGHT] = 0;
-		game->pl.key[MLX_KEY_LEFT] = 0;
+		if(mlx_is_key_down(game->mlx, MLX_KEY_W) == 0)
+			game->pl.key[MLX_KEY_W] = 0;
+		if(mlx_is_key_down(game->mlx, MLX_KEY_S) == 0)
+			game->pl.key[MLX_KEY_S] = 0;
+		if(mlx_is_key_down(game->mlx, MLX_KEY_RIGHT) == 0)
+			game->pl.key[MLX_KEY_RIGHT] = 0;
+		if(mlx_is_key_down(game->mlx, MLX_KEY_LEFT) == 0)
+			game->pl.key[MLX_KEY_LEFT] = 0;
 	}
 }
