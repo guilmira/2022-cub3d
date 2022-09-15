@@ -121,6 +121,7 @@ void		fill_player_pos(t_prog *game, double player_pos[]);
 /* MOVEMENT */
 void		vison_control(mlx_key_data_t key, t_prog *game);
 void		movement_control(mlx_key_data_t key, t_prog *game);
+void		update_player_position(int key, t_prog *game);
 void		update_player_vision(int key, t_prog *game);
 int			wall_coll(t_prog *game, double new_pos[], int pixel_per_block[]);
 void		filter_final_pos(t_prog *game, double new_pos[], int flag, int pixel_per_block[]);

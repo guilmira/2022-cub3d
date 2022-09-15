@@ -125,5 +125,4 @@ void	hk_keys(mlx_key_data_t key, void *g)
 	}
 	else
 		movement_control(key, game);
-	
 }

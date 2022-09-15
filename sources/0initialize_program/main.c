@@ -21,19 +21,30 @@ void	framework_2D(t_prog *game);
 int	main(int argc, char **argv)
 {
 	t_prog	*game;
-	/* --------------------------------------------------------------- */
 	//atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);
 	
-	/* --------------------------------------------------------------- */
 	init_game(game);
 	parser(game, argc, argv);
 	framework_dimensions(game);
 	init_map2D(game->map2D.map, game);
-	/* --------------------------------------------------------------- */
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);
 }
+
+
+/*
+int main(void)
+{
+	mlx_t		*mlx;
+	mlx_texture_t *sky_texture;
+	uint8_t	**sky_mat;
+
+	mlx = mlx_init(1060, 1060, TITLE_WINDOW, 1);
+	sky_texture = mlx_load_png("textures/d64van-sky1pal.png");
+	sky_mat = texture_to_mat(sky_texture);
+
+}*/
