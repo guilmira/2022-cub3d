@@ -18,7 +18,7 @@
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1460
+# define OX_WINDOW 1860
 # define OY_WINDOW 1040
 /* Minimap size ratio */
 # define MINIMAP_WINDOW_RATIO 5
@@ -46,7 +46,8 @@
 
 
 # define SAFE_OFFSET 0.0001
-# define FOV_DEGREE 30
+# define FOV_DEGREE 35
+
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 
 

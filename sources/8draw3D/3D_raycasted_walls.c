@@ -14,7 +14,7 @@
 
 /** PURPOSE : draw a vertical symetric line starting in the 
  * middle of the screen. */
-static void centered_vertical(double x, int size, int colour, t_prog *game)
+static inline void centered_vertical(double x, int size, int colour, t_prog *game)
 {
 	int		i;
 	int		y;
@@ -40,7 +40,7 @@ static void centered_vertical(double x, int size, int colour, t_prog *game)
 //#define CONSTANT 8000 //for a fisheye
 #define MIN_DIST 1
 
-static double get_height_constant(t_prog *game)
+static inline double get_height_constant(t_prog *game)
 {
 	double height;
 	
@@ -51,7 +51,7 @@ static double get_height_constant(t_prog *game)
 
 
 /** PURPOSE : calculate wall height. */
-static double get_wall_size(double distance, t_prog *game)
+static inline double get_wall_size(double distance, t_prog *game)
 {
 	double	ret;
 	int		max_size;
@@ -106,7 +106,7 @@ int get_wall_stripe(int ray_number, t_prog *game)
 }
 
 /** PURPOSE : draw a vertical line of calculated size. */
-static void draw_wall_vertical_unit(int ray_number, t_prog *game)
+static inline void draw_wall_vertical_unit(int ray_number, t_prog *game)
 {
 	int	size;
 	int	wall_colour;

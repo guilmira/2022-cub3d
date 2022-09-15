@@ -12,7 +12,7 @@
 
 #include "cube.h"
 
-static void do_spaced_map_h(int height, int width, int flag, t_prog *game)
+static inline void do_spaced_map_h(int height, int width, int flag, t_prog *game)
 {
 	int i;
 	int k;
@@ -39,7 +39,7 @@ static void do_spaced_map_h(int height, int width, int flag, t_prog *game)
 			game->map2D.s_layout[height][k] = 0;
 }
 
-static void do_spaced_map_w(int height, int width, int flag, t_prog *game)
+static inline void do_spaced_map_w(int height, int width, int flag, t_prog *game)
 {
 	int i;
 	int k;
@@ -75,7 +75,7 @@ static void do_spaced_map_w(int height, int width, int flag, t_prog *game)
 	}
 }
 
-static void buildheight(t_prog *game, int height, int width)
+static inline void buildheight(t_prog *game, int height, int width)
 {
 	float	val;
 	int		subti;
@@ -103,7 +103,7 @@ static void buildheight(t_prog *game, int height, int width)
 	game->pl.position[0] += game->map2D.val;
 }
 
-static void buildwidth(t_prog *game, int height, int width)
+static inline void buildwidth(t_prog *game, int height, int width)
 {
 	float	val;
 	int		subti;

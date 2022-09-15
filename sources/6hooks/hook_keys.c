@@ -45,7 +45,7 @@ void	update_player_location(t_prog *game)
 }
 
 /** PURPOSE : Is there os is there not a minimap. */
-static int	is_minimap(t_prog *game)
+static inline int	is_minimap(t_prog *game)
 {
 	if (!game->minimap_state)
 		return (0);
@@ -58,7 +58,7 @@ static int	is_minimap(t_prog *game)
 }
 
 /** PURPOSE : Correct minimap status and reset screen. */
-static void	correct_minimap_value(t_prog *game)
+static inline void	correct_minimap_value(t_prog *game)
 {
 	game->minimap_state++;
 	if (game->minimap_state == 6)
@@ -66,7 +66,7 @@ static void	correct_minimap_value(t_prog *game)
 }
 
 /** PURPOSE : Executed when hitting tab. It executes twice */
-static void	hook_control_minimap(t_prog *game)
+static inline void	hook_control_minimap(t_prog *game)
 {
 	correct_minimap_value(game);
 	game->map2D.v_pixel_per_block[0] = 0;
@@ -125,5 +125,5 @@ void	hk_keys(mlx_key_data_t key, void *g)
 	}
 	else
 		movement_control(key, game);
-	vison_control(key, game);
+	
 }

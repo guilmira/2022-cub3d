@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : pointers at images to NULL */
-static void	init_image(t_prog *game)
+static inline void	init_image(t_prog *game)
 {
 	int	i;
 

@@ -73,6 +73,7 @@ typedef struct s_beam
  * Where is located, where is it looking at. */
 typedef struct s_player
 {
+	bool		key[512];
 	int			position[D2];
 	double		position_coor[D2];
 	double		v_position_coor[D2];

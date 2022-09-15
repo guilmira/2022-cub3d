@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : Draws on the minimap the result of the raycast calculations. */
-static void	draw_raycast(t_prog *game)
+static inline void	draw_raycast(t_prog *game)
 {
 	int			i;
 	t_vector	ray;

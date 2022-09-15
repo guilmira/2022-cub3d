@@ -17,7 +17,7 @@
 
 /** PURPOSE : Get the distance of OX between 2 vertical lines that represent a wall.
  * Or the equivalent of OY. */
-static void get_delta(t_ray *ray, t_vector dir)
+static inline void get_delta(t_ray *ray, t_vector dir)
 {
 	if (dir.x)
 		ray->delta[0] = fabs(1 / dir.x);
@@ -38,7 +38,7 @@ void get_relative_distance(t_ray *ray, t_prog *game)
 /** PURPOSE : Init distance of delta x or delta y at first block.
  * 1. There is a difference between what 2D block we are at, and the exact coor location.
  *	Factor_at_origin corrects that offset. */
-static void init_net_distance(t_ray *ray, t_vector direction, t_prog *game)
+static inline void init_net_distance(t_ray *ray, t_vector direction, t_prog *game)
 {
 	double origin_coordinates[2]; 
 	double factor_at_origin;
@@ -75,7 +75,7 @@ static void init_net_distance(t_ray *ray, t_vector direction, t_prog *game)
 }
 
 /** PURPOSE : Get coordinates of array. */
-static void update_location_map2D(t_ray *ray, double position[], int pixel_per_block[])
+static inline void update_location_map2D(t_ray *ray, double position[], int pixel_per_block[])
 {
 	ray->position_2D[0] = position[0] / pixel_per_block[0];
 	ray->position_2D[1] = position[1] / pixel_per_block[1];

@@ -39,7 +39,7 @@ t_dim window, int colour)
 
 /** PURPOSE : Clear framework and create a new image to write pixels into. 
  * Window_number is either 0 for the 3D or 1 for the 2D. */
-static void	frame_reset(int window_number, t_prog *game)
+static inline void	frame_reset(int window_number, t_prog *game)
 {
 	if (window_number == 0)
 	{

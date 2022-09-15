@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : correct vision by adding correct plane vector. */
-static void update_player_vision(int key, t_prog *game)
+void update_player_vision(int key, t_prog *game)
 {
 	t_vector	plane_perpendicular;
 	t_vector	original_vision;

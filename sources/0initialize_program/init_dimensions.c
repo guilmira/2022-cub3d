@@ -13,13 +13,13 @@
 #include "cube.h"
 
 /** PURPOSE : calculate unit of measure for each framework. */
-static double	window_unit(double size, double divisor)
+static inline double	window_unit(double size, double divisor)
 {
 	return (size / divisor);
 }
 
 /** PURPOSE : copy struct. */
-static t_dim	copy_dim_struct(t_dim window_src)
+static inline t_dim	copy_dim_struct(t_dim window_src)
 {
 	t_dim	win_return;
 

@@ -39,6 +39,7 @@ void	next_frame(void *g)
  * of 60 times pers second. Therefore 60 fps. */
 void	hooks_and_loops(t_prog *game)
 {
+	//mlx_do_key_autorepeatoff(game->mlx);
 	mlx_close_hook(game->mlx, &hk_close, (void *) game);
 	mlx_key_hook(game->mlx, &hk_keys, game);
 	mlx_loop_hook(game->mlx, &next_frame, game);

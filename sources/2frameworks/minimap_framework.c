@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : Scale a 2D grid. */
-static void	draw_grid(t_prog *game, double size_x, double size_y)
+static inline void	draw_grid(t_prog *game, double size_x, double size_y)
 {
 	int	nb;
 	int	colour;
@@ -33,7 +33,7 @@ static void	draw_grid(t_prog *game, double size_x, double size_y)
 
 
 /** PURPOSE : From map parser draw in minimap2D each wall. */
-static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
+static inline void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
 {
 	int				j;
 	double			line_end[2];

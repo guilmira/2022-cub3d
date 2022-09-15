@@ -30,7 +30,7 @@ void	update_pixel_per_block(t_prog *game)
 	}
 }
 
-static void	fill_vis(t_prog *game, char dir)
+static inline void	fill_vis(t_prog *game, char dir)
 {
 	if(dir == 'N')
 	{
@@ -55,7 +55,7 @@ static void	fill_vis(t_prog *game, char dir)
 }
 
 /** PURPOSE : Define intial location of player position in pixel screen. */
-static void	update_player_position(int j, int i, t_prog *game)
+static inline void	update_player_position(int j, int i, t_prog *game)
 {
 	game->pl.position[0] = i;
 	game->pl.position[1] = game->map2D.height - j - 1;

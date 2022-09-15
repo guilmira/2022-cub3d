@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : Check if at given coordinates, there is a wall. */
-static int is_wall2D(int j, int i, t_prog *game)
+static inline int is_wall2D(int j, int i, t_prog *game)
 {
 	if (j < 0 || i < 0)
 		return (1);
@@ -26,7 +26,7 @@ static int is_wall2D(int j, int i, t_prog *game)
 }
 
 /** PURPOSE : Get the final coordinates of the vecctor that has collided. */
-static t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, t_prog *game)
+static inline t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, t_prog *game)
 {
 	t_vector vector;
 
@@ -44,7 +44,7 @@ static t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray
 }
 
 /** PURPOSE : Get vector that goes until that collision point that is found. */
-static void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
+static inline void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 {
 	double		factor;
 	t_vector	vector;
@@ -79,7 +79,7 @@ static void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog
  * than the distance of OX, thats the one that we ll be looking at for a collision.
  * 4. Increase step (or grid block) in said direcction.
  * 5. Check if indeed there is a collision (a wall) at that location. If not, loop. */
-static void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
+static inline void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 {
 	int counter;
 

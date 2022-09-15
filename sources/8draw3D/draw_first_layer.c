@@ -56,8 +56,8 @@ static void draw_horizon(double origin[], int size, int colour, t_prog *game)
 		put_horizontal_line(coor_y, game->w1.size[0], colour, game);
 	}
 }
-
-/*static void draw_sf_mat(double origin[], uint32_t size, uint8_t **sky_mat, t_prog *game)
+/*
+static void draw_sf_mat(double origin[], uint32_t size, uint8_t **sky_mat, t_prog *game)
 {
 	int i;
 	int x;
@@ -71,9 +71,9 @@ static void draw_horizon(double origin[], int size, int colour, t_prog *game)
 		while(sky_mat[++x]);
 		horizontal_line_mat(coor_y, x, sky_mat[i], game);
 	}
-}
+}*/
 
-static uint8_t  **texture_to_mat(mlx_texture_t*	texture)
+/*static uint8_t  **texture_to_mat(mlx_texture_t*	texture)
 {
 	uint8_t  **mat;
 	uint32_t y;
@@ -102,31 +102,31 @@ static uint8_t  **texture_to_mat(mlx_texture_t*	texture)
 		y++;
 	}
 	return (mat);
-}*/
-
+}
+*/
 /** PURPOSE : floor layer + horizon sky. 
  * 1. game->w1.size[1] / 2 represents the middlepoint at OY. */
 void	draw_first_layer(t_prog *game)
 {
 	int colour_floor;
 	int colour_sky;
-	mlx_texture_t *sky_texture;
-	uint8_t	**sky_mat;
+	//mlx_texture_t *sky_texture;
+	//uint8_t	**sky_mat;
 	
 	double origin[D2];
 
 	origin[0] = 0;
 	origin[1] = 0;
-	sky_mat = NULL;
+	//sky_mat = NULL;
 	colour_floor = rgb_t_translate(151, 151, 151, 255);
 	colour_sky = rgb_t_translate(40, 40, 40, 255);
-	sky_texture = mlx_load_png("textures/d64van-sky1pal.png");
+	//sky_texture = mlx_load_png("textures/d64van-sky1pal.png");
 	//sky_mat = texture_to_mat(sky_texture);
 	//mlx_draw_texture(game->image[0], sky_texture, 0, 0);
-	origin[1] = game->w1.size[1] / 2;
 	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
+	origin[1] = game->w1.size[1] / 2;
 	//draw_sf_mat(origin, sky_texture->height, sky_mat, game);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
 	//clear_uint8(sky_mat, sky_texture->height);
-	mlx_delete_texture(sky_texture);
+	//mlx_delete_texture(sky_texture);
 }

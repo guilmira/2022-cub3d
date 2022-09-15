@@ -15,7 +15,7 @@
 
 /** PURPOSE : Get plane vector, perpendicular to vision vector,
  * but is treated as only half of the plane. */
-static t_vector	get_plane_vector(t_vector vis, double plane_lenght)
+static inline t_vector	get_plane_vector(t_vector vis, double plane_lenght)
 {
 	double			module;
 	t_vector	perpendicular;

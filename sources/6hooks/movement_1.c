@@ -12,7 +12,7 @@
 
 #include "cube.h"
 
-static void abort_crapping(t_prog *game, int pixel_per_block[])
+static inline void abort_crapping(t_prog *game, int pixel_per_block[])
 {
 	int flag;
 	int count;
