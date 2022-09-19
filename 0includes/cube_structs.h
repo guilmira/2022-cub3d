@@ -74,6 +74,7 @@ typedef struct s_beam
 typedef struct s_player
 {
 	bool		key[512];
+	int			fov;
 	int			position[D2];
 	double		position_coor[D2];
 	double		v_position_coor[D2];

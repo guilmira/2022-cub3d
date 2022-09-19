@@ -72,8 +72,9 @@ static void draw_sf_mat(double origin[], uint32_t size, mlx_texture_t *sky_textu
 	{
 		x = -1;
 		coor_y = origin[1] + i;
-		while(++x < (int)(sky_texture->width * 8));
-			horizontal_line_mat(coor_y, x, sky_texture, game);
+		while(++x < (int)(sky_texture->width * 8))
+			;
+		horizontal_line_mat(coor_y, x, sky_texture, game);
 	}
 }
 
