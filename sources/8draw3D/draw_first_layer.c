@@ -31,6 +31,8 @@ static void put_horizontal_line(double coordinate_y, double limit_x, int colour,
 static void horizontal_line_mat(double coordinate_y, int limit_x, mlx_texture_t *sky_texture, t_prog *game)
 {
 	int i;
+	int colour;
+	int rgb[4];
 	int coor_y;
 	int j;
 	mlx_image_t *image;
@@ -40,10 +42,16 @@ static void horizontal_line_mat(double coordinate_y, int limit_x, mlx_texture_t 
 	if (coordinate_y == 0)
 		coordinate_y += SAFE_OFFSET;
 	coor_y = (int) coor(coordinate_y, game->w1.size[1]);
-	while (++i < limit_x && i < game->w1.size[1])
+	while (++i < limit_x && i < (game->w1.size[1] * 8))
 	{
 		j = i + coordinate_y * sky_texture->width;
-		mlx_put_pixel(image, i, coor_y, sky_texture->pixels[j]);
+		rgb[0] = get_red(sky_texture->pixels[j]);
+		rgb[1] = get_blue(sky_texture->pixels[j]);
+		rgb[2] = get_green(sky_texture->pixels[j]);
+		rgb[3] = get_transparent(sky_texture->pixels[j]);
+		colour = rgb_t_translate(rgb[0], rgb[1], rgb[2], rgb[3]);
+		//printf("%hhu\n", sky_texture->pixels[j]);
+		mlx_put_pixel(image, i, coor_y, colour);
 	}
 }
 
@@ -92,8 +100,9 @@ void	draw_first_layer(t_prog *game)
 	//sky_mat = NULL;
 	colour_floor = rgb_t_translate(151, 151, 151, 255);
 	colour_sky = rgb_t_translate(40, 40, 40, 255);
-	sky_texture = mlx_load_png("textures/d64van-sky1pal.png");
+	sky_texture = mlx_load_png("textures/brick_normal.png");
 	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
+	origin[1] = 0;
 	draw_sf_mat(origin, sky_texture->height, sky_texture, game);
 	origin[1] = game->w1.size[1] / 2;
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);

@@ -36,6 +36,10 @@ void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int			rgb_t_translate(int red, int green, int blue, int transparency);
+int			get_red(int colour_code);
+int			get_blue(int colour_code);
+int			get_green(int colour_code);
+int			get_transparent(int colour_code);
 int			get_rgb_shadowed(int colour_code);
 int			choose_wall_shade(int wall_value, int size, t_prog *game);
 int			get_opposite(int colour_code);
