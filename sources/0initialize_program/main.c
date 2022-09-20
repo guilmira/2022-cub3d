@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 16:12:56 by guilmira         ###   ########.fr       */
+/*   Created: 2022/09/20 17:00:28 by guilmira          #+#    #+#             */
+/*   Updated: 2022/09/20 17:00:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 void	framework_2D(t_prog *game);
-
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
@@ -25,7 +24,6 @@ int	main(int argc, char **argv)
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);
-	
 	init_game(game);
 	parser(game, argc, argv);
 	framework_dimensions(game);
