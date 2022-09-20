@@ -43,11 +43,10 @@ void	update_player_location(t_prog *game)
 
 	game->pl.position_coor[0] = coor_final[0];
 	game->pl.position_coor[1] = coor_final[1];
-
 }
 
 /** PURPOSE : Is there os is there not a minimap. */
-static int	is_minimap(t_prog *game)
+static inline int	is_minimap(t_prog *game)
 {
 	if (!game->minimap_state)
 		return (0);
@@ -60,7 +59,7 @@ static int	is_minimap(t_prog *game)
 }
 
 /** PURPOSE : Correct minimap status and reset screen. */
-static void	correct_minimap_value(t_prog *game)
+static inline void	correct_minimap_value(t_prog *game)
 {
 	game->minimap_state++;
 	if (game->minimap_state == 6)
@@ -68,23 +67,33 @@ static void	correct_minimap_value(t_prog *game)
 }
 
 /** PURPOSE : Executed when hitting tab. It executes twice */
-static void	hook_control_minimap(t_prog *game)
+static inline void	hook_control_minimap(t_prog *game)
 {
 	correct_minimap_value(game);
 	game->map2D.v_pixel_per_block[0] = 0;
 	game->map2D.v_pixel_per_block[1] = 0;
+	game->w1.size[1] = OY_WINDOW;
+	game->w1.size[0] = OX_WINDOW;
 	if (is_minimap(game) == 1)
 	{
+		game->w1.size[1] = OY_WINDOW;
+		game->w1.size[0] = game->w1.size[1];
+		mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
 		game->pl.flag_movement = 1;
 		minimap_dimensions(game);
 		game->map2D.pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
 		game->map2D.pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
 		update_pixel_per_block(game);
 	}
-	else if (is_minimap(game) == 2)
+	else
 	{
+		game->w1.size[1] = OY_WINDOW;
+		game->w1.size[0] = game->w1.size[1];
 		game->pl.flag_movement = 1;
 		minimap_dimensions(game);
+		game->w1.size[1] = OY_WINDOW;
+		game->w1.size[0] = OX_WINDOW;
+		mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
 		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
 		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
 		update_pixel_per_block(game);
@@ -117,5 +126,4 @@ void	hk_keys(mlx_key_data_t key, void *g)
 	}
 	else
 		movement_control(key, game);
-	vison_control(key, game);
 }

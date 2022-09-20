@@ -36,6 +36,10 @@ void		print_smap(int **s_map, int height, int width);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int			rgb_t_translate(int red, int green, int blue, int transparency);
+int			get_red(int colour_code);
+int			get_blue(int colour_code);
+int			get_green(int colour_code);
+int			get_transparent(int colour_code);
 int			get_rgb_shadowed(int colour_code);
 int			choose_wall_shade(int wall_value, int size, t_prog *game);
 int			get_opposite(int colour_code);
@@ -57,6 +61,8 @@ void		ft_shutdown(char *error_msg, t_prog *game);
 void		freemat(char **mat);
 void		freemat_int(int **mat, int len);
 void		ft_mlx_delete_image_safe(int image_position, t_prog *game);
+void		clear_map2D(int **map, int height);
+void		clear_uint8(uint8_t **map, int height);
 
 /* ------------------------ RAYCAST ------------------------ */
 /* RAY CASTING AND DDA ALGORITHM */
@@ -109,7 +115,7 @@ void	draw_3D_walls(t_prog *game);
 
 //descolgada
 void		translate_to_screen(double position_map[], \
-double position_screen[], int pixel_per_block[], t_prog *game);
+double		position_screen[], int pixel_per_block[], t_prog *game);
 
 /* ------------------------ PLAYER AND MOVEMENT ------------------------ */
 /* PLAYER */
@@ -119,8 +125,11 @@ void		fill_player_pos(t_prog *game, double player_pos[]);
 /* MOVEMENT */
 void		vison_control(mlx_key_data_t key, t_prog *game);
 void		movement_control(mlx_key_data_t key, t_prog *game);
+void		update_player_position(int key, t_prog *game);
+void		update_player_vision(int key, t_prog *game);
 int			wall_coll(t_prog *game, double new_pos[], int pixel_per_block[]);
 void		filter_final_pos(t_prog *game, double new_pos[], int flag, int pixel_per_block[]);
+
 /* TOOLS */
 void		draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
 

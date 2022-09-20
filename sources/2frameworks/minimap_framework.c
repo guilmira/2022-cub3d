@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : Scale a 2D grid. */
-static void	draw_grid(t_prog *game, double size_x, double size_y)
+static inline void	draw_grid(t_prog *game, double size_x, double size_y)
 {
 	int	nb;
 	int	colour;
@@ -33,7 +33,7 @@ static void	draw_grid(t_prog *game, double size_x, double size_y)
 
 
 /** PURPOSE : From map parser draw in minimap2D each wall. */
-static void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
+static inline void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
 {
 	int				j;
 	double			line_end[2];
@@ -88,45 +88,6 @@ void	draw_wall2D(t_prog *game)
 	}
 }
 
-//Crear define para los height and width, un nuevo pixel per block. 
-
-/*static int calculate_stable(t_prog *game, int pos, int constant)
-{
-	int		stable;
-
-	stable = pos - (constant/2);
-	if (stable <= 0)
-		return(0);
-	return(stable);
-}
-
-void	draw_wall2D(t_prog *game)
-{
-	int		i;
-	int		j;
-	int		stable;
-	double	map_position[2];
-
-	stable = calculate_stable(game, game->pl.position[0], VISUAL_BLOCKS_W);
-	j = calculate_stable(game, game->pl.position[1], VISUAL_BLOCKS_H);
-	i = stable;
-	while (j <= VISUAL_BLOCKS_H)
-	{
-		while (i <= VISUAL_BLOCKS_W)
-		{
-			if (game->map2D.layout[j][i] == 1)
-			{
-				map_position[0] = VISUAL_BLOCKS_W - i;
-				map_position[1] = VISUAL_BLOCKS_H - j;
-				draw_wall_unit(map_position, game->map2D.pixel_per_b_screen, game);
-			}
-			i++;
-		}
-		i = stable;
-		j++;
-	}
-}
-*/
 /** PURPOSE : Draw 2D image as main render.
  * 1. Obtain parameters by defining image size.
  * 2. Draw grid.
@@ -139,8 +100,6 @@ void	framework_2D(t_prog *game)
 	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
 	/* --------------------------------------------------------------- */
-	/* double pos[2] = {1, 1};
-	draw_wall_unit(pos, game->map2D.pixel_per_block, game); */
 	draw_wall2D(game);
 	draw_player_position(game->image[CUB_3D], game); 
 

@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : Calculate segment base on division. */
-static t_vector	calculate_plane_segment(t_vector plane_left, int number_of_rays)
+static inline t_vector	calculate_plane_segment(t_vector plane_left, int number_of_rays)
 {
 	t_vector	segment;
 
@@ -23,7 +23,7 @@ static t_vector	calculate_plane_segment(t_vector plane_left, int number_of_rays)
 }
 
 /** PURPOSE : Init beam as a straight vector pointing north. */
-static void	init_beam(t_beam *beam, double position[], \
+static inline void	init_beam(t_beam *beam, double position[], \
 t_vector dir, t_prog *game)
 {
 	(void) game;
@@ -38,7 +38,7 @@ t_vector dir, t_prog *game)
 
 /** PURPOSE : Initialize pointers to contain raycast information
  * (for later drawing).*/
-static void	init_struct_raycast(int number_of_rays, double position[], \
+static inline void	init_struct_raycast(int number_of_rays, double position[], \
 t_vector vision, t_prog *game)
 {
 	t_raycast	*rc;

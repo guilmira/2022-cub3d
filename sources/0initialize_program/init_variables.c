@@ -13,24 +13,13 @@
 #include "cube.h"
 
 /** PURPOSE : pointers at images to NULL */
-static void	init_image(t_prog *game)
+static inline void	init_image(t_prog *game)
 {
 	int	i;
 
 	i = -1;
 	while (++i < TOTAL_IMAGES + 1)
 		game->image[i] = NULL;
-}
-
-static void parser_defines(t_prog *game)
-{
-	if (OY_WINDOW < 800)
-		ft_shutdown(EX0, game);
-	if (OX_WINDOW > OY_WINDOW)
-		ft_shutdown(EX0, game);
-	if (OX_WINDOW != OY_WINDOW)
-		ft_shutdown(EX0, game);
-	
 }
 
 
@@ -46,7 +35,6 @@ void	init_game(t_prog *game)
 	game->mlx = NULL;
 	ox_size = OX_WINDOW;
 	oy_size = OY_WINDOW;
-	parser_defines(game);
 	game->mlx = mlx_init(ox_size, oy_size, TITLE_WINDOW, 1);
 	if (!game->mlx)
 		ft_shutdown("Error.\nMLX could not be initialized\n", game);
@@ -58,5 +46,6 @@ void	init_game(t_prog *game)
 	init_image(game);
 	game->pl.flag_movement = 1;
 	game->pl.flag_trance = 0;
+	game->pl.fov = 0;
 	game->map2D.layout = NULL;
 }

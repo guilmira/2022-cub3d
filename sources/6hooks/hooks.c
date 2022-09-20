@@ -12,6 +12,22 @@
 
 #include "cube.h"
 
+static inline void movement_ctrl(t_prog *game)
+{
+	if (game->pl.key[MLX_KEY_W] == 1)
+		update_player_position(key_up, game);
+	if (game->pl.key[MLX_KEY_S] == 1)
+		update_player_position(key_down, game);
+	if (game->pl.key[MLX_KEY_LEFT] == 1)
+		update_player_vision(key_lookleft, game);
+	if (game->pl.key[MLX_KEY_RIGHT] == 1)
+		update_player_vision(key_lookright, game);
+	if (game->pl.key[MLX_KEY_C] == 1)
+		game->pl.fov++;
+	if (game->pl.key[MLX_KEY_V] == 1)
+		game->pl.fov--;		
+}
+
 /** PURPOSE : Convert pointer of program and execute frames.
  * 60 FPS. */
 void	next_frame(void *g)
@@ -19,19 +35,17 @@ void	next_frame(void *g)
 	t_prog		*game;
 
 	game = (t_prog *) g;
-	if (game->pl.flag_movement)
-	{
-		reset_and_wash_frame(game);
+	reset_and_wash_frame(game);
 
-		main_raycast_calculation(FOV_DEGREE, game);
-		if (game->minimap_state != FULL_MINIMAP)
-			put_frame3D(game);
-		if (game->minimap_state)
-			put_frame2D(game);
-		mlx_image_to_window(game->mlx, game->image[CUB_3D], \
-		game->w1.origin[0], game->w1.origin[1]);
-		game->pl.flag_movement = 0;
-	}
+	movement_ctrl(game);
+	main_raycast_calculation(FOV_DEGREE + game->pl.fov, game);
+	if (game->minimap_state != FULL_MINIMAP)
+		put_frame3D(game);
+	if (game->minimap_state)
+		put_frame2D(game);
+	mlx_image_to_window(game->mlx, game->image[CUB_3D], \
+	game->w1.origin[0], game->w1.origin[1]);
+	game->pl.flag_movement = 0;
 }
 
 /** PURPOSE : execute main routine of program.

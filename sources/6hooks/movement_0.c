@@ -16,7 +16,7 @@
 
 
 /** PURPOSE : calculate new coordinates. */
-static void move_position(double v[], t_prog *game, int key, int pixel_per_block[])
+static  inline void move_position(double v[], t_prog *game, int key, int pixel_per_block[])
 {
 	double new_pos[2];
 	double speed_multiplier;
@@ -41,7 +41,7 @@ static void move_position(double v[], t_prog *game, int key, int pixel_per_block
 }
 
 /** PURPOSE : correct position by adding correct vector. */
-static void update_player_position(int key, t_prog *game)
+void update_player_position(int key, t_prog *game)
 {
 	int i;
 	int x;
@@ -77,12 +77,31 @@ static void update_player_position(int key, t_prog *game)
 /** PURPOSE : distribute proper key control
  * W A S D -- movement code.
  * Or combination of the above. */
-void	movement_control(mlx_key_data_t key, t_prog *game)
+void	movement_control(mlx_key_data_t t_key, t_prog *game)
 {
-	(void) key;
 	game->pl.flag_movement = 1;
-	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		update_player_position(key_up, game);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		update_player_position(key_down, game);
+	if (mlx_is_key_down(game->mlx, t_key.key) == 1)
+	{	
+		game->pl.key[MLX_KEY_W] = mlx_is_key_down(game->mlx, MLX_KEY_W);
+		game->pl.key[MLX_KEY_S] = mlx_is_key_down(game->mlx, MLX_KEY_S);
+		game->pl.key[MLX_KEY_RIGHT] = mlx_is_key_down(game->mlx, MLX_KEY_RIGHT);
+		game->pl.key[MLX_KEY_LEFT] = mlx_is_key_down(game->mlx, MLX_KEY_LEFT);
+		game->pl.key[MLX_KEY_C] = mlx_is_key_down(game->mlx, MLX_KEY_C);
+		game->pl.key[MLX_KEY_V] = mlx_is_key_down(game->mlx, MLX_KEY_V);		
+	}
+	else
+	{
+		if (mlx_is_key_down(game->mlx, MLX_KEY_W) == 0)
+			game->pl.key[MLX_KEY_W] = 0;
+		if (mlx_is_key_down(game->mlx, MLX_KEY_S) == 0)
+			game->pl.key[MLX_KEY_S] = 0;
+		if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT) == 0)
+			game->pl.key[MLX_KEY_RIGHT] = 0;
+		if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT) == 0)
+			game->pl.key[MLX_KEY_LEFT] = 0;
+		if (mlx_is_key_down(game->mlx, MLX_KEY_C) == 0)
+			game->pl.key[MLX_KEY_C] = 0;
+		if (mlx_is_key_down(game->mlx, MLX_KEY_V) == 0)
+			game->pl.key[MLX_KEY_V] = 0;
+	}
 }

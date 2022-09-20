@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : correct vision by adding correct plane vector. */
-static void update_player_vision(int key, t_prog *game)
+void update_player_vision(int key, t_prog *game)
 {
 	t_vector	plane_perpendicular;
 	t_vector	original_vision;
@@ -21,7 +21,7 @@ static void update_player_vision(int key, t_prog *game)
 	double		lenght;
 
 	original_vision = game->pl.vis;
-	angle_rotation = VISION_ANGLE_ROTATION + 20;
+	angle_rotation = VISION_ANGLE_ROTATION;
 	plane_perpendicular = get_unit_vector(get_perpendicular(original_vision));
 	if (game->pl.flag_trance)
 		angle_rotation = TRANCE_BOOST; //it will be halved

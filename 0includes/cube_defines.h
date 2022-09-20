@@ -18,10 +18,10 @@
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1200
-# define OY_WINDOW 1200
+# define OX_WINDOW 1860
+# define OY_WINDOW 1040
 /* Minimap size ratio */
-# define MINIMAP_WINDOW_RATIO 2
+# define MINIMAP_WINDOW_RATIO 5
 
 /* 								 MAP INTITAL STATE
 				0 - no minimap
@@ -39,14 +39,15 @@
 # define VISUAL_BLOCKS_H 10
 
 /* Player related. */
-# define PLAYER_SPEED 500
+# define PLAYER_SPEED 700
 # define TRANCE_BOOST 10
-# define WIND_MODE 8
+# define WIND_MODE 1.5
 # define VISION_ANGLE_ROTATION 2
 
 
 # define SAFE_OFFSET 0.0001
 # define FOV_DEGREE 30
+
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
 
 
@@ -86,5 +87,6 @@
 # define BLUE	0x0000FFFF
 # define BLACK	0x000000FF
 # define WHITE	0xFFFFFFFF
+# define YELLOW 0xFFBB2DFF
 
 #endif
