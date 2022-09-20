@@ -23,10 +23,7 @@ static inline void movement_ctrl(t_prog *game)
 	if (game->pl.key[MLX_KEY_RIGHT] == 1)
 		update_player_vision(key_lookright, game);
 	if (game->pl.key[MLX_KEY_C] == 1)
-	{
-		printf("paso\n");
 		game->pl.fov++;
-	}
 	if (game->pl.key[MLX_KEY_V] == 1)
 		game->pl.fov--;		
 }
