@@ -41,37 +41,35 @@
 	}
 }*/
 
-
-/*inputs percentage of the stripe desired and outputs the stripe in texture*/
-mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, int stripeheight)
+mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight)
 {
 	mlx_texture_t	*ret;
 	uint32_t		x;
-	uint32_t		y;
-	uint32_t		hw;
+	double			y;
+	double			hw;
 	uint32_t		count;
 	uint32_t 		pixel;
 
-	pixel = (percentage * texture->width) / 100 * 4;
+	pixel = (percentage * texture->width) / 1000 * 4;
 	if (pixel - 1 < 0)
 		pixel = 1;
 	x = pixel;
 	y = 0;
-	hw = stripeheight;
+	hw = (double)texture->height / (double)stripeheight;
 	ret = malloc(sizeof(mlx_texture_t));
 	ret->width = 1;
-	ret->height = hw;
+	ret->height = stripeheight;
 	ret->bytes_per_pixel = 4;
-	ret->pixels = malloc(sizeof(uint8_t) * hw * 4);
+	ret->pixels = malloc(sizeof(uint8_t) * (stripeheight * 4));
 	count = 0;
-	while(count <( hw * 4))
+	while(count < (stripeheight * 4))
 	{
-		ret->pixels[count] = texture->pixels[x + y * (texture->width * 4)];
-		ret->pixels[count + 1] = texture->pixels[x + 1 + y * (texture->width * 4)];
-		ret->pixels[count + 2] = texture->pixels[x + 2 + y * (texture->width * 4)];
-		ret->pixels[count + 3] = texture->pixels[x + 3 + y * (texture->width * 4)];
+		ret->pixels[count] = texture->pixels[x + (int)y * (texture->width * 4)];
+		ret->pixels[count + 1] = texture->pixels[x + 1 + (int)y * (texture->width * 4)];
+		ret->pixels[count + 2] = texture->pixels[x + 2 + (int)y * (texture->width * 4)];
+		ret->pixels[count + 3] = texture->pixels[x + 3 + (int)y * (texture->width * 4)];
 		count += 4;
-		y++;
+		y += hw;
 	}
 	return(ret);
 }
@@ -91,7 +89,7 @@ void	draw_first_layer(t_prog *game)
 	colour_floor = rgb_t_translate(151, 151, 151, 255);
 	colour_sky = rgb_t_translate(40, 40, 40, 255);
 	sky_texture = mlx_load_png("textures/brick_normal.png");
-	stripe = get_texture_stripe(sky_texture, 50, 250);
+	stripe = get_texture_stripe(sky_texture, 503, 500);
 	//draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
 	origin[1] = game->w1.size[1] / 2;
 	mlx_draw_texture(game->image[CUB_3D], stripe, 100, 100);
