@@ -27,34 +27,6 @@
 	while (++i < limit_x)
 		solid_pixel(image, i, coor_y, colour);
 }*/
-
-/*static void horizontal_line_mat(double coordinate_y, int limit_x, mlx_texture_t *sky_texture, t_prog *game)
-{
-	int i;
-	int colour;
-	int rgb[4];
-	int coor_y;
-	int j;
-	mlx_image_t *image;
-
-	image = game->image[CUB_3D];
-	i = -1;
-	if (coordinate_y == 0)
-		coordinate_y += SAFE_OFFSET;
-	coor_y = (int) coor(coordinate_y, game->w1.size[1]);
-	while (++i < limit_x && i < (game->w1.size[1] * 8))
-	{
-		j = i + coordinate_y * sky_texture->width;
-		rgb[0] = get_red(sky_texture->pixels[j]);
-		rgb[1] = get_blue(sky_texture->pixels[j]);
-		rgb[2] = get_green(sky_texture->pixels[j]);
-		rgb[3] = get_transparent(sky_texture->pixels[j]);
-		colour = rgb_t_translate(rgb[0], rgb[1], rgb[2], rgb[3]);
-		//printf("%hhu\n", sky_texture->pixels[j]);
-		solid_pixel(image, i, coor_y, colour);
-	}
-}
-*/
 /** PURPOSE : extend horizonal lines through the screen. */
 /*static void draw_horizon(double origin[], int size, int colour, t_prog *game)
 {
@@ -66,19 +38,6 @@
 	{
 		coor_y = origin[1] + i;
 		put_horizontal_line(coor_y, game->w1.size[0], colour, game);
-	}
-}*/
-
-/*static void draw_sf_mat(double origin[], uint32_t size, mlx_texture_t *sky_texture, t_prog *game)
-{
-	int i;
-	double coor_y;
-	
-	i = -1;
-	while (++i < (int)size)
-	{
-		coor_y = origin[1] + i;
-		horizontal_line_mat(coor_y, (int)(sky_texture->width * 8), sky_texture, game);
 	}
 }*/
 
