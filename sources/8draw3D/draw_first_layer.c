@@ -100,6 +100,7 @@ mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, t_prog
 	xy[1] = 0;
 	hw[0] = 1;
 	hw[1] = texture->height;
+	printf("%d texture->width\n", texture->width);
 	aux = mlx_texture_area_to_image(game->mlx, texture, xy, hw);
 	ret = malloc(sizeof(mlx_texture_t));
 	ret->width = aux->width;
@@ -127,8 +128,8 @@ void	draw_first_layer(t_prog *game)
 	origin[1] = 0;
 	colour_floor = rgb_t_translate(151, 151, 151, 255);
 	colour_sky = rgb_t_translate(40, 40, 40, 255);
-	sky_texture = mlx_load_png("textures/landscape.png");
-	stripe = get_texture_stripe(sky_texture, 30, game);
+	sky_texture = mlx_load_png("textures/brick_normal.png");
+	stripe = get_texture_stripe(sky_texture, 50, game);
 	//draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
 	origin[1] = game->w1.size[1] / 2;
 	mlx_draw_texture(game->image[CUB_3D], stripe, 100, 100);
