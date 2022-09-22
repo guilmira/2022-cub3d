@@ -209,7 +209,7 @@ int		catch_number(char *info)
 		freemat(data_colour);
 		return(-1);
 	}
-	colour = rgb_t_translate(0, ft_atoi(data_colour[0]), ft_atoi(data_colour[1]), ft_atoi(data_colour[2]));
+	colour = rgb_t_translate(ft_atoi(data_colour[0]), ft_atoi(data_colour[1]), ft_atoi(data_colour[2]), 255);
 	freemat(data_colour);
 	free(aux);
 	return(colour);

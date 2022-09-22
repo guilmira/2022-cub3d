@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 17:00:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/20 17:00:46 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
+/*   Updated: 2022/09/22 15:28:33 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,3 @@ int	main(int argc, char **argv)
 	clean_exit(game);
 	return (0);
 }
-
-
-/*
-int main(void)
-{
-	mlx_t		*mlx;
-	mlx_texture_t *sky_texture;
-	uint8_t	**sky_mat;
-
-	mlx = mlx_init(1060, 1060, TITLE_WINDOW, 1);
-	sky_texture = mlx_load_png("textures/d64van-sky1pal.png");
-	sky_mat = texture_to_mat(sky_texture);
-
-}*/
