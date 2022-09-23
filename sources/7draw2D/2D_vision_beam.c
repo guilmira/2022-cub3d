@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 16:47:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/23 07:50:19 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_vector vision, t_prog *game)
 	rc->rc_wall_hit_x = ft_calloc(heap_size, sizeof(int));
 	rc->rc_wall_hit_y = ft_calloc(heap_size, sizeof(int));
 	rc->rc_origin_coor[0] = position[0];
-	rc->rc_origin_coor[0] = position[1];
+	rc->rc_origin_coor[1] = position[1];
 	rc->number_of_rays = number_of_rays;
 	rc->vision = vision;
 	game->rc = rc;

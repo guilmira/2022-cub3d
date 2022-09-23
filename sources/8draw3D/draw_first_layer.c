@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 16:37:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/23 09:42:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	draw_first_layer(t_prog *game)
 	stripe = get_texture_stripe(sky_texture, 503, 500);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
 	origin[1] = game->w1.size[1] / 2;
-	mlx_draw_texture(game->image[CUB_3D], stripe, 100, 100);
+	//mlx_draw_texture(game->image[CUB_3D], stripe, 100, 100);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
 	mlx_delete_texture(sky_texture);
 	mlx_delete_texture(stripe);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:29:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/21 20:30:30 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/23 07:46:39 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	reset_and_wash_frame(t_prog *game)
 {
 	static int	frame;
 
-	printf("												FRAME: 	 %i\n", frame);
+	//printf("												FRAME: 	 %i\n", frame);
 	frame++;
 	frame_reset(0, game);
 	wash_screen(game, game->image[CUB_3D], game->w1, RED);

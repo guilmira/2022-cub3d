@@ -34,6 +34,7 @@ void	next_frame(void *g)
 {
 	t_prog		*game;
 
+
 	game = (t_prog *) g;
 	reset_and_wash_frame(game);
 
@@ -53,6 +54,8 @@ void	next_frame(void *g)
  * of 60 times pers second. Therefore 60 fps. */
 void	hooks_and_loops(t_prog *game)
 {
+	printf("HOOKS IN EXECUTION\n");
+
 	mlx_close_hook(game->mlx, &hk_close, (void *) game);
 	mlx_key_hook(game->mlx, &hk_keys, game);
 	mlx_loop_hook(game->mlx, &next_frame, game);

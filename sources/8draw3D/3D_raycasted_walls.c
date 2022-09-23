@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:49:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 17:40:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:12:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,45 +68,40 @@ static inline double get_wall_size(double distance, t_prog *game)
 		return (ret);
 }
 
-/** PURPOSE : Stripe selector from 0 to 100. */
-int get_wall_stripe(int ray_number, t_prog *game)
+
+
+int get_wall_stripe(int ray_number, t_prog *game);
+
+
+void get_stripe_coor(int stripe_coor[], int ray_number, int size, t_prog *game);
+
+
+void draw_texture(mlx_texture_t *texture, int ray_number, int size, t_prog *game)
 {
-	t_vector vector;
-	double player_coor[D2];
-	int wall_side;
-	int stripe;
-	double collision_point;
-	double wall_init;
+	mlx_texture_t *stripe;
+	int stripe_number;
+	int	stripe_coor[D2];
+	
+	stripe_number = 0;
+	stripe_number = get_wall_stripe(ray_number, game);
+	get_stripe_coor(stripe_coor, ray_number, size, game);
 
+	
+	/* int i;
+	i = -1;
+	stripe_number = i + 1; */
 
-	stripe = 0;
+	printf("aqui %i\n", stripe_number);
 
-	vector = game->rc->rc_vector[ray_number];
-	wall_side = game->rc->rc_wall_side[ray_number];
-	player_coor[0] = game->rc->rc_origin_coor[0];
-	player_coor[1] = game->rc->rc_origin_coor[1];
-	if (wall_side == 1)
-	{
-		collision_point = player_coor[1] + vector.y;
-		wall_init = game->rc->rc_wall_hit_y[ray_number] + 1 * game->map2D.pixel_per_block[1];
-		stripe = ((collision_point - wall_init) * 100) / game->map2D.pixel_per_block[1];
+	stripe = get_texture_stripe(texture, stripe_number * 10, size); //falta proteger esta funcion, muy necesario
 
-	}
-	if (wall_side == 2)
-	{
-		printf("vector %f\n", vector.x);
-		collision_point = player_coor[0] + vector.x;
-		wall_init = (game->rc->rc_wall_hit_x[ray_number] + 1) * game->map2D.pixel_per_block[0];
-		printf("aqui %f y %i y %f y %d\n ", collision_point, game->rc->rc_wall_hit_x[ray_number] ,wall_init, game->map2D.pixel_per_block[0]);
-		stripe = ((collision_point - wall_init) * 100) / game->map2D.pixel_per_block[0];
+	mlx_draw_texture(game->image[CUB_3D], stripe, stripe_coor[0], stripe_coor[1]);
 
-	}
-	return (stripe);
-
+	mlx_delete_texture(stripe);
 }
 
 /** PURPOSE : draw a vertical line of calculated size. */
-static inline void draw_wall_vertical_unit(int ray_number, t_prog *game)
+static inline void draw_wall_vertical_unit(mlx_texture_t *texture, int ray_number, t_prog *game)
 {
 	int	size;
 	int	wall_colour;
@@ -118,10 +113,13 @@ static inline void draw_wall_vertical_unit(int ray_number, t_prog *game)
 	
 	size = get_wall_size(distance, game);
 	wall_colour = choose_wall_shade(wall_side, size, game);
-	centered_vertical(ray_number, size, wall_colour, game);
+	//centered_vertical(ray_number, size, wall_colour, game);
 
-	//printf("%i\n", get_wall_stripe(ray_number, game));
-	//get_wall_stripe(ray_number, game);
+
+
+	draw_texture(texture, ray_number, size, game);
+
+	
 }
 
 /** PURPOSE : walls are represented adding vertical lines of different
@@ -131,10 +129,13 @@ void	draw_3D_walls(t_prog *game)
 	int	i;
 	int ray_number;
 
+	mlx_texture_t *texture;	
+	texture = mlx_load_png("textures/brick_normal.png");
 	i = -1;
 	while (++i < game->rc->number_of_rays)
 	{	
 		ray_number = i;
-		draw_wall_vertical_unit(ray_number, game);
+		draw_wall_vertical_unit(texture, ray_number, game);
 	}
+	mlx_delete_texture(texture);
 }
