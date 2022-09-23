@@ -6,15 +6,17 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:49:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/23 11:12:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/23 11:19:31 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+//por que son static inline??
+
 /** PURPOSE : draw a vertical symetric line starting in the 
  * middle of the screen. */
-static inline void centered_vertical(double x, int size, int colour, t_prog *game)
+/* static inline void centered_vertical(double x, int size, int colour, t_prog *game)
 {
 	int		i;
 	int		y;
@@ -34,7 +36,7 @@ static inline void centered_vertical(double x, int size, int colour, t_prog *gam
 		y = (int) coor(start[1] + i, game->w1.size[1]);
 		solid_pixel(game->image[CUB_3D], (int) (start[0]), y, colour);
 	}
-}
+} */
 
 #define CONSTANT 800 //constant for a perpendicular distance
 //#define CONSTANT 8000 //for a fisheye
