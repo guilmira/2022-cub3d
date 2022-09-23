@@ -35,7 +35,7 @@ static inline void draw_wall_vertical_unit(mlx_texture_t *texture, int ray_numbe
 	size = get_wall_size(distance, game);
 	wall_colour = choose_wall_shade(wall_side, size, game);
 	centered_vertical(ray_number, size, wall_colour, game);
-	draw_texture_stripe(texture, ray_number, size, game);
+	draw_texture_stripe(texture, ray_number, size * 2, game);
 }
 
 #define WALL_IMAGE "textures/d64van-sky1pal.png"

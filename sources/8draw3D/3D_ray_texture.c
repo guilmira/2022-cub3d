@@ -20,8 +20,10 @@ static void get_stripe_coor(int stripe_coor[], int ray_number, int size, t_prog 
 	mid_screen_oy = game->w1.size[1] / 2;
 	stripe_coor[0] = ray_number;
 	stripe_coor[1] = mid_screen_oy - size / 2;
-	if (stripe_coor[0] < 0 || stripe_coor[1] < 0)
-		ft_shutdown(EX, game);
+	if (stripe_coor[0] < 0)
+		stripe_coor[0] = 0;
+	if (stripe_coor[1] < 0)
+		stripe_coor[1] = 0;
 }
 
 
@@ -75,7 +77,6 @@ void draw_texture_stripe(mlx_texture_t *texture, int ray_number, int size, t_pro
 	stripe_number = get_wall_stripe(ray_number, game);
 	get_stripe_coor(stripe_coor, ray_number, size, game);
 
-	//printf("aqui %i\n", stripe_number);
 	stripe = get_texture_stripe(texture, stripe_number * 10, size); //falta proteger esta funcion, muy necesario
 	mlx_draw_texture(game->image[CUB_3D], stripe, stripe_coor[0], stripe_coor[1]);
 	mlx_delete_texture(stripe);

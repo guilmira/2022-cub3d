@@ -37,8 +37,7 @@ double get_wall_size(double distance, t_prog *game)
 	//max_size = (game->w1.size[1] / 2) - SAFE_OFFSET;
 	
 	ret = height / distance;
-
-		return (ret);
+	return (ret);
 }
 
 

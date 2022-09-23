@@ -89,6 +89,5 @@ void	draw_first_layer(t_prog *game)
 	colour_sky = game->sky_clr;
 	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
 	origin[1] = game->w1.size[1] / 2;
-	//mlx_draw_texture(game->image[CUB_3D], stripe, 100, 100);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
 }
