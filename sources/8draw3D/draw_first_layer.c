@@ -81,20 +81,14 @@ void	draw_first_layer(t_prog *game)
 {
 	int colour_floor;
 	int colour_sky;
-	mlx_texture_t *sky_texture;	
-	mlx_texture_t *stripe;
 	double origin[D2];
 
 	origin[0] = 0;
 	origin[1] = 0;
 	colour_floor = game->floor_clr;
 	colour_sky = game->sky_clr;
-	sky_texture = mlx_load_png("textures/brick_normal.png");
-	stripe = get_texture_stripe(sky_texture, 503, 500);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
 	origin[1] = game->w1.size[1] / 2;
 	//mlx_draw_texture(game->image[CUB_3D], stripe, 100, 100);
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
-	mlx_delete_texture(sky_texture);
-	mlx_delete_texture(stripe);
 }
