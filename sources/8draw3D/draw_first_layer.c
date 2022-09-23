@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/23 09:42:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/23 13:49:06 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32
 	uint32_t 		pixel;
 
 	pixel = (percentage * texture->width) / 1000 * 4;
+	printf("%d\n", stripeheight);
 	if (pixel - 1 < 0)
 		pixel = 1;
 	x = pixel;

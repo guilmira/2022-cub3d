@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/23 11:16:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:05:33 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	framework_2D(t_prog *game);
 int	main(int argc, char **argv)
 {
 	t_prog	*game;
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);
