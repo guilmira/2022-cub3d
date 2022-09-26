@@ -78,6 +78,7 @@ static void	clear_memory(t_prog *game)
 			free(game->WE);
 		if (game->EA)
 			free(game->EA);
+		destroy_texture(game);
 		clear_map2D(game->map2D.layout, game->map2D.height);
 		clear_map2D(game->map2D.s_layout, game->map2D.s_height);
 		clear_raycast(game);

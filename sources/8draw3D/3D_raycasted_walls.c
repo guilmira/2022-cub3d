@@ -38,19 +38,13 @@ static inline void draw_wall_vertical_unit(mlx_texture_t *texture, int ray_numbe
 	draw_texture_stripe(texture, ray_number, size * 2, game);
 }
 
-#define WALL_IMAGE "textures/d64van-sky1pal.png"
-
 /** PURPOSE : walls are represented adding vertical lines of different
  * lenght depending on distance to player.*/
 void	draw_3D_walls(t_prog *game)
 {
 	int				i;
-	mlx_texture_t	*texture;
-	char wall_image_file[] = WALL_IMAGE;
-
-	texture = mlx_load_png(wall_image_file);
+	
 	i = -1;
 	while (++i < game->rc->number_of_rays)
-		draw_wall_vertical_unit(texture, i, game);
-	mlx_delete_texture(texture);
+		draw_wall_vertical_unit(game->t_NO, i, game);
 }

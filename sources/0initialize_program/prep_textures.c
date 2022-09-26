@@ -3,33 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/23 12:05:33 by guilmira         ###   ########.fr       */
+/*   Created: 2022/07/06 14:37:22 by jsanfeli          #+#    #+#             */
+/*   Updated: 2022/09/23 12:05:33 by jsanfeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-void	framework_2D(t_prog *game);
-
-/** PURPOSE : CUB3 uses 
- * 1. make exe.
- * 2. ./cube + [map_name.cub] */
-int	main(int argc, char **argv)
+void	prep_textures(t_prog *game)
 {
-	t_prog	*game;
-	//atexit(ft_leaks);
-	game = ft_calloc(1, sizeof(t_prog));
-	if (!game)
-		ft_shut(EX1);
-	init_game(game);
-	parser(game, argc, argv);
-	prep_textures(game);
-	framework_dimensions(game);
-	init_map2D(game->map2D.map, game);
-	hooks_and_loops(game);
-	clean_exit(game);
-	return (0);
+	game->t_NO =  mlx_load_png(game->NO);
+	game->t_SO =  mlx_load_png(game->SO);
+	game->t_WE =  mlx_load_png(game->WE);
+	game->t_EA =  mlx_load_png(game->EA);
+}
+
+void	destroy_texture(t_prog *game)
+{
+	if(game->t_NO)
+		mlx_delete_texture(game->t_NO);
+	if(game->t_SO)
+		mlx_delete_texture(game->t_SO);
+	if(game->t_WE)
+		mlx_delete_texture(game->t_WE);
+	if(game->t_EA)
+		mlx_delete_texture(game->t_EA);
 }

@@ -33,6 +33,7 @@ void			init_map2D(char **map, t_prog *game);
 void			minimap_dimensions(t_prog *game);
 int				**copy_double_pointer(int **var, int height, int width);
 void			print_smap(int **s_map, int height, int width);
+void			prep_textures(t_prog *game);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int				rgb_t_translate(int red, int green, int blue, int transparency);
@@ -63,6 +64,7 @@ void			freemat_int(int **mat, int len);
 void			ft_mlx_delete_image_safe(int image_position, t_prog *game);
 void			clear_map2D(int **map, int height);
 void			clear_uint8(uint8_t **map, int height);
+void			destroy_texture(t_prog *game);
 
 /* ------------------------ RAYCAST ------------------------ */
 /* RAY CASTING AND DDA ALGORITHM */
