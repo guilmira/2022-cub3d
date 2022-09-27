@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 17:17:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/26 16:17:11 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ static void	rearrange_array(t_data *aux, t_prog *game)
 	game->rc->rc_wall_hit_y[middle_value] = aux->wall_hit[1];
 }
 
-
-
 /** PURPOSE : Casting beam of rays from origin. 
  The barrage its what we call the rapid succesion of vectors calculated from 
  left to right and that they generate the beam. */
@@ -100,9 +98,3 @@ void	cast_beam(t_beam *beam, t_data *aux, t_prog *game)
 	//log_arrays(game);
 
 }
-
-/* 	double time_spent = 0.0;	
-	clock_t begin = clock(); */
-	/* 	clock_t end = clock();
-	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-	printf("The elapsed time is %f seconds\n", time_spent); */

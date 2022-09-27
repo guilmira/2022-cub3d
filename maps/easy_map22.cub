@@ -1,10 +1,10 @@
-NO textures/brick_normal.png
+NO troll_map/IMG-20220923-WA0016.png
 
 C 40,40,40
 
-        SO textures/landscape.png
-   EA textures/d64van-sky1pal.png
-     WE                                     textures/landscapecopy.png
+        SO troll_map/IMG-20220923-WA0018.png
+   EA troll_map/IMG-20220923-WA0019.png
+     WE                                     troll_map/IMG-20220923-WA0023.png
 
 
                 

@@ -44,6 +44,7 @@ void	next_frame(void *g)
 		put_frame3D(game);
 	if (game->minimap_state)
 		put_frame2D(game);
+
 	mlx_image_to_window(game->mlx, game->image[CUB_3D], \
 	game->w1.origin[0], game->w1.origin[1]);
 	game->pl.flag_movement = 0;
