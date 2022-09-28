@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/09/27 14:44:14 by guilmira         ###   ########.fr        #
+#    Updated: 2022/09/28 15:53:15 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra  -Werror -O3 -fsanitize=address    #-g -Werror
-ARG			= maps/easy_map22.cub
+ARG			= maps/easy_map2.cub
 #ARG			= maps/default.cub
 
 #time ./cube default.cub
