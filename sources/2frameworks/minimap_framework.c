@@ -6,27 +6,49 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/07 17:24:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:52:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+
+static int get_grid_limit(t_prog *game)
+{
+	int i;
+	int limit;
+	double final;
+	limit = 1;
+	i = 0;
+	if (!game->minimap_state)
+		final = game->w1.size[1];
+	else
+		final =  game->w2.size[1];
+	while (limit < final)
+	{
+		limit += game->map2D.pixel_per_block[1];
+		i++;
+	}
+	return (i);
+}
 
 /** PURPOSE : Scale a 2D grid. */
 static inline void	draw_grid(t_prog *game, double size_x, double size_y)
 {
 	int	nb;
 	int	colour;
-
+	int limit;
 	
-
+	limit = get_grid_limit(game);
 	colour = rgb_t_translate(255, 255, 255, GRID_TRANSPARENCY); //XXX tocar grid transparency, valores muy altos / bajos
 	nb = -1;
-	while (++nb < game->map2D.height + 1)
+	//while (++nb < game->map2D.height + 1)
+	while (++nb < limit)
 		put_horizontal(( nb * game->map2D.pixel_per_block[1]), \
 		size_x, colour, game);
 	nb = -1;
-	while (++nb < game->map2D.width + 1)
+	//while (++nb < game->map2D.width + 1)
+	while (++nb < limit)
 		put_vertical(( nb * game->map2D.pixel_per_block[0]), \
 		size_y, colour, game);
 }
@@ -96,14 +118,7 @@ void	framework_2D(t_prog *game)
 {
 	if (!game->minimap_state)
 		return ;
-
-	/* --------------------------------------------------------------- */
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);	
-	/* --------------------------------------------------------------- */
 	draw_wall2D(game);
 	draw_player_position(game->image[CUB_3D], game); 
-
-	/* --------------------------------------------------------------- */
-	
-	
 }

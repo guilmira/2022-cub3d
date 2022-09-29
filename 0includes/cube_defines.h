@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/08 14:33:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:16:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@
 
 /* Corner minimap DIMENSIONS */
 # define SPACES_AT_BORDER 2
-
 
 /* Safe margin not to burst the window limits. */
 # define SAFE_MARGIN 0.01

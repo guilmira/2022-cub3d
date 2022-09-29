@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 15:30:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:21:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static inline void	hook_control_minimap(t_prog *game)
 		game->map2D.pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
 		game->map2D.pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
 		update_pixel_per_block(game);
+		game->pl.position_coor[0] = game->pl.v_position_coor[0];
+		game->pl.position_coor[1] = game->pl.v_position_coor[1];
 	}
 	else
 	{

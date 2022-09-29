@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 13:21:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:54:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
 
 	if (coor_x < 0 || coor_y < 0 || colour < 0) //tambien se puede añadir si es =
 	{
-		// (%i, %i) not rendered\n", coor_x, coor_y); //NEXT
+		//printf("Pixel (%i, %i) not rendered\n", coor_x, coor_y);
 		return ;
 	}
 	x = (uint32_t) coor_x;
