@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/27 13:27:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:49:26 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static inline void draw_horizon(double origin[], int size, int colour, t_prog *g
 	}
 }
 
-mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight)
+mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight, t_prog *game)
 {
 	mlx_texture_t	*ret;
 	uint32_t		x;
@@ -56,12 +56,17 @@ mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32
 	x = pixel;
 	y = 0;
 	hw = (double)texture->height / (double)stripeheight;
+	count = 0;
+	if ((int)stripeheight > game->w1.size[1])
+	{
+		y =  (double)(((int)stripeheight - game->w1.size[1]) * hw / 2);
+		stripeheight = (uint32_t)game->w1.size[1];
+	}
 	ret = malloc(sizeof(mlx_texture_t));
 	ret->width = 1;
 	ret->height = stripeheight;
 	ret->bytes_per_pixel = 4;
 	ret->pixels = malloc(sizeof(uint8_t) * (stripeheight * 4));
-	count = 0;
 	while(count < (stripeheight * 4))
 	{
 		ret->pixels[count] = texture->pixels[x + (int)y * (texture->width * 4)];

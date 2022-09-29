@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 15:49:19 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:12:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void			destroy_texture(t_prog *game);
 void			main_raycast_calculation(int angle, t_prog *game);
 void			init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game);
 t_vector		raycast(t_data *aux, t_vector dir, double origin[], t_prog *game);
-mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight);
+mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight, t_prog *game);
+
 void			clear_raycast(t_prog *game);
 double			calculate_plane_lenght(double angle, t_vector vis);
 
