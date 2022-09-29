@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/28 16:01:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:15:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,16 @@ static inline void	draw_raycast(t_prog *game)
 	while (++i < game->rc->number_of_rays)
 	{
 		ray = game->rc->rc_vector[i];
-		ray.y = ray.y - 1; //ojo con este truco, habra que mirarlo
+		ray.y = ray.y - 1;
 		draw_vector(ray, game->pl.position_coor, colour, game);
 	}
 	ray = game->rc->vision;
 	draw_vector(ray, game->pl.position_coor, colour, game);
-
-
 }
-
-void	wash_screen(t_prog *game, mlx_image_t *image, t_dim window, int colour);
 
 /** PURPOSE : 60 frames per second function. 
  * pl.flag_movement to zero deactivates drawing until further movement. */
-void	put_frame2D(t_prog *game)
+void	put_frame_two_dim(t_prog *game)
 {
 	if (game->minimap_state)
 	{

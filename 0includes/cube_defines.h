@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/28 16:16:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:35:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@
 # define MINIMAP_INTIAL_STATE 4
 # define FULL_MINIMAP 4
 
+
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
 #define SHADOWED_TRANSPARENCY 120
 /* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
+
+/* Wall size */
+#define CONSTANT_HEIGHT_WALL 800
 
 
 # define PLAYER_RATIO 0.25

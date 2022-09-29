@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 13:17:26 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:36:10 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
 
 	if (coor_x < 0 || coor_y < 0 || colour < 0) //tambien se puede añadir si es =
 	{
-		//printf("Pixel (%i, %i) not rendered\n", coor_x, coor_y);
+		printf("Pixel (%i, %i) not rendered\n", coor_x, coor_y);
 		return ;
 	}
 	x = (uint32_t) coor_x;
 	y = (uint32_t) coor_y;
 	if (x >= image->width || y >= image->height)
 	{
-		//printf("Pixel (%i, %i) could not be rendered\n", coor_x, coor_y);//NEXT
+		printf("Pixel (%i, %i) could not be rendered\n", coor_x, coor_y);//NEXT
 		return ;
 	}
 	mlx_put_pixel(image, x, y, colour);
@@ -113,7 +113,7 @@ void draw_centered_rectangle(double o_x, double o_y, int base, int height, t_pro
 
 int check_radio(double coord[], double radio);
 
-void draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game)
+void	draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game)
 {
 	double i[2];
 

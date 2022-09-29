@@ -6,18 +6,19 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 13:49:26 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 22:20:48 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Horizontal line in given coordinate. */
-static inline void put_horizontal_line(double coordinate_y, double limit_x, int colour, t_prog *game)
+static inline void	put_horizontal_line(double coordinate_y, \
+double limit_x, int colour, t_prog *game)
 {
-	int i;
-	int coor_y;
-	mlx_image_t *image;
+	int			i;
+	int			coor_y;
+	mlx_image_t	*image;
 
 	image = game->image[CUB_3D];
 	i = -1;
@@ -30,9 +31,9 @@ static inline void put_horizontal_line(double coordinate_y, double limit_x, int 
 /** PURPOSE : extend horizonal lines through the screen. */
 static inline void draw_horizon(double origin[], int size, int colour, t_prog *game)
 {
-	int i;
-	double coor_y;
-	
+	int		i;
+	double	coor_y;
+
 	i = -1;
 	while (++i < size)
 	{
@@ -41,6 +42,7 @@ static inline void draw_horizon(double origin[], int size, int colour, t_prog *g
 	}
 }
 
+//NEXT: proteger funcion
 mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight, t_prog *game)
 {
 	mlx_texture_t	*ret;
@@ -48,7 +50,7 @@ mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32
 	double			y;
 	double			hw;
 	uint32_t		count;
-	uint32_t 		pixel;
+	uint32_t		pixel;
 
 	pixel = (percentage * texture->width) / 1000 * 4;
 	if (pixel - 1 < 0)
@@ -83,9 +85,12 @@ mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32
  * 1. game->w1.size[1] / 2 represents the middlepoint at OY. */
 void	draw_first_layer(t_prog *game)
 {
-	int colour_floor;
-	int colour_sky;
-	double origin[D2];
+	int		colour_floor;
+	int		colour_sky;
+	double	origin[D2];
+
+	game->floor_clr = rgb_t_translate(0, 0, 155, 155);
+	game->sky_clr = rgb_t_translate(0, 155, 0, 55);
 
 	origin[0] = 0;
 	origin[1] = 0;

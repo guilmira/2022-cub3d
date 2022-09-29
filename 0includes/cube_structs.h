@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 13:17:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:35:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_ray
 {
 	double			origin[D2];
 	t_vector		dir;
-	int				position_2D[D2];
+	int				pos[D2];
 	double			delta[D2];
 	int				step[D2];
 	int				step_increase[D2];
@@ -81,7 +81,7 @@ typedef struct s_player
 	double			ratio;
 	t_vector		vis;
 	t_beam			beam;
-	t_vector 		plane_perpendicular;
+	t_vector		plane_perpendicular;
 	int				flag_vis_perpend;
 	int				flag_movement;
 	int				flag_trance;
@@ -99,11 +99,9 @@ typedef struct s_map
 	int				s_width;
 	int				pixel_per_block[D2];
 	int				v_pixel_per_block[D2];
-	/* --------------- */
 	char			**map;
 	int				map_x;
 	int				map_y;
-	/* --------------- */
 }				t_map;
 
 /** PURPOSE : Assist struct raycast. */

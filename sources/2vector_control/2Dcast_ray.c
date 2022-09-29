@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 17:24:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:38:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ static inline void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir,
 	vector.x = 0;
 	vector.y = 0;
 	/* --------------- */
-	blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos];
+	blocks_advanced = ray->step[array_pos] - ray->pos[array_pos];
 	if (ray->dir.y < 0 && array_pos == 1)
-		blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos] + 1;
+		blocks_advanced = ray->step[array_pos] - ray->pos[array_pos] + 1;
 	if (ray->dir.x < 0 && array_pos == 0)
-		blocks_advanced = ray->step[array_pos] - ray->position_2D[array_pos] + 1;
+		blocks_advanced = ray->step[array_pos] - ray->pos[array_pos] + 1;
 	/* --------------- */
 	if (!dir.x)
 		vector.y = blocks_advanced * game->map2D.pixel_per_block[array_pos];
@@ -86,11 +86,6 @@ static inline void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog 
 	counter = -1;
 	while (++counter <= game->map2D.width + game->map2D.height)
 	{
-/* 		if (!counter)
-			printf("EMPIEZA------------------------------------------------------------------\n");
-		printf("%f frente a %f\n", ray->net_distance[0], ray->net_distance[1]); */
-
-
 		if (ray->net_distance[1] < ray->net_distance[0] || !ray->delta[0])
 		{
 			
@@ -130,7 +125,6 @@ t_vector	 raycast(t_data *aux, t_vector dir, double origin[], t_prog *game)
 		aux->distance = ray.net_distance[0] - ray.delta[0];
 	if (ray.face == 2)
 		aux->distance = ray.net_distance[1] - ray.delta[1];
-		
 	aux->wall_hit[0] = ray.step[0];
 	aux->wall_hit[1] = ray.step[1];
 	return (ray.resultant_vector);

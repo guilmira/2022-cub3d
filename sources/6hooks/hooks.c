@@ -12,7 +12,7 @@
 
 #include "cube.h"
 
-static inline void movement_ctrl(t_prog *game)
+static inline void	movement_ctrl(t_prog *game)
 {
 	if (game->pl.key[MLX_KEY_W] == 1)
 		update_player_position(key_up, game);
@@ -25,7 +25,7 @@ static inline void movement_ctrl(t_prog *game)
 	if (game->pl.key[MLX_KEY_C] == 1)
 		game->pl.fov++;
 	if (game->pl.key[MLX_KEY_V] == 1)
-		game->pl.fov--;		
+		game->pl.fov--;
 }
 
 /** PURPOSE : Convert pointer of program and execute frames.
@@ -34,15 +34,14 @@ void	next_frame(void *g)
 {
 	t_prog		*game;
 
-
 	game = (t_prog *) g;
 	reset_and_wash_frame(game);
 	movement_ctrl(game);
 	main_raycast_calculation(FOV_DEGREE + game->pl.fov, game);
 	if (game->minimap_state != FULL_MINIMAP)
-		put_frame3D(game);
+		put_frame_three_dim(game);
 	if (game->minimap_state)
-		put_frame2D(game);
+		put_frame_two_dim(game);
 	mlx_image_to_window(game->mlx, game->image[CUB_3D], \
 	game->w1.origin[0], game->w1.origin[1]);
 	game->pl.flag_movement = 0;

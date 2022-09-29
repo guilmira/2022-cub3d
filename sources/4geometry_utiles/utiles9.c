@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 16:49:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:22:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /** PURPOSE : Write coordinates. ONLY WORKS AT FULL WINDOW.
  * EXPECT SEGFAULTS IF USED AT REDUCED MINIMAP SIZE.
 */
-void	coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size)
+/* void	coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size)
 {
 	char *str;
 	char *aux;
@@ -43,7 +43,7 @@ void	coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coo
 		put_horizontal(coor_y, x - 3, GREEN, game); //esta printeando en la imagen 1, daria seeg fault
 	
 	free(aux);
-}
+} */
 
 void log_vector(t_vector v)
 {
@@ -83,15 +83,6 @@ void log_beam(t_beam *beam)
 	log_vector(beam->plane_right);
 	log_vector(beam->plane_segment);
 }
-
-
-
-/* 	double time_spent = 0.0;	
-	clock_t begin = clock(); */
-
-/* clock_t end = clock();
-	time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-	printf("The elapsed time is %f seconds\n", time_spent); */
 
 
 void print_map(char **map, t_prog *game, int **s_map)

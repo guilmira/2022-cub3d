@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/28 16:52:20 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:18:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static inline void	draw_grid(t_prog *game, double size_x, double size_y)
 		size_y, colour, game);
 }
 
-
 /** PURPOSE : From map parser draw in minimap2D each wall. */
 static inline void draw_wall_unit(double map_position[], int pixel_per_block[], t_prog *game)
 {
@@ -69,8 +68,6 @@ static inline void draw_wall_unit(double map_position[], int pixel_per_block[], 
 	line_start[1] = base_location[1];
 	line_end[0] = line_start[0] + pixel_per_block[0];
 	line_end[1] = line_start[1];
-
-
 	j = -1;
 	while (++j < pixel_per_block[1])
 	{

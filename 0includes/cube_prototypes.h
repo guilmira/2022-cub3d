@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 13:12:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:36:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int				get_blue(int colour_code);
 int				get_green(int colour_code);
 int				get_transparent(int colour_code);
 int				get_rgb_shadowed(int colour_code);
-int				choose_wall_shade(int wall_value, int size, t_prog *game);
 int				get_opposite(int colour_code);
 void			framework_2D(t_prog *game);
 void			update_pixel_per_block(t_prog *game);
@@ -51,8 +50,8 @@ void			update_pixel_per_block(t_prog *game);
 void			hooks_and_loops(t_prog *game);
 void			reset_and_wash_frame(t_prog *game);
 void			hk_close(void *game);
-void			put_frame2D(t_prog *game);
-void			put_frame3D(t_prog *game);
+void			put_frame_two_dim(t_prog *game);
+void			put_frame_three_dim(t_prog *game);
 void			hk_keys(mlx_key_data_t key, void *g);
 void			update_player_location(t_prog *game);
 
@@ -69,9 +68,12 @@ void			destroy_texture(t_prog *game);
 /* ------------------------ RAYCAST ------------------------ */
 /* RAY CASTING AND DDA ALGORITHM */
 void			main_raycast_calculation(int angle, t_prog *game);
-void			init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game);
-t_vector		raycast(t_data *aux, t_vector dir, double origin[], t_prog *game);
-mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight, t_prog *game);
+void			init_ray(t_ray *ray, double origin[], t_vector dir, \
+t_prog *game);
+t_vector		raycast(t_data *aux, t_vector dir, double origin[], \
+t_prog *game);
+mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, int percentage, \
+uint32_t stripeheight, t_prog *game);
 
 void			clear_raycast(t_prog *game);
 double			calculate_plane_lenght(double angle, t_vector vis);
@@ -101,41 +103,48 @@ void			put_vertical(double coordinate_x, \
 double limit_y, int colour, t_prog *game);
 void			put_horizontal(double coordinate_y, \
 double limit_x, int colour, t_prog *game);
-void			put_lineH(double start[], double end[], int colour, t_prog *game);
+void			put_lineH(double start[], double end[], \
+int colour, t_prog *game);
 void			put_lineV(double start[], int size, int colour, t_prog *game);
 double			degree_to_radian(double degree);
+/* ------------------------ 2D CUBE ------------------------ */
+void			wash_screen(t_prog *game, mlx_image_t *image, \
+t_dim window, int colour);
 /* DRAWING TOOLS */
 double			coor(double y, double size_y);
 void			solid_pixel(mlx_image_t *image, \
 int coor_x, int coor_y, uint32_t colour);
-
-
 /* ------------------------ 3D CUBE ------------------------ */
-void		draw_first_layer(t_prog *game);
-void		draw_3D_walls(t_prog *game);
-
-
-
-
-//descolgada
-void			translate_to_screen(double position_map[], \
-double position_screen[], int pixel_per_block[], t_prog *game);
-
+void			draw_first_layer(t_prog *game);
+void			draw_three_dimension_walls(t_prog *game);
+void			draw_solid_wall(int ray_number, \
+int wall_side, int size, t_prog *game);
+void			draw_textured_wall(int wall_side, \
+int ray_number, int size, t_prog *game);
+mlx_texture_t	*get_oriented_texture(int wall_side, \
+t_vector direction, t_prog *game);
 /* ------------------------ PLAYER AND MOVEMENT ------------------------ */
 /* PLAYER */
 void			draw_player_position(mlx_image_t *image, t_prog *game);
-void			draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game);
+void			draw_2d_player(mlx_image_t *image, \
+double pos[], double radio, int colour, t_prog *game);
 void			fill_player_pos(t_prog *game, double player_pos[]);
 /* MOVEMENT */
 void			vison_control(mlx_key_data_t key, t_prog *game);
 void			movement_control(mlx_key_data_t key, t_prog *game);
 void			update_player_position(int key, t_prog *game);
 void			update_player_vision(int key, t_prog *game);
-int				wall_coll(t_prog *game, double new_pos[], int pixel_per_block[]);
-void			filter_final_pos(t_prog *game, double new_pos[], int flag, int pixel_per_block[]);
+int				wall_coll(t_prog *game, double new_pos[], \
+int pixel_per_block[]);
+void			filter_final_pos(t_prog *game, double new_pos[], \
+int flag, int pixel_per_block[]);
 
 /* TOOLS */
-void			draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game);
+void			draw_centered_rectangle(double o_x, double o_y, \
+int base, int height, t_prog *game);
+
+void			translate_to_screen(double position_map[], \
+double position_screen[], int pixel_per_block[], t_prog *game);
 
 //To remove from here before evaluation
 void			ft_leaks(void);
@@ -145,6 +154,5 @@ void			log_d(double d);
 void			log_beam(t_beam *beam);
 void			print_map(char **map, t_prog *game, int **s_map);
 void			log_coor_int(int i[]);
-void			coor_identifier(mlx_image_t *image, t_prog *game, double coor_x, double coor_y, double window_size);
-void 			log_arrays(t_prog *game);
+void			log_arrays(t_prog *game);
 #endif

@@ -5,45 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 12:00:51 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/23 13:51:43 by guilmira         ###   ########.fr       */
+/*   Created: 2022/09/05 14:40:12 by guilmira          #+#    #+#             */
+/*   Updated: 2022/09/29 17:33:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-#define CONSTANT 800
-#define MIN_DIST 1
-
-/** PURPOSE : get height. */
-static double get_height_constant(t_prog *game)
+/** PURPOSE : check if the wall hits on OX axis or OY axis.
+ * 2 OX axis (vertical vector that hits on an horizontal)
+ * 1 OXY axis (horizontal vector that hits on a vertical) */
+static int	is_shadowed(int value)
 {
-	double height;
-	
-	(void) game;
-	height = CONSTANT;
-	return (height);
+	if (value == 2)
+		return (1);
+	else
+		return (0);
 }
 
-
-/** PURPOSE : calculate wall height. */
-double get_wall_size(double distance, t_prog *game)
+/** PURPOSE : choose what shade to put on wall. 
+ * 0 - normal
+ * 1 - far
+ * 2 - shadowed
+ * 3 - far shadowed */
+static int	choose_wall_shade(int wall_value, int size, t_prog *game)
 {
-	double	ret;
-	//int		max_size;
-	double	height;
-	
-	height = get_height_constant(game);
-	//max_size = (game->w1.size[1] / 2) - SAFE_OFFSET;
-	
-	ret = height / distance;
-	return (ret);
-}
+	int	colour[4];
 
+	colour[0] = YELLOW;
+	colour[1] = rgb_t_translate(255, 180, 40, 255);
+	colour[2] = get_rgb_shadowed(colour[0]);
+	colour[3] = get_rgb_shadowed(colour[1]);
+	if (is_shadowed(wall_value) && size < game->w1.size[1] / 15)
+		return (colour[3]);
+	else if (is_shadowed(wall_value))
+		return (colour[2]);
+	else if (size < game->w1.size[1] / 15)
+		return (colour[1]);
+	else
+		return (colour[0]);
+}
 
 /** PURPOSE : draw a vertical symetric line starting in the 
  * middle of the screen. */
-void centered_vertical(double x, int size, int colour, t_prog *game)
+static void	centered_vertical(double x, int size, int colour, t_prog *game)
 {
 	int		i;
 	int		y;
@@ -59,8 +64,17 @@ void centered_vertical(double x, int size, int colour, t_prog *game)
 	while (++i < counter)
 	{
 		y = (int) coor(start[1] - i, game->w1.size[1]);
-		solid_pixel(game->image[CUB_3D], (int) (start[0]), y, colour);
+		solid_pixel(game->image[CUB_3D], (int)(start[0]), y, colour);
 		y = (int) coor(start[1] + i, game->w1.size[1]);
-		solid_pixel(game->image[CUB_3D], (int) (start[0]), y, colour);
+		solid_pixel(game->image[CUB_3D], (int)(start[0]), y, colour);
 	}
+}
+
+/** PURPOSE : draw a wall made of straight colored lines. */
+void	draw_solid_wall(int ray_number, int wall_side, int size, t_prog *game)
+{
+	int	wall_colour;
+
+	wall_colour = choose_wall_shade(wall_side, size, game);
+	centered_vertical(ray_number, size, wall_colour, game);
 }
