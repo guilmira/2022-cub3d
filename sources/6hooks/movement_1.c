@@ -12,6 +12,13 @@
 
 #include "cube.h"
 
+typedef enum {
+	RIGHT_COLLISION = 1,
+	LEFT_COLLISION,
+	TOP_COLLISION ,
+	BOTTOM_COLLISION, 
+} WALL_COLLISION_TYPE;
+
 static inline void abort_crapping(t_prog *game, int pixel_per_block[])
 {
 	int flag;
@@ -21,13 +28,13 @@ static inline void abort_crapping(t_prog *game, int pixel_per_block[])
 	count = 0;
 	while (wall_coll(game, game->pl.v_position_coor, pixel_per_block) != 0 && count++ < 250)
 	{
-		if (flag == 1)//right
+		if (flag == RIGHT_COLLISION)//right
 			game->pl.v_position_coor[0] -= CORRECTION_PIXEL_NBR;
-		else if (flag == 2)//left
+		else if (flag == LEFT_COLLISION)//left
 			game->pl.v_position_coor[0] += CORRECTION_PIXEL_NBR;
-		else if (flag == 3) //top
+		else if (flag == TOP_COLLISION) //top
 			game->pl.v_position_coor[1] -= CORRECTION_PIXEL_NBR;
-		else if (flag == 4) //bottom
+		else if (flag == BOTTOM_COLLISION) //bottom
 			game->pl.v_position_coor[1] += CORRECTION_PIXEL_NBR;
 		else
 			break ;
@@ -78,12 +85,12 @@ int wall_coll(t_prog *game, double new_pos[], int pixel_per_block[])
 	pos[4] = ceil((new_pos[1] - game->pl.ratio) / pixel_per_block[1] - 1);
 	pos[5] = ceil(new_pos[1] / pixel_per_block[1] - 1);
 	if (game->map2D.layout[pos[5]][pos[0]] == 1)
-		return(1);
+		return(RIGHT_COLLISION);
 	if ( game->map2D.layout[pos[5]][pos[1]] == 1)
-		return(2);
+		return(LEFT_COLLISION);
 	if (game->map2D.layout[pos[3]][pos[2]] == 1)
-		return(3);
+		return(TOP_COLLISION);
 	if (game->map2D.layout[pos[4]][pos[2]] == 1)
-		return(4);
+		return(BOTTOM_COLLISION);
 	return(0);
 }
