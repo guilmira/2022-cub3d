@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:03:04 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:32:40 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static inline void	draw_raycast(t_prog *game)
 		draw_vector(ray, game->pl.position_coor, colour, game);
 	}
 	ray = game->rc->vision;
-	draw_vector(ray, game->pl.position_coor, colour, game);
 }
 
 /** PURPOSE : 60 frames per second function. 
