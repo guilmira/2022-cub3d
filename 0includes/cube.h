@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 17:39:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:19:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@
 /* ------------------------ PROYECT INCLUDES ------------------------ */
 # include "cube_defines.h"
 # include "cube_structs.h"
-# include "cube_enums.h"
 # include "cube_prototypes.h"
 #endif

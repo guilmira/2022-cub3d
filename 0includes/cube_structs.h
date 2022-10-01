@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 20:35:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:22:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_ray
 	double			net_distance[D2];
 	int				face;
 	t_vector		resultant_vector;
-}				t_ray;
+}					t_ray;
 
 /** PURPOSE : Set of dimensions of window. */
 typedef struct s_dimensions
@@ -47,7 +47,7 @@ typedef struct s_dimensions
 	double			origin[D2];
 	double			size[D2];
 	double			unit[D2];
-}				t_dim;
+}					t_dim;
 
 /** PURPOSE : Beam dimensions
  * ^ - - - - ^ - - - - ^
@@ -66,7 +66,7 @@ typedef struct s_beam
 	t_vector		plane_right;
 	t_vector		plane_segment;
 	int				number_of_rays;
-}				t_beam;
+}					t_beam;
 
 
 /** PURPOSE : Info of the player
@@ -85,7 +85,7 @@ typedef struct s_player
 	int				flag_vis_perpend;
 	int				flag_movement;
 	int				flag_trance;
-}				t_player;
+}					t_player;
 
 /** PURPOSE : Map 2D given as an argument. */
 typedef struct s_map
@@ -102,7 +102,7 @@ typedef struct s_map
 	char			**map;
 	int				map_x;
 	int				map_y;
-}				t_map;
+}					t_map;
 
 /** PURPOSE : Assist struct raycast. */
 typedef struct s_data
@@ -111,7 +111,7 @@ typedef struct s_data
 	double			distance;
 	t_vector		vector;
 	int				wall_hit[D2];
-}				t_data;
+}					t_data;
 
 /** PURPOSE : Result of the raycast. */
 typedef struct s_raycast
@@ -124,15 +124,13 @@ typedef struct s_raycast
 	int				*rc_wall_hit_y;
 	double			rc_origin_coor[D2];
 	int				number_of_rays;
-}				t_raycast;
+}					t_raycast;
 
 typedef struct s_program
 {
-    /* ----- SHARED ---- */
 	mlx_t			*mlx;
 	mlx_image_t		*image[TOTAL_IMAGES + 1];
 	t_map			map2D;
-	/*---- MAP_INFO ----*/
 	char			*NO;
 	char			*SO;
 	char			*WE;
@@ -143,14 +141,12 @@ typedef struct s_program
 	mlx_texture_t	*t_EA;
 	int				sky_clr;
 	int				floor_clr;
-	/* ----- GUILLE ---- */
 	t_dim			w1;
 	t_dim			w2;
 	t_player		pl;
-	t_raycast  		*rc;
+	t_raycast		*rc;
 	int				minimap_state;
-	/* ----- KIRIAM ---- */
-	int			file;
-}               t_prog;
+	int				file;
+}					t_prog;
 
 #endif

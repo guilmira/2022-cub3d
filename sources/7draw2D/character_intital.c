@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:32:48 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/03 15:09:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:14:39 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void fill_vis(t_prog *game, char dir);
 
-//NOT USED
+//NEXT NOT USED
 
-void	fill_player_pos(t_prog *game, double player_pos[])
+/* void	fill_player_pos(t_prog *game, double player_pos[])
 {
 	int i[2];
 
@@ -42,7 +42,7 @@ void	fill_player_pos(t_prog *game, double player_pos[])
 		}
 	}
 	return ;
-}
+} */
 
 void fill_vis(t_prog *game, char dir)
 {

@@ -6,14 +6,15 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/23 07:50:19 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:14:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Calculate segment base on division. */
-static inline t_vector	calculate_plane_segment(t_vector plane_left, int number_of_rays)
+static inline t_vector	calculate_plane_segment(t_vector plane_left, \
+int number_of_rays)
 {
 	t_vector	segment;
 
@@ -77,7 +78,8 @@ void	main_raycast_calculation(int angle, t_prog *game)
 	rays = game->w1.size[0];
 	beam.number_of_rays = (int) roundl(rays);
 	init_struct_raycast(beam.number_of_rays, beam.position, beam.vis, game);
-	beam.plane_segment = calculate_plane_segment(beam.plane_left, beam.number_of_rays / 2);
+	beam.plane_segment = calculate_plane_segment(beam.plane_left, \
+	beam.number_of_rays / 2);
 	cast_beam(&beam, &aux, game);
 	game->pl.beam = beam;
 	game->pl.flag_movement = 0;

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:16:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 12:55:54 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /** PURPOSE : Put line horizontal from given beginning to end.
  * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP. */
-void put_lineH(double start[], double end[], int colour, t_prog *game)
+void	put_line_h(double start[], double end[], int colour, t_prog *game)
 {
 	int				i;
 	int				y;
@@ -28,12 +28,12 @@ void put_lineH(double start[], double end[], int colour, t_prog *game)
 		return ;
 	y = (int) coor(start[1], game->w2.size[1]);
 	while (++i < counter)
-		solid_pixel(image, (int) (start[0] + i), y, colour);
+		solid_pixel(image, (int)(start[0] + i), y, colour);
 }
 
 /** PURPOSE : Put line vertical of given size.
  * ONLY VERTICAL LINE AND ONLY FOR MINIMAP. */
-void put_lineV(double start[], int size, int colour, t_prog *game)
+void	put_line_v(double start[], int size, int colour, t_prog *game)
 {
 	int				i;
 	int				y;
@@ -48,7 +48,7 @@ void put_lineV(double start[], int size, int colour, t_prog *game)
 	while (++i < counter)
 	{
 		y = (int) coor(start[1] - i, game->w2.size[1]);
-		solid_pixel(image, (int) (start[0]), y, colour);
+		solid_pixel(image, (int)(start[0]), y, colour);
 	}
 }
 
@@ -57,8 +57,9 @@ void put_lineV(double start[], int size, int colour, t_prog *game)
  * 					 	1001
  * 						1001
  * 						1111
- * to an 1080 x 1900 (or whatever was set) on the screen. */ 
-void	translate_to_screen(double position_map[], double position_screen[], int pixel_per_block[], t_prog *game)
+ * to an 1080 x 1900 (or whatever was set) on the screen. */
+void	translate_to_screen(double position_map[], \
+double position_screen[], int pixel_per_block[], t_prog *game)
 {
 	(void) game;
 	position_screen[0] = position_map[0] * pixel_per_block[0];
