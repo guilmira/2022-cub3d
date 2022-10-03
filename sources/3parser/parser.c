@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/01 12:52:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:27:23 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	parser(t_prog *game, int ac, char **av)
 	// Parse map (check char, filter identificators, map creator)
 	if (map_prep(game))
 		ft_shutdown("Error.\nMap parse fail\n", game);
-	/*if (check_data(game))
-		ft_shutdown("Error.\nGame data is incorrect\n", game);*/
+	if (check_data(game))
+		ft_shutdown("Error.\nGame data is incorrect\n", game);
 }
 
 int	ext_err(t_prog *game, char *av)

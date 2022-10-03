@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:20:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/03 13:21:45 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define SHADOWED_TRANSPARENCY 120
 /* ------------------------ OTHER MODIFIABLE DEFINES ---------------------- */
 /* Wall size */
-# define CONSTANT_HEIGHT_WALL 800
+# define CONSTANT_HEIGHT_WALL 1600
 
 # define PLAYER_RATIO 0.25
 # define VISUAL_BLOCKS_W 10

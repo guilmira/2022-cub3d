@@ -1,14 +1,14 @@
-NO Makefile
+NO wolf/1.png
 
-C 225,30,0
 
-        SO Makefile
-   EA Makefile
+        SO wolf/4.png
+   EA wolf/5.png
+     WE                                     wolf/2.png
 
 
                 
-                 F             255,100,132
-     WE                                     Makefile
+C 40,40,40
+                 F             151,151,151
 
 
 
