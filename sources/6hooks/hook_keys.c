@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/03 15:44:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:21:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,7 @@ void	update_player_location(t_prog *game)
 	coor_base[1] = (double) game->pl.position[1] * game->map2D.pixel_per_block[1];
 	coor_base_old[0] = (double)(game->pl.position[0]) * game->map2D.v_pixel_per_block[0];
 	coor_base_old[1] = (double) game->pl.position[1] * game->map2D.v_pixel_per_block[1];
-	
 
-	log_coor(game->pl.v_position_coor);
-	printf("ELNOMRAL\n");
-	log_coor(game->pl.position_coor);
-	printf("Pixel per block\n");
-	log_coor_int(game->map2D.v_pixel_per_block);
-	log_coor_int(game->map2D.pixel_per_block);
 
 	/* game->map2D.v_pixel_per_block[0] = 14;
 	game->map2D.v_pixel_per_block[1] = 14; */
@@ -57,13 +50,7 @@ void	update_player_location(t_prog *game)
 	coor_fraccion[1] =  coor_factor[1] * game->map2D.pixel_per_block[1];
 	game->pl.position_coor[0] = coor_base[0] + coor_fraccion[0];
 	game->pl.position_coor[1] = coor_base[1] + coor_fraccion[1];
-	log_coor(game->pl.position_coor);
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
-	printf("\n");
+	
 
 }
 
@@ -100,8 +87,8 @@ static inline void	hook_control_minimap(t_prog *game)
 	game->w1.size[0] = OX_WINDOW;
 	if (is_minimap(game) == 1)
 	{
-		/* game->pl.v_position_coor[0] = game->pl.position_coor[0];
-		game->pl.v_position_coor[1] = game->pl.position_coor[1]; */
+		game->pl.v_position_coor[0] = game->pl.position_coor[0];
+		game->pl.v_position_coor[1] = game->pl.position_coor[1];
 		reconstruct_minimap_variables(game);
 	}
 	else
