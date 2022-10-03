@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 17:36:41 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:14:44 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				get_green(int colour_code);
 int				get_transparent(int colour_code);
 int				get_rgb_shadowed(int colour_code);
 int				get_opposite(int colour_code);
-void			framework_2D(t_prog *game);
+void			framework_two_dim(t_prog *game);
 void			update_pixel_per_block(t_prog *game);
 
 /* LOOP AND FRAME CONTROL 60FPS */
@@ -61,7 +61,6 @@ void			ft_shutdown(char *error_msg, t_prog *game);
 void			freemat(char **mat);
 void			freemat_int(int **mat, int len);
 void			ft_mlx_delete_image_safe(int image_position, t_prog *game);
-void			clear_map2D(int **map, int height);
 void			clear_uint8(uint8_t **map, int height);
 void			destroy_texture(t_prog *game);
 
@@ -81,14 +80,10 @@ double			calculate_plane_lenght(double angle, t_vector vis);
 /* BEAM */
 void			cast_beam(t_beam *beam, t_data *aux, t_prog *game);
 double			plane_lenght_and_direction(t_beam *beam, int angle);
-/* VECTOR TREATMENT */
-void			draw_vector(t_vector vec, double origin[], \
-uint32_t colour, t_prog *game);
 /* ------------------------ RAYCAST ------------------------ */
 /* VECTOR TOOLS */
 double			get_module(t_vector vec);
 t_vector		get_unit_vector(t_vector vec);
-t_vector		rotate_vector(t_vector vec, int angle);
 /* VECTOR ARITHMETIC */
 t_vector		sum_vec(t_vector lhs, t_vector rhs);
 t_vector		sub_vec(t_vector lhs, t_vector rhs);
@@ -103,9 +98,9 @@ void			put_vertical(double coordinate_x, \
 double limit_y, int colour, t_prog *game);
 void			put_horizontal(double coordinate_y, \
 double limit_x, int colour, t_prog *game);
-void			put_lineH(double start[], double end[], \
+void			put_line_h(double start[], double end[], \
 int colour, t_prog *game);
-void			put_lineV(double start[], int size, int colour, t_prog *game);
+void			put_line_v(double start[], int size, int colour, t_prog *game);
 double			degree_to_radian(double degree);
 /* ------------------------ 2D CUBE ------------------------ */
 void			wash_screen(t_prog *game, mlx_image_t *image, \
@@ -128,7 +123,6 @@ t_vector direction, t_prog *game);
 void			draw_player_position(mlx_image_t *image, t_prog *game);
 void			draw_2d_player(mlx_image_t *image, \
 double pos[], double radio, int colour, t_prog *game);
-void			fill_player_pos(t_prog *game, double player_pos[]);
 /* MOVEMENT */
 void			vison_control(mlx_key_data_t key, t_prog *game);
 void			movement_control(mlx_key_data_t key, t_prog *game);
@@ -140,7 +134,7 @@ void			filter_final_pos(t_prog *game, double new_pos[], \
 int flag, int pixel_per_block[]);
 
 /* TOOLS */
-void			draw_centered_rectangle(double o_x, double o_y, \
+void			draw_centered_rectangle(double position[], \
 int base, int height, t_prog *game);
 
 void			translate_to_screen(double position_map[], \

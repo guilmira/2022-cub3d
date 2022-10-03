@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 22:20:48 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:16:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ double limit_x, int colour, t_prog *game)
 	while (++i < limit_x)
 		solid_pixel(image, i, coor_y, colour);
 }
+
 /** PURPOSE : extend horizonal lines through the screen. */
-static inline void draw_horizon(double origin[], int size, int colour, t_prog *game)
+static inline void draw_horizon(double origin[], \
+int size, int colour, t_prog *game)
 {
 	int		i;
 	double	coor_y;
@@ -43,7 +45,8 @@ static inline void draw_horizon(double origin[], int size, int colour, t_prog *g
 }
 
 //NEXT: proteger funcion
-mlx_texture_t *get_texture_stripe(mlx_texture_t *texture, int percentage, uint32_t stripeheight, t_prog *game)
+mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, \
+int percentage, uint32_t stripeheight, t_prog *game)
 {
 	mlx_texture_t	*ret;
 	uint32_t		x;

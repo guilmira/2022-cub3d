@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 17:36:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:00:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ The geom_functions themselves will take care of the conversion. */
 
 /** PURPOSE : Put pixel to image in a secure way.
  * It need to recieve the y coordinate already SHIFTED!. */
-void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
+void	solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
 {
-	uint32_t x;
-	uint32_t y;
+	uint32_t	x;
+	uint32_t	y;
 
 	mlx_put_pixel(image, 50, 50, BLACK);
-
-	if (coor_x < 0 || coor_y < 0 || colour < 0) //tambien se puede añadir si es =
+	if (coor_x < 0 || coor_y < 0 || colour < 0)
 	{
 		printf("Pixel (%i, %i) not rendered\n", coor_x, coor_y);
 		return ;
@@ -41,34 +40,36 @@ void solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
 	y = (uint32_t) coor_y;
 	if (x >= image->width || y >= image->height)
 	{
-		printf("Pixel (%i, %i) could not be rendered\n", coor_x, coor_y);//NEXT
+		printf("Pixel (%i, %i) could not be rendered\n", coor_x, coor_y);
 		return ;
 	}
 	mlx_put_pixel(image, x, y, colour);
 }
 
 /** PURPOSE : Horizontal line in given coordinate. */
-void put_horizontal(double coordinate_y, double limit_x, int colour, t_prog *game)
+void	put_horizontal(double coordinate_y, double limit_x, \
+int colour, t_prog *game)
 {
-	int i;
-	int coor_y;
-	mlx_image_t *image;
+	int			i;
+	int			coor_y;
+	mlx_image_t	*image;
 
 	image = game->image[CUB_3D];
 	i = -1;
 	if (coordinate_y == 0)
 		coordinate_y += SAFE_OFFSET;
-	coor_y = (int) coor(coordinate_y, game->w2.size[1]); //!!!ojo que aqui podria ser x
+	coor_y = (int)coor(coordinate_y, game->w2.size[1]);
 	while (++i < limit_x)
 		solid_pixel(image, i, coor_y, colour);
 }
 
 /** PURPOSE : Vertical line in given coordinate. */
-void put_vertical(double coordinate_x, double limit_y, int colour, t_prog *game)
+void	put_vertical(double coordinate_x, double limit_y, \
+int colour, t_prog *game)
 {
-	int j;
-	int coor_y;
-	mlx_image_t *image;
+	int			j;
+	int			coor_y;
+	mlx_image_t	*image;
 
 	image = game->image[CUB_3D];
 	if (coordinate_x == image->width)
@@ -83,39 +84,46 @@ void put_vertical(double coordinate_x, double limit_y, int colour, t_prog *game)
 
 /** PURPOSE : Base times height.
  * 1. Requires dimensions and position of origin. */
-void draw_centered_rectangle(double o_x, double o_y, int base, int height, t_prog *game)
+void	draw_centered_rectangle(double position[], int base, \
+int height, t_prog *game)
 {
-	int i;
-	int j;
-	int x;
-	int y;
-	mlx_image_t *image;
+	int			i;
+	int			j;
+	int			x;
+	int			y;
+	mlx_image_t	*image;
 
 	image = game->image[CUB_3D];
-	if (o_x < 0 || o_y < 0)
+	if (position[0] < 0 || position[1] < 0)
 		return ;
 	i = -1;
 	j = -1;
-	o_y = o_y - height / 2;
-	o_x = o_x - base / 2;
+	position[1] = position[1] - height / 2;
+	position[0] = position[0] - base / 2;
 
 	while (++j < height)
 	{
 		while (++i < base)
 		{
-			x = (int) (o_x + i);
-			y = (int) coor(o_y + j, game->w2.size[1]);
+			x = (int)(position[0] + i);
+			y = (int)coor(position[1] + j, game->w2.size[1]);
 			solid_pixel(image, x, y, RED);
 		}
 		i = -1;
 	}
 }
 
-int check_radio(double coord[], double radio);
-
-void	draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, t_prog *game)
+static int check_radio(double coord[], double radio)
 {
-	double i[2];
+	if(pow((coord[0]) , 2) + pow((coord[1]), 2) <= pow(radio, 2))
+		return (1);
+	return (0);
+}
+
+void	draw_2d_player(mlx_image_t *image, double pos[], \
+double radio, int colour, t_prog *game)
+{
+	double	i[2];
 
 	i[0] = -1 - radio;
 	while (++i[0] < (radio * 2))
@@ -127,12 +135,7 @@ void	draw_2d_player(mlx_image_t *image, double pos[], double radio, int colour, 
 	}
 }
 
-int check_radio(double coord[], double radio)
-{
-	if(pow((coord[0]) , 2) + pow((coord[1]), 2) <= pow(radio, 2))
-		return (1);
-	return (0);
-}
+
 
 
 

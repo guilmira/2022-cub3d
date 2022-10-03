@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:55 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 20:36:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 10:12:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Get distance at the beginnig of the coordinate. */
-void	get_relative_distance(t_ray *ray, t_prog *game)
+static void	get_relative_distance(t_ray *ray, t_prog *game)
 {
 	ray->relative_distance[0] = 0;
 	ray->relative_distance[1] = 0;

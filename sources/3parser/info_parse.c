@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/09/05 15:55:51 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 12:51:40 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,13 @@ void	fill_lst(t_prog *game, t_list **aux_lst)
 		free(aux);
 }
 
-
-
-
 int	getinfovisual(char *content, t_prog *game);
 
 int	parselst(t_prog *game, t_list *aux_lst)
 {
 	int	data_len;
 	int	parsered_data;
-	int flag;
+	int	flag;
 
 	parsered_data = 0;
 	data_len = 0;

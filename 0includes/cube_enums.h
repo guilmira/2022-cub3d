@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/07/22 17:56:44 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:29:36 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 /* ------------------------ ENUMS ------------------------ */
 /** PURPOSE : Rectangle size. */
-enum player_size
+enum e_player_size
 {
 	x_size = 3,
 	y_size = 3
 };
-enum player_movement
+
+enum e_player_movement
 {
 	key_up,
 	key_down,
@@ -31,10 +32,17 @@ enum player_movement
 	key_SE,
 	key_SW,
 };
-enum player_vision
+enum e_player_vision
 {
 	key_lookright,
 	key_lookleft
+};
+
+enum e_WALL_COLLISION_TYPE{
+	RIGHT_COLLISION = 1,
+	LEFT_COLLISION,
+	TOP_COLLISION ,
+	BOTTOM_COLLISION, 
 };
 
 #endif

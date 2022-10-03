@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:14:20 by guilmira          #+#    #+#             */
-/*   Updated: 2022/08/20 12:54:10 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 10:11:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 static inline t_vector	get_plane_vector(t_vector vis, double plane_lenght)
 {
 	double			module;
-	t_vector	perpendicular;
-	t_vector	perpendicular_dir;
+	t_vector		perpendicular;
+	t_vector		perpendicular_dir;
 
 	module = plane_lenght;
 	perpendicular = get_perpendicular(vis);
@@ -40,7 +40,6 @@ double	calculate_plane_lenght(double angle, t_vector vis)
 
 	vis_module = get_module(vis);
 	theta = degree_to_radian(angle / 2);
-	
 
 	return (vis_module * tan(theta));
 }
@@ -50,12 +49,7 @@ double	plane_lenght_and_direction(t_beam *beam, int angle)
 	double	plane_lenght;
 
 	plane_lenght = calculate_plane_lenght(angle, beam->vis_dir);
-	
-		
 	beam->plane_left = get_plane_vector(beam->vis_dir, plane_lenght);
-		
 	beam->plane_right = invert_sense_vector(beam->plane_left);
-
-
 	return (plane_lenght);
 }

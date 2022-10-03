@@ -6,15 +6,20 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 13:21:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:08:17 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+/* Senderror message activate: it will show areas of possible
+updgrades of the rendering speed.  */
+
 /** PURPOSE : Position corrector.
- * 1. The checker for y == 0, makes sure that we dont print on the lower limit of the screen. 
- * 2. The checker for size_y - y makes sure we do not go beyond the upper screen limit. 
+ * 1. The checker for y == 0, makes sure that we dont print 
+ * on the lower limit of the screen. 
+ * 2. The checker for size_y - y makes sure we do not go 
+ * beyond the upper screen limit. 
  * size_y - y shouldn be repetead several times.*/
 double	coor(double y, double size_y)
 {
@@ -22,9 +27,10 @@ double	coor(double y, double size_y)
 		return (SAFE_OFFSET);
 	if (size_y - y < 0)
 	{
-		//ft_senderror("Invalid 'y' coordinate.\n");
-		//ft_senderror("If this message appears repetedly, will slower the rendering.\n");
-		//printf("Value %f\n", y);
+	/* 	ft_senderror("Invalid 'y' coordinate.\n");
+		ft_senderror("If this message appears repetedly,\
+		will slower the rendering.\n");
+		printf("Value %f\n", y); */
 		return (0);
 	}
 	return (size_y - y);
@@ -36,7 +42,6 @@ double	degree_to_radian(double degree)
 {
 	return (degree * (double) M_PI / 180);
 }
-
 
 int **copy_double_pointer(int **var, int height, int width)
 {

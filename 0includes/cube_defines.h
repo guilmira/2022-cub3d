@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 16:35:21 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:20:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_DEFINES_H
 # define CUBE_DEFINES_H
 
-/* ------------------------ VISUAL MODIFIABLE DEFINES ------------------------ */
+/* ------------------------ VISUAL MODIFIABLE DEFINES --------------------- */
 # define TITLE_WINDOW "CUBE"
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
@@ -29,14 +29,11 @@
 # define MINIMAP_INTIAL_STATE 4
 # define FULL_MINIMAP 4
 
-
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
-#define SHADOWED_TRANSPARENCY 120
-/* ------------------------ OTHER MODIFIABLE DEFINES ------------------------ */
-
+# define SHADOWED_TRANSPARENCY 120
+/* ------------------------ OTHER MODIFIABLE DEFINES ---------------------- */
 /* Wall size */
-#define CONSTANT_HEIGHT_WALL 800
-
+# define CONSTANT_HEIGHT_WALL 800
 
 # define PLAYER_RATIO 0.25
 # define VISUAL_BLOCKS_W 10
@@ -48,16 +45,12 @@
 # define WIND_MODE 1.5
 # define VISION_ANGLE_ROTATION 2
 
-
 # define SAFE_OFFSET 0.0001
 # define FOV_DEGREE 30
 
-/* ------------------------ MODIFIABLE DEFINES FOR DEVS ------------------------ */
-
-
-
+/* ------------------------ MODIFIABLE DEFINES FOR DEVS --------------------- */
 /* Raycast related. */
-#define VISION_RAY 1
+# define VISION_RAY 1
 
 /* Corner minimap DIMENSIONS */
 # define SPACES_AT_BORDER 2
@@ -80,7 +73,8 @@
 # define CUB_3D 0
 /* ------------------------ ERROR MESSAGES ------------------------ */
 # define EX		"Error.\n"
-# define EX0	"Error.\nDefines not according to standard. Check file cube_defines.h\n"
+# define EX0	"Error.\nDefines not according to standard. \
+Check file cube_defines.h\n"
 # define EX1	"Error.\nNo memory available for allocation.\n"
 # define EX3	"Error.\nCould not generate image.\n"
 /* ------------------------ STANDARD DEFINES ------------------------ */

@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/10 16:48:28 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:09:35 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Frees array of int. */
-void	clear_map2D(int **map, int height)
+void	clear_map_two_dim(int **map, int height)
 {
 	int	j;
 
@@ -79,8 +79,8 @@ static void	clear_memory(t_prog *game)
 		if (game->EA)
 			free(game->EA);
 		destroy_texture(game);
-		clear_map2D(game->map2D.layout, game->map2D.height);
-		clear_map2D(game->map2D.s_layout, game->map2D.s_height);
+		clear_map_two_dim(game->map2D.layout, game->map2D.height);
+		clear_map_two_dim(game->map2D.s_layout, game->map2D.s_height);
 		clear_raycast(game);
 		free(game);
 	}
