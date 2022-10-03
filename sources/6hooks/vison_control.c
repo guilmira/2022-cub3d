@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/06 15:49:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 13:13:37 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : correct vision by adding correct plane vector. */
-void update_player_vision(int key, t_prog *game)
+void	update_player_vision(int key, t_prog *game)
 {
 	t_vector	plane_perpendicular;
 	t_vector	original_vision;
@@ -24,14 +24,20 @@ void update_player_vision(int key, t_prog *game)
 	angle_rotation = VISION_ANGLE_ROTATION;
 	plane_perpendicular = get_unit_vector(get_perpendicular(original_vision));
 	if (game->pl.flag_trance)
-		angle_rotation = TRANCE_BOOST; //it will be halved
+		angle_rotation = TRANCE_BOOST;
 	lenght = calculate_plane_lenght(angle_rotation, original_vision);
 	lenght = fabs(lenght);
 	plane_perpendicular = mul_vec(plane_perpendicular, lenght);
 	if (key == key_lookright)
-		game->pl.vis = get_unit_vector(sum_vec(original_vision, invert_sense_vector(plane_perpendicular)));
+	{
+		game->pl.vis = get_unit_vector(sum_vec(original_vision, \
+		invert_sense_vector(plane_perpendicular)));
+	}
 	else
-		game->pl.vis = get_unit_vector(sum_vec(original_vision, (plane_perpendicular)));	
+	{
+		game->pl.vis = get_unit_vector(sum_vec(original_vision, \
+		(plane_perpendicular)));
+	}
 }
 
 /** PURPOSE : control field of vision. */

@@ -45,3 +45,5 @@ t_vector	rotate_vector(t_vector vec, int angle)
 	(cos(degree_to_radian(angle)) - sin(degree_to_radian(angle))));
 	return (rotate);
 }
+
+

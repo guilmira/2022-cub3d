@@ -6,11 +6,30 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 20:40:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 10:09:05 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+void	set_rc_values(int i, t_vector ray, t_data aux, t_prog *game)
+{
+	game->rc->rc_vector[i] = ray;
+	game->rc->rc_distance[i] = aux.distance;
+	game->rc->rc_wall_side[i] = aux.face;
+	game->rc->rc_wall_hit_x[i] = aux.wall_hit[0];
+	game->rc->rc_wall_hit_y[i] = aux.wall_hit[1];
+}
+
+void	set_rc_values_reverse(int array_position, \
+t_vector ray, t_data aux, t_prog *game)
+{
+	game->rc->rc_vector[array_position] = ray;
+	game->rc->rc_distance[array_position] = aux.distance;
+	game->rc->rc_wall_side[array_position] = aux.face;
+	game->rc->rc_wall_hit_x[array_position] = aux.wall_hit[0];
+	game->rc->rc_wall_hit_y[array_position] = aux.wall_hit[1];
+}
 
 /** PURPOSE : BARRAGE ALGORITHM.
  * * 1. Counter is the number of rays. 
@@ -20,13 +39,14 @@
  * 4. Apply raycast collision algorithm to step 3 vector.
  * 5. The mirror vector (left side) is calulated 
  * the same way (but substracting). */
-void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
+void	raycast_barrage(t_beam *beam, \
+int counter, t_vector plane, t_prog *game)
 {
 	t_vector	ray;
 	t_vector	resultant;
-	t_vector	direction;
 	t_data		aux;
 	int			i;
+	int			array_position;
 
 	ray.x = 0;
 	ray.y = 0;
@@ -34,27 +54,15 @@ void	raycast_barrage(t_beam *beam, int counter, t_vector plane, t_prog *game)
 	while (++i < counter)
 	{
 		resultant = sum_vec(beam->vis_dir, plane);
-		direction = get_unit_vector(resultant);
-		ray = raycast(&aux, direction, beam->position, game);
+		ray = raycast(&aux, get_unit_vector(resultant), beam->position, game);
 		if (i < game->rc->number_of_rays)
-		{
-			game->rc->rc_vector[i] = ray;
-			game->rc->rc_distance[i] = aux.distance;
-			game->rc->rc_wall_side[i] = aux.face;
-			game->rc->rc_wall_hit_x[i] = aux.wall_hit[0];
-			game->rc->rc_wall_hit_y[i] = aux.wall_hit[1];
-		}
-	/* --------RESTAR SEGMENTO Y REPETIR----------------------------------------------------- */
+			set_rc_values(i, ray, aux, game);
 		resultant = sub_vec(beam->vis_dir, plane);
-		direction = get_unit_vector(resultant);
-		ray = raycast(&aux, direction, beam->position, game);
+		ray = raycast(&aux, get_unit_vector(resultant), beam->position, game);
 		if (i < game->rc->number_of_rays)
 		{
-			game->rc->rc_vector[counter + (counter - 1) - i] = ray;
-			game->rc->rc_distance[counter + (counter - 1) - i] = aux.distance;
-			game->rc->rc_wall_side[counter + (counter - 1) - i] = aux.face;
-			game->rc->rc_wall_hit_x[counter + (counter - 1) - i] = aux.wall_hit[0];
-			game->rc->rc_wall_hit_y[counter + (counter - 1) - i] = aux.wall_hit[1];
+			array_position = counter + (counter - 1) - i;
+			set_rc_values_reverse(array_position, ray, aux, game);
 		}
 		plane = sub_vec(plane, beam->plane_segment);
 	}

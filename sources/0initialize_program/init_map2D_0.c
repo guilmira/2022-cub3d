@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/12 13:20:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 09:51:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /** PURPOSE : general function to init variables. */
 void	update_pixel_per_block(t_prog *game)
 {
-
 	if (!game->minimap_state)
 		return ;
 	else if (game->minimap_state == 2)
@@ -32,22 +31,22 @@ void	update_pixel_per_block(t_prog *game)
 
 static inline void	fill_vis(t_prog *game, char dir)
 {
-	if(dir == 'N')
+	if (dir == 'N')
 	{
 		game->pl.vis.x = 0;
 		game->pl.vis.y = 1;
 	}
-	else if(dir == 'S')
+	else if (dir == 'S')
 	{
 		game->pl.vis.x = 0;
 		game->pl.vis.y = -1;
 	}
-	else if(dir == 'E')
+	else if (dir == 'E')
 	{
 		game->pl.vis.x = 1;
 		game->pl.vis.y = 0;
 	}
-	else if(dir == 'W')
+	else if (dir == 'W')
 	{
 		game->pl.vis.x = -1;
 		game->pl.vis.y = 0;
@@ -59,14 +58,18 @@ static inline void	start_player_position(int j, int i, t_prog *game)
 {
 	game->pl.position[0] = i;
 	game->pl.position[1] = game->map2D.height - j - 1;
-	game->pl.position_coor[0] = game->pl.position[0] * (double) game->map2D.pixel_per_block[0] + ( (double) game->map2D.pixel_per_block[0] / 2);
-	game->pl.position_coor[1] = game->pl.position[1] * (double) game->map2D.pixel_per_block[1] + ( (double) game->map2D.pixel_per_block[1] / 2);
+	game->pl.position_coor[0] = game->pl.position[0] * \
+	(double) game->map2D.pixel_per_block[0] + \
+	((double) game->map2D.pixel_per_block[0] / 2);
+	game->pl.position_coor[1] = game->pl.position[1] * \
+	(double) game->map2D.pixel_per_block[1] + \
+	((double) game->map2D.pixel_per_block[1] / 2);
 	game->pl.v_position_coor[0] = game->pl.position_coor[0];
 	game->pl.v_position_coor[1] = game->pl.position_coor[1];
 }
 
 /** PURPOSE : Work with array [j][i] as a cartesian system. */
-int	shift_array(int y, int height)
+static int	shift_array(int y, int height)
 {
 	return ((height - 1) - y);
 }
@@ -96,7 +99,6 @@ void	init_map2D(char **map, t_prog *game)
 	i = -1;
 	layout = NULL;
 	height = game->map2D.height;
-	/* --------------------------------------------------------------- */
 	layout = allocate_all_layout(height, game->map2D.width);
 	while (++j < height)
 	{
@@ -115,15 +117,12 @@ void	init_map2D(char **map, t_prog *game)
 		i = -1;
 	}
 	game->map2D.layout = layout;
-
 	build_spaced_layout(game, game->map2D.height, game->map2D.width);
-
 	freemat_int(game->map2D.layout, game->map2D.height);
-	game->map2D.layout = copy_double_pointer(game->map2D.s_layout, game->map2D.s_height, game->map2D.s_width);
-	
+	game->map2D.layout = copy_double_pointer \
+	(game->map2D.s_layout, game->map2D.s_height, game->map2D.s_width);
 	game->map2D.height = game->map2D.s_height;
 	game->map2D.width = game->map2D.s_width;
-
 	update_pixel_per_block(game);
 	start_player_position(game->pl.position[1], game->pl.position[0], game);
 }

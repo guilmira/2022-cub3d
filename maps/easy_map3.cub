@@ -1,14 +1,14 @@
-NO Makefile
+NO textures/brick_normal.png
 
-C 225,30,0
+C 40,40,40
 
-        SO Makefile
-   EA Makefile
+        SO textures/W3d_protoredbrick1.png
+   EA textures/BrickFacade0006_1_download600.png
+     WE                                     textures/PC Computer - Giana Sisters Twisted Dreams - Dungeon Walls.png
 
 
                 
-                 F             255,100,132
-     WE                                     Makefile
+                 F             151,151,151
 
 1111111
 1000011

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/05 16:03:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 09:44:08 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ int	get_transparent(int colour_code)
 int	get_opposite(int colour_code)
 {
 	return (rgb_t_translate(\
-	(255 - get_red(colour_code)),\
-	(255 - get_green(colour_code)),\
-	(255 - get_blue(colour_code)),\
-	get_transparent(colour_code) ));
+	(255 - get_red(colour_code)), \
+	(255 - get_green(colour_code)), \
+	(255 - get_blue(colour_code)), \
+	get_transparent(colour_code)));
 }
 
 int get_rgb_shadowed(int colour_code)
 {
-	int red;
-	int green;
-	int blue;
-	int shadowed_transparency;
+	int	red;
+	int	green;
+	int	blue;
+	int	shadowed_transparency;
 
 	red = get_red(colour_code);
 	green = get_green(colour_code);

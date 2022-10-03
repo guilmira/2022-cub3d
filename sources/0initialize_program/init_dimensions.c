@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/07 17:03:43 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 08:32:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,13 @@ void	get_minimap_simetric_size(t_prog *game)
 {
 	game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
 	game->w2.size[1] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
-
 	while ((int) game->w2.size[0] % game->map2D.width != 0)
 		game->w2.size[0]++;
 	while ((int) game->w2.size[1] % game->map2D.height != 0)
 		game->w2.size[1]++;
-
 	game->w2.origin[0] = game->w1.size[0] - game->w2.size[0];
 	game->w2.origin[1] = game->w1.size[1] - game->w2.size[1];
 }
-
 
 /** PURPOSE : used to recalculate minimap dimensions.
  * EXPLANATION - limit and size are the same, but calculated int two ways. */
@@ -71,17 +68,13 @@ void	framework_dimensions(t_prog *game)
 {
 	game->map2D.width = game->map2D.map_x + SPACES_AT_BORDER;
 	game->map2D.height = game->map2D.map_y + SPACES_AT_BORDER;
-	/* --------------------------------------------------------------- */
 	game->w1.origin[0] = 0;
 	game->w1.origin[1] = 0;
 	game->w1.size[1] = OY_WINDOW;
 	game->w1.size[0] = game->w1.size[1];
 	game->w1.unit[0] = window_unit(game->w1.size[0], game->map2D.width);
 	game->w1.unit[1] = window_unit(game->w1.size[1], game->map2D.height);
-	/* --------------------------------------------------------------- */
 	minimap_dimensions(game);
-	/* --------------------------------------------------------------- */
-	/* --------------------------------------------------------------- */
 	update_pixel_per_block(game);
 	game->map2D.v_pixel_per_block[0] = 0;
 	game->map2D.v_pixel_per_block[1] = 0;

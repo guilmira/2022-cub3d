@@ -6,13 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/09/29 16:29:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 09:46:54 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-void	framework_2D(t_prog *game);
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
