@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:16:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/03 12:57:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ void	draw_first_layer(t_prog *game)
 	int		colour_sky;
 	double	origin[D2];
 
-	game->floor_clr = rgb_t_translate(0, 0, 155, 155);
-	game->sky_clr = rgb_t_translate(0, 155, 0, 55);
+	//game->floor_clr = rgb_t_translate(0, 0, 155, 155);
+	//game->sky_clr = rgb_t_translate(0, 155, 0, 55);
 
 	origin[0] = 0;
 	origin[1] = 0;
 	colour_floor = game->floor_clr;
 	colour_sky = game->sky_clr;
-	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
-	origin[1] = game->w1.size[1] / 2;
 	draw_horizon(origin, game->w1.size[0] / 2, colour_floor, game);
+	origin[1] = game->w1.size[1] / 2;
+	draw_horizon(origin, game->w1.size[0] / 2, colour_sky, game);
 }
