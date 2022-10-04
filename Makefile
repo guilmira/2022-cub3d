@@ -68,6 +68,8 @@ ARCH: $(OBJS) $(LIB) $(MLX)
 	@echo $(RED) "$(NAME) compiled" $(NONE)
 	./$(NAME) $(ARG)
 
+INSTALL: bash install.sh
+
 $(LIB):
 	@make -C $(LIB_DIR)
 
