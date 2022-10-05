@@ -1,5 +1,7 @@
 # # cub3d - @42Born2Code
- The project is inspired by the world-famous eponymous 90’s game, which was the first FPS ever. The goal its to explore ray-casting with our own libraries. The result is a dynamic view inside a maze, in which the player will have to find their way.
+The project is inspired by the world-famous eponymous 90’s game, which was the first FPS ever. The goal its to explore ray-casting with our own libraries. The result is a dynamic view inside a maze, in which the player will have to find their way.
+
+This README is dedicated to our long devoted fans. Enjoy our CUBE.
 
 ## About
 
