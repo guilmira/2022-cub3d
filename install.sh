@@ -1,7 +1,7 @@
 
 OSTYPE=$(uname -m)
 
-if [[ "$OSTYPE" == "darwin" ]]; then
+if [[ "$OSTYPE" == "x86_64" ]]; then
         brew update
         brew install glfw
 elif [[ "$OSTYPE" == "linux-gnu" ]]; then

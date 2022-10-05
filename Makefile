@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/03 16:20:43 by jsanfeli         ###   ########.fr        #
+#    Updated: 2022/10/05 14:12:14 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,8 @@ ARCH: $(OBJS) $(LIB) $(MLX)
 	@echo $(RED) "$(NAME) compiled" $(NONE)
 	./$(NAME) $(ARG)
 
-INSTALL: bash install.sh
+INSTALL: 
+	./install.sh
 
 $(LIB):
 	@make -C $(LIB_DIR)
