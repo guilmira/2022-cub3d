@@ -38,4 +38,11 @@ enum e_player_vision
 	key_lookleft
 };
 
+enum e_WALL_COLLISION_TYPE{
+	RIGHT_COLLISION = 1,
+	LEFT_COLLISION,
+	TOP_COLLISION ,
+	BOTTOM_COLLISION, 
+};
+
 #endif

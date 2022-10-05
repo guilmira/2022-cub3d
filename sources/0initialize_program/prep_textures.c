@@ -12,9 +12,9 @@
 
 #include "cube.h"
 
-static inline mlx_texture_t *load_png_solid(const char *path, t_prog *game)
+static inline mlx_texture_t	*load_png_solid(const char *path, t_prog *game)
 {
-	mlx_texture_t *texture;
+	mlx_texture_t	*texture;
 
 	texture = mlx_load_png(path);
 	if (!texture)

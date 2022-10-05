@@ -12,13 +12,6 @@
 
 #include "cube.h"
 
-typedef enum {
-	RIGHT_COLLISION = 1,
-	LEFT_COLLISION,
-	TOP_COLLISION ,
-	BOTTOM_COLLISION, 
-} WALL_COLLISION_TYPE;
-
 static inline void abort_crapping(t_prog *game, int pixel_per_block[])
 {
 	int flag;
