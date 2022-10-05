@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	parser(game, argc, argv);
 	prep_textures(game);
 	framework_dimensions(game);
-	init_map2D(game->map2D.map, game);
+	init_map2d(game->map2D.map, game);
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);

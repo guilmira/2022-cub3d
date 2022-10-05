@@ -18,6 +18,10 @@ static inline void	movement_ctrl(t_prog *game)
 		update_player_position(key_up, game);
 	if (game->pl.key[MLX_KEY_S] == 1)
 		update_player_position(key_down, game);
+	if (game->pl.key[MLX_KEY_A] == 1)
+		update_player_position(2, game);
+	if (game->pl.key[MLX_KEY_D] == 1)
+		update_player_position(3, game);
 	if (game->pl.key[MLX_KEY_LEFT] == 1)
 		update_player_vision(key_lookleft, game);
 	if (game->pl.key[MLX_KEY_RIGHT] == 1)

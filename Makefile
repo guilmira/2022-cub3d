@@ -14,7 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra  -Werror -O3 -fsanitize=address
-ARG			= maps/easy_map4.cub
+ARG			= maps/easy_map222.cub
 
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER			= -I ./0includes

@@ -29,7 +29,7 @@ int				**allocate_all_layout(int height, int width);
 void			init_game(t_prog *game);
 void			create_image(t_prog *game, int array_position, double size[]);
 void			framework_dimensions(t_prog *game);
-void			init_map2D(char **map, t_prog *game);
+void			init_map2d(char **map, t_prog *game);
 void			minimap_dimensions(t_prog *game);
 int				**copy_double_pointer(int **var, int height, int width);
 void			print_smap(int **s_map, int height, int width);
