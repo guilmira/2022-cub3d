@@ -1,14 +1,16 @@
-![](https://github.com/GuilleMira/cub3d/blob/newguille/gif/show_off.gif)
 # # cub3d - @42Born2Code
 The project is inspired by the world-famous eponymous 90’s game, which was the first FPS ever. The goal its to explore ray-casting with our own libraries. The result is a dynamic view inside a maze, in which the player will have to find their way.
 
 This README is dedicated to our long devoted fans. Enjoy our CUBE.
+
+![](https://github.com/GuilleMira/cub3d/blob/newguille/gif/show_off.gif)
 
 ## About
 
 Raycasting project of 42 Madrid
 
 Developed in C by Guille and Joan as part of the common core.
+
 Guillermo Mira [a.k.a. guilmira] Github: https://github.com/GuilleMira
 Joan Sanfelipe [a.k.a. jsanfeli] Github: https://github.com/KiriamBlu
 
@@ -80,7 +82,9 @@ all the basic features of the pproject such as, raycasted walls, collisions, pla
 	C 40,40,40
 	F 151,151,151
 
-
+# Controls:
+	W A S D ▶️ to move through the map
+	⬅ ⭕ ➡️ to rotate the camera
 	
 ## Example:
 	NO textures/first_brick_layer.png
@@ -101,4 +105,4 @@ all the basic features of the pproject such as, raycasted walls, collisions, pla
 
 As you can see from the example above, the map does not have to be necessarily a regular square.
 
-## Main Project Instructions
+
