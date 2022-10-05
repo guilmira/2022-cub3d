@@ -35,13 +35,13 @@ Only available for Linux´s main distributions.
 ## First run (default)
 
 -For Darwin(default)
-Just by executing `make exe` for Darwin distribution will compile and run the program. Enjoy.
+	Just by executing `make exe` for Darwin distribution will compile and run the program. Enjoy.
 		make exe
 
--For Arch
+	-For Arch
 		make ARCH
 
--Rest of Linux distributions
+	-Rest of Linux distributions
 		make LINUX
 
 ## Custom run
