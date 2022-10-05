@@ -29,17 +29,6 @@ we can perfectly fit a integer (as an int is 4 bytes).  */
  * 1011 1111 
  * 1011 
  * So the offset is 8. */
-int	rgb_t_translate(int red, int green, int blue, int transparency)
-{
-	int	result;
-
-	result = 0;
-	red = red << 24;
-	green = green << 16;
-	blue = blue << 8;
-	return (result | red | green | blue | transparency);
-}
-
 int	get_red(int colour_code)
 {
 	return ((colour_code & 0xFF000000) >> 24);
@@ -69,16 +58,3 @@ int	get_opposite(int colour_code)
 	get_transparent(colour_code)));
 }
 
-int get_rgb_shadowed(int colour_code)
-{
-	int	red;
-	int	green;
-	int	blue;
-	int	shadowed_transparency;
-
-	red = get_red(colour_code);
-	green = get_green(colour_code);
-	blue = get_blue(colour_code);
-	shadowed_transparency = SHADOWED_TRANSPARENCY;
-	return (rgb_t_translate(red, green, blue, SHADOWED_TRANSPARENCY));
-}

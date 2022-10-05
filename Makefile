@@ -13,7 +13,7 @@
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -O3 -fsanitize=address -Werror
+CFLAGS		= -Wall -Wextra -O3 -fsanitize=address #-Werror
 ARG			= maps/easy_map222.cub
 
 #--------------------------------------------------------------------------------------------------------------LIBS
@@ -28,9 +28,9 @@ FLAGS_MLX_ARCH		= -I include -lglfw -ldl -pthread -lm
 FLAGS_MLX_LINUX		= -I include -lglfw -ldl
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./sources
-FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_variables.c init_dimensions.c prep_textures.c)
+FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_map2D_2.c init_variables.c init_dimensions.c prep_textures.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c clear_framework.c)
-FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c minimap_framework.c)
+FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c minimap_framework.c color_mod1.c)
 FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vector_tools.c vector_arithmetic.c vector_arith_advanced.c 2Dcast_beam.c 2Dcast_ray.c 2Dinit_ray.c)
 FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c map_parse.c)
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
