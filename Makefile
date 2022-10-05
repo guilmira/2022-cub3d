@@ -6,24 +6,26 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/03 13:22:36 by guilmira         ###   ########.fr        #
+#    Updated: 2022/10/03 16:20:43 by jsanfeli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra  -Werror -O3 -fsanitize=address
+CFLAGS		= -Wall -Wextra -O3 -fsanitize=address -Werror
 ARG			= maps/easy_map222.cub
 
 #--------------------------------------------------------------------------------------------------------------LIBS
-HEADER			= -I ./0includes
-LIB_DIR			= libft_submodule
-LIB				= $(LIB_DIR)/libft.a
-MLX_DIR			= ./MLX42
-MLX				= $(MLX_DIR)/libmlx42.a
-INCLUDES		= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
-FLAGS_MLX		= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+HEADER				= -I ./0includes
+LIB_DIR				= libft_submodule
+LIB					= $(LIB_DIR)/libft.a
+MLX_DIR				= ./MLX42
+MLX					= $(MLX_DIR)/libmlx42.a
+INCLUDES			= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
+FLAGS_MLX_DARWIN	= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
+FLAGS_MLX_ARCH		= -I include -lglfw -ldl -pthread -lm
+FLAGS_MLX_LINUX		= -I include -lglfw -ldl
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./sources
 FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_variables.c init_dimensions.c prep_textures.c)
@@ -56,8 +58,17 @@ all: $(LIB) $(MLX) $(NAME)
 %.o: %.c
 	$(CC) $(CFLAGS) -I ./MLX42/include/MLX42 $(HEADER) -c $< -o $@
 
-linux: $(OBJS) $(LIB) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) -ldl -lglfw $(LIB) $(MLX) -o $(NAME)
+LINUX: $(OBJS) $(LIB) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX_LINUX) $(LIB) $(MLX) -o $(NAME)
+	@echo $(BYELLOW) "$(NAME) compiled" $(NONE)
+	./$(NAME) $(ARG)
+
+ARCH: $(OBJS) $(LIB) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX_ARCH) $(LIB) $(MLX) -o $(NAME)
+	@echo $(RED) "$(NAME) compiled" $(NONE)
+	./$(NAME) $(ARG)
+
+INSTALL: bash install.sh
 
 $(LIB):
 	@make -C $(LIB_DIR)
@@ -66,12 +77,11 @@ $(MLX):
 	@make -C $(MLX_DIR)
 
 $(NAME): $(OBJS) $(LIB) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX) $(LIB) $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX_DARWIN) $(LIB) $(MLX) -o $(NAME)
 	@echo $(GREEN) "$(NAME) compiled" $(NONE)
 
 exe: $(NAME)
 	time ./$(NAME) $(ARG)
-
 fus:
 	$(RM) $(OBJS)
 redo: fus exe
@@ -98,3 +108,6 @@ norm:
 #--------------------------------------------------------------------------------------------------------------FORMAT
 NONE='\033[0m'
 GREEN='\033[1;32m'
+RED="\[\033[0;31m\]"
+BYELLOW="\[\033[1;33m\]"
+

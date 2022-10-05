@@ -6,46 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/03 12:27:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/03 16:21:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-//merge bien vgit
-
-/** PURPOSE : Correct minimap status and reset screen. */
-void	update_player_location(t_prog *game)
-{
-	double	coor_final[D2];
-	double	coor_base[D2];
-	double	coor_fraccion[D2];
-	double	coor_base_old[D2];
-	double	coor_factor[D2];
-
-	coor_base[0] = (double)(game->pl.position[0]) * game->map2D.pixel_per_block[0];
-	coor_base[1] = (double) game->pl.position[1] * game->map2D.pixel_per_block[1];
-
-	
-
-	coor_base_old[0] = (double)(game->pl.position[0]) * game->map2D.v_pixel_per_block[0];
-	coor_base_old[1] = (double) game->pl.position[1] * game->map2D.v_pixel_per_block[1];
-	
-
-	coor_factor[0] = (game->pl.v_position_coor[0] - coor_base_old[0]) / game->map2D.v_pixel_per_block[0];
-	coor_factor[1] = (game->pl.v_position_coor[1] - coor_base_old[1]) / game->map2D.v_pixel_per_block[1];
-
-	coor_fraccion[0] = coor_factor[0] *  game->map2D.pixel_per_block[0];
-	coor_fraccion[1] =  coor_factor[1] * game->map2D.pixel_per_block[1];
-
-	coor_final[0] = coor_base[0] + coor_fraccion[0];
-	coor_final[1] = coor_base[1] + coor_fraccion[1];
-
-	game->pl.position_coor[0] = coor_final[0];
-	game->pl.position_coor[1] = coor_final[1];
-
-
-}
 
 /** PURPOSE : Is there os is there not a minimap. */
 static inline int	is_minimap(t_prog *game)
@@ -58,6 +23,35 @@ static inline int	is_minimap(t_prog *game)
 		return (2);
 	else
 		return (0);
+}
+
+/** PURPOSE : Correct minimap status and reset screen. */
+void	update_player_location(t_prog *game)
+{
+	double	coor_base[D2];
+	double	coor_fraccion[D2];
+	double	coor_base_old[D2];
+	double	coor_factor[D2];
+
+	coor_base[0] = (double)(game->pl.position[0]) * game->map2D.pixel_per_block[0];
+	coor_base[1] = (double) game->pl.position[1] * game->map2D.pixel_per_block[1];
+	coor_base_old[0] = (double)(game->pl.position[0]) * game->map2D.v_pixel_per_block[0];
+	coor_base_old[1] = (double) game->pl.position[1] * game->map2D.v_pixel_per_block[1];
+
+
+	/* game->map2D.v_pixel_per_block[0] = 14;
+	game->map2D.v_pixel_per_block[1] = 14; */
+	
+
+	coor_factor[0] = (game->pl.v_position_coor[0] - coor_base_old[0]) / (double) game->map2D.v_pixel_per_block[0];
+	coor_factor[1] = (game->pl.v_position_coor[1] - coor_base_old[1]) / (double) game->map2D.v_pixel_per_block[1];
+
+	coor_fraccion[0] = coor_factor[0] *  game->map2D.pixel_per_block[0];
+	coor_fraccion[1] =  coor_factor[1] * game->map2D.pixel_per_block[1];
+	game->pl.position_coor[0] = coor_base[0] + coor_fraccion[0];
+	game->pl.position_coor[1] = coor_base[1] + coor_fraccion[1];
+	
+
 }
 
 /** PURPOSE : Correct minimap status and reset screen. */
@@ -92,7 +86,11 @@ static inline void	hook_control_minimap(t_prog *game)
 	game->w1.size[1] = OY_WINDOW;
 	game->w1.size[0] = OX_WINDOW;
 	if (is_minimap(game) == 1)
+	{
+		game->pl.v_position_coor[0] = game->pl.position_coor[0];
+		game->pl.v_position_coor[1] = game->pl.position_coor[1];
 		reconstruct_minimap_variables(game);
+	}
 	else
 	{
 		game->w1.size[1] = OY_WINDOW;
