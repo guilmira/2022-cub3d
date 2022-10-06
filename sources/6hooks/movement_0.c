@@ -17,9 +17,9 @@ static void get_new_pos(int type, double  new_pos[], t_vector v, t_prog *game)
 	if (type == 0)
 		new_pos[0] = game->pl.v_position_coor[0] + (v.x);
 	else
-		new_pos[0] = game->pl.v_position_coor[0] - (v.y);
+		new_pos[0] = game->pl.v_position_coor[0] - (v.x);
 	if (type == 0)
-		new_pos[1] = game->pl.v_position_coor[1] + (v.x);
+		new_pos[1] = game->pl.v_position_coor[1] + (v.y);
 	else
 		new_pos[1] = game->pl.v_position_coor[1] - (v.y);
 }
