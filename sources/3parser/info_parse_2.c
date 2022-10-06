@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/01 12:51:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/01 12:51:40 by jsanfeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*cacht_info_str(char *info)
 	return (basic_aux);
 }
 
-int color_check(char	**data_colour)
+int	color_check(char	**data_colour)
 {
 	int	colour;
 
@@ -44,12 +44,12 @@ int color_check(char	**data_colour)
 		return (-1);
 	}
 	colour = rgb_t_translate(ft_atoi(data_colour[0]), ft_atoi(data_colour[1]),
-	ft_atoi(data_colour[2]), 255);
+			ft_atoi(data_colour[2]), 255);
 	freemat(data_colour);
-	return(colour);
+	return (colour);
 }
 
-char **colour_code_fill(char *aux)
+char	**colour_code_fill(char *aux)
 {
 	char	**data_colour;
 	int		colour;

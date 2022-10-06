@@ -14,16 +14,11 @@
 
 int		ext_err(t_prog *game, char *av);
 int		map_prep(t_prog *game);
-void	show_map(t_prog *game);
-void	show_info(t_prog *game);
-int		check_data(t_prog *game);
 
 void	parser(t_prog *game, int ac, char **av)
 {
-	// Basic parse (ac > 1, .cub, perms)
 	if (ac != 2 || ext_err(game, av[1]) != 0)
 		ft_shutdown("Error.\nFailed to aprove data of file\n", game);
-	// Parse map (check char, filter identificators, map creator)
 	if (map_prep(game))
 		ft_shutdown("Error.\nMap parse fail\n", game);
 	if (check_data(game))
@@ -36,14 +31,14 @@ int	ext_err(t_prog *game, char *av)
 	char	*aux;
 
 	i = ft_strlen(av) - 1;
-	while(av[i] != '.' && av[i])
+	while (av[i] != '.' && av[i])
 		i--;
 	if (av[i] != '.')
 		return (1);
 	aux = ft_substr(av, i, ft_strlen(av));
 	i = ft_strcmp(aux, ".cub\0");
 	free(aux);
-	game->file = open(av, O_RDONLY , 0666);
+	game->file = open(av, O_RDONLY, 0666);
 	if (i == 0 && game->file != -1)
 		return (0);
 	else
@@ -71,53 +66,7 @@ int	map_prep(t_prog *game)
 	return (0);
 }
 
-void	show_info(t_prog *game)
-{	
-	if(game->NO)
-		printf("North texture: %s\n", game->NO);
-	else
-		printf("North texture: Not Parsed\n");
-	if(game->SO)
-		printf("South texture: %s\n", game->SO);
-	else
-		printf("South texture: Not Parsed\n");
-	if(game->EA)
-		printf("East texture: %s\n", game->EA);
-	else
-		printf("East texture: Not Parsed\n");
-	if(game->WE)
-		printf("West texture: %s\n", game->WE);
-	else
-		printf("West texture: Not Parsed\n");
-	if(game->sky_clr != -1)
-		printf("Sky colour: %d\n", game->sky_clr);
-	else
-		printf("Sky colour: ERROR\n");
-	if(game->floor_clr != -1)
-		printf("Floor colour: %d\n", game->floor_clr);
-	else
-		printf("Floor colour: ERROR\n");
-	printf("\n");
-}
-
-void	show_map(t_prog *game)
-{
-	int i;
-
-	i = -1;
-	while(++i < game->map2D.map_x + 4)
-		write(0, "-", 1);
-	write(0, "\n", 1);
-	i = -1;
-	while (++i < game->map2D.map_y + 1)
-		printf("(%s)\n", game->map2D.map[i]);
-	i = -1;
-	while(++i < game->map2D.map_x + 4)
-		write(0, "-", 1);
-	write(0, "\n", 1);
-}
-
-int		check_data(t_prog *game)
+int	check_data(t_prog *game)
 {
 	if (access(game->NO, R_OK) != 0)
 		return (-1);
