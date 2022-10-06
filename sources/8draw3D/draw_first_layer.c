@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/03 12:57:22 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:11:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double limit_x, int colour, t_prog *game)
 }
 
 /** PURPOSE : extend horizonal lines through the screen. */
-static inline void draw_horizon(double origin[], \
+static inline void	draw_horizon(double origin[], \
 int size, int colour, t_prog *game)
 {
 	int		i;
@@ -64,7 +64,7 @@ int percentage, uint32_t stripeheight, t_prog *game)
 	count = 0;
 	if ((int)stripeheight > game->w1.size[1])
 	{
-		y =  (double)(((int)stripeheight - game->w1.size[1]) * hw / 2);
+		y = (double)(((int)stripeheight - game->w1.size[1]) * hw / 2);
 		stripeheight = (uint32_t)game->w1.size[1];
 	}
 	ret = malloc(sizeof(mlx_texture_t));
@@ -72,7 +72,7 @@ int percentage, uint32_t stripeheight, t_prog *game)
 	ret->height = stripeheight;
 	ret->bytes_per_pixel = 4;
 	ret->pixels = malloc(sizeof(uint8_t) * (stripeheight * 4));
-	while(count < (stripeheight * 4))
+	while (count < (stripeheight * 4))
 	{
 		ret->pixels[count] = texture->pixels[x + (int)y * (texture->width * 4)];
 		ret->pixels[count + 1] = texture->pixels[x + 1 + (int)y * (texture->width * 4)];
@@ -81,7 +81,7 @@ int percentage, uint32_t stripeheight, t_prog *game)
 		count += 4;
 		y += hw;
 	}
-	return(ret);
+	return (ret);
 }
 
 /** PURPOSE : floor layer + horizon sky. 
@@ -91,9 +91,6 @@ void	draw_first_layer(t_prog *game)
 	int		colour_floor;
 	int		colour_sky;
 	double	origin[D2];
-
-	//game->floor_clr = rgb_t_translate(0, 0, 155, 155);
-	//game->sky_clr = rgb_t_translate(0, 155, 0, 55);
 
 	origin[0] = 0;
 	origin[1] = 0;

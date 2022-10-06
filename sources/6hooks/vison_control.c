@@ -6,11 +6,19 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:13:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:22:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+/** PURPOSE : Correct minimap status and reset screen. */
+void	correct_minimap_value(t_prog *game)
+{
+	game->minimap_state++;
+	if (game->minimap_state == 6)
+		game->minimap_state = 0;
+}
 
 /** PURPOSE : correct vision by adding correct plane vector. */
 void	update_player_vision(int key, t_prog *game)
