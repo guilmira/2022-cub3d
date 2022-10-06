@@ -6,12 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:14:20 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 10:11:02 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:12:42 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
 
 /** PURPOSE : Get plane vector, perpendicular to vision vector,
  * but is treated as only half of the plane. */
@@ -40,7 +39,6 @@ double	calculate_plane_lenght(double angle, t_vector vis)
 
 	vis_module = get_module(vis);
 	theta = degree_to_radian(angle / 2);
-
 	return (vis_module * tan(theta));
 }
 
