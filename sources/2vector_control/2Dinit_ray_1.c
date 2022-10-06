@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   2Dinit_ray_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:55 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/01 10:12:35 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:58:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+/** PURPOSE : Check if at given coordinates, there is a wall. */
+int	is_wall2d(int j, int i, t_prog *game)
+{
+	if (j < 0 || i < 0)
+		return (1);
+	if (i >= game->map2D.height || j >= game->map2D.width)
+		return (1);
+	if (game->map2D.layout[j][i])
+		return (1);
+	else
+		return (0);
+}
 
 /** PURPOSE : Get distance at the beginnig of the coordinate. */
 void	get_relative_distance(t_ray *ray, t_prog *game)
