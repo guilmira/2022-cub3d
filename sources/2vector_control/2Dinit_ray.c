@@ -12,7 +12,6 @@
 
 #include "cube.h"
 
-
 /** PURPOSE : Init distance of delta x or delta y at first block.
  * 1. There is a difference between what 2D block 
  * we are at, and the exact coor location.
