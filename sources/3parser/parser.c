@@ -14,6 +14,7 @@
 
 int		ext_err(t_prog *game, char *av);
 int		map_prep(t_prog *game);
+int		check_data(t_prog *game);
 
 void	parser(t_prog *game, int ac, char **av)
 {
