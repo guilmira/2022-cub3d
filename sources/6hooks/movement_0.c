@@ -6,51 +6,50 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/06 16:39:37 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:54:11 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+static double *get_new_pos(int type, double speed_multiplier, double v[], t_prog *game)
+{
+	double	new_pos[D2];
+
+	if (type == 0)
+		new_pos[0] = game->pl.v_position_coor[0] + (v[0]) * speed_multiplier;
+	else
+		new_pos[0] = game->pl.v_position_coor[0] - (v[0]) * speed_multiplier;
+	if (type == 0)
+		new_pos[1] = game->pl.v_position_coor[1] + (v[1]) * speed_multiplier;
+	else
+		new_pos[1] = game->pl.v_position_coor[1] - (v[1]) * speed_multiplier;
+	return (new_pos);
+}
 
 /** PURPOSE : calculate new coordinates. */
 static	inline void	move_position(double v[], t_prog *game, \
 int key, int pixel_per_block[])
 {
 	double		new_pos[2];
-	double		speed_multiplier;
+	double		speed_mult;
 	t_vector	vec;
 	int			flag;
 
 	vec.x = v[0];
 	vec.y = v[1];
 	if (game->pl.flag_trance)
-		speed_multiplier = (WIND_MODE * 0.01);
+		speed_mult = (WIND_MODE * 0.01);
 	else
-		speed_multiplier = 0.01;
+		speed_mult = 0.01;
 	if (key == 0)
-	{
-		new_pos[0] = game->pl.v_position_coor[0] + (v[0]) * speed_multiplier;
-		new_pos[1] = game->pl.v_position_coor[1] + (v[1]) * speed_multiplier;
-	}
+		new_pos = get_new_pos(0, speed_mult, v, game);
 	else if (key == 1)
-	{
-		new_pos[0] = game->pl.v_position_coor[0] - (v[0]) * speed_multiplier;
-		new_pos[1] = game->pl.v_position_coor[1] - (v[1]) * speed_multiplier;
-	}
+		new_pos = get_new_pos(1, speed_mult, v, game);
 	else if (key == 2)
-	{
-		new_pos[0] = game->pl.v_position_coor[0] + \
-		(get_perpendicular(vec)).x * speed_multiplier;
-		new_pos[1] = game->pl.v_position_coor[1] + \
-		(get_perpendicular(vec)).y * speed_multiplier;
-	}
+		new_pos = get_new_pos(0, speed_mult, get_perpendicular(vec), game);
 	else
-	{
-		new_pos[0] = game->pl.v_position_coor[0] - \
-		(get_perpendicular(vec)).x * speed_multiplier;
-		new_pos[1] = game->pl.v_position_coor[1] - \
-		(get_perpendicular(vec)).y * speed_multiplier;
-	}
+		new_pos = get_new_pos(0, speed_mult, get_perpendicular(vec), game);
 	flag = wall_coll(game, new_pos, pixel_per_block);
 	filter_final_pos(game, new_pos, flag, pixel_per_block);
 }
@@ -80,13 +79,9 @@ void	update_player_position(int key, t_prog *game)
 	vp[1] = ((game->pl.vis.y) / 5);
 	x = 0;
 	while (++i < 8)
-	{
 		if (key == i)
-		{
 			while (x++ < speed)
 				move_position(vp, game, key, pixel_per_block);
-		}
-	}
 }
 
 /** PURPOSE : distribute proper key control

@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/05 14:12:14 by guilmira         ###   ########.fr        #
+#    Updated: 2022/10/06 16:16:38 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles_line.c utiles9.c )
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c vison_control.c hook_keys.c hooks.c)
-FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c character_intital.c)
+FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c)
 FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c 3D_ray_texture.c 3D_ray_texture_aux.c 3D_ray_simplewall.c)
 #--------------------------------------------------------------------------------------------------------------SOURCES
 SRCS		=	$(FOLDER0)\

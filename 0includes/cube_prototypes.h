@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/06 15:58:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:22:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void			fix_net_distance(t_ray *ray, int case_factor, int block[]);
 void			clear_raycast(t_prog *game);
 double			calculate_plane_lenght(double angle, t_vector vis);
 int				is_wall2d(int j, int i, t_prog *game);
+void			correct_minimap_value(t_prog *game);
 
 /* BEAM */
 void			cast_beam(t_beam *beam, t_data *aux, t_prog *game);
