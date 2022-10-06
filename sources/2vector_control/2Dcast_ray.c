@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/06 15:58:45 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:00:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ double factor, t_ray *ray, t_prog *game)
 
 	if (ray->face == 2)
 	{
-		vector.y = blocks_advanced * game->map2D.pixel_per_block[1] -\
+		vector.y = blocks_advanced * game->map2D.pixel_per_block[1] - \
 		ray->relative_distance[1];
 		vector.x = vector.y / factor;
 	}
 	if (ray->face == 1)
 	{
-		vector.x = blocks_advanced * game->map2D.pixel_per_block[0] -\
+		vector.x = blocks_advanced * game->map2D.pixel_per_block[0] - \
 		ray->relative_distance[0];
 		vector.y = vector.x * factor;
 	}

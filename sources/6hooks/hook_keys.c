@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/05 14:58:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:02:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,39 +57,6 @@ void	update_player_location(t_prog *game)
 
 
 }
-
-
-/* void	update_player_location(t_prog *game)
-{
-	double	coor_final[D2];
-	double	coor_base[D2];
-	double	coor_fraccion[D2];
-	double	coor_base_old[D2];
-	double	coor_factor[D2];
-
-	coor_base[0] = (double)(game->pl.position[0]) * game->map2D.pixel_per_block[0];
-	coor_base[1] = (double) game->pl.position[1] * game->map2D.pixel_per_block[1];
-
-	
-
-	coor_base_old[0] = (double)(game->pl.position[0]) * game->map2D.v_pixel_per_block[0];
-	coor_base_old[1] = (double) game->pl.position[1] * game->map2D.v_pixel_per_block[1];
-	
-
-	coor_factor[0] = (game->pl.v_position_coor[0] - coor_base_old[0]) / game->map2D.v_pixel_per_block[0];
-	coor_factor[1] = (game->pl.v_position_coor[1] - coor_base_old[1]) / game->map2D.v_pixel_per_block[1];
-
-	coor_fraccion[0] = coor_factor[0] *  game->map2D.pixel_per_block[0];
-	coor_fraccion[1] =  coor_factor[1] * game->map2D.pixel_per_block[1];
-
-	coor_final[0] = coor_base[0] + coor_fraccion[0];
-	coor_final[1] = coor_base[1] + coor_fraccion[1];
-
-	game->pl.position_coor[0] = coor_final[0];
-	game->pl.position_coor[1] = coor_final[1];
-
-
-} */
 
 /** PURPOSE : Correct minimap status and reset screen. */
 static inline void	correct_minimap_value(t_prog *game)
