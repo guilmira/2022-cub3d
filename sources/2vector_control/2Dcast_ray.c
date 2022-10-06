@@ -13,7 +13,7 @@
 #include "cube.h"
 
 /** PURPOSE : Check if at given coordinates, there is a wall. */
-static inline int is_wall2D(int j, int i, t_prog *game)
+static inline int	is_wall2d(int j, int i, t_prog *game)
 {
 	if (j < 0 || i < 0)
 		return (1);
@@ -26,9 +26,9 @@ static inline int is_wall2D(int j, int i, t_prog *game)
 }
 
 /** PURPOSE : Get the final coordinates of the vecctor that has collided. */
-static inline t_vector final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, t_prog *game)
+static inline t_vector	final_raycasted_vector(int blocks_advanced, double factor, t_ray *ray, t_prog *game)
 {
-	t_vector vector;
+	t_vector	vector;
 
 	if (ray->face == 2)
 	{
@@ -44,21 +44,19 @@ static inline t_vector final_raycasted_vector(int blocks_advanced, double factor
 }
 
 /** PURPOSE : Get vector that goes until that collision point that is found. */
-static inline void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
+static inline void	get_resultant_vector(t_ray *ray, int array_pos, t_vector dir, t_prog *game)
 {
 	double		factor;
 	t_vector	vector;
 	int			blocks_advanced;
-	
+
 	vector.x = 0;
 	vector.y = 0;
-	/* --------------- */
 	blocks_advanced = ray->step[array_pos] - ray->pos[array_pos];
 	if (ray->dir.y < 0 && array_pos == 1)
 		blocks_advanced = ray->step[array_pos] - ray->pos[array_pos] + 1;
 	if (ray->dir.x < 0 && array_pos == 0)
 		blocks_advanced = ray->step[array_pos] - ray->pos[array_pos] + 1;
-	/* --------------- */
 	if (!dir.x)
 		vector.y = blocks_advanced * game->map2D.pixel_per_block[array_pos];
 	if (!dir.y)
@@ -67,9 +65,8 @@ static inline void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir,
 	if (!dir.x || !dir.y)
 		return ;
 	factor = dir.y / dir.x;
-	ray->resultant_vector = final_raycasted_vector\
+	ray->resultant_vector = final_raycasted_vector \
 	(blocks_advanced, factor, ray, game);
-
 }
 
 /** PURPOSE : Here is how the algorithm works: 
@@ -79,16 +76,15 @@ static inline void get_resultant_vector(t_ray *ray, int array_pos, t_vector dir,
  * than the distance of OX, thats the one that we ll be looking at for a collision.
  * 4. Increase step (or grid block) in said direcction.
  * 5. Check if indeed there is a collision (a wall) at that location. If not, loop. */
-static inline void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
+static inline void	raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 {
-	int counter;
+	int	counter;
 
 	counter = -1;
 	while (++counter <= game->map2D.width + game->map2D.height)
 	{
 		if (ray->net_distance[1] < ray->net_distance[0] || !ray->delta[0])
-		{
-			
+		{	
 			ray->step[1] += ray->step_increase[1];
 			ray->net_distance[1] += ray->delta[1];
 			ray->face = 2;
@@ -98,9 +94,8 @@ static inline void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog 
 			ray->step[0] += ray->step_increase[0];
 			ray->net_distance[0] += ray->delta[0];
 			ray->face = 1;
-			
 		}
-		if (is_wall2D(ray->step[1], ray->step[0], game))
+		if (is_wall2d(ray->step[1], ray->step[0], game))
 		{
 			if (ray->face == 1)
 				get_resultant_vector(ray, 0, dir, game);
@@ -108,16 +103,15 @@ static inline void raycast_collision_algorithm(t_ray *ray, t_vector dir, t_prog 
 				get_resultant_vector(ray, 1, dir, game);
 			break ;
 		}	
-
 	}
 }
 
 /** PURPOSE : Cast a ray from location to wall, following the direction vector.
  * Direction, position, and walls + DDA algorightm = collision point. */
-t_vector	 raycast(t_data *aux, t_vector dir, double origin[], t_prog *game)
+t_vector	raycast(t_data *aux, t_vector dir, double origin[], t_prog *game)
 {
-	t_ray		ray;
-	
+	t_ray	ray;
+
 	init_ray(&ray, origin, dir, game);
 	raycast_collision_algorithm(&ray, dir, game);
 	aux->face = ray.face;

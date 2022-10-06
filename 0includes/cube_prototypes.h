@@ -73,6 +73,8 @@ t_vector		raycast(t_data *aux, t_vector dir, double origin[], \
 t_prog *game);
 mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, int percentage, \
 uint32_t stripeheight, t_prog *game);
+void			get_relative_distance(t_ray *ray, t_prog *game);
+void			fix_net_distance(t_ray *ray, int case_factor, int block[]);
 
 void			clear_raycast(t_prog *game);
 double			calculate_plane_lenght(double angle, t_vector vis);
