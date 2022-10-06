@@ -12,8 +12,6 @@
 
 #include "cube.h"
 
-int		is_closed(char **map);
-
 int	map_build(int data_len, t_prog *game, t_list *aux_lst)
 {
 	int	k;
@@ -62,35 +60,6 @@ void	map_refill(t_prog *game, int c, t_list *aux_lst)
 		aux_lst = aux_lst->next;
 		i++;
 	}
-}
-
-int	is_closed(char **map)
-{
-	int	y;
-	int	x;
-	int	flag;
-
-	y = -1;
-	flag = 0;
-	while (map[++y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'W'
-				|| map[y][x] == 'E' || map[y][x] == 'S')
-				if (map[y][x - 1] == ' ' || map[y][x + 1] == ' '
-					|| map[y - 1][x] == ' ' || map[y + 1][x] == ' ')
-					return (-1);
-			if (map[y][x] == 'N' || map[y][x] == 'W'
-				|| map[y][x] == 'E' || map[y][x] == 'S')
-				flag += 1;
-			x++;
-		}
-	}
-	if (flag != 1)
-		return (-1);
-	return (0);
 }
 
 int	get_maxlen(t_prog *game, t_list *aux_lst)
