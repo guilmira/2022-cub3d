@@ -32,20 +32,30 @@ char	*cacht_info_str(char *info)
 	return (basic_aux);
 }
 
-int	catch_number(char *info)
+int color_check(char	**data_colour)
 {
-	char	*aux;
+	int	colour;
+
+	if (!check_num(ft_atoi(data_colour[0]))
+		|| !check_num(ft_atoi(data_colour[1]))
+		|| !check_num(ft_atoi(data_colour[2])))
+	{
+		freemat(data_colour);
+		return (-1);
+	}
+	colour = rgb_t_translate(ft_atoi(data_colour[0]), ft_atoi(data_colour[1]),
+	ft_atoi(data_colour[2]), 255);
+	freemat(data_colour);
+	return(colour);
+}
+
+char **colour_code_fill(char *aux)
+{
 	char	**data_colour;
 	int		colour;
 	int		int_aux;
 	int		i;
 
-	aux = cacht_info_str(info);
-	if (check_comas(aux) == -1)
-	{
-		free (aux);
-		return (-1);
-	}
 	data_colour = ft_calloc(4, sizeof(char *));
 	colour = 0;
 	i = 0;
@@ -61,17 +71,21 @@ int	catch_number(char *info)
 		i++;
 		int_aux = colour;
 	}
-	if (!check_num(ft_atoi(data_colour[0]))
-		|| !check_num(ft_atoi(data_colour[1]))
-		|| !check_num(ft_atoi(data_colour[2])))
+	free(aux);
+	return (data_colour);
+}
+
+int	catch_number(char *info)
+{
+	char	*aux;
+	char	**data_colour;
+
+	aux = cacht_info_str(info);
+	if (check_comas(aux) == -1)
 	{
-		free(aux);
-		freemat(data_colour);
+		free (aux);
 		return (-1);
 	}
-	colour = rgb_t_translate(ft_atoi(data_colour[0]), ft_atoi(data_colour[1]),
-	ft_atoi(data_colour[2]), 255);
-	freemat(data_colour);
-	free(aux);
-	return (colour);
+	data_colour = colour_code_fill(aux);
+	return (color_check(data_colour));
 }

@@ -1,9 +1,9 @@
 NO textures/brick_normal.png
 
-C 40,40,40
+C 0,0,0
 
-        SO textures/W3d_protoredbrick1.png
-   EA textures/BrickFacade0006_1_download600.png
+        SO textures/brick_normal.png
+   EA textures/brick_normal.png
      WE                                     textures/PC Computer - Giana Sisters Twisted Dreams - Dungeon Walls.png
 
 

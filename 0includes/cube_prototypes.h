@@ -19,11 +19,21 @@
 /* MAP PARSER */
 void			parser(t_prog *game, int ac, char **av);
 void			fill_lst(t_prog *game, t_list **aux_lst);
-int				parselst(t_prog *game, t_list *aux_lst);
 void			printlist(t_list *list);
 int				map_build(int data_len, t_prog *game, t_list *aux_lst);
 void			build_spaced_layout(t_prog *game, int height, int width);
 int				**allocate_all_layout(int height, int width);
+char			*getlimiter(char *limiter);
+int				parse_limit(char *limiter);
+int				parse_and_storage(char *limiter, t_prog *game, char *content);
+int				getinfovisual(char *content, t_prog *game);
+int				storage_info(char *limiter, t_prog *game, char *content);
+char			*cacht_info_str(char *info);
+int				catch_number(char *info);
+int				parselst(t_prog *game, t_list *aux_lst);
+int				check_num(int num);
+int				check_comas(char *data);
+
 
 /* STRUCT INIT */
 void			init_game(t_prog *game);
