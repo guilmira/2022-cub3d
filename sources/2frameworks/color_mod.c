@@ -57,4 +57,3 @@ int	get_opposite(int colour_code)
 	(255 - get_blue(colour_code)), \
 	get_transparent(colour_code)));
 }
-
