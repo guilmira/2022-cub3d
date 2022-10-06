@@ -42,12 +42,10 @@ static inline void	draw_grid(t_prog *game, double size_x, double size_y)
 	limit = get_grid_limit(game);
 	colour = rgb_t_translate(255, 255, 255, GRID_TRANSPARENCY);
 	nb = -1;
-	//while (++nb < game->map2D.height + 1)
 	while (++nb < limit)
 		put_horizontal((nb * game->map2D.pixel_per_block[1]), \
 		size_x, colour, game);
 	nb = -1;
-	//while (++nb < game->map2D.width + 1)
 	while (++nb < limit)
 		put_vertical((nb * game->map2D.pixel_per_block[0]), \
 		size_y, colour, game);
