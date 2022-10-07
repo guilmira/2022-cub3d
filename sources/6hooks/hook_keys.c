@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 14:01:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:06:48 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	update_player_location(t_prog *game)
 	game->map2D.v_pixel_per_block[0];
 	coor_base_old[1] = (double) game->pl.position[1] * \
 	game->map2D.v_pixel_per_block[1];
+/* 	game->map2D.v_pixel_per_block[0] = 14;
+	game->map2D.v_pixel_per_block[1] = 14;
+ 	printf("Localización del bug");
+	log_coor(game->pl.v_position_coor);
+	log_coor_int(game->map2D.v_pixel_per_block); */
 	coor_factor[0] = (game->pl.v_position_coor[0] - coor_base_old[0]) \
 	/ (double) game->map2D.v_pixel_per_block[0];
 	coor_factor[1] = (game->pl.v_position_coor[1] - coor_base_old[1]) \
