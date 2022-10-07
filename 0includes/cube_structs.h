@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:22:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 12:46:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_player
 	int				flag_vis_perpend;
 	int				flag_movement;
 	int				flag_trance;
+	double			speed;
 }					t_player;
 
 /** PURPOSE : Map 2D given as an argument. */
