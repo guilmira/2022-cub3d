@@ -6,14 +6,14 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:09:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:56:02 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
 /** PURPOSE : Frees array of int. */
-void	clear_map_two_dim(int **map, int height)
+static void	clear_map_two_dim(int **map, int height)
 {
 	int	j;
 
@@ -27,47 +27,12 @@ void	clear_map_two_dim(int **map, int height)
 		free(map);
 	map = NULL;
 }
-
-void	clear_uint8(uint8_t **map, int height)
-{
-	int	j;
-
-	j = -1;
-	while (++j < height)
-	{
-		free(map[j]);
-		map[j] = NULL;
-	}
-	if (map)
-		free(map);
-	map = NULL;
-}
-
-void	clear_raycast(t_prog *game)
-{
-	if (game->rc)
-	{
-		if (game->rc->rc_vector)
-			free(game->rc->rc_vector);
-		if (game->rc->rc_distance)
-			free(game->rc->rc_distance);
-		if (game->rc->rc_wall_side)
-			free(game->rc->rc_wall_side);
-		if (game->rc->rc_wall_hit_x)
-			free(game->rc->rc_wall_hit_x);
-		if (game->rc->rc_wall_hit_y)
-			free(game->rc->rc_wall_hit_y);
-		free(game->rc);
-	}
-}
-
 
 /** PURPOSE : Frees allocated memory in program. */
 static void	clear_memory(t_prog *game)
 {
 	if (game)
 	{
-
 		if (game->map2D.map)
 			freemat(game->map2D.map);
 		if (game->NO)
@@ -121,32 +86,4 @@ void	ft_shutdown(char *error_msg, t_prog *game)
 		mlx_terminate(game->mlx);
 	clear_memory(game);
 	ft_shut(error_msg);
-}
-
-void	freemat(char **mat)
-{
-	int	i;
-
-	i = -1;
-	while (mat[++i])
-		free(mat[i]);
-	free(mat);
-}
-
-void	freemat_int(int **mat, int len)
-{
-	int	i;
-
-	i = -1;
-	while (++i < len)
-	{
-
-		free(mat[i]);
-	}
-	free(mat);
-}
-
-void	ft_leaks(void)
-{
-	system("leaks -quiet cube");
 }

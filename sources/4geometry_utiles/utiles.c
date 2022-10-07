@@ -6,15 +6,11 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/05 14:00:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:40:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-/* The whole idea is to pass Cartesian coordinates.
-Forget all about the shifting. 
-The geom_functions themselves will take care of the conversion. */
 
 /* NOTATION: 
 	coor_x, coor_y :	abstraction coordinates. Have not been shifted.
@@ -22,7 +18,6 @@ The geom_functions themselves will take care of the conversion. */
 	x, y:				actual coordinates. already shifted. Used for solid_pixel.
 	they have the type INT.
  */
-
 /** PURPOSE : Put pixel to image in a secure way.
  * It need to recieve the y coordinate already SHIFTED!. */
 void	solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
@@ -40,7 +35,7 @@ void	solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
 	y = (uint32_t) coor_y;
 	if (x >= image->width || y >= image->height)
 	{
-		//printf("Pixel (%i, %i) could not be rendered\n", coor_x, coor_y);
+		printf("Pixel (%i, %i) could not be rendered\n", coor_x, coor_y);
 		return ;
 	}
 	mlx_put_pixel(image, x, y, colour);
@@ -57,7 +52,7 @@ int colour, t_prog *game)
 	image = game->image[CUB_3D];
 	i = -1;
 	if (coordinate_y == 0)
-		coordinate_y += SAFE_OFFSET;
+		coordinate_y += (SAFE_OFFSET);
 	coor_y = (int)coor(coordinate_y, game->w2.size[1]);
 	while (++i < limit_x)
 		solid_pixel(image, i, coor_y, colour);
@@ -100,7 +95,6 @@ int height, t_prog *game)
 	j = -1;
 	position[1] = position[1] - height / 2;
 	position[0] = position[0] - base / 2;
-
 	while (++j < height)
 	{
 		while (++i < base)
@@ -112,31 +106,5 @@ int height, t_prog *game)
 		i = -1;
 	}
 }
-
-static int check_radio(double coord[], double radio)
-{
-	if(pow((coord[0]) , 2) + pow((coord[1]), 2) <= pow(radio, 2))
-		return (1);
-	return (0);
-}
-
-void	draw_2d_player(mlx_image_t *image, double pos[], \
-double radio, int colour, t_prog *game)
-{
-	double	i[2];
-
-	i[0] = -1 - radio;
-	while (++i[0] < (radio * 2))
-	{
-		i[1] = -1 - radio;
-		while (++i[1] < (radio * 2))
-			if(check_radio(i, radio))
-				solid_pixel(image, i[0] + pos[0], coor(i[1] + pos[1], game->w2.size[1]), colour);
-	}
-}
-
-
-
-
 
 

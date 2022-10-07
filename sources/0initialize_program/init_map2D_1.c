@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map2D_0.c                                     :+:      :+:    :+:   */
+/*   init_map2D_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/01 09:51:22 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:11:25 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+void	freemat_int(int **mat, int len)
+{
+	int	i;
+
+	i = -1;
+	while (++i < len)
+		free(mat[i]);
+	free(mat);
+}
 
 /** PURPOSE : general function to init variables. */
 void	update_pixel_per_block(t_prog *game)
