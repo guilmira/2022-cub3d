@@ -33,6 +33,19 @@ int				catch_number(char *info);
 int				parselst(t_prog *game, t_list *aux_lst);
 int				check_num(int num);
 int				check_comas(char *data);
+int				parse_content(char *content);
+int				getcoords(t_prog *game, t_list *aux_lst);
+void			fill_spaces_map(t_prog *game, t_list *aux_lst);
+int				is_closed(char **map);
+int				get_maxlen(t_prog *game, t_list *aux_lst);
+int				ret_l(t_list *aux_lst);
+void			map_refill(t_prog *game, int c, t_list *aux_lst);
+
+
+/*VISUAL UTILITIES PARSER*/
+
+void			show_info(t_prog *game);
+void			show_map(t_prog *game);
 
 
 /* STRUCT INIT */

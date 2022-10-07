@@ -11,4 +11,4 @@ elif [[ "$OSTYPE" == "arch" ]]; then
 	sudo pacman -S glfw-x11
 elif [[ "$OSTYPE" == "aarch64" ]]; then
 	sudo pacman -S glfw-x11
-fi     
+fi

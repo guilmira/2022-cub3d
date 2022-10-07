@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/07 12:52:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 12:54:32 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	update_player_position(int key, t_prog *game)
 		pixel_per_block[0] = game->map2D.pixel_per_block[0];
 		pixel_per_block[1] = game->map2D.pixel_per_block[1];
 	}
-	vp[0] = ((game->pl.vis.x) / 5);
-	vp[1] = ((game->pl.vis.y) / 5);
+	vp[0] = ((double)(game->pl.vis.x) / (double)5);
+	vp[1] = ((double)(game->pl.vis.y) / (double)5);
 	x = 0;
 	while (++i < 8)
 		if (key == i)
