@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 13:00:18 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 14:04:32 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	log_coor_int(int i[])
 
 void	print_map(char **map, t_prog *game, int **s_map)
 {
+
 	(void) map;
 	printf("empieza\n");
 	for (int j = 0; j < game->map2D.height; j++)
