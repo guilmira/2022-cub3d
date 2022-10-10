@@ -13,7 +13,7 @@
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra -O3 -fsanitize=address #-Werror
+CFLAGS		= -Wall -Wextra -O3 -Werror #-fsanitize=address
 ARG			= maps/easy_map222.cub
 
 #--------------------------------------------------------------------------------------------------------------LIBS
@@ -28,7 +28,7 @@ FLAGS_MLX_ARCH		= -I include -lglfw -ldl -pthread -lm
 FLAGS_MLX_LINUX		= -I include -lglfw -ldl
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./sources
-FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_map2D_2.c init_variables.c init_dimensions.c prep_textures.c)
+FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_map2D_2.c init_map2D_3.c init_variables.c init_dimensions.c prep_textures.c)
 FOLDER1		= $(addprefix $(ROUTE)/1window_control/,		control_window.c clear_framework.c)
 FOLDER2v	= $(addprefix $(ROUTE)/2frameworks/,			color_mod.c minimap_framework.c color_mod1.c)
 FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vector_tools.c vector_arithmetic.c vector_arith_advanced.c 2Dcast_beam.c 2Dcast_ray.c 2Dinit_ray.c 2Dinit_ray_1.c)
@@ -36,7 +36,7 @@ FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c info_parse_1.
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles_line.c utiles9.c )
 FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c error_management_aux.c)
-FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c vison_control.c hook_keys.c hooks.c)
+FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c movement_setter.c vison_control.c hook_keys.c hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c)
 FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c 3D_ray_texture.c 3D_ray_texture_aux.c 3D_ray_simplewall.c)
 #--------------------------------------------------------------------------------------------------------------SOURCES

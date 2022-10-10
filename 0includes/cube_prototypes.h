@@ -68,6 +68,7 @@ int				get_rgb_shadowed(int colour_code);
 int				get_opposite(int colour_code);
 void			framework_two_dim(t_prog *game);
 void			update_pixel_per_block(t_prog *game);
+void			buildwidth(t_prog *game, int height, int width);
 
 /* LOOP AND FRAME CONTROL 60FPS */
 void			hooks_and_loops(t_prog *game);
@@ -157,6 +158,8 @@ int				wall_coll(t_prog *game, double new_pos[], \
 int pixel_per_block[]);
 void			filter_final_pos(t_prog *game, double new_pos[], \
 int flag, int pixel_per_block[]);
+void			set_key_state(t_prog *game);
+void			reset_key_state(t_prog *game);
 
 /* TOOLS */
 void			draw_centered_rectangle(double position[], \

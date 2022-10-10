@@ -23,7 +23,8 @@
 int	main(int argc, char **argv)
 {
 	t_prog	*game;
-	//atexit(ft_leaks);
+
+	atexit(ft_leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);
