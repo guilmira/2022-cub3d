@@ -97,33 +97,7 @@ void	movement_control(mlx_key_data_t t_key, t_prog *game)
 {
 	game->pl.flag_movement = 1;
 	if (mlx_is_key_down(game->mlx, t_key.key) == 1)
-	{	
-		game->pl.key[MLX_KEY_W] = mlx_is_key_down(game->mlx, MLX_KEY_W);
-		game->pl.key[MLX_KEY_S] = mlx_is_key_down(game->mlx, MLX_KEY_S);
-		game->pl.key[MLX_KEY_A] = mlx_is_key_down(game->mlx, MLX_KEY_A);
-		game->pl.key[MLX_KEY_D] = mlx_is_key_down(game->mlx, MLX_KEY_D);
-		game->pl.key[MLX_KEY_RIGHT] = mlx_is_key_down(game->mlx, MLX_KEY_RIGHT);
-		game->pl.key[MLX_KEY_LEFT] = mlx_is_key_down(game->mlx, MLX_KEY_LEFT);
-		game->pl.key[MLX_KEY_C] = mlx_is_key_down(game->mlx, MLX_KEY_C);
-		game->pl.key[MLX_KEY_V] = mlx_is_key_down(game->mlx, MLX_KEY_V);
-	}
+		set_key_state(game);
 	else
-	{
-		if (mlx_is_key_down(game->mlx, MLX_KEY_W) == 0)
-			game->pl.key[MLX_KEY_W] = 0;
-		if (mlx_is_key_down(game->mlx, MLX_KEY_S) == 0)
-			game->pl.key[MLX_KEY_S] = 0;
-		if (mlx_is_key_down(game->mlx, MLX_KEY_A) == 0)
-			game->pl.key[MLX_KEY_A] = 0;
-		if (mlx_is_key_down(game->mlx, MLX_KEY_D) == 0)
-			game->pl.key[MLX_KEY_D] = 0;
-		if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT) == 0)
-			game->pl.key[MLX_KEY_RIGHT] = 0;
-		if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT) == 0)
-			game->pl.key[MLX_KEY_LEFT] = 0;
-		if (mlx_is_key_down(game->mlx, MLX_KEY_C) == 0)
-			game->pl.key[MLX_KEY_C] = 0;
-		if (mlx_is_key_down(game->mlx, MLX_KEY_V) == 0)
-			game->pl.key[MLX_KEY_V] = 0;
-	}
+		reset_key_state(game);
 }

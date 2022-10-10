@@ -13,10 +13,12 @@
 #include "cube.h"
 
 static void	draw_2d_player(mlx_image_t *image, double pos[], \
-double radio, int colour, t_prog *game)
+	int colour, t_prog *game)
 {
 	double	i[2];
+	double	radio;
 
+	radio = game->pl.ratio;
 	i[0] = -1 - radio;
 	while (++i[0] < (radio * 2))
 	{
@@ -53,7 +55,7 @@ void	draw_player_position(mlx_image_t *image, t_prog *game)
 	if (position[0] <= 0 || position[1] <= 0)
 		ft_shutdown(EX, game);
 	game->pl.ratio = (PLAYER_RATIO * game->map2D.pixel_per_block[0]);
-	draw_2d_player(image, position, game->pl.ratio, GREEN + RED, game);
+	draw_2d_player(image, position, GREEN + RED, game);
 	if (game->minimap_state == 4)
 		draw_centered_rectangle(position, x_size, y_size, game);
 	if (game->minimap_state == 2)

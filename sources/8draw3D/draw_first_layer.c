@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 13:58:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/06 16:11:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,44 +44,51 @@ int size, int colour, t_prog *game)
 	}
 }
 
-//NEXT: proteger funcion
-mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, \
-int percentage, uint32_t stripeheight, t_prog *game)
+mlx_texture_t	*fill_stripe(mlx_texture_t *tex, \
+	uint32_t stripeheight, double start[], uint32_t x)
 {
-	mlx_texture_t	*ret;
-	uint32_t		x;
+	uint32_t		c;
 	double			y;
 	double			hw;
-	uint32_t		count;
-	uint32_t		pixel;
+	mlx_texture_t	*ret;
 
-	pixel = (percentage * texture->width) / 1000 * 4;
-	if (pixel - 1 < 0)
-		pixel = 1;
-	x = pixel;
-	y = 0;
-	hw = (double)texture->height / (double)stripeheight;
-	count = 0;
-	if ((int)stripeheight > game->w1.size[1])
-	{
-		y = (double)(((int)stripeheight - game->w1.size[1]) * hw / 2);
-		stripeheight = (uint32_t)game->w1.size[1];
-	}
+	c = 0;
+	y = start[0];
+	hw = start[1];
 	ret = malloc(sizeof(mlx_texture_t));
 	ret->width = 1;
 	ret->height = stripeheight;
 	ret->bytes_per_pixel = 4;
 	ret->pixels = malloc(sizeof(uint8_t) * (stripeheight * 4));
-	while (count < (stripeheight * 4))
+	while (c < (stripeheight * 4))
 	{
-		ret->pixels[count] = texture->pixels[x + (int)y * (texture->width * 4)];
-		ret->pixels[count + 1] = texture->pixels[x + 1 + (int)y * (texture->width * 4)];
-		ret->pixels[count + 2] = texture->pixels[x + 2 + (int)y * (texture->width * 4)];
-		ret->pixels[count + 3] = texture->pixels[x + 3 + (int)y * (texture->width * 4)];
-		count += 4;
+		ret->pixels[c] = tex->pixels[x + (int)y * (tex->width * 4)];
+		ret->pixels[c + 1] = tex->pixels[x + 1 + (int)y * (tex->width * 4)];
+		ret->pixels[c + 2] = tex->pixels[x + 2 + (int)y * (tex->width * 4)];
+		ret->pixels[c + 3] = tex->pixels[x + 3 + (int)y * (tex->width * 4)];
+		c += 4;
 		y += hw;
 	}
 	return (ret);
+}
+
+//NEXT: proteger funcion
+mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, \
+int percentage, uint32_t stripeheight, t_prog *game)
+{
+	uint32_t		pixel;
+	double			start[2];
+
+	start[0] = 0;
+	pixel = (percentage * texture->width) / 1000 * 4;
+	start[1] = (double)texture->height / (double)stripeheight;
+	if ((int)stripeheight > game->w1.size[1])
+	{
+		start[0] = (double)(((int)stripeheight - game->w1.size[1])
+				* start[1] / 2);
+		stripeheight = (uint32_t)game->w1.size[1];
+	}
+	return (fill_stripe(texture, stripeheight, start, pixel));
 }
 
 /** PURPOSE : floor layer + horizon sky. 

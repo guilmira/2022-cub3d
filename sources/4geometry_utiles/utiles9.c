@@ -24,9 +24,8 @@ void	log_coor_int(int i[])
 	OX %i y  OY %i\n", i[0], i[1]);
 }
 
-void	print_map(char **map, t_prog *game, int **s_map)
+/*void	print_map(char **map, t_prog *game, int **s_map)
 {
-
 	(void) map;
 	printf("empieza\n");
 	for (int j = 0; j < game->map2D.height; j++)
@@ -38,3 +37,4 @@ void	print_map(char **map, t_prog *game, int **s_map)
 	printf("altura %i\n", game->map2D.height);
 	printf("anchura %i\n", game->map2D.width);
 }
+*/

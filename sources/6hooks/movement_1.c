@@ -43,19 +43,12 @@ static inline void	abort_crapping(t_prog *game, int pixel_per_block[])
 void	filter_final_pos(t_prog *game, double new_pos[], \
 int flag, int pixel_per_block[])
 {
-	if (flag == 0)
-	{
-		game->pl.v_position_coor[0] = new_pos[0];
-		game->pl.v_position_coor[1] = new_pos[1];
-		game->pl.position[0] = floor(new_pos[0] / pixel_per_block[0]);
-		game->pl.position[1] = ceil(new_pos[1] / pixel_per_block[1]) - 1;
-	}
-	if (flag == 1 || flag == 2)
+	if (flag == 1 || flag == 2 || flag == 0)
 	{
 		game->pl.v_position_coor[1] = new_pos[1];
 		game->pl.position[1] = ceil(new_pos[1] / pixel_per_block[1]) - 1;
 	}
-	if (flag == 3 || flag == 4)
+	if (flag == 3 || flag == 4 || flag == 0)
 	{
 		game->pl.v_position_coor[0] = new_pos[0];
 		game->pl.position[0] = floor(new_pos[0] / pixel_per_block[0]);
