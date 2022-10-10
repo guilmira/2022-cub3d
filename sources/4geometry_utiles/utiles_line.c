@@ -6,11 +6,18 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 14:28:27 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 12:55:54 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:13:17 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+int	check_radio(double coord[], double radio)
+{
+	if (pow((coord[0]), 2) + pow((coord[1]), 2) <= pow(radio, 2))
+		return (1);
+	return (0);
+}
 
 /** PURPOSE : Put line horizontal from given beginning to end.
  * ONLY HORIZONTAL LINE AND ONLY FOR MINIMAP. */

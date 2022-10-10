@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/06 16:20:01 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:57:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static inline void	abort_crapping(t_prog *game, int pixel_per_block[])
 	pixel_per_block[1]) - 1;
 }
 
-void	filter_final_pos(t_prog *game, double new_pos[], int flag, int pixel_per_block[])
+void	filter_final_pos(t_prog *game, double new_pos[], \
+int flag, int pixel_per_block[])
 {
 	if (flag == 0)
 	{
@@ -88,5 +89,5 @@ int	wall_coll(t_prog *game, double new_pos[], int pixel_per_block[])
 		return (TOP_COLLISION);
 	if (game->map2D.layout[pos[4]][pos[2]] == 1)
 		return (BOTTOM_COLLISION);
-	return(0);
+	return (0);
 }

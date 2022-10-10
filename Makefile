@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/06 16:16:38 by guilmira         ###   ########.fr        #
+#    Updated: 2022/10/07 13:24:44 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -O3 -fsanitize=address #-Werror
-ARG			= maps/easy_map2.cub
+ARG			= maps/easy_map222.cub
 
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER				= -I ./0includes
@@ -35,7 +35,7 @@ FOLDER2		= $(addprefix $(ROUTE)/2vector_control/,		vector_tools.c vector_arithme
 FOLDER3		= $(addprefix $(ROUTE)/3parser/,				parser.c info_parse.c info_parse_1.c info_parse_2.c map_parse.c map_parse_1.c visual_utilities.c)
 FOLDER4		= $(addprefix $(ROUTE)/4utiles/,				tools.c )
 FOLDER4v	= $(addprefix $(ROUTE)/4geometry_utiles/,		utiles.c utiles_line.c utiles9.c )
-FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c)
+FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c error_management_aux.c)
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c vison_control.c hook_keys.c hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c)
 FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c 3D_ray_texture.c 3D_ray_texture_aux.c 3D_ray_simplewall.c)

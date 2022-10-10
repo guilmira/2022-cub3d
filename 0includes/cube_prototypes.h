@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/06 16:22:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:13:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void			clean_exit(t_prog *game);
 void			ft_shutdown(char *error_msg, t_prog *game);
 void			freemat(char **mat);
 void			freemat_int(int **mat, int len);
+int				check_radio(double coord[], double radio);
 void			ft_mlx_delete_image_safe(int image_position, t_prog *game);
-void			clear_uint8(uint8_t **map, int height);
 void			destroy_texture(t_prog *game);
 
 /* ------------------------ RAYCAST ------------------------ */
@@ -148,8 +148,6 @@ t_vector direction, t_prog *game);
 /* ------------------------ PLAYER AND MOVEMENT ------------------------ */
 /* PLAYER */
 void			draw_player_position(mlx_image_t *image, t_prog *game);
-void			draw_2d_player(mlx_image_t *image, \
-double pos[], double radio, int colour, t_prog *game);
 /* MOVEMENT */
 void			vison_control(mlx_key_data_t key, t_prog *game);
 void			movement_control(mlx_key_data_t key, t_prog *game);

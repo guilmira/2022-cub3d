@@ -6,11 +6,31 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:32:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:58:07 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+static void	draw_2d_player(mlx_image_t *image, double pos[], \
+double radio, int colour, t_prog *game)
+{
+	double	i[2];
+
+	i[0] = -1 - radio;
+	while (++i[0] < (radio * 2))
+	{
+		i[1] = -1 - radio;
+		while (++i[1] < (radio * 2))
+		{
+			if (check_radio(i, radio))
+			{
+				solid_pixel(image, i[0] + pos[0], \
+				coor(i[1] + pos[1], game->w2.size[1]), colour);
+			}
+		}
+	}
+}
 
 /** PURPOSE : Draw player with its field of vision. 
  * 1. Requires player coordinates.

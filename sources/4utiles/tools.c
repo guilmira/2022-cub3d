@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:33:17 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:08:17 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:55:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ updgrades of the rendering speed.  */
 double	coor(double y, double size_y)
 {
 	if (y == 0)
-		return (SAFE_OFFSET);
+		return (0.001);
 	if (size_y - y < 0)
 	{
-	/* 	ft_senderror("Invalid 'y' coordinate.\n");
-		ft_senderror("If this message appears repetedly,\
-		will slower the rendering.\n");
-		printf("Value %f\n", y); */
+		ft_senderror("Invalid 'y' coordinate.\n");
+		ft_senderror("If this message appears repetedly, \
+		it will slower the rendering.\n");
+		printf("Value %f\n", y);
 		return (0);
 	}
 	return (size_y - y);
@@ -43,15 +43,15 @@ double	degree_to_radian(double degree)
 	return (degree * (double) M_PI / 180);
 }
 
-int **copy_double_pointer(int **var, int height, int width)
+int	**copy_double_pointer(int **var, int height, int width)
 {
 	int		i;
 	int		x;
-	int	**aux;
+	int		**aux;
 
 	aux = ft_calloc(sizeof(int *), height);
 	i = 0;
-	while(i < height)
+	while (i < height)
 	{
 		x = 0;
 		aux[i] = ft_calloc(sizeof(int), width);
@@ -62,7 +62,7 @@ int **copy_double_pointer(int **var, int height, int width)
 		}
 		i++;
 	}
-	return(aux);
+	return (aux);
 }
 
 void	print_smap(int **s_map, int height, int width)
@@ -72,7 +72,7 @@ void	print_smap(int **s_map, int height, int width)
 
 	i = 0;
 	printf("height:%d || width:%d\n", height, width);
-	while(i < height)
+	while (i < height)
 	{
 		x = 0;
 		printf("| ");
@@ -85,9 +85,3 @@ void	print_smap(int **s_map, int height, int width)
 		i++;
 	}
 }
-
-
-
-
-
-
