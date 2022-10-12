@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 13:57:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:04:24 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	update_player_vision(int key, t_prog *game)
 void	vison_control(mlx_key_data_t key, t_prog *game)
 {
 	(void) key;
-	game->pl.flag_movement = 1;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		update_player_vision(key_lookright, game);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))

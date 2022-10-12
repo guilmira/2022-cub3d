@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement_0.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/07 12:54:32 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/12 15:28:59 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	update_player_position(int key, t_prog *game)
 
 	i = -1;
 	speed = PLAYER_SPEED * 2;
-	if (game->map2D.v_pixel_per_block[0] != 0)
+	if (game->map2D.v_pixel_per_block[0] > game->map2D.pixel_per_block[0])
 	{	
 		pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
 		pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
@@ -81,6 +81,16 @@ void	update_player_position(int key, t_prog *game)
 		pixel_per_block[0] = game->map2D.pixel_per_block[0];
 		pixel_per_block[1] = game->map2D.pixel_per_block[1];
 	}
+	/* if (pixel_per_block[0] < game->map2D.v_pixel_per_block[0])
+	{
+		pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
+		pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
+	}
+	if (pixel_per_block[0] < game->map2D.pixel_per_block[0])
+	{
+		pixel_per_block[0] = game->map2D.pixel_per_block[0];
+		pixel_per_block[1] = game->map2D.pixel_per_block[1];
+	} */
 	vp[0] = ((double)(game->pl.vis.x) / (double)5);
 	vp[1] = ((double)(game->pl.vis.y) / (double)5);
 	x = 0;
@@ -88,6 +98,7 @@ void	update_player_position(int key, t_prog *game)
 		if (key == i)
 			while (x++ < speed)
 				move_position(vp, game, key, pixel_per_block);
+	game->pl.flag_movement = 1;
 }
 
 /** PURPOSE : distribute proper key control
@@ -95,7 +106,7 @@ void	update_player_position(int key, t_prog *game)
  * Or combination of the above. */
 void	movement_control(mlx_key_data_t t_key, t_prog *game)
 {
-	game->pl.flag_movement = 1;
+	game->pl.flag_movement = 0;
 	if (mlx_is_key_down(game->mlx, t_key.key) == 1)
 		set_key_state(game);
 	else

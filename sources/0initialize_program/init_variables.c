@@ -41,7 +41,7 @@ void	init_game(t_prog *game)
 	game->file = 0;
 	game->minimap_state = MINIMAP_INTIAL_STATE;
 	init_image(game);
-	game->pl.flag_movement = 1;
+	game->pl.flag_movement = 0;
 	game->pl.flag_trance = 0;
 	game->pl.fov = 0;
 	game->map2D.layout = NULL;

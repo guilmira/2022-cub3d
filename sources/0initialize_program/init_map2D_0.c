@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map2D_0.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/07 13:55:07 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/12 14:24:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 	j = -1;
 	i = -1;
 	layout = NULL;
+	printf("aqui\n");
+
 	layout = allocate_all_layout(game->map2D.height, game->map2D.width);
 	while (++j < height)
 	{
@@ -89,10 +91,7 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 /** PURPOSE : Translate parser map into a wall map. */
 void	init_map2d(char **map, t_prog *game)
 {
-	int	**layout;
-
-	layout = fill_new_map(game->map2D.height, game, map);
-	game->map2D.layout = layout;
+	game->map2D.layout = fill_new_map(game->map2D.height, game, map);
 	build_spaced_layout(game, game->map2D.height, game->map2D.width);
 	freemat_int(game->map2D.layout, game->map2D.height);
 	game->map2D.layout = copy_double_pointer \
@@ -100,5 +99,7 @@ void	init_map2d(char **map, t_prog *game)
 	game->map2D.height = game->map2D.s_height;
 	game->map2D.width = game->map2D.s_width;
 	update_pixel_per_block(game);
+	
 	start_player_position(game->pl.position[1], game->pl.position[0], game);
+
 }

@@ -6,12 +6,15 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 12:46:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/12 13:06:24 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_STRUCTS_H
 # define CUBE_STRUCTS_H
+
+//NEXT ver todos los includes Y CAPAR MAPAS MUY CORTOS Y MUY LARGOS
+//LOS FAIL EN LA EVALUACION PUEDEN VENIR POR QUE METAN MAPAS PERROS
 
 # include "cube_defines.h"
 /* ------------------------ STRUCTS ------------------------ */
@@ -73,7 +76,7 @@ typedef struct s_beam
  * Where is located, where is it looking at. */
 typedef struct s_player
 {
-	bool			key[512];
+	bool			key[512]; //NEXT en un define?
 	int				fov;
 	int				position[D2];
 	double			position_coor[D2];
