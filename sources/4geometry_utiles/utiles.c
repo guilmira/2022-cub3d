@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/13 12:09:12 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:12:03 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	solid_pixel(mlx_image_t *image, int coor_x, int coor_y, uint32_t colour)
 	uint32_t	y;
 
 	mlx_put_pixel(image, 50, 50, BLACK);
-
 	if (coor_x < 0 || coor_y < 0 || colour < 0)
 	{
 		if (GRAPHIC_ENGINE_REPORT)

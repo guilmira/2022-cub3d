@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/13 12:10:57 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:02:29 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,13 @@ void	reconstruct_minimap_variables(t_prog *game)
 /** PURPOSE : Executed when hitting tab. It executes twice */
 static inline void	hook_control_minimap(t_prog *game)
 {
-	/* if (game->pl.flag_movement)
-		return ; */
 	correct_minimap_value(game);
 	game->map2D.v_pixel_per_block[0] = 0;
 	game->map2D.v_pixel_per_block[1] = 0;
 	game->w1.size[1] = OY_WINDOW;
 	game->w1.size[0] = OX_WINDOW;
 	if (is_minimap(game) == 1)
-	{
-		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
-		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
-
 		reconstruct_minimap_variables(game);
-	}
 	else
 	{
 		game->w1.size[1] = OY_WINDOW;
@@ -95,7 +88,6 @@ static inline void	hook_control_minimap(t_prog *game)
 		update_pixel_per_block(game);
 		update_player_location(game);
 	}
-
 }
 
 /** PURPOSE : manage keys. */
