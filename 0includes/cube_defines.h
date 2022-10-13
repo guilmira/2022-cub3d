@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/13 14:38:50 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 15:09:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 /* 								 MAP INTITAL STATE
 				0 - no minimap
 2 - minimap corner         4 - full minimap 						*/
-# define MINIMAP_INTIAL_STATE 4 //NEXT 2 0
+# define MINIMAP_INTIAL_STATE 0 //NEXT 2 0
 # define FULL_MINIMAP 4
 
 /* Window boundry condition. */
