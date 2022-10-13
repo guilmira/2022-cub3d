@@ -6,12 +6,12 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/12 13:29:15 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:51:00 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
+//NEXT 2 mapas
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */

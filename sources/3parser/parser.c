@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/03 12:27:23 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:58:24 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ext_err(t_prog *game, char *av)
 	if (av[i] != '.')
 		return (1);
 	aux = ft_substr(av, i, ft_strlen(av));
-	i = ft_strcmp(aux, ".cub\0");
+	i = ft_strcmp(".cub\0", aux);
 	free(aux);
 	game->file = open(av, O_RDONLY, 0666);
 	if (i == 0 && game->file != -1)
