@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:28:34 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:15:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@
 # include "../libft_submodule/0includes/libft.h"
 /* MLX */
 # include "MLX42.h"
-/* TOOLS */
-# include <time.h> 
-//NEXT PREVIO_EV para borrar
 /* ------------------------ PROYECT INCLUDES ------------------------ */
 # include "cube_defines.h"
 # include "cube_enums.h"
