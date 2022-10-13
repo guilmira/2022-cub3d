@@ -40,6 +40,9 @@ void	init_game(t_prog *game)
 	game->map2D.map = NULL;
 	game->file = 0;
 	game->minimap_state = MINIMAP_INTIAL_STATE;
+	if (game->minimap_state != 0 && game->minimap_state != 4 \
+	&& game->minimap_state != 2)
+		ft_shutdown("Valid Minimap values: 0, 2 or 4\n", game);
 	init_image(game);
 	game->pl.flag_movement = 0;
 	game->pl.flag_trance = 0;

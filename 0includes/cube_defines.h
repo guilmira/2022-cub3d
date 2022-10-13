@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/13 12:12:33 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:38:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1420
+# define OX_WINDOW 1860
 # define OY_WINDOW 1040
 /* Minimap size ratio */
 # define MINIMAP_WINDOW_RATIO 5
@@ -26,8 +26,12 @@
 /* 								 MAP INTITAL STATE
 				0 - no minimap
 2 - minimap corner         4 - full minimap 						*/
-# define MINIMAP_INTIAL_STATE 4
+# define MINIMAP_INTIAL_STATE 4 //NEXT 2 0
 # define FULL_MINIMAP 4
+
+/* Window boundry condition. */
+# define WINDOW_LOWER_LIMIT 1000
+# define WINDOW_UPPER_LIMIT 2500
 
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
 # define SHADOWED_TRANSPARENCY 120

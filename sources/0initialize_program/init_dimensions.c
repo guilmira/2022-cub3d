@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/13 13:13:53 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:08:56 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,16 @@ static inline t_dim	copy_dim_struct(t_dim window_src)
 
 void	get_minimap_simetric_size(t_prog *game)
 {
-	game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
-	game->w2.size[1] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
+	if (game->w1.size[0] < game->w1.size[1])
+	{
+		game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
+		game->w2.size[1] = game->w2.size[0];
+	}
+	else
+	{
+		game->w2.size[0] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
+		game->w2.size[1] = game->w2.size[0];
+	}
 	while ((int) game->w2.size[0] % game->map2D.width != 0)
 		game->w2.size[0]++;
 	while ((int) game->w2.size[1] % game->map2D.height != 0)
@@ -48,9 +56,7 @@ void	get_minimap_simetric_size(t_prog *game)
  * EXPLANATION - limit and size are the same, but calculated int two ways. */
 void	minimap_dimensions(t_prog *game)
 {
-	if (!game->minimap_state)
-		return ;
-	else if (game->minimap_state == 2)
+	if (game->minimap_state == 2)
 	{
 		get_minimap_simetric_size(game);
 		if (game->w2.size[0] - game->w2.origin[0] > game->w1.size[0] \

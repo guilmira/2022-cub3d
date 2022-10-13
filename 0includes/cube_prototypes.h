@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 13:13:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:36:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ int				get_maxlen(t_prog *game, t_list *aux_lst);
 int				ret_l(t_list *aux_lst);
 void			map_refill(t_prog *game, int c, t_list *aux_lst);
 
-
 /*VISUAL UTILITIES PARSER*/
 
 void			show_info(t_prog *game);
 void			show_map(t_prog *game);
-
 
 /* STRUCT INIT */
 void			init_game(t_prog *game);
@@ -160,7 +158,7 @@ void			filter_final_pos(t_prog *game, double new_pos[], \
 int flag, int pixel_per_block[]);
 void			set_key_state(t_prog *game);
 void			reset_key_state(t_prog *game);
-
+void			control_window_limits(t_prog *game);
 /* TOOLS */
 void			draw_centered_rectangle(double position[], \
 int base, int height, t_prog *game);
