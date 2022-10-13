@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/12 14:24:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:06:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 	j = -1;
 	i = -1;
 	layout = NULL;
-	printf("aqui\n");
-
 	layout = allocate_all_layout(game->map2D.height, game->map2D.width);
 	while (++j < height)
 	{

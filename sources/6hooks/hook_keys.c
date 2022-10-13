@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/12 15:22:06 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:10:57 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ void	update_player_location(t_prog *game)
 	double	coor_fraccion[D2];
 	double	coor_base_old[D2];
 	double	coor_factor[D2];
-
-
-	/* printf("estado minimapa %i\n", game->minimap_state);
-	log_coor_int(game->map2D.pixel_per_block);
-	log_coor_int(game->map2D.v_pixel_per_block);
-
-
-		printf("1\n");
-	log_coor(game->pl.position_coor);
-	printf("2\n"); */
 
 	coor_base[0] = (double)(game->pl.position[0]) \
 	* game->map2D.pixel_per_block[0];

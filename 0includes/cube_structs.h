@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/12 13:06:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:04:51 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ typedef struct s_program
 	t_raycast		*rc;
 	int				minimap_state;
 	int				file;
+	int				flag_engine_report;
 }					t_prog;
 
 #endif

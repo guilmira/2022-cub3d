@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/12 15:26:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:09:04 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 # define SAFE_OFFSET 0.0001
 # define FOV_DEGREE 30
 
+/* Activates messages showing rendering inefficiencies. */
+# define GRAPHIC_ENGINE_REPORT 0
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS --------------------- */
 /* Raycast related. */
 # define VISION_RAY 1
