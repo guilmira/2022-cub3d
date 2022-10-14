@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map2D_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/08/20 16:55:23 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:30:18 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static inline void	buildheight(t_prog *game, int height, int width)
 	else
 		game->map2D.s_height = height + 1;
 	game->pl.position[0] += game->map2D.val;
+	game->pl.position[1] = game->map2D.s_height - game->pl.position[1] - 1;
 }
 
 void	build_spaced_layout(t_prog *game, int height, int width)

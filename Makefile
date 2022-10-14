@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/14 16:12:35 by guilmira         ###   ########.fr        #
+#    Updated: 2022/10/14 16:58:46 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME		= cube
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -O3 #-fsanitize=address 
-ARG			= maps_and_media/maps/test_map.cub
+ARG			= maps_and_media/maps/default.cub
 
 #--------------------------------------------------------------------------------------------------------------LIBS
 HEADER				= -I ./0includes

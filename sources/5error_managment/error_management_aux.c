@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 15:30:11 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:50:17 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	freemat(char **mat)
 	free(mat);
 }
 
-//NEXT
 void	ft_leaks(void)
 {
 	system("leaks -quiet cube");
