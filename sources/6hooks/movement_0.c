@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/13 13:01:09 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:25:49 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	update_player_position(int key, t_prog *game)
 	i = -1;
 	speed = PLAYER_SPEED * 2;
 	pixel_per_block[0] = game->map2D.pixel_per_block[0];
-		pixel_per_block[1] = game->map2D.pixel_per_block[1];
+	pixel_per_block[1] = game->map2D.pixel_per_block[1];
 	if (game->map2D.v_pixel_per_block[0] > game->map2D.pixel_per_block[0])
 	{	
 		pixel_per_block[0] = game->map2D.v_pixel_per_block[0];

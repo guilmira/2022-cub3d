@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/13 15:13:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:12:20 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static inline void	start_player_position(int j, int i, t_prog *game)
 	((double) game->map2D.pixel_per_block[1] / 2);
 	game->pl.v_position_coor[0] = game->pl.position_coor[0];
 	game->pl.v_position_coor[1] = game->pl.position_coor[1];
-	log_coor(game->pl.position_coor);
-	log_coor_int(game->map2D.pixel_per_block);
 }
 
 /** PURPOSE : Work with array [j][i] as a cartesian system. */
