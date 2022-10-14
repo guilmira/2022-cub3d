@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 06:04:39 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/06 16:00:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ double factor, t_ray *ray, t_prog *game)
 
 	if (ray->face == 2)
 	{
-		vector.y = blocks_advanced * game->map2D.pixel_per_block[1] - \
+		vector.y = blocks_advanced * game->map2d.pixel_per_block[1] - \
 		ray->relative_distance[1];
 		vector.x = vector.y / factor;
 	}
 	if (ray->face == 1)
 	{
-		vector.x = blocks_advanced * game->map2D.pixel_per_block[0] - \
+		vector.x = blocks_advanced * game->map2d.pixel_per_block[0] - \
 		ray->relative_distance[0];
 		vector.y = vector.x * factor;
 	}
@@ -49,9 +49,9 @@ int array_pos, t_vector dir, t_prog *game)
 	if (ray->dir.x < 0 && array_pos == 0)
 		blocks_advanced = ray->step[array_pos] - ray->pos[array_pos] + 1;
 	if (!dir.x)
-		vector.y = blocks_advanced * game->map2D.pixel_per_block[array_pos];
+		vector.y = blocks_advanced * game->map2d.pixel_per_block[array_pos];
 	if (!dir.y)
-		vector.x = blocks_advanced * game->map2D.pixel_per_block[array_pos];
+		vector.x = blocks_advanced * game->map2d.pixel_per_block[array_pos];
 	ray->resultant_vector = vector;
 	if (!dir.x || !dir.y)
 		return ;
@@ -85,7 +85,7 @@ static inline void	raycast_algorithm(t_ray *ray, t_vector dir, t_prog *game)
 	int	counter;
 
 	counter = -1;
-	while (++counter <= game->map2D.width + game->map2D.height)
+	while (++counter <= game->map2d.width + game->map2d.height)
 	{
 		if (ray->net_distance[1] < ray->net_distance[0] || !ray->delta[0])
 		{	

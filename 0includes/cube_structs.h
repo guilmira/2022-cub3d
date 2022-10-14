@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 16:49:47 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:24:27 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_beam
 	t_vector		plane_segment;
 	int				number_of_rays;
 }					t_beam;
-
 
 /** PURPOSE : Info of the player
  * Where is located, where is it looking at. */
@@ -132,15 +131,15 @@ typedef struct s_program
 {
 	mlx_t			*mlx;
 	mlx_image_t		*image[TOTAL_IMAGES + 1];
-	t_map			map2D;
-	char			*NO;
-	char			*SO;
-	char			*WE;
-	char			*EA;
-	mlx_texture_t	*t_NO;
-	mlx_texture_t	*t_SO;
-	mlx_texture_t	*t_WE;
-	mlx_texture_t	*t_EA;
+	t_map			map2d;
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	mlx_texture_t	*t_north;
+	mlx_texture_t	*t_south;
+	mlx_texture_t	*t_west;
+	mlx_texture_t	*t_east;
 	int				sky_clr;
 	int				floor_clr;
 	t_dim			w1;

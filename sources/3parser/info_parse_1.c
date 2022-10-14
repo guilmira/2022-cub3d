@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_parse_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/01 12:51:40 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:20:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	parse_limit(char *limiter)
 
 int	parse_and_storage(char *limiter, t_prog *game, char *content)
 {
-	if (!ft_strcmp(limiter, "NO") || !ft_strcmp(limiter, "SO")
-		|| !ft_strcmp(limiter, "WE") || !ft_strcmp(limiter, "EA")
+	if (!ft_strcmp(limiter, "north") || !ft_strcmp(limiter, "south")
+		|| !ft_strcmp(limiter, "west") || !ft_strcmp(limiter, "east")
 		|| !ft_strcmp(limiter, "F") || !ft_strcmp(limiter, "C"))
 	{
 		if (storage_info(limiter, game, content) != 0)
@@ -76,14 +76,14 @@ int	getinfovisual(char *content, t_prog *game)
 
 int	storage_info(char *limiter, t_prog *game, char *content)
 {
-	if (ft_strcmp(limiter, "NO") == 0)
-		game->NO = cacht_info_str(content);
-	else if (ft_strcmp(limiter, "SO") == 0)
-		game->SO = cacht_info_str(content);
-	else if (ft_strcmp(limiter, "WE") == 0)
-		game->WE = cacht_info_str(content);
-	else if (ft_strcmp(limiter, "EA") == 0)
-		game->EA = cacht_info_str(content);
+	if (ft_strcmp(limiter, "north") == 0)
+		game->north = cacht_info_str(content);
+	else if (ft_strcmp(limiter, "south") == 0)
+		game->south = cacht_info_str(content);
+	else if (ft_strcmp(limiter, "west") == 0)
+		game->west = cacht_info_str(content);
+	else if (ft_strcmp(limiter, "east") == 0)
+		game->east = cacht_info_str(content);
 	else if (ft_strcmp(limiter, "F") == 0)
 		game->floor_clr = catch_number(content);
 	else if (ft_strcmp(limiter, "C") == 0)

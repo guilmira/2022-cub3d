@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/14 15:25:05 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ int	wall_coll(t_prog *game, double new_pos[], int pixel_per_block[])
 	pos[3] = ceil((new_pos[1] + game->pl.ratio) / pixel_per_block[1] - 1);
 	pos[4] = ceil((new_pos[1] - game->pl.ratio) / pixel_per_block[1] - 1);
 	pos[5] = ceil(new_pos[1] / pixel_per_block[1] - 1);
-	if (game->map2D.layout[pos[5]][pos[0]] == 1)
+	if (game->map2d.layout[pos[5]][pos[0]] == 1)
 		return (RIGHT_COLLISION);
-	if (game->map2D.layout[pos[5]][pos[1]] == 1)
+	if (game->map2d.layout[pos[5]][pos[1]] == 1)
 		return (LEFT_COLLISION);
-	if (game->map2D.layout[pos[3]][pos[2]] == 1)
+	if (game->map2d.layout[pos[3]][pos[2]] == 1)
 		return (TOP_COLLISION);
-	if (game->map2D.layout[pos[4]][pos[2]] == 1)
+	if (game->map2d.layout[pos[4]][pos[2]] == 1)
 		return (BOTTOM_COLLISION);
 	return (0);
 }

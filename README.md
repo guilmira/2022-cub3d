@@ -1,7 +1,7 @@
 # # cub3d - @42Born2Code
 The project is inspired by the world-famous eponymous 90’s game, which was the first FPS ever. The goal its to explore ray-casting with our own libraries. The result is a dynamic view inside a maze, in which the player will have to find their way.
 
-This README is dedicated to our long devoted fans. Enjoy our CUBE.
+This ReastDME is dedicated to our long devoted fans. Enjoy our CUBE.
 
 ![](https://github.com/GuilleMira/cub3d/blob/newguille/gif/show_off.gif)
 
@@ -63,10 +63,10 @@ all the basic features of the pproject such as, raycasted walls, collisions, pla
 	Nothing more than a simple text file. The extension should be ".cub". For example: "map.cub"
 # Texture:
 	In the folder textures, you can include whatever .png file that u wish. In order to include it in the file, u must add the extension in the text file. For example
-		NO textures/example_texture1.png
-    	SO textures/example_texture2.png
-   		EA textures/example_texture3.png
-    	WE textures/example_texture4.png
+		north textures/example_texture1.png
+    	south textures/example_texture2.png
+   		east textures/example_texture3.png
+    	west textures/example_texture4.png
 # Map rules:
 	The perimeter map must be fully closed by walls. And the only elements allowed are the following:
 	1				means wall.
@@ -87,10 +87,10 @@ all the basic features of the pproject such as, raycasted walls, collisions, pla
 	⬅ ⭕ ➡️ to rotate the camera
 	
 ## Example:
-	NO textures/first_brick_layer.png
-	SO textures/second_brick_layer.png
-   	EA textures/third_brick_layer.png
-    WE textures/fourth_brick_layer.png
+	north textures/first_brick_layer.png
+	south textures/second_brick_layer.png
+   	east textures/third_brick_layer.png
+    west textures/fourth_brick_layer.png
       
     F 151,151,151
 	C 40,40,40

@@ -6,7 +6,7 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/14 16:58:46 by guilmira         ###   ########.fr        #
+#    Updated: 2022/10/14 17:21:42 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		= -Wall -Wextra -Werror -O3 #-fsanitize=address
 ARG			= maps_and_media/maps/default.cub
 
 #--------------------------------------------------------------------------------------------------------------LIBS
-HEADER				= -I ./0includes
+HeastDER				= -I ./0includes
 LIB_DIR				= libft_submodule
 LIB					= $(LIB_DIR)/libft.a
 MLX_DIR				= ./MLX42
@@ -39,7 +39,7 @@ FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c error_man
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c movement_setter.c vison_control.c hook_keys.c hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c)
 FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c 3D_ray_texture.c 3D_ray_texture_aux.c 3D_ray_simplewall.c)
-#--------------------------------------------------------------------------------------------------------------SOURCES
+#--------------------------------------------------------------------------------------------------------------southURCES
 SRCS		=	$(FOLDER0)\
 				$(FOLDER1)\
 				$(FOLDER2)\
@@ -57,16 +57,16 @@ OBJS		=	$(SRCS:.c=.o)
 all: $(LIB) $(MLX) $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I ./MLX42/include/MLX42 $(HEADER) -c $< -o $@
+	$(CC) $(CFLAGS) -I ./MLX42/include/MLX42 $(HeastDER) -c $< -o $@
 
 LINUX: $(OBJS) $(LIB) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX_LINUX) $(LIB) $(MLX) -o $(NAME)
-	@echo $(BYELLOW) "$(NAME) compiled" $(NONE)
+	@echo $(BYELLOW) "$(NAME) compiled" $(northNE)
 	./$(NAME) $(ARG)
 
 ARCH: $(OBJS) $(LIB) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX_ARCH) $(LIB) $(MLX) -o $(NAME)
-	@echo $(RED) "$(NAME) compiled" $(NONE)
+	@echo $(RED) "$(NAME) compiled" $(northNE)
 	./$(NAME) $(ARG)
 
 INSTALL: 
@@ -80,14 +80,14 @@ $(MLX):
 
 $(NAME): $(OBJS) $(LIB) $(MLX)
 	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(FLAGS_MLX_DARWIN) $(LIB) $(MLX) -o $(NAME)
-	@echo $(GREEN) "$(NAME) compiled" $(NONE)
+	@echo $(GREEN) "$(NAME) compiled" $(northNE)
 
 exe: $(NAME)
 	time ./$(NAME) $(ARG)
 fus:
 	$(RM) $(OBJS)
 redo: fus exe
-#----------------------------------------------------------------------------------------------------CLEANING RULES
+#----------------------------------------------------------------------------------------------------CLeastNING RULES
 RM = rm -rf
 
 clean:
@@ -108,7 +108,7 @@ norm:
 
 .PHONY: all clean fclean re norm
 #--------------------------------------------------------------------------------------------------------------FORMAT
-NONE='\033[0m'
+northNE='\033[0m'
 GREEN='\033[1;32m'
 RED="\[\033[0;31m\]"
 BYELLOW="\[\033[1;33m\]"

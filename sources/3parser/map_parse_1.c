@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/08/11 14:49:15 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	getcoords(t_prog *game, t_list *aux_lst)
 	int	l;
 
 	x = 0;
-	game->map2D.map_y = get_maxlen(game, aux_lst);
+	game->map2d.map_y = get_maxlen(game, aux_lst);
 	while (1)
 	{
 		l = ret_l(aux_lst);
@@ -42,7 +42,7 @@ int	getcoords(t_prog *game, t_list *aux_lst)
 			break ;
 		aux_lst = aux_lst->next;
 	}
-	game->map2D.map_x = x;
+	game->map2d.map_x = x;
 	return (0);
 }
 
@@ -50,17 +50,17 @@ void	fill_spaces_map(t_prog *game, t_list *aux_lst)
 {
 	int	c;
 
-	game->map2D.map = ft_calloc(sizeof(char *), game->map2D.map_y + 3);
-	game->map2D.map[0] = ft_calloc(sizeof(char), game->map2D.map_x + 3);
+	game->map2d.map = ft_calloc(sizeof(char *), game->map2d.map_y + 3);
+	game->map2d.map[0] = ft_calloc(sizeof(char), game->map2d.map_x + 3);
 	c = -1;
-	while (++c <= game->map2D.map_x + 1)
-		game->map2D.map[0][c] = ' ';
+	while (++c <= game->map2d.map_x + 1)
+		game->map2d.map[0][c] = ' ';
 	map_refill(game, c, aux_lst);
-	game->map2D.map[game->map2D.map_y + 1] = ft_calloc(sizeof(char),
-			game->map2D.map_x + 3);
+	game->map2d.map[game->map2d.map_y + 1] = ft_calloc(sizeof(char),
+			game->map2d.map_x + 3);
 	c = -1;
-	while (++c <= game->map2D.map_x + 1)
-		game->map2D.map[game->map2D.map_y + 1][c] = ' ';
+	while (++c <= game->map2d.map_x + 1)
+		game->map2d.map[game->map2d.map_y + 1][c] = ' ';
 }
 
 int	is_closed(char **map)

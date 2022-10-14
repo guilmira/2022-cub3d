@@ -6,13 +6,13 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/13 13:12:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:20:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/* NOTATION: 
+/* northTATION: 
 	coor_x, coor_y :	abstraction coordinates. Have not been shifted.
 	have DOUBLE type.
 	x, y:				actual coordinates. already shifted. Used for solid_pixel.

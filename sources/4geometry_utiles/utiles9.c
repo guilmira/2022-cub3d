@@ -6,12 +6,12 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 15:27:29 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/13 12:09:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:17:19 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-/* NEXT QUITAR ESTO */
+
 void	log_coor(double array[])
 {
 	printf("Coordinates:						\

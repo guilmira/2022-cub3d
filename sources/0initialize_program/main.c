@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 16:49:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 	parser(game, argc, argv);
 	prep_textures(game);
 	framework_dimensions(game);
-	init_map2d(game->map2D.map, game);
+	init_map2d(game->map2d.map, game);
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);

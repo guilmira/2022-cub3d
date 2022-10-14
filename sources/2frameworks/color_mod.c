@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 09:44:08 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:20:15 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 and RBG values range from 0 to 255, 
 we can perfectly fit a integer (as an int is 4 bytes).  */
 
-//Trnsparency : 0 = ALL. 255 = NONE
+//Trnsparency : 0 = ALL. 255 = northNE
 
 /** PURPOSE : Translates values for each colour to a single integer.
  * Values given as a parameter can only go from 0 to 255 in all cases. 

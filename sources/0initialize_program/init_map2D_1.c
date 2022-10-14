@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/13 14:39:13 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:25:50 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	update_pixel_per_block(t_prog *game)
 {
 	if (game->w2.size[1] < game->w2.size[0])
 	{
-		game->map2D.pixel_per_block[0] = game->w2.size[1] / game->map2D.width;
-		game->map2D.pixel_per_block[1] = game->w2.size[1] / game->map2D.height;
+		game->map2d.pixel_per_block[0] = game->w2.size[1] / game->map2d.width;
+		game->map2d.pixel_per_block[1] = game->w2.size[1] / game->map2d.height;
 	}
 	else
 	{
-		game->map2D.pixel_per_block[0] = game->w2.size[0] / game->map2D.width;
-		game->map2D.pixel_per_block[1] = game->w2.size[0] / game->map2D.height;
+		game->map2d.pixel_per_block[0] = game->w2.size[0] / game->map2d.width;
+		game->map2d.pixel_per_block[1] = game->w2.size[0] / game->map2d.height;
 	}
 }
 

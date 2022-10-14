@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:32:07 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/14 16:47:42 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ void	update_player_location(t_prog *game)
 	double	coor_factor[D2];
 
 	coor_base[0] = (double)(game->pl.position[0]) \
-	* game->map2D.pixel_per_block[0];
+	* game->map2d.pixel_per_block[0];
 	coor_base[1] = (double) game->pl.position[1] * \
-	game->map2D.pixel_per_block[1];
+	game->map2d.pixel_per_block[1];
 	coor_base_old[0] = (double)(game->pl.position[0]) * \
-	game->map2D.v_pixel_per_block[0];
+	game->map2d.v_pixel_per_block[0];
 	coor_base_old[1] = (double) game->pl.position[1] * \
-	game->map2D.v_pixel_per_block[1];
+	game->map2d.v_pixel_per_block[1];
 	coor_factor[0] = (game->pl.v_position_coor[0] - coor_base_old[0]) \
-	/ (double) game->map2D.v_pixel_per_block[0];
+	/ (double) game->map2d.v_pixel_per_block[0];
 	coor_factor[1] = (game->pl.v_position_coor[1] - coor_base_old[1]) \
-	/ (double) game->map2D.v_pixel_per_block[1];
-	coor_fraccion[0] = coor_factor[0] * game->map2D.pixel_per_block[0];
-	coor_fraccion[1] = coor_factor[1] * game->map2D.pixel_per_block[1];
+	/ (double) game->map2d.v_pixel_per_block[1];
+	coor_fraccion[0] = coor_factor[0] * game->map2d.pixel_per_block[0];
+	coor_fraccion[1] = coor_factor[1] * game->map2d.pixel_per_block[1];
 	game->pl.position_coor[0] = coor_base[0] + coor_fraccion[0];
 	game->pl.position_coor[1] = coor_base[1] + coor_fraccion[1];
 }
@@ -58,8 +58,8 @@ void	reconstruct_minimap_variables(t_prog *game)
 	game->w1.size[0] = game->w1.size[1];
 	mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
 	minimap_dimensions(game);
-	game->map2D.pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
-	game->map2D.pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
+	game->map2d.pixel_per_block[0] = game->map2d.v_pixel_per_block[0];
+	game->map2d.pixel_per_block[1] = game->map2d.v_pixel_per_block[1];
 	update_pixel_per_block(game);
 	game->pl.position_coor[0] = game->pl.v_position_coor[0];
 	game->pl.position_coor[1] = game->pl.v_position_coor[1];
@@ -69,8 +69,8 @@ void	reconstruct_minimap_variables(t_prog *game)
 static inline void	hook_control_minimap(t_prog *game)
 {
 	correct_minimap_value(game);
-	game->map2D.v_pixel_per_block[0] = 0;
-	game->map2D.v_pixel_per_block[1] = 0;
+	game->map2d.v_pixel_per_block[0] = 0;
+	game->map2d.v_pixel_per_block[1] = 0;
 	game->w1.size[1] = OY_WINDOW;
 	game->w1.size[0] = OX_WINDOW;
 	if (is_minimap(game) == 1)
@@ -83,8 +83,8 @@ static inline void	hook_control_minimap(t_prog *game)
 		game->w1.size[1] = OY_WINDOW;
 		game->w1.size[0] = OX_WINDOW;
 		mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
-		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
-		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
+		game->map2d.v_pixel_per_block[0] = game->map2d.pixel_per_block[0];
+		game->map2d.v_pixel_per_block[1] = game->map2d.pixel_per_block[1];
 		update_pixel_per_block(game);
 		update_player_location(game);
 	}

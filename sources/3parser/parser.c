@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/13 12:58:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:20:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	map_prep(t_prog *game)
 	show_info(game);
 	if (data_len == -1 || map_build(data_len, game, aux_lst) == -1)
 	{
-		if (data_len != -1 && game->map2D.map)
+		if (data_len != -1 && game->map2d.map)
 			show_map(game);
 		ft_lstclear(&aux_lst, free);
 		return (1);
@@ -69,13 +69,13 @@ int	map_prep(t_prog *game)
 
 int	check_data(t_prog *game)
 {
-	if (access(game->NO, R_OK) != 0)
+	if (access(game->north, R_OK) != 0)
 		return (-1);
-	if (access(game->SO, R_OK) != 0)
+	if (access(game->south, R_OK) != 0)
 		return (-1);
-	if (access(game->EA, R_OK) != 0)
+	if (access(game->east, R_OK) != 0)
 		return (-1);
-	if (access(game->WE, R_OK) != 0)
+	if (access(game->west, R_OK) != 0)
 		return (-1);
 	return (0);
 }

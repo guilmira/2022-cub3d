@@ -56,6 +56,13 @@ void	next_frame(void *g)
 	game->w1.origin[0], game->w1.origin[1]);
 }
 
+static inline void	send_message(char *colour, char *msg)
+{
+	printf("%s", colour);
+	printf("%s", msg);
+	printf("%s", C_NONE);
+}
+
 void	welcome_message(t_prog *game)
 {
 	int		flag;
@@ -70,15 +77,15 @@ void	welcome_message(t_prog *game)
 		free(line);
 	}
 	free(line);
-	printf(EXECUTION);
-	printf(INSTR);
-	printf(MOVE);
-	printf(VISION);
-	printf(MINI);
-	printf(FOV);
-	printf(WIND);
-	printf(ESC);
-	printf(CLOSE);
+	send_message(C_WHITE, EXECUTION);
+	send_message(C_WHITE, INSTR);
+	send_message(C_YELLOW, MOVE);
+	send_message(C_BLUE, VISION);
+	send_message(C_YELLOW, MINI);
+	send_message(C_BLUE, FOV);
+	send_message(C_RED, WIND);
+	send_message(C_WHITE, ESC);
+	send_message(C_WHITE, CLOSE);
 }
 
 /** PURPOSE : execute main routine of program.

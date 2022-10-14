@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:47 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 12:55:38 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	get_grid_limit(t_prog *game)
 		final = game->w2.size[1];
 	while (limit < final)
 	{
-		limit += game->map2D.pixel_per_block[1];
+		limit += game->map2d.pixel_per_block[1];
 		i++;
 	}
 	return (i);
@@ -43,15 +43,15 @@ static inline void	draw_grid(t_prog *game, double size_x, double size_y)
 	colour = rgb_t_translate(255, 255, 255, GRID_TRANSPARENCY);
 	nb = -1;
 	while (++nb < limit)
-		put_horizontal((nb * game->map2D.pixel_per_block[1]), \
+		put_horizontal((nb * game->map2d.pixel_per_block[1]), \
 		size_x, colour, game);
 	nb = -1;
 	while (++nb < limit)
-		put_vertical((nb * game->map2D.pixel_per_block[0]), \
+		put_vertical((nb * game->map2d.pixel_per_block[0]), \
 		size_y, colour, game);
 }
 
-/** PURPOSE : From map parser draw in minimap2D each wall. */
+/** PURPOSE : From map parser draw in minimap2d each wall. */
 static inline void	draw_wall_unit(double map_position[], \
 int pixel_per_block[], t_prog *game)
 {
@@ -91,15 +91,15 @@ static void	draw_wall_two_dim(t_prog *game)
 
 	i = -1;
 	j = -1;
-	while (++j < game->map2D.height)
+	while (++j < game->map2d.height)
 	{
-		while (++i < game->map2D.width)
+		while (++i < game->map2d.width)
 		{
-			if (game->map2D.layout[j][i] == 1)
+			if (game->map2d.layout[j][i] == 1)
 			{
 				map_position[0] = i;
 				map_position[1] = j;
-				draw_wall_unit(map_position, game->map2D.pixel_per_block, game);
+				draw_wall_unit(map_position, game->map2d.pixel_per_block, game);
 			}
 		}
 		i = -1;

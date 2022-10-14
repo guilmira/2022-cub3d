@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 16:48:24 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:37:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ Check file cube_defines.h\n"
 /* MESSAGES */
 # define EXECUTION	"\nWelcome to the nightwing boyz cube.\nFrames in execution\n"
 # define INSTR	"\n--------Instructions of use------------\n"
-# define MOVE	C_YELLOW	"Movement keys		-	W A S D\n"C_NONE
-# define VISION	C_BLUE		"Vision control		-	Arrows\n"C_NONE
-# define MINI	C_YELLOW	"Minimap trigger		-	Tab\n"C_NONE
-# define FOV	C_BLUE		"Altered reality		-	V\n"C_NONE
-# define WIND	C_RED		"Wind mode🗡		-	F\n"C_NONE
-# define ESC	C_WHITE		"Close program		-	ESC\n"C_NONE
+# define MOVE	"Movement keys		-	W A S D\n"
+# define VISION	"Vision control		-	Arrows\n"
+# define MINI	"Minimap trigger		-	Tab\n"
+# define FOV	"Altered reality		-	V\n"
+# define WIND	"Wind mode🗡		-	F\n"
+# define ESC	"Close program		-	ESC\n"
 # define CLOSE	"---------------------------------------\n\n"
-/* README */
+/* ReastDME */
 # define READ	"README.md"
 #endif

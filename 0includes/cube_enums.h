@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:29:36 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:24:47 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ enum e_player_vision
 enum e_WALL_COLLISION_TYPE{
 	RIGHT_COLLISION = 1,
 	LEFT_COLLISION,
-	TOP_COLLISION ,
-	BOTTOM_COLLISION, 
+	TOP_COLLISION,
+	BOTTOM_COLLISION,
 };
 
 #endif

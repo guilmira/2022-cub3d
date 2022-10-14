@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 15:29:56 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:20:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void			put_frame_three_dim(t_prog *game);
 void			hk_keys(mlx_key_data_t key, void *g);
 void			update_player_location(t_prog *game);
 
-/* CLEAR MEMORY */
+/* CLeastR MEMORY */
 void			clean_exit(t_prog *game);
 void			ft_shutdown(char *error_msg, t_prog *game);
 void			freemat(char **mat);
@@ -103,7 +103,7 @@ double			calculate_plane_lenght(double angle, t_vector vis);
 int				is_wall2d(int j, int i, t_prog *game);
 void			correct_minimap_value(t_prog *game);
 
-/* BEAM */
+/* BeastM */
 void			cast_beam(t_beam *beam, t_data *aux, t_prog *game);
 double			plane_lenght_and_direction(t_beam *beam, int angle);
 /* ------------------------ RAYCAST ------------------------ */

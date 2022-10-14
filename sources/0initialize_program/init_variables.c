@@ -37,7 +37,7 @@ void	init_game(t_prog *game)
 	game->mlx = mlx_init(ox_size, oy_size, TITLE_WINDOW, 1);
 	if (!game->mlx)
 		ft_shutdown("Error.\nMLX could not be initialized\n", game);
-	game->map2D.map = NULL;
+	game->map2d.map = NULL;
 	game->file = 0;
 	game->minimap_state = MINIMAP_INTIAL_STATE;
 	if (game->minimap_state != 0 && game->minimap_state != 4 \
@@ -48,6 +48,6 @@ void	init_game(t_prog *game)
 	game->pl.flag_trance = 0;
 	game->pl.fov = 0;
 	game->pl.speed = 0.02;
-	game->map2D.layout = NULL;
+	game->map2d.layout = NULL;
 	game->flag_engine_report = GRAPHIC_ENGINE_REPORT;
 }
