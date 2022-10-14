@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/14 15:12:20 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:47:33 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	init_map2d(char **map, t_prog *game)
 	game->map2D.height = game->map2D.s_height;
 	game->map2D.width = game->map2D.s_width;
 	update_pixel_per_block(game);
-	log_coor_int(game->map2D.pixel_per_block);
 	start_player_position(game->pl.position[1], game->pl.position[0], game);
 	control_window_limits(game);
 }
