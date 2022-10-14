@@ -16,7 +16,6 @@ void			ft_leaks(void);
 
 /* COLOURS */
 
-
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */

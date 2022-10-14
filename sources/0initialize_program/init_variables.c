@@ -47,6 +47,7 @@ void	init_game(t_prog *game)
 	game->pl.flag_movement = 0;
 	game->pl.flag_trance = 0;
 	game->pl.fov = 0;
+	game->pl.speed = 0.02;
 	game->map2D.layout = NULL;
 	game->flag_engine_report = GRAPHIC_ENGINE_REPORT;
 }

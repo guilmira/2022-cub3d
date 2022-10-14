@@ -39,6 +39,7 @@ void	freemat(char **mat)
 		free(mat[i]);
 	free(mat);
 }
+
 //NEXT
 void	ft_leaks(void)
 {

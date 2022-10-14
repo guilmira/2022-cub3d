@@ -33,6 +33,8 @@ void	update_player_vision(int key, t_prog *game)
 	plane_perpendicular = get_unit_vector(get_perpendicular(original_vision));
 	if (game->pl.flag_trance)
 		angle_rotation = TRANCE_BOOST;
+	if (game->pl.fast_r == 1)
+		angle_rotation += 4;
 	lenght = calculate_plane_lenght(angle_rotation, original_vision);
 	lenght = fabs(lenght);
 	plane_perpendicular = mul_vec(plane_perpendicular, lenght);
