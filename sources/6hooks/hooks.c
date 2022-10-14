@@ -71,9 +71,22 @@ void	next_frame(void *g)
 # define WIND	C_RED		"Wind mode🗡		-	F\n"C_NONE
 # define ESC	C_WHITE		"Close program		-	ESC\n"C_NONE
 
-
-void	welcome_message(void)
+# define READ	"README.md"
+void	welcome_message(t_prog *game)
 {
+	int flag;
+	char *line;
+
+	
+	flag = open(READ, O_RDONLY, 0666);
+	if (flag == -1)
+		ft_shutdown("U cant break our cube. Try again kid\n", game);
+	while (get_next_line(flag, &line))
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	free(line);
 	printf(EXECUTION);
 	printf(INSTR);
 	printf(MOVE);
@@ -82,6 +95,8 @@ void	welcome_message(void)
 	printf(FOV);
 	printf(WIND);
 	printf(ESC);
+
+
 }
 
 /** PURPOSE : execute main routine of program.
@@ -89,7 +104,7 @@ void	welcome_message(void)
  * of 60 times pers second. Therefore 60 fps. */
 void	hooks_and_loops(t_prog *game)
 {
-	welcome_message();
+	welcome_message(game);
 	mlx_close_hook(game->mlx, &hk_close, (void *) game);
 	mlx_key_hook(game->mlx, &hk_keys, game);
 	mlx_loop_hook(game->mlx, &next_frame, game);
