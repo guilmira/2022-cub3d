@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 15:26:00 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:17:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,22 @@ Check file cube_defines.h\n"
 # define BLACK	0x000000FF
 # define WHITE	0xFFFFFFFF
 # define YELLOW 0xFFBB2DFF
-
+/* MESSAGE COLOURS */
+# define C_RED		"\033[0;31m"
+# define C_YELLOW	"\033[0;33m"
+# define C_BLUE		"\033[0;34m"
+# define C_WHITE	"\033[0;37m"
+# define C_NONE		"\033[0m"
+/* MESSAGES */
+# define EXECUTION	"\nWelcome to the nightwing boyz cube.\nFrames in execution\n"
+# define INSTR	"\n--------Instructions of use------------\n"
+# define MOVE	C_YELLOW	"Movement keys		-	W A S D\n"C_NONE
+# define VISION	C_BLUE		"Vision control		-	Arrows\n"C_NONE
+# define MINI	C_YELLOW	"Minimap trigger		-	Tab\n"C_NONE
+# define FOV	C_BLUE		"Altered reality		-	V\n"C_NONE
+# define WIND	C_RED		"Wind mode🗡		-	F\n"C_NONE
+# define ESC	C_WHITE		"Close program		-	ESC\n"C_NONE
+# define CLOSE	"---------------------------------------\n\n"
+/* README */
+# define READ	"README.md"
 #endif

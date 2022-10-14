@@ -56,28 +56,11 @@ void	next_frame(void *g)
 	game->w1.origin[0], game->w1.origin[1]);
 }
 
-# define C_RED		"\033[0;31m"
-# define C_YELLOW	"\033[0;33m"
-# define C_BLUE		"\033[0;34m"
-# define C_WHITE	"\033[0;37m"
-# define C_NONE		"\033[0m"
-/* MESSAGES */
-# define EXECUTION	"\nWelcome to the nightwing boyz cube.\nFrames in execution\n"
-# define INSTR	"\n--------Instructions of use------------\n"
-# define MOVE	C_YELLOW	"Movement keys		-	W A S D\n"C_NONE
-# define VISION	C_BLUE		"Vision control		-	Arrows\n"C_NONE
-# define MINI	C_YELLOW	"Minimap trigger		-	Tab\n"C_NONE
-# define FOV	C_BLUE		"Altered reality		-	V\n"C_NONE
-# define WIND	C_RED		"Wind mode🗡		-	F\n"C_NONE
-# define ESC	C_WHITE		"Close program		-	ESC\n"C_NONE
-
-# define READ	"README.md"
 void	welcome_message(t_prog *game)
 {
-	int flag;
-	char *line;
+	int		flag;
+	char	*line;
 
-	
 	flag = open(READ, O_RDONLY, 0666);
 	if (flag == -1)
 		ft_shutdown("U cant break our cube. Try again kid\n", game);
@@ -95,8 +78,7 @@ void	welcome_message(t_prog *game)
 	printf(FOV);
 	printf(WIND);
 	printf(ESC);
-
-
+	printf(CLOSE);
 }
 
 /** PURPOSE : execute main routine of program.
