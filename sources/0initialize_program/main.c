@@ -6,11 +6,12 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:37:22 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/13 14:37:58 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:37:31 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
 
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
@@ -27,6 +28,7 @@ int	main(int argc, char **argv)
 	prep_textures(game);
 	framework_dimensions(game);
 	init_map2d(game->map2D.map, game);
+	
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);
