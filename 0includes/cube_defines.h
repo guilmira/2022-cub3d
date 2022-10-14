@@ -26,7 +26,7 @@
 /* 								 MAP INTITAL STATE
 				0 - no minimap
 2 - minimap corner         4 - full minimap 						*/
-# define MINIMAP_INTIAL_STATE 0 //NEXT 2 0
+# define MINIMAP_INTIAL_STATE 4 //NEXT 2 0
 # define FULL_MINIMAP 4
 
 /* Window boundry condition. */

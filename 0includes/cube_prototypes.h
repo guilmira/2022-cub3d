@@ -95,6 +95,8 @@ t_vector		raycast(t_data *aux, t_vector dir, double origin[], \
 t_prog *game);
 mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, int percentage, \
 uint32_t stripeheight, t_prog *game);
+mlx_texture_t	*reescale_texture(mlx_texture_t *tex, \
+	uint32_t stripeheight, uint32_t stripewitdh);
 void			get_relative_distance(t_ray *ray, t_prog *game);
 void			fix_net_distance(t_ray *ray, int case_factor, int block[]);
 

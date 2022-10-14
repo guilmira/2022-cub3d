@@ -143,6 +143,7 @@ typedef struct s_program
 	mlx_texture_t	*t_SO;
 	mlx_texture_t	*t_WE;
 	mlx_texture_t	*t_EA;
+	mlx_texture_t	*hands;
 	int				sky_clr;
 	int				floor_clr;
 	t_dim			w1;

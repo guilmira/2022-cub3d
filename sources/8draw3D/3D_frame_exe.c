@@ -19,4 +19,5 @@ void	put_frame_three_dim(t_prog *game)
 {
 	draw_first_layer(game);
 	draw_three_dimension_walls(game);
+	mlx_draw_texture(game->image[CUB_3D], game->hands, 0, OY_WINDOW / 2);
 }
