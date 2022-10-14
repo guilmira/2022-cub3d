@@ -30,6 +30,12 @@ static inline void	movement_ctrl(t_prog *game)
 		game->pl.fov++;
 	if (game->pl.key[MLX_KEY_V] == 1)
 		game->pl.fov--;
+	if (game->pl.key[MLX_KEY_Z] == 1)
+		game->pl.speed += 0.001;
+	if (game->pl.key[MLX_KEY_X] == 1 && game->pl.speed > 0)
+		game->pl.speed -= 0.001;
+	if (game->pl.key[MLX_KEY_UP] == 1)
+		game->pl.fast_r = 1;
 }
 
 /** PURPOSE : Convert pointer of program and execute frames.

@@ -12,7 +12,6 @@
 
 #include "cube.h"
 
-
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
@@ -28,7 +27,6 @@ int	main(int argc, char **argv)
 	prep_textures(game);
 	framework_dimensions(game);
 	init_map2d(game->map2D.map, game);
-	
 	hooks_and_loops(game);
 	clean_exit(game);
 	return (0);

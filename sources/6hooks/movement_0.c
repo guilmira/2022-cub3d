@@ -49,10 +49,6 @@ t_prog *game, int key, int pixel_per_block[])
 	t_vector	vec;
 	int			flag;
 
-	if (game->pl.flag_trance)
-		game->pl.speed = (WIND_MODE * 0.01);
-	else
-		game->pl.speed = 0.01;
 	vec.x = v[0];
 	vec.y = v[1];
 	get_new_pos(new_pos, key, vec, game);

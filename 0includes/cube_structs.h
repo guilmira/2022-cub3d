@@ -89,6 +89,7 @@ typedef struct s_player
 	int				flag_movement;
 	int				flag_trance;
 	double			speed;
+	int				fast_r;
 }					t_player;
 
 /** PURPOSE : Map 2D given as an argument. */

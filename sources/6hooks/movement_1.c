@@ -20,7 +20,7 @@ static inline void	abort_crapping(t_prog *game, int pixel_per_block[])
 	flag = wall_coll(game, game->pl.v_position_coor, pixel_per_block);
 	count = 0;
 	while (wall_coll(game, game->pl.v_position_coor, \
-	pixel_per_block) != 0 && count++ < 250)
+	pixel_per_block) != 0)
 	{
 		if (flag == RIGHT_COLLISION)
 			game->pl.v_position_coor[0] -= CORRECTION_PIXEL_NBR;
