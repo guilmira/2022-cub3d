@@ -99,7 +99,6 @@ void	init_map2d(char **map, t_prog *game)
 	game->map2D.height = game->map2D.s_height;
 	game->map2D.width = game->map2D.s_width;
 	update_pixel_per_block(game);
-	
 	start_player_position(game->pl.position[1], game->pl.position[0], game);
 
 }

@@ -44,5 +44,6 @@ void	init_game(t_prog *game)
 	game->pl.flag_movement = 0;
 	game->pl.flag_trance = 0;
 	game->pl.fov = 0;
+	game->pl.speed = 1;
 	game->map2D.layout = NULL;
 }

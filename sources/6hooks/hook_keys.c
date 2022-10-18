@@ -86,12 +86,7 @@ static inline void	hook_control_minimap(t_prog *game)
 	game->w1.size[1] = OY_WINDOW;
 	game->w1.size[0] = OX_WINDOW;
 	if (is_minimap(game) == 1)
-	{
-		game->map2D.v_pixel_per_block[0] = game->map2D.pixel_per_block[0];
-		game->map2D.v_pixel_per_block[1] = game->map2D.pixel_per_block[1];
-
 		reconstruct_minimap_variables(game);
-	}
 	else
 	{
 		game->w1.size[1] = OY_WINDOW;
