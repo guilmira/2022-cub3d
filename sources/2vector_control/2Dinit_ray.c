@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:14:55 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 10:12:35 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ t_vector direction, t_prog *game)
 	if (direction.y < 0)
 		ray->step_increase[1] = -1;
 	if (direction.x >= 0)
-		fix_net_distance(ray, 1, game->map2D.pixel_per_block);
+		fix_net_distance(ray, 1, game->map2d.pixel_per_block);
 	else
-		fix_net_distance(ray, 2, game->map2D.pixel_per_block);
+		fix_net_distance(ray, 2, game->map2d.pixel_per_block);
 	if (direction.y >= 0)
-		fix_net_distance(ray, 3, game->map2D.pixel_per_block);
+		fix_net_distance(ray, 3, game->map2d.pixel_per_block);
 	else
-		fix_net_distance(ray, 4, game->map2D.pixel_per_block);
+		fix_net_distance(ray, 4, game->map2d.pixel_per_block);
 }
 
 /** PURPOSE : Get coordinates of array. */
@@ -67,7 +67,7 @@ void	init_ray(t_ray *ray, double origin[], t_vector dir, t_prog *game)
 	ray->dir = dir;
 	ray->resultant_vector.x = 0;
 	ray->resultant_vector.y = 0;
-	update_location_map(ray, origin, game->map2D.pixel_per_block);
+	update_location_map(ray, origin, game->map2d.pixel_per_block);
 	ray->delta[0] = 0;
 	ray->delta[1] = 0;
 	ray->face = 0;

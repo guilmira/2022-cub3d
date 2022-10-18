@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:11:49 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/12 15:28:59 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,6 @@ t_prog *game, int key, int pixel_per_block[])
 	t_vector	vec;
 	int			flag;
 
-	if (game->pl.flag_trance)
-		game->pl.speed = (WIND_MODE * 0.01);
-	else
-		game->pl.speed = 0.01;
 	vec.x = v[0];
 	vec.y = v[1];
 	get_new_pos(new_pos, key, vec, game);
@@ -71,26 +67,13 @@ void	update_player_position(int key, t_prog *game)
 
 	i = -1;
 	speed = PLAYER_SPEED * 2;
-	if (game->map2D.v_pixel_per_block[0] > game->map2D.pixel_per_block[0])
+	pixel_per_block[0] = game->map2d.pixel_per_block[0];
+	pixel_per_block[1] = game->map2d.pixel_per_block[1];
+	if (game->map2d.v_pixel_per_block[0] > game->map2d.pixel_per_block[0])
 	{	
-		pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
-		pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
+		pixel_per_block[0] = game->map2d.v_pixel_per_block[0];
+		pixel_per_block[1] = game->map2d.v_pixel_per_block[1];
 	}
-	else
-	{
-		pixel_per_block[0] = game->map2D.pixel_per_block[0];
-		pixel_per_block[1] = game->map2D.pixel_per_block[1];
-	}
-	/* if (pixel_per_block[0] < game->map2D.v_pixel_per_block[0])
-	{
-		pixel_per_block[0] = game->map2D.v_pixel_per_block[0];
-		pixel_per_block[1] = game->map2D.v_pixel_per_block[1];
-	}
-	if (pixel_per_block[0] < game->map2D.pixel_per_block[0])
-	{
-		pixel_per_block[0] = game->map2D.pixel_per_block[0];
-		pixel_per_block[1] = game->map2D.pixel_per_block[1];
-	} */
 	vp[0] = ((double)(game->pl.vis.x) / (double)5);
 	vp[1] = ((double)(game->pl.vis.y) / (double)5);
 	x = 0;

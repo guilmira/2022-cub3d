@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:10:11 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/12 15:27:25 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,19 @@ static inline t_dim	copy_dim_struct(t_dim window_src)
 
 void	get_minimap_simetric_size(t_prog *game)
 {
-	game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
-	game->w2.size[1] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
-	while ((int) game->w2.size[0] % game->map2D.width != 0)
+	if (game->w1.size[0] < game->w1.size[1])
+	{
+		game->w2.size[0] = (game->w1.size[0] / MINIMAP_WINDOW_RATIO);
+		game->w2.size[1] = game->w2.size[0];
+	}
+	else
+	{
+		game->w2.size[0] = (game->w1.size[1] / MINIMAP_WINDOW_RATIO);
+		game->w2.size[1] = game->w2.size[0];
+	}
+	while ((int) game->w2.size[0] % game->map2d.width != 0)
 		game->w2.size[0]++;
-	while ((int) game->w2.size[1] % game->map2D.height != 0)
+	while ((int) game->w2.size[1] % game->map2d.height != 0)
 		game->w2.size[1]++;
 	game->w2.origin[0] = game->w1.size[0] - game->w2.size[0];
 	game->w2.origin[1] = game->w1.size[1] - game->w2.size[1];
@@ -48,16 +56,14 @@ void	get_minimap_simetric_size(t_prog *game)
  * EXPLANATION - limit and size are the same, but calculated int two ways. */
 void	minimap_dimensions(t_prog *game)
 {
-	if (!game->minimap_state)
-		return ;
-	else if (game->minimap_state == 2)
+	if (game->minimap_state == 2)
 	{
 		get_minimap_simetric_size(game);
 		if (game->w2.size[0] - game->w2.origin[0] > game->w1.size[0] \
 		|| game->w2.size[1] - game->w2.origin[1] > game->w1.size[1])
 			ft_shutdown("Error.\nMinimap to big\n", game);
-		game->w2.unit[0] = window_unit(game->w2.size[0], game->map2D.width);
-		game->w2.unit[1] = window_unit(game->w2.size[1], game->map2D.height);
+		game->w2.unit[0] = window_unit(game->w2.size[0], game->map2d.width);
+		game->w2.unit[1] = window_unit(game->w2.size[1], game->map2d.height);
 	}
 	else
 		game->w2 = copy_dim_struct(game->w1);
@@ -66,13 +72,32 @@ void	minimap_dimensions(t_prog *game)
 /** PURPOSE : calculate main window and minimap dimensions. */
 void	framework_dimensions(t_prog *game)
 {
-	game->map2D.width = game->map2D.map_x + SPACES_AT_BORDER;
-	game->map2D.height = game->map2D.map_y + SPACES_AT_BORDER;
+	game->map2d.width = game->map2d.map_x + SPACES_AT_BORDER;
+	game->map2d.height = game->map2d.map_y + SPACES_AT_BORDER;
 	game->w1.origin[0] = 0;
 	game->w1.origin[1] = 0;
+<<<<<<< HEAD
 	game->w1.unit[0] = window_unit(game->w1.size[0], game->map2D.width);
 	game->w1.unit[1] = window_unit(game->w1.size[1], game->map2D.height);
 	minimap_dimensions(game);
 	hook_control_minimap(game);
+=======
+	if (game->minimap_state == 4)
+	{
+		game->w1.size[1] = OY_WINDOW;
+		game->w1.size[0] = game->w1.size[1];
+	}
+	else
+	{
+		game->w1.size[1] = OY_WINDOW;
+		game->w1.size[0] = OX_WINDOW;
+	}
+	game->w1.unit[0] = window_unit(game->w1.size[0], game->map2d.width);
+	game->w1.unit[1] = window_unit(game->w1.size[1], game->map2d.height);
+	minimap_dimensions(game);
+	update_pixel_per_block(game);
+	game->map2d.v_pixel_per_block[0] = 0;
+	game->map2d.v_pixel_per_block[1] = 0;
+>>>>>>> 58f54a38c34991ce3b5e086f51f12ce37f926c06
 	mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
 }

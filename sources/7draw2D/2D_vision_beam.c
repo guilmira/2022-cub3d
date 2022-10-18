@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:42:03 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/12 14:00:32 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:01:58 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,4 @@ void	main_raycast_calculation(int angle, t_prog *game)
 	beam.number_of_rays / 2);
 	cast_beam(&beam, &aux, game);
 	game->pl.beam = beam;
-
 }

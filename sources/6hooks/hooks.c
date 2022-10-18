@@ -30,6 +30,12 @@ static inline void	movement_ctrl(t_prog *game)
 		game->pl.fov++;
 	if (game->pl.key[MLX_KEY_V] == 1)
 		game->pl.fov--;
+	if (game->pl.key[MLX_KEY_Z] == 1)
+		game->pl.speed += 0.001;
+	if (game->pl.key[MLX_KEY_X] == 1 && game->pl.speed > 0)
+		game->pl.speed -= 0.001;
+	if (game->pl.key[MLX_KEY_UP] == 1)
+		game->pl.fast_r = 1;
 }
 
 /** PURPOSE : Convert pointer of program and execute frames.
@@ -50,12 +56,44 @@ void	next_frame(void *g)
 	game->w1.origin[0], game->w1.origin[1]);
 }
 
+static inline void	send_message(char *colour, char *msg)
+{
+	printf("%s", colour);
+	printf("%s", msg);
+	printf("%s", C_NONE);
+}
+
+void	welcome_message(t_prog *game)
+{
+	int		flag;
+	char	*line;
+
+	flag = open(READ, O_RDONLY, 0666);
+	if (flag == -1)
+		ft_shutdown("U cant break our cube. Try again kid\n", game);
+	while (get_next_line(flag, &line))
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	free(line);
+	send_message(C_WHITE, EXECUTION);
+	send_message(C_WHITE, INSTR);
+	send_message(C_YELLOW, MOVE);
+	send_message(C_BLUE, VISION);
+	send_message(C_YELLOW, MINI);
+	send_message(C_BLUE, FOV);
+	send_message(C_RED, WIND);
+	send_message(C_WHITE, ESC);
+	send_message(C_WHITE, CLOSE);
+}
+
 /** PURPOSE : execute main routine of program.
  * mlx_loop and mlx_loop_hook will tried to be executed a total
  * of 60 times pers second. Therefore 60 fps. */
 void	hooks_and_loops(t_prog *game)
 {
-	printf("HOOKS IN EXECUTION\n");
+	welcome_message(game);
 	mlx_close_hook(game->mlx, &hk_close, (void *) game);
 	mlx_key_hook(game->mlx, &hk_keys, game);
 	mlx_loop_hook(game->mlx, &next_frame, game);

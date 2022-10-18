@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 07:41:08 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/01 13:15:48 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ static int	get_wall_stripe(int ray_number, t_prog *game)
 	if (wall_side == 1)
 	{
 		stripe_number = ((collision_point - \
-		(game->rc->rc_wall_hit_y[ray_number] * game->map2D.pixel_per_block[1])) \
-		/ game->map2D.pixel_per_block[1]) * 100;
+		(game->rc->rc_wall_hit_y[ray_number] * game->map2d.pixel_per_block[1])) \
+		/ game->map2d.pixel_per_block[1]) * 100;
 	}
 	if (wall_side == 2)
 	{
 		stripe_number = ((collision_point - \
-		(game->rc->rc_wall_hit_x[ray_number] * game->map2D.pixel_per_block[0])) \
-		/ game->map2D.pixel_per_block[0]) * 100;
+		(game->rc->rc_wall_hit_x[ray_number] * game->map2d.pixel_per_block[0])) \
+		/ game->map2d.pixel_per_block[0]) * 100;
 	}
 	if (stripe_number < 1)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 13:13:29 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:20:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ int				get_maxlen(t_prog *game, t_list *aux_lst);
 int				ret_l(t_list *aux_lst);
 void			map_refill(t_prog *game, int c, t_list *aux_lst);
 
-
 /*VISUAL UTILITIES PARSER*/
 
 void			show_info(t_prog *game);
 void			show_map(t_prog *game);
-
 
 /* STRUCT INIT */
 void			init_game(t_prog *game);
@@ -79,7 +77,7 @@ void			put_frame_three_dim(t_prog *game);
 void			hk_keys(mlx_key_data_t key, void *g);
 void			update_player_location(t_prog *game);
 
-/* CLEAR MEMORY */
+/* CLeastR MEMORY */
 void			clean_exit(t_prog *game);
 void			ft_shutdown(char *error_msg, t_prog *game);
 void			freemat(char **mat);
@@ -105,7 +103,7 @@ double			calculate_plane_lenght(double angle, t_vector vis);
 int				is_wall2d(int j, int i, t_prog *game);
 void			correct_minimap_value(t_prog *game);
 
-/* BEAM */
+/* BeastM */
 void			cast_beam(t_beam *beam, t_data *aux, t_prog *game);
 double			plane_lenght_and_direction(t_beam *beam, int angle);
 /* ------------------------ RAYCAST ------------------------ */
@@ -160,7 +158,7 @@ void			filter_final_pos(t_prog *game, double new_pos[], \
 int flag, int pixel_per_block[]);
 void			set_key_state(t_prog *game);
 void			reset_key_state(t_prog *game);
-
+void			control_window_limits(t_prog *game);
 /* TOOLS */
 void			draw_centered_rectangle(double position[], \
 int base, int height, t_prog *game);
@@ -168,13 +166,11 @@ int base, int height, t_prog *game);
 void			translate_to_screen(double position_map[], \
 double position_screen[], int pixel_per_block[], t_prog *game);
 
-//To remove from here before evaluation
-void			ft_leaks(void);
+//NEXT
 void			log_vector(t_vector v);
 void			log_coor(double array[]);
 void			log_d(double d);
 void			log_beam(t_beam *beam);
-void			print_map(char **map, t_prog *game, int **s_map);
 void			log_coor_int(int i[]);
 void			log_arrays(t_prog *game);
 #endif

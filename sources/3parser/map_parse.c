@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:47:56 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/08/11 14:49:15 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	map_build(int data_len, t_prog *game, t_list *aux_lst)
 	if (getcoords(game, aux_lst) == -1)
 		return (-1);
 	fill_spaces_map(game, aux_lst);
-	if (is_closed(game->map2D.map) == -1)
+	if (is_closed(game->map2d.map) == -1)
 		return (-1);
 	return (0);
 }
@@ -44,17 +44,17 @@ void	map_refill(t_prog *game, int c, t_list *aux_lst)
 	int	i;
 
 	i = 1;
-	while (i <= game->map2D.map_y)
+	while (i <= game->map2d.map_y)
 	{
-		game->map2D.map[i] = ft_calloc(sizeof(char), game->map2D.map_x + 3);
-		game->map2D.map[i][0] = ' ';
+		game->map2d.map[i] = ft_calloc(sizeof(char), game->map2d.map_x + 3);
+		game->map2d.map[i][0] = ' ';
 		c = 1;
-		while (c <= game->map2D.map_x + 1)
+		while (c <= game->map2d.map_x + 1)
 		{
 			if (c <= (int)ft_strlen((char *)aux_lst->content))
-				game->map2D.map[i][c] = ((char *)aux_lst->content)[c - 1];
+				game->map2d.map[i][c] = ((char *)aux_lst->content)[c - 1];
 			else
-				game->map2D.map[i][c] = ' ';
+				game->map2d.map[i][c] = ' ';
 			c++;
 		}
 		aux_lst = aux_lst->next;

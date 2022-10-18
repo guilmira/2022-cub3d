@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:54:59 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/07 13:56:02 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:20:46 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ static void	clear_memory(t_prog *game)
 {
 	if (game)
 	{
-		if (game->map2D.map)
-			freemat(game->map2D.map);
-		if (game->NO)
-			free(game->NO);
-		if (game->SO)
-			free(game->SO);
-		if (game->WE)
-			free(game->WE);
-		if (game->EA)
-			free(game->EA);
+		if (game->map2d.map)
+			freemat(game->map2d.map);
+		if (game->north)
+			free(game->north);
+		if (game->south)
+			free(game->south);
+		if (game->west)
+			free(game->west);
+		if (game->east)
+			free(game->east);
 		destroy_texture(game);
-		clear_map_two_dim(game->map2D.layout, game->map2D.height);
-		clear_map_two_dim(game->map2D.s_layout, game->map2D.s_height);
+		clear_map_two_dim(game->map2d.layout, game->map2d.height);
+		clear_map_two_dim(game->map2d.s_layout, game->map2d.s_height);
 		clear_raycast(game);
 		free(game);
 	}

@@ -22,6 +22,9 @@ void	set_key_state(t_prog *game)
 	game->pl.key[MLX_KEY_LEFT] = mlx_is_key_down(game->mlx, MLX_KEY_LEFT);
 	game->pl.key[MLX_KEY_C] = mlx_is_key_down(game->mlx, MLX_KEY_C);
 	game->pl.key[MLX_KEY_V] = mlx_is_key_down(game->mlx, MLX_KEY_V);
+	game->pl.key[MLX_KEY_X] = mlx_is_key_down(game->mlx, MLX_KEY_Z);
+	game->pl.key[MLX_KEY_Z] = mlx_is_key_down(game->mlx, MLX_KEY_X);
+	game->pl.key[MLX_KEY_UP] = mlx_is_key_down(game->mlx, MLX_KEY_UP);
 }
 
 void	reset_key_state(t_prog *game)
@@ -42,4 +45,13 @@ void	reset_key_state(t_prog *game)
 		game->pl.key[MLX_KEY_C] = 0;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_V) == 0)
 		game->pl.key[MLX_KEY_V] = 0;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_Z) == 0)
+		game->pl.key[MLX_KEY_Z] = 0;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_X) == 0)
+		game->pl.key[MLX_KEY_X] = 0;
+	if (mlx_is_key_down(game->mlx, MLX_KEY_UP) == 0)
+	{
+		game->pl.fast_r = 0;
+		game->pl.key[MLX_KEY_UP] = 0;
+	}
 }

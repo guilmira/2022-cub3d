@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:41 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/07 13:58:07 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_player_position(mlx_image_t *image, t_prog *game)
 	}
 	if (position[0] <= 0 || position[1] <= 0)
 		ft_shutdown(EX, game);
-	game->pl.ratio = (PLAYER_RATIO * game->map2D.pixel_per_block[0]);
+	game->pl.ratio = (PLAYER_RATIO * game->map2d.pixel_per_block[0]);
 	draw_2d_player(image, position, GREEN + RED, game);
 	if (game->minimap_state == 4)
 		draw_centered_rectangle(position, x_size, y_size, game);

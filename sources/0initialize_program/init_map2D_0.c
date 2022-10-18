@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:59:34 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/12 14:24:03 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:19:41 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static inline void	fill_vis(t_prog *game, char dir)
 static inline void	start_player_position(int j, int i, t_prog *game)
 {
 	game->pl.position[0] = i;
-	game->pl.position[1] = game->map2D.height - j - 1;
+	game->pl.position[1] = game->map2d.height - j - 1;
 	game->pl.position_coor[0] = game->pl.position[0] * \
-	(double) game->map2D.pixel_per_block[0] + \
-	((double) game->map2D.pixel_per_block[0] / 2);
+	(double) game->map2d.pixel_per_block[0] + \
+	((double) game->map2d.pixel_per_block[0] / 2);
 	game->pl.position_coor[1] = game->pl.position[1] * \
-	(double) game->map2D.pixel_per_block[1] + \
-	((double) game->map2D.pixel_per_block[1] / 2);
+	(double) game->map2d.pixel_per_block[1] + \
+	((double) game->map2d.pixel_per_block[1] / 2);
 	game->pl.v_position_coor[0] = game->pl.position_coor[0];
 	game->pl.v_position_coor[1] = game->pl.position_coor[1];
 }
@@ -66,12 +66,10 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 	j = -1;
 	i = -1;
 	layout = NULL;
-	printf("aqui\n");
-
-	layout = allocate_all_layout(game->map2D.height, game->map2D.width);
+	layout = allocate_all_layout(game->map2d.height, game->map2d.width);
 	while (++j < height)
 	{
-		while (++i < game->map2D.width)
+		while (++i < game->map2d.width)
 		{
 			if (map[j][i] == '1')
 				layout[shift_array(j, height)][i] = 1;
@@ -80,7 +78,7 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 			else
 			{
 				start_player_position(j, i, game);
-				fill_vis(game, game->map2D.map[j][i]);
+				fill_vis(game, game->map2d.map[j][i]);
 			}
 		}
 		i = -1;
@@ -91,14 +89,14 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 /** PURPOSE : Translate parser map into a wall map. */
 void	init_map2d(char **map, t_prog *game)
 {
-	game->map2D.layout = fill_new_map(game->map2D.height, game, map);
-	build_spaced_layout(game, game->map2D.height, game->map2D.width);
-	freemat_int(game->map2D.layout, game->map2D.height);
-	game->map2D.layout = copy_double_pointer \
-	(game->map2D.s_layout, game->map2D.s_height, game->map2D.s_width);
-	game->map2D.height = game->map2D.s_height;
-	game->map2D.width = game->map2D.s_width;
+	game->map2d.layout = fill_new_map(game->map2d.height, game, map);
+	build_spaced_layout(game, game->map2d.height, game->map2d.width);
+	freemat_int(game->map2d.layout, game->map2d.height);
+	game->map2d.layout = copy_double_pointer \
+	(game->map2d.s_layout, game->map2d.s_height, game->map2d.s_width);
+	game->map2d.height = game->map2d.s_height;
+	game->map2d.width = game->map2d.s_width;
 	update_pixel_per_block(game);
 	start_player_position(game->pl.position[1], game->pl.position[0], game);
-
+	control_window_limits(game);
 }

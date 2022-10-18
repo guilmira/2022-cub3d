@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_first_layer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsanfeli <jsanfeli@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:40:26 by jsanfeli          #+#    #+#             */
-/*   Updated: 2022/10/06 16:11:57 by jsanfeli         ###   ########.fr       */
+/*   Updated: 2022/10/13 12:20:33 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ mlx_texture_t	*fill_stripe(mlx_texture_t *tex, \
 	return (ret);
 }
 
-//NEXT: proteger funcion
 mlx_texture_t	*get_texture_stripe(mlx_texture_t *texture, \
 int percentage, uint32_t stripeheight, t_prog *game)
 {

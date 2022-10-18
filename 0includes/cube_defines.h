@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/12 15:26:52 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:37:21 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /* 								WINDOW SIZE
 					Standard size of window: 1920x1080p
  						Mac Screen: 2560 x 1440 						*/
-# define OX_WINDOW 1420
+# define OX_WINDOW 1860
 # define OY_WINDOW 1040
 /* Minimap size ratio */
 # define MINIMAP_WINDOW_RATIO 5
@@ -28,6 +28,10 @@
 2 - minimap corner         4 - full minimap 						*/
 # define MINIMAP_INTIAL_STATE 4
 # define FULL_MINIMAP 4
+
+/* Window boundry condition. */
+# define WINDOW_LOWER_LIMIT 1000
+# define WINDOW_UPPER_LIMIT 2500
 
 /* ------------------------ VISUAL ARTWORK DEFINES ------------------------ */
 # define SHADOWED_TRANSPARENCY 120
@@ -48,6 +52,8 @@
 # define SAFE_OFFSET 0.0001
 # define FOV_DEGREE 30
 
+/* Activates messages showing rendering inefficiencies. */
+# define GRAPHIC_ENGINE_REPORT 0
 /* ------------------------ MODIFIABLE DEFINES FOR DEVS --------------------- */
 /* Raycast related. */
 # define VISION_RAY 1
@@ -85,5 +91,22 @@ Check file cube_defines.h\n"
 # define BLACK	0x000000FF
 # define WHITE	0xFFFFFFFF
 # define YELLOW 0xFFBB2DFF
-
+/* MESSAGE COLOURS */
+# define C_RED		"\033[0;31m"
+# define C_YELLOW	"\033[0;33m"
+# define C_BLUE		"\033[0;34m"
+# define C_WHITE	"\033[0;37m"
+# define C_NONE		"\033[0m"
+/* MESSAGES */
+# define EXECUTION	"\nWelcome to the nightwing boyz cube.\nFrames in execution\n"
+# define INSTR	"\n--------Instructions of use------------\n"
+# define MOVE	"Movement keys		-	W A S D\n"
+# define VISION	"Vision control		-	Arrows\n"
+# define MINI	"Minimap trigger		-	Tab\n"
+# define FOV	"Altered reality		-	V\n"
+# define WIND	"Wind mode🗡		-	F\n"
+# define ESC	"Close program		-	ESC\n"
+# define CLOSE	"---------------------------------------\n\n"
+/* ReastDME */
+# define READ	"README.md"
 #endif
