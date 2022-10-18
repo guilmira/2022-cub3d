@@ -55,6 +55,7 @@ void			minimap_dimensions(t_prog *game);
 int				**copy_double_pointer(int **var, int height, int width);
 void			print_smap(int **s_map, int height, int width);
 void			prep_textures(t_prog *game);
+void			hook_control_minimap(t_prog *game);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int				rgb_t_translate(int red, int green, int blue, int transparency);

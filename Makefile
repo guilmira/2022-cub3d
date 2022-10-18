@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
-NAME		= cube
+NAME		= cub3d
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -O3 #-fsanitize=address 
 ARG			= maps_and_media/maps/default.cub

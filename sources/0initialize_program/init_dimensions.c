@@ -76,12 +76,6 @@ void	framework_dimensions(t_prog *game)
 	game->map2d.height = game->map2d.map_y + SPACES_AT_BORDER;
 	game->w1.origin[0] = 0;
 	game->w1.origin[1] = 0;
-<<<<<<< HEAD
-	game->w1.unit[0] = window_unit(game->w1.size[0], game->map2D.width);
-	game->w1.unit[1] = window_unit(game->w1.size[1], game->map2D.height);
-	minimap_dimensions(game);
-	hook_control_minimap(game);
-=======
 	if (game->minimap_state == 4)
 	{
 		game->w1.size[1] = OY_WINDOW;
@@ -98,6 +92,5 @@ void	framework_dimensions(t_prog *game)
 	update_pixel_per_block(game);
 	game->map2d.v_pixel_per_block[0] = 0;
 	game->map2d.v_pixel_per_block[1] = 0;
->>>>>>> 58f54a38c34991ce3b5e086f51f12ce37f926c06
 	mlx_set_window_size(game->mlx, game->w1.size[0], game->w1.size[1]);
 }
