@@ -86,10 +86,29 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 	return (layout);
 }
 
+static void update_enitys(t_prog *game, int flag)
+{
+	int i;
+
+	i = -1;
+	if (flag == 0)
+		while(++i < game->n_entitys)
+			game->entity[i].position[0] += game->map2d.val;
+	else
+		while(++i < game->n_entitys)
+			game->entity[i].position[1] -= game->map2d.val;
+}
+
 /** PURPOSE : Translate parser map into a wall map. */
 void	init_map2d(char **map, t_prog *game)
 {
+	int flag;
+
+	flag = 0;
 	game->map2d.layout = fill_new_map(game->map2d.height, game, map);
+	if (game->map2d.width < game->map2d.height)
+		flag = 1;
+	init_entitys(game, map);
 	build_spaced_layout(game, game->map2d.height, game->map2d.width);
 	freemat_int(game->map2d.layout, game->map2d.height);
 	game->map2d.layout = copy_double_pointer \
@@ -98,5 +117,6 @@ void	init_map2d(char **map, t_prog *game)
 	game->map2d.width = game->map2d.s_width;
 	update_pixel_per_block(game);
 	start_player_position(game->pl.position[1], game->pl.position[0], game);
+	update_enitys(game, flag);
 	control_window_limits(game);
 }

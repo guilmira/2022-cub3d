@@ -28,6 +28,23 @@ static void	clear_map_two_dim(int **map, int height)
 	map = NULL;
 }
 
+static void free_entity(t_prog *game)
+{
+	int i;
+
+	i = -1;
+	while (++i < game->n_entitys)
+	{
+		if (game->entity[i].type_enemy)
+			free(game->entity[i].type_enemy);
+		if (game->entity[i].type_obstacle)
+			free(game->entity[i].type_obstacle);
+		if (game->entity[i].type_collectionable)
+			free(game->entity[i].type_collectionable);
+	}
+	free(game->entity);
+}
+
 /** PURPOSE : Frees allocated memory in program. */
 static void	clear_memory(t_prog *game)
 {
@@ -43,6 +60,8 @@ static void	clear_memory(t_prog *game)
 			free(game->west);
 		if (game->east)
 			free(game->east);
+		if (game->entity)
+			free_entity(game);
 		destroy_texture(game);
 		clear_map_two_dim(game->map2d.layout, game->map2d.height);
 		clear_map_two_dim(game->map2d.s_layout, game->map2d.s_height);

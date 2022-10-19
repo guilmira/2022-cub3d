@@ -167,7 +167,21 @@ int base, int height, t_prog *game);
 void			translate_to_screen(double position_map[], \
 double position_screen[], int pixel_per_block[], t_prog *game);
 
+/*----------------------------- ENTITYS -------------------------------------*/
+
+void 			init_entitys(t_prog *game, char **map);
+int				get_value_ENEMY(int type, int letter);
+int				get_value_OBSTACLE(int type, int letter);
+int				get_value_COLLECTIONABLE(int type, int letter);
+int				build_entitys_default(int letter, t_prog *game, int number);
+void			set_entitys_structure(int letter, t_prog *game, int number, int coord[]);
+
+
+
+
+
 //NEXT
+void			ft_leaks(void);
 void			log_vector(t_vector v);
 void			log_coor(double array[]);
 void			log_d(double d);

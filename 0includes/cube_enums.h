@@ -45,4 +45,36 @@ enum e_WALL_COLLISION_TYPE{
 	BOTTOM_COLLISION,
 };
 
+enum e_ENTITY_TYPE{
+	T_ENTITY = 0,
+ 	T_ENEMY,
+ 	T_OBSTACLE,
+ 	T_COLLECTIONABLE,
+ 	T_EN_OB,
+ 	T_OB_CO,
+ 	T_CO_EN,
+ 	T_ALL,
+};
+
+/*------------------------- ENTITY BUILDER ---------------------------*/
+
+enum e_X_ENEMY_VALUES{
+	X_HEALTH = 100,
+	X_DAMAGE = 15,
+	X_FLAG_MOVEMENT = 1,
+	X_MOVEMENT_ANIMATIONS = 0
+};
+
+enum e_R_OBSTACLE_VALUES{
+	R_HITS = 0,
+};
+
+enum e_C_COLLECTIONABLE_VALUES{
+	C_HEALTH_UPGRADE = 0,
+	C_DAMAGE_UPGRADE = 0,
+	C_SPEED_UPGRADE = 0,
+	C_STABLE = 0
+};
+
+
 #endif

@@ -117,4 +117,5 @@ void	framework_two_dim(t_prog *game)
 	draw_grid(game, game->w2.size[0], game->w2.size[1]);
 	draw_wall_two_dim(game);
 	draw_player_position(game->image[CUB_3D], game);
+	//draw_all_entitys(game);
 }
