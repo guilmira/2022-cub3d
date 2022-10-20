@@ -19,26 +19,26 @@ int build_entitys_default(int letter, t_prog *game, int number)
 	type = 0;
 	if (letter == 'X')
 	{
-		game->entity[number].type = T_ENEMY;
+		game->entity[number].type = X_TYPE;
 		type = game->entity[number].type;
 		game->entity[number].visual_ratio = game->pl.ratio;
-		game->entity[number].collitions = 1;
+		game->entity[number].collitions = X_COLLITION;
 		game->entity[number].collition_space = game->pl.ratio;
 	}
 	if (letter == 'R')
 	{
-		game->entity[number].type = T_OBSTACLE;
+		game->entity[number].type = R_TYPE;
 		type = game->entity[number].type;
 		game->entity[number].visual_ratio = game->pl.ratio;
-		game->entity[number].collitions = 1;
+		game->entity[number].collitions = R_COLLITION;
 		game->entity[number].collition_space = game->pl.ratio;
 	}
 	if (letter == 'C')
 	{
-		game->entity[number].type = T_COLLECTIONABLE;
+		game->entity[number].type = C_TYPE;
 		type = game->entity[number].type;
 		game->entity[number].visual_ratio = game->pl.ratio;
-		game->entity[number].collitions = 1;
+		game->entity[number].collitions = C_COLLITION;
 		game->entity[number].collition_space = game->pl.ratio;
 	}
 	return (type);
@@ -57,19 +57,75 @@ int get_value_ENEMY(int type, int letter)
 		if (type == 'A')
 			return (X_MOVEMENT_ANIMATIONS);
 	}
+	if (letter == 'R')
+	{
+		if (type == 'H')
+			return (R_HEALTH);
+		if (type == 'D')
+			return (R_DAMAGE);
+		if (type == 'M')
+			return (R_FLAG_MOVEMENT);
+		if (type == 'A')
+			return (R_MOVEMENT_ANIMATIONS);
+	}
+	if (letter == 'C')
+	{
+		if (type == 'H')
+			return (C_HEALTH);
+		if (type == 'D')
+			return (C_DAMAGE);
+		if (type == 'M')
+			return (C_FLAG_MOVEMENT);
+		if (type == 'A')
+			return (C_MOVEMENT_ANIMATIONS);
+	}
+	return(0);
 }
 
 int get_value_OBSTACLE(int type, int letter)
 {
+	if (letter == 'X')
+	{
+		if (type == 'H')
+			return (X_HITS);
+	}
 	if (letter == 'R')
 	{
 		if (type == 'H')
 			return (R_HITS);
 	}
+	if (letter == 'C')
+	{
+		if (type == 'H')
+			return (C_HITS);
+	}
+	return(0);
 }
 
 int get_value_COLLECTIONABLE(int type, int letter)
 {
+	if (letter == 'X')
+	{
+		if (type == 'H')
+			return (X_HEALTH_UPGRADE);
+		if (type == 'D')
+			return (X_DAMAGE_UPGRADE);
+		if (type == 'S')
+			return (X_SPEED_UPGRADE);
+		if (type == 'L')
+			return (X_STABLE);
+	}
+	if (letter == 'R')
+	{
+		if (type == 'H')
+			return (R_HEALTH_UPGRADE);
+		if (type == 'D')
+			return (R_DAMAGE_UPGRADE);
+		if (type == 'S')
+			return (R_SPEED_UPGRADE);
+		if (type == 'L')
+			return (R_STABLE);
+	}
 	if (letter == 'C')
 	{
 		if (type == 'H')
@@ -81,4 +137,5 @@ int get_value_COLLECTIONABLE(int type, int letter)
 		if (type == 'L')
 			return (C_STABLE);
 	}
+	return(0);
 }

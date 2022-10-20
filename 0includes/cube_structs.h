@@ -139,7 +139,7 @@ typedef struct s_obstacle
 typedef struct s_entity
 {
 	int 			type; 
-	int				position[D2];
+	double			position[D2];
 	double			visual_ratio;
 	int 			collitions;
 	int 			collition_space;
