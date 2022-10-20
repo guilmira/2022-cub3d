@@ -175,7 +175,7 @@ int				get_value_OBSTACLE(int type, int letter);
 int				get_value_COLLECTIONABLE(int type, int letter);
 int				build_entitys_default(int letter, t_prog *game, int number);
 void			set_entitys_structure(int letter, t_prog *game, int number, int coord[]);
-
+void			draw_all_entitys(t_prog *game);
 
 
 

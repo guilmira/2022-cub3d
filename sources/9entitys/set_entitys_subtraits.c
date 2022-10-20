@@ -19,6 +19,7 @@ int build_entitys_default(int letter, t_prog *game, int number)
 	type = 0;
 	if (letter == 'X')
 	{
+		game->entity[number].letter = X_LETTER;
 		game->entity[number].type = X_TYPE;
 		type = game->entity[number].type;
 		game->entity[number].visual_ratio = game->pl.ratio;
@@ -27,6 +28,7 @@ int build_entitys_default(int letter, t_prog *game, int number)
 	}
 	if (letter == 'R')
 	{
+		game->entity[number].letter = R_LETTER;
 		game->entity[number].type = R_TYPE;
 		type = game->entity[number].type;
 		game->entity[number].visual_ratio = game->pl.ratio;
@@ -35,6 +37,7 @@ int build_entitys_default(int letter, t_prog *game, int number)
 	}
 	if (letter == 'C')
 	{
+		game->entity[number].letter = C_LETTER;
 		game->entity[number].type = C_TYPE;
 		type = game->entity[number].type;
 		game->entity[number].visual_ratio = game->pl.ratio;

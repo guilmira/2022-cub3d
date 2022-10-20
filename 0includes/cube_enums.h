@@ -70,6 +70,7 @@ enum e_ENTITY_TYPE{
 */
 
 enum e_X_VALUES{
+	X_LETTER = 'X',
 	X_TYPE = 1,
 	X_VISUAL_RATIO = 0,
 	X_COLLITION = 1,
@@ -89,6 +90,7 @@ enum e_X_VALUES{
 };
 
 enum e_R_VALUES{
+	R_LETTER = 'R',
 	R_TYPE = 2,
 	R_VISUAL_RATIO = 0,
 	R_COLLITION = 1,
@@ -108,6 +110,7 @@ enum e_R_VALUES{
 };
 
 enum e_C_VALUES{
+	C_LETTER = 'C',
 	C_TYPE = 3,
 	C_VISUAL_RATIO = 0,
 	C_COLLITION = 1,

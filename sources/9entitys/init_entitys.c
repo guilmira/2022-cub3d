@@ -13,7 +13,7 @@
 #include "cube.h"
 
 void	draw_2d_enemys(double pos[], \
-	int colour, t_prog *game, int ratio)
+	int colour, t_prog *game, double ratio)
 {
 	double	i[2];
 
@@ -32,14 +32,21 @@ void	draw_2d_enemys(double pos[], \
 	}
 }
 
-/*void	draw_all_entitys(t_prog *game)
+void	draw_all_entitys(t_prog *game)
 {
 	int i;
 
 	i = -1;
 	while (++i < game->n_entitys)
-		
-}*/
+	{
+		if (game->entity[i].letter == 'X')
+			draw_2d_enemys(game->entity[i].position, BLUE + RED, game, game->entity[i].visual_ratio);
+		if (game->entity[i].letter == 'C')
+			draw_2d_enemys(game->entity[i].position, GREEN, game, game->entity[i].visual_ratio);
+		if (game->entity[i].letter == 'R')
+			draw_2d_enemys(game->entity[i].position, BLUE, game, game->entity[i].visual_ratio);
+	}
+}
 
 static inline int count_entitys(char **layout, int height, int width, t_prog *game)
 {
@@ -74,5 +81,12 @@ void init_entitys(t_prog *game, char **map)
 	else
 		return ;
 	game->n_entitys = count_entitys(map, game->map2d.height, game->map2d.width, game);
-	
+	int i = -1;
+	printf("PLAYER\n");
+	printf("X:%f Y:%f\n", game->pl.position_coor[0], game->pl.position_coor[1]);
+	while(++i < game->n_entitys)
+	{
+		printf("%c:\n", game->entity[i].letter);
+		printf("X:%f Y:%f\n", game->entity[i].position[0], game->entity[i].position[1]);
+	}
 }

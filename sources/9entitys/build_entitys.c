@@ -58,7 +58,7 @@ void set_entitys_structure(int letter, t_prog *game, int number, int coord[])
 	game->entity[number].position[0] = coord[0] * \
 		(double) game->map2d.pixel_per_block[0] + \
 		((double) game->map2d.pixel_per_block[0] / 2);
-	game->entity[number].position[1] = coord[1] * \
+	game->entity[number].position[1] = (game->map2d.height - coord[1] - 1) * \
 		(double) game->map2d.pixel_per_block[1] + \
 		((double) game->map2d.pixel_per_block[1] / 2);
 	type = build_entitys_default(letter, game, number);

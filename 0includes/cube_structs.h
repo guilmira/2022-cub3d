@@ -72,7 +72,8 @@ typedef struct s_beam
  ENTITY BUILDER:
  Allows to set entity parameters and build diferent structures of traits
  -----------------------------------------------------------------------------------------------------------------------------------------------------
-
+	
+	-Letter: Letter witch is referenced in the map;
  	-Type: Allows to filter between usable stuctures
  			- '0' ENTITY ALONE NO TRAITS;
  			- '1' ENEMY ALONE;
@@ -138,6 +139,7 @@ typedef struct s_obstacle
 
 typedef struct s_entity
 {
+	int				letter;
 	int 			type; 
 	double			position[D2];
 	double			visual_ratio;
