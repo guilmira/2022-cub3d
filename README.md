@@ -3,7 +3,7 @@ The project is inspired by the world-famous eponymous 90’s game, which was the
 
 This README is dedicated to our long devoted fans. Enjoy our CUBE.
 
-![](https://github.com/GuilleMira/cub3d/blob/newguille/gif/show_off.gif)
+![](https://github.com/GuilleMira/cub3d/blob/main/maps_and_media/gif/show_off.gif)
 
 ## About
 
