@@ -3,6 +3,7 @@
 cube
 .DS_Store
 .vscode
+cub3d
 # Prerequisites
 *.d
 
