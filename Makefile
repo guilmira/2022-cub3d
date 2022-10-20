@@ -6,16 +6,15 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/14 17:21:42 by guilmira         ###   ########.fr        #
+#    Updated: 2022/10/20 12:12:53 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cub3d
 CC			= gcc
-CFLAGS		= -Wall -Wextra -O3 #-fsanitize=address -Werror
-ARG			= maps_and_media/maps/default.cub
-
+CFLAGS		= -Wall -Wextra  -O3 -fsanitize=address #-Werror
+#MAP1			= maps_and_media/maps/default.cub
 #--------------------------------------------------------------------------------------------------------------LIBS
 HeastDER				= -I ./0includes
 LIB_DIR				= libft_submodule
@@ -26,6 +25,11 @@ INCLUDES			= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
 FLAGS_MLX_DARWIN	= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 FLAGS_MLX_ARCH		= -I include -lglfw -ldl -pthread -lm
 FLAGS_MLX_LINUX		= -I include -lglfw -ldl
+#--------------------------------------------------------------------------------------------------------------MAPS
+MAP_ROUTE	= maps_and_media/maps
+MAP1		= $(MAP_ROUTE)/default.cub
+MAP2		= $(MAP_ROUTE)/easy_mapLONG.cub
+MAP3		= $(MAP_ROUTE)/test_map.cub
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./sources
 FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_map2D_2.c init_map2D_3.c init_variables.c init_dimensions.c prep_textures.c)
@@ -85,9 +89,17 @@ $(NAME): $(OBJS) $(LIB) $(MLX)
 	@echo $(GREEN) "$(NAME) compiled" $(northNE)
 
 exe: $(NAME)
-	time ./$(NAME) $(ARG)
+	time ./$(NAME) $(MAP1)
+
+1: $(NAME)
+	time ./$(NAME) $(MAP1)
+2: $(NAME)
+	time ./$(NAME) $(MAP2)
+3: $(NAME)
+	time ./$(NAME) $(MAP3)
 fus:
 	$(RM) $(OBJS)
+
 redo: fus exe
 #----------------------------------------------------------------------------------------------------CLeastNING RULES
 RM = rm -rf
