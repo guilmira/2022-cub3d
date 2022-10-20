@@ -27,7 +27,7 @@ FLAGS_MLX_ARCH		= -I include -lglfw -ldl -pthread -lm
 FLAGS_MLX_LINUX		= -I include -lglfw -ldl
 #--------------------------------------------------------------------------------------------------------------MAPS
 MAP_ROUTE	= maps_and_media/maps
-MAP1		= $(MAP_ROUTE)/default.cub
+MAP1		= $(MAP_ROUTE)/balanced_map.cub
 MAP2		= $(MAP_ROUTE)/easy_mapLONG.cub
 MAP3		= $(MAP_ROUTE)/test_map.cub
 #--------------------------------------------------------------------------------------------------------------FILES

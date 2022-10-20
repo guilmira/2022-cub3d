@@ -61,6 +61,8 @@ void set_entitys_structure(int letter, t_prog *game, int number, int coord[])
 	game->entity[number].position[1] = (game->map2d.height - coord[1] - 1) * \
 		(double) game->map2d.pixel_per_block[1] + \
 		((double) game->map2d.pixel_per_block[1] / 2);
+		game->entity[number].coord[0] = coord[0];
+		game->entity[number].coord[1] = coord[1];
 	type = build_entitys_default(letter, game, number);
 	if (type == T_ENEMY || type == T_EN_OB || type == T_CO_EN || type == T_ALL)
 		game->entity[number].type_enemy = set_enemy_structure(letter);

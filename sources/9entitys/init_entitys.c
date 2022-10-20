@@ -84,9 +84,11 @@ void init_entitys(t_prog *game, char **map)
 	int i = -1;
 	printf("PLAYER\n");
 	printf("X:%f Y:%f\n", game->pl.position_coor[0], game->pl.position_coor[1]);
+	printf("%F\n", game->pl.ratio);
 	while(++i < game->n_entitys)
 	{
 		printf("%c:\n", game->entity[i].letter);
 		printf("X:%f Y:%f\n", game->entity[i].position[0], game->entity[i].position[1]);
+		printf("VISUAL: %f\n", game->entity[i].visual_ratio);
 	}
 }

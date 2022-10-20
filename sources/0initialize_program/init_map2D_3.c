@@ -62,6 +62,9 @@ static inline void	do_spaced_w(int height, int width, int flag, t_prog *game)
 	{
 		game->map2d.s_width = width + 1;
 		game->pl.position[0] += 1;
+		k = -1;
+		while(++k < game->n_entitys)
+			game->entity[k].position[0] += 1;
 	}
 }
 
@@ -87,4 +90,8 @@ void	buildwidth(t_prog *game, int height, int width)
 	do_spaced_w(subti, width, flag, game);
 	game->pl.position[1] = (game->map2d.s_height - game->map2d.val
 			- game->pl.position[1] - 1);
+	subti = -1;
+	while(++subti < game->n_entitys)
+			game->entity[subti].position[1] = (game->map2d.s_height - game->map2d.val
+			- game->entity[subti].coord[1] - 1);
 }

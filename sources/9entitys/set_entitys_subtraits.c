@@ -14,35 +14,37 @@
 
 int build_entitys_default(int letter, t_prog *game, int number)
 {
-	int type;
+	int		type;
+	double	ratio;
 
 	type = 0;
+	ratio = (PLAYER_RATIO * game->map2d.pixel_per_block[0]);
 	if (letter == 'X')
 	{
 		game->entity[number].letter = X_LETTER;
 		game->entity[number].type = X_TYPE;
 		type = game->entity[number].type;
-		game->entity[number].visual_ratio = game->pl.ratio;
+		game->entity[number].visual_ratio = ratio;
 		game->entity[number].collitions = X_COLLITION;
-		game->entity[number].collition_space = game->pl.ratio;
+		game->entity[number].collition_space = ratio;
 	}
 	if (letter == 'R')
 	{
 		game->entity[number].letter = R_LETTER;
 		game->entity[number].type = R_TYPE;
 		type = game->entity[number].type;
-		game->entity[number].visual_ratio = game->pl.ratio;
+		game->entity[number].visual_ratio = ratio;
 		game->entity[number].collitions = R_COLLITION;
-		game->entity[number].collition_space = game->pl.ratio;
+		game->entity[number].collition_space = ratio;
 	}
 	if (letter == 'C')
 	{
 		game->entity[number].letter = C_LETTER;
 		game->entity[number].type = C_TYPE;
 		type = game->entity[number].type;
-		game->entity[number].visual_ratio = game->pl.ratio;
+		game->entity[number].visual_ratio = ratio;
 		game->entity[number].collitions = C_COLLITION;
-		game->entity[number].collition_space = game->pl.ratio;
+		game->entity[number].collition_space = ratio;
 	}
 	return (type);
 }

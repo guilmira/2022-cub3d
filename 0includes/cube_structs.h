@@ -74,7 +74,7 @@ typedef struct s_beam
  -----------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	-Letter: Letter witch is referenced in the map;
- 	-Type: Allows to filter between usable stuctures
+ 	-Type: Allows to filter between usable stuctures;
  			- '0' ENTITY ALONE NO TRAITS;
  			- '1' ENEMY ALONE;
  			- '2' OBSTACLE ALONE;
@@ -83,7 +83,8 @@ typedef struct s_beam
  			- '6' OBSTACLE AND COLLECTIONABLE;
  			- '5' COLLECTIONABLE AND ENEMY;
  			- '7' ALL TRAITS;
- 	-Position: position relative to pixel in screen
+ 	-Position: position relative to pixel in screen;
+ 	-Coord: Coordinates on map;
  	-Visual_ratio: radio of 2d sphere where the raycast collisions, allows to renderize big textures or small;
  	-Collitions: Flag wich allows to deactivate player collitions with texture;
  	-Collition_space: radio of 2d sphere where the player will collide with entity;
@@ -142,6 +143,7 @@ typedef struct s_entity
 	int				letter;
 	int 			type; 
 	double			position[D2];
+	int				coord[D2];
 	double			visual_ratio;
 	int 			collitions;
 	int 			collition_space;
