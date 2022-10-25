@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3D_frame_exe.c                                     :+:      :+:    :+:   */
+/*   entity_layer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 15:48:19 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/25 10:43:35 by guilmira         ###   ########.fr       */
+/*   Created: 2022/10/25 10:23:33 by guilmira          #+#    #+#             */
+/*   Updated: 2022/10/25 12:17:55 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-/** PURPOSE : raise 3D from raycast results.
- * 1. Draw first layer of the 3D: floor and horizon sky.
- * 2. Draw entities as sprites.
- * 3. Draw walls depending on ray distance collison. */
-void	put_frame_three_dim(t_prog *game)
+void	draw_entity_layer(t_prog *game)
 {
-	draw_first_layer(game);
-	draw_three_dimension_walls(game);
-	draw_entity_layer(game);
+	mlx_texture_t *spr;
+
+	//falta un open y parseo, checkeo de que existe
+	
+	int i  = -1;
+	while (++i < game->rc->number_of_rays)
+		printf("%.2f ", game->rc->rc_distance[i]);
+
+	printf("\n");
+
+	spr = game->spr;
+	mlx_draw_texture(game->image[CUB_3D], spr, game->w1.size[0] / 2, game->w1.size[1] / 2);
+
+	//draw_textured_enemy()
+
 }

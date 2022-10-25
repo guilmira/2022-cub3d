@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 17:24:27 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/25 10:38:22 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,10 @@ typedef struct s_program
 	int				minimap_state;
 	int				file;
 	int				flag_engine_report;
+
+	//PROVISIONAl ---------------------
+	mlx_texture_t *spr;
+
 }					t_prog;
 
 #endif

@@ -6,14 +6,14 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/20 12:12:53 by guilmira         ###   ########.fr        #
+#    Updated: 2022/10/25 10:43:14 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cub3d
 CC			= gcc
-CFLAGS		= -Wall -Wextra  -O3 -fsanitize=address #-Werror
+CFLAGS		= -Wall -Wextra -Werror -O3 -fsanitize=address 
 #MAP1			= maps_and_media/maps/default.cub
 #--------------------------------------------------------------------------------------------------------------LIBS
 HeastDER				= -I ./0includes
@@ -43,6 +43,7 @@ FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c error_man
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c movement_setter.c vison_control.c hook_keys.c hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c)
 FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c 3D_ray_texture.c 3D_ray_texture_aux.c 3D_ray_simplewall.c)
+FOLDER8v	= $(addprefix $(ROUTE)/8draw3Dentities/,		entity_layer.c)
 FOLDER9		= $(addprefix $(ROUTE)/9entitys/,				init_entitys.c build_entitys.c set_entitys_subtraits.c)
 #--------------------------------------------------------------------------------------------------------------southURCES
 SRCS		=	$(FOLDER0)\
@@ -56,6 +57,7 @@ SRCS		=	$(FOLDER0)\
 				$(FOLDER6)\
 				$(FOLDER7)\
 				$(FOLDER8)\
+				$(FOLDER8v)\
 				$(FOLDER9)
 #SRCS 		=	$(sh find $(ROUTE) -name "*.c" -type) NEXT
 OBJS		=	$(SRCS:.c=.o)

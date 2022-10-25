@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 10:59:28 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/14 17:20:46 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/25 10:35:09 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ void			draw_textured_wall(int wall_side, \
 int ray_number, int size, t_prog *game);
 mlx_texture_t	*get_oriented_texture(int wall_side, \
 t_vector direction, t_prog *game);
+void			draw_entity_layer(t_prog *game);
 /* ------------------------ PLAYER AND MOVEMENT ------------------------ */
 /* PLAYER */
 void			draw_player_position(mlx_image_t *image, t_prog *game);
