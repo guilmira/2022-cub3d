@@ -6,7 +6,7 @@
 /*   By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 10:23:33 by guilmira          #+#    #+#             */
-/*   Updated: 2022/10/25 12:17:55 by guilmira         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:26:53 by guilmira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_entity_layer(t_prog *game)
 	mlx_texture_t *spr;
 
 	//falta un open y parseo, checkeo de que existe
-	
+	//
 	int i  = -1;
 	while (++i < game->rc->number_of_rays)
 		printf("%.2f ", game->rc->rc_distance[i]);
