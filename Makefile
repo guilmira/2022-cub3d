@@ -13,7 +13,7 @@
 #--------------------------------------------------------------------------------------------------------------COMPILER
 NAME		= cub3d
 CC			= gcc
-CFLAGS		= -Wall -Wextra  -O3 -fsanitize=address #-Werror
+CFLAGS		= -Wall -Wextra  -O3 #-fsanitize=address #-Werror
 #MAP1			= maps_and_media/maps/default.cub
 #--------------------------------------------------------------------------------------------------------------LIBS
 HeastDER				= -I ./0includes

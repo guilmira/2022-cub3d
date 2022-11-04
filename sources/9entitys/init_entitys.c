@@ -63,7 +63,13 @@ static inline int count_entitys(char **layout, int height, int width, t_prog *ga
 			if (layout[coord[1]][coord[0]] == 'X' || layout[coord[1]][coord[0]] == 'R' || layout[coord[1]][coord[0]] == 'C')
 			{
 				if (game)
+				{
+					game->entity[count].type_enemy = NULL;
+					game->entity[count].type_obstacle = NULL;
+					game->entity[count].type_collectionable = NULL;
+					game->entity[count].sprite = NULL;
 					set_entitys_structure(layout[coord[1]][coord[0]], game, count, coord);
+				}
 				count++;
 			}
 		}
@@ -82,13 +88,13 @@ void init_entitys(t_prog *game, char **map)
 		return ;
 	game->n_entitys = count_entitys(map, game->map2d.height, game->map2d.width, game);
 	int i = -1;
-	printf("PLAYER\n");
+	/*printf("PLAYER\n");
 	printf("X:%f Y:%f\n", game->pl.position_coor[0], game->pl.position_coor[1]);
-	printf("%F\n", game->pl.ratio);
-	while(++i < game->n_entitys)
+	printf("%F\n", game->pl.ratio);*/
+	/*while(++i < game->n_entitys)
 	{
 		printf("%c:\n", game->entity[i].letter);
 		printf("X:%f Y:%f\n", game->entity[i].position[0], game->entity[i].position[1]);
 		printf("VISUAL: %f\n", game->entity[i].visual_ratio);
-	}
+	}*/
 }

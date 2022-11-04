@@ -12,6 +12,10 @@
 
 #include "cube.h"
 
+void leaks(void)
+{
+	system("leaks cub3d");
+}
 /** PURPOSE : CUB3 uses 
  * 1. make exe.
  * 2. ./cube + [map_name.cub] */
@@ -19,6 +23,7 @@ int	main(int argc, char **argv)
 {
 	t_prog	*game;
 
+	atexit(leaks);
 	game = ft_calloc(1, sizeof(t_prog));
 	if (!game)
 		ft_shut(EX1);

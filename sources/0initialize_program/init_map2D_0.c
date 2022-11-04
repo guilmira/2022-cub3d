@@ -75,6 +75,8 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 				layout[shift_array(j, height)][i] = 1;
 			else if (map[j][i] == '0' || map[j][i] == ' ')
 				layout[shift_array(j, height)][i] = 0;
+			else if (map[j][i] != 'N' && map[j][i] != 'E' && map[j][i] != 'S' && map[j][i] != 'W')
+				layout[shift_array(j, height)][i] = 2;
 			else
 			{
 				start_player_position(j, i, game);
@@ -90,7 +92,7 @@ static int	**fill_new_map(int height, t_prog *game, char **map)
 void	init_map2d(char **map, t_prog *game)
 {
 	game->map2d.layout = fill_new_map(game->map2d.height, game, map);
-	init_entitys(game, map);
+	//init_entitys(game, map);
 	build_spaced_layout(game, game->map2d.height, game->map2d.width);
 	freemat_int(game->map2d.layout, game->map2d.height);
 	game->map2d.layout = copy_double_pointer \

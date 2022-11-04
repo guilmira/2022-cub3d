@@ -71,6 +71,7 @@ typedef struct s_beam
 /**PORPOUSE*
  ENTITY BUILDER:
  Allows to set entity parameters and build diferent structures of traits
+ Position in simplifyed map is setted: (2 = X); (3 = C); (4 = R);
  -----------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	-Letter: Letter witch is referenced in the map;

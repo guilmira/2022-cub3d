@@ -31,7 +31,7 @@ static inline t_obstacle *set_obstacle_structure(int letter)
 
 	fill = malloc(sizeof(t_obstacle));
 	fill->hits = get_value_OBSTACLE('H', letter);
-	fill->second_sprite = NULL;
+	//fill->second_sprite = NULL;
 	return (fill);
 }
 
@@ -52,9 +52,6 @@ void set_entitys_structure(int letter, t_prog *game, int number, int coord[])
 {
 	int type;
 
-	game->entity[number].type_enemy = NULL;
-	game->entity[number].type_obstacle = NULL;
-	game->entity[number].type_collectionable = NULL;
 	game->entity[number].position[0] = coord[0] * \
 		(double) game->map2d.pixel_per_block[0] + \
 		((double) game->map2d.pixel_per_block[0] / 2);

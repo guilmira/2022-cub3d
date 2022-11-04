@@ -35,12 +35,15 @@ static void free_entity(t_prog *game)
 	i = -1;
 	while (++i < game->n_entitys)
 	{
-		if (game->entity[i].type_enemy)
+		if (game->entity[i].type_enemy != NULL)
 			free(game->entity[i].type_enemy);
-		if (game->entity[i].type_obstacle)
+		if (game->entity[i].type_obstacle != NULL)
 			free(game->entity[i].type_obstacle);
-		if (game->entity[i].type_collectionable)
+		if (game->entity[i].type_collectionable != NULL)
 			free(game->entity[i].type_collectionable);
+		printf("BRUTHER\n");
+		if (game->entity[i].sprite != NULL)
+			free(game->entity[i].sprite);
 	}
 	free(game->entity);
 }
