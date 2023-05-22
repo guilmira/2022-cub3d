@@ -28,7 +28,7 @@ Those versions are the ones used during development.
 Only available for Linux´s main distributions.
 
 1. Download/Clone this repo
-        git clone https://github.com/GuilleMira/cub3d.git
+        git clone -recurse-submodules -j https://github.com/GuilleMira/cub3d.git
 2. `cd` into the root directory
         cd cub3d
 3. `make install` to install all requirements
