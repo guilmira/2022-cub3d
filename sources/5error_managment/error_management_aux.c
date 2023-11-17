@@ -42,5 +42,5 @@ void	freemat(char **mat)
 
 void	ft_leaks(void)
 {
-	system("leaks -quiet cub3d");
+	system("leaks -quiet cube");
 }

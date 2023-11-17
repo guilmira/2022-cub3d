@@ -1,10 +1,10 @@
-north maps_and_media/textures/1.png
+north maps_and_media/textures/2.png
 
 
-        south maps_and_media/textures/4.png
-   east maps_and_media/textures/5.png
+        south maps_and_media/textures/3.png
+   east maps_and_media/textures/6.png
 
-     west                                     maps_and_media/textures/2.png
+     west                                     maps_and_media/textures/4.png
 
                 
 C 40,40,40

@@ -68,92 +68,6 @@ typedef struct s_beam
 	int				number_of_rays;
 }					t_beam;
 
-/**PORPOUSE*
- ENTITY BUILDER:
- Allows to set entity parameters and build diferent structures of traits
- Position in simplifyed map is setted: (2 = X); (3 = C); (4 = R);
- -----------------------------------------------------------------------------------------------------------------------------------------------------
-	
-	-Letter: Letter witch is referenced in the map;
- 	-Type: Allows to filter between usable stuctures;
- 			- '0' ENTITY ALONE NO TRAITS;
- 			- '1' ENEMY ALONE;
- 			- '2' OBSTACLE ALONE;
- 			- '3' COLLECTIONABLE ALONE;
- 			- '4' ENEMY AND OBSTACLE;
- 			- '6' OBSTACLE AND COLLECTIONABLE;
- 			- '5' COLLECTIONABLE AND ENEMY;
- 			- '7' ALL TRAITS;
- 	-Position: position relative to pixel in screen;
- 	-Coord: Coordinates on map;
- 	-Visual_ratio: radio of 2d sphere where the raycast collisions, allows to renderize big textures or small;
- 	-Collitions: Flag wich allows to deactivate player collitions with texture;
- 	-Collition_space: radio of 2d sphere where the player will collide with entity;
- 	-Sprite: Structure with the desired base texture coud be a pointer to an other strucure info;
- 	-Type_enemy: "game->entity[i].type_enemy" Defautl setted to NULL, if type correspond would be allocated and used traits of ENEMY structure;
- 	-Type_obstacle: "game->entity[i].type_obstacle" Defautl setted to NULL, if type correspond would be allocated and used traits of OBSTACLE structure;
- 	-Type_collectionable: "game->entity[i].type_collectionable" Defautl setted to NULL, if type correspond would be allocated and used traits of COLLECTIONABLE structure;
- 
- 	-Enemy_Structure:
-		-Health: number of points of health. Default player damage set to 15 points;
-		-Damage: number of damage point that enemy does. Default player health set to 100;
-		-Speed: movement speed;
-		-Flag_movement: 0 = centry_mode; 1 = Tracker;
-		-Movement_animations: 0 = NO sprite update; 1 = Sprite updates while moving;
-
-	-Collectionable_Stucture:
-		-Pickeable: 0 = player gets effect on contact but collectionable remains; 1 = on contact vanishes;
-		-Health_upgrade: number of health points that collectionable restores or reduce;
-		-Damage_upgrade: number of damage points that collectionable increases or reduce;
-		-Speed_upgrade: number of speed points that collectionable increases or reduce;
-		-Stable: 0 = does NOT stay after picking; 1 = stays after picking;
-
-	-Obstacle_Structure:
-		-Hits: number of hits witch tackes to make it disappear. If 0 object is indestuctible;
-		-Second_sprite: after a number of hits the texture will change to this texture;
-
--------------------------------------------------------------------------------------------------------------------------------------------------------
-*/
-
-typedef struct s_enemy
-{
-	int 			health;
-	int 			damage;
-	double 			speed;
-	int 			flag_movement;
-	int 			movement_animations;
-}					t_enemy;
-
-typedef struct s_collectionable
-{
-	int 			pickeable;
-	int 			health_upgrade;
-	int				damage_upgrade;
-	int				speed_upgrade;
-	int 			stable;
-}					t_collectionable;
-
-typedef struct s_obstacle
-{
-	int				hits;
-	mlx_texture_t	*second_sprite;
-}					t_obstacle;
-
-typedef struct s_entity
-{
-	int				letter;
-	int 			type; 
-	double			position[D2];
-	int				coord[D2];
-	double			visual_ratio;
-	int 			collitions;
-	int 			collition_space;
-	mlx_texture_t	*sprite;
-	t_enemy			*type_enemy;
-	t_obstacle		*type_obstacle;
-	t_collectionable *type_collectionable;
-}					t_entity;
-
 /** PURPOSE : Info of the player
  * Where is located, where is it looking at. */
 typedef struct s_player
@@ -171,8 +85,6 @@ typedef struct s_player
 	int				flag_movement;
 	int				flag_trance;
 	double			speed;
-	int 			damage; /*NEXT do sistem damage and hits 15 points default*/
-	int 			health;
 	int				fast_r;
 }					t_player;
 
@@ -230,8 +142,6 @@ typedef struct s_program
 	mlx_texture_t	*t_east;
 	int				sky_clr;
 	int				floor_clr;
-	t_entity		*entity;
-	int				n_entitys;
 	t_dim			w1;
 	t_dim			w2;
 	t_player		pl;

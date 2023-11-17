@@ -66,7 +66,7 @@ void	reconstruct_minimap_variables(t_prog *game)
 }
 
 /** PURPOSE : Executed when hitting tab. It executes twice */
-void	hook_control_minimap(t_prog *game)
+static inline void	hook_control_minimap(t_prog *game)
 {
 	correct_minimap_value(game);
 	game->map2d.v_pixel_per_block[0] = 0;

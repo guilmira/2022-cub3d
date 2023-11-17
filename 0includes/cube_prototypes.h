@@ -55,7 +55,6 @@ void			minimap_dimensions(t_prog *game);
 int				**copy_double_pointer(int **var, int height, int width);
 void			print_smap(int **s_map, int height, int width);
 void			prep_textures(t_prog *game);
-void			hook_control_minimap(t_prog *game);
 /* ------------------------ FPS ------------------------ */
 /* FRAMEWORKS */
 int				rgb_t_translate(int red, int green, int blue, int transparency);
@@ -167,21 +166,7 @@ int base, int height, t_prog *game);
 void			translate_to_screen(double position_map[], \
 double position_screen[], int pixel_per_block[], t_prog *game);
 
-/*----------------------------- ENTITYS -------------------------------------*/
-
-void 			init_entitys(t_prog *game, char **map);
-int				get_value_ENEMY(int type, int letter);
-int				get_value_OBSTACLE(int type, int letter);
-int				get_value_COLLECTIONABLE(int type, int letter);
-int				build_entitys_default(int letter, t_prog *game, int number);
-void			set_entitys_structure(int letter, t_prog *game, int number, int coord[]);
-void			draw_all_entitys(t_prog *game);
-
-
-
-
 //NEXT
-void			ft_leaks(void);
 void			log_vector(t_vector v);
 void			log_coor(double array[]);
 void			log_d(double d);

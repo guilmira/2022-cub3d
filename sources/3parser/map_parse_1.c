@@ -36,8 +36,6 @@ int	getcoords(t_prog *game, t_list *aux_lst)
 	while (1)
 	{
 		l = ret_l(aux_lst);
-		if(l == -1)
-			return (-1);
 		if (l > x)
 			x = l;
 		if (!aux_lst->next)
@@ -79,8 +77,7 @@ int	is_closed(char **map)
 		while (map[y][x])
 		{
 			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'W'
-				|| map[y][x] == 'E' || map[y][x] == 'S' || map[y][x] == 'X'
-				|| map[y][x] == 'R' || map[y][x] == 'C')
+				|| map[y][x] == 'E' || map[y][x] == 'S')
 				if (map[y][x - 1] == ' ' || map[y][x + 1] == ' '
 					|| map[y - 1][x] == ' ' || map[y + 1][x] == ' ')
 					return (-1);

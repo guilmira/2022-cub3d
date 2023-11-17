@@ -6,15 +6,16 @@
 #    By: guilmira <guilmira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 07:28:58 by guilmira          #+#    #+#              #
-#    Updated: 2022/10/20 12:12:53 by guilmira         ###   ########.fr        #
+#    Updated: 2023/11/17 14:44:32 by guilmira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #--------------------------------------------------------------------------------------------------------------COMPILER
-NAME		= cub3d
+NAME		= cube
 CC			= gcc
-CFLAGS		= -Wall -Wextra  -O3 #-fsanitize=address #-Werror
-#MAP1			= maps_and_media/maps/default.cub
+CFLAGS		= -Wall -Wextra -Werror -O3 #-fsanitize=address 
+ARG			= maps_and_media/maps/test_map.cub
+
 #--------------------------------------------------------------------------------------------------------------LIBS
 HeastDER				= -I ./0includes
 LIB_DIR				= libft_submodule
@@ -25,11 +26,6 @@ INCLUDES			= -I ./libft_submodule/0includes -I ./MLX42/include/MLX42
 FLAGS_MLX_DARWIN	= -I include -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 FLAGS_MLX_ARCH		= -I include -lglfw -ldl -pthread -lm
 FLAGS_MLX_LINUX		= -I include -lglfw -ldl
-#--------------------------------------------------------------------------------------------------------------MAPS
-MAP_ROUTE	= maps_and_media/maps
-MAP1		= $(MAP_ROUTE)/balanced_map.cub
-MAP2		= $(MAP_ROUTE)/easy_mapLONG.cub
-MAP3		= $(MAP_ROUTE)/test_map.cub
 #--------------------------------------------------------------------------------------------------------------FILES
 ROUTE 		= ./sources
 FOLDER0		= $(addprefix $(ROUTE)/0initialize_program/,	main.c init_map2D_0.c init_map2D_1.c init_map2D_2.c init_map2D_3.c init_variables.c init_dimensions.c prep_textures.c)
@@ -43,7 +39,6 @@ FOLDER5		= $(addprefix $(ROUTE)/5error_managment/,		error_management.c error_man
 FOLDER6		= $(addprefix $(ROUTE)/6hooks/,					movement_0.c movement_1.c movement_setter.c vison_control.c hook_keys.c hooks.c)
 FOLDER7		= $(addprefix $(ROUTE)/7draw2D/,				2D_frame_exe.c 2D_vision_beam.c 2D_vision_planes.c)
 FOLDER8		= $(addprefix $(ROUTE)/8draw3D/,				3D_frame_exe.c draw_first_layer.c 3D_raycasted_walls.c 3D_ray_texture.c 3D_ray_texture_aux.c 3D_ray_simplewall.c)
-FOLDER9		= $(addprefix $(ROUTE)/9entitys/,				init_entitys.c build_entitys.c set_entitys_subtraits.c)
 #--------------------------------------------------------------------------------------------------------------southURCES
 SRCS		=	$(FOLDER0)\
 				$(FOLDER1)\
@@ -55,8 +50,7 @@ SRCS		=	$(FOLDER0)\
 				$(FOLDER5)\
 				$(FOLDER6)\
 				$(FOLDER7)\
-				$(FOLDER8)\
-				$(FOLDER9)
+				$(FOLDER8)
 #SRCS 		=	$(sh find $(ROUTE) -name "*.c" -type) NEXT
 OBJS		=	$(SRCS:.c=.o)
 #--------------------------------------------------------------------------------------------------------------RULES
@@ -89,17 +83,9 @@ $(NAME): $(OBJS) $(LIB) $(MLX)
 	@echo $(GREEN) "$(NAME) compiled" $(northNE)
 
 exe: $(NAME)
-	time ./$(NAME) $(MAP1)
-
-1: $(NAME)
-	time ./$(NAME) $(MAP1)
-2: $(NAME)
-	time ./$(NAME) $(MAP2)
-3: $(NAME)
-	time ./$(NAME) $(MAP3)
+	time ./$(NAME) $(ARG)
 fus:
 	$(RM) $(OBJS)
-
 redo: fus exe
 #----------------------------------------------------------------------------------------------------CLeastNING RULES
 RM = rm -rf

@@ -95,10 +95,7 @@ int	ret_l(t_list *aux_lst)
 			&& ((char *)aux_lst->content)[l] != 'S'
 			&& ((char *)aux_lst->content)[l] != 'E'
 			&& ((char *)aux_lst->content)[l] != 'W'
-			&& ((char *)aux_lst->content)[l] != ' '
-			&& ((char *)aux_lst->content)[l] != 'X'
-			&& ((char *)aux_lst->content)[l] != 'R'
-			&& ((char *)aux_lst->content)[l] != 'C')
+			&& ((char *)aux_lst->content)[l] != ' ')
 			return (-1);
 		l++;
 	}

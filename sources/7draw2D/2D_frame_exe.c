@@ -119,6 +119,5 @@ void	put_frame_two_dim(t_prog *game)
 		wash_screen(game, game->image[CUB_3D], game->w2, BLACK);
 		framework_two_dim(game);
 		draw_raycast(game);
-		/**/
 	}
 }
