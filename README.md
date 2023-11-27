@@ -11,7 +11,7 @@ Raycasting project of 42 Madrid
 
 Developed in C by Guille and Joan as part of the common core.
 
-Guillermo Mira [a.k.a. guilmira] Github: https://github.com/GuilleMira
+Guillermo Mira [a.k.a. guilmira] Github: https://github.com/guilmira
 Joan Sanfelipe [a.k.a. jsanfeli] Github: https://github.com/KiriamBlu
 
 ### Requirements
@@ -28,7 +28,7 @@ Those versions are the ones used during development.
 Only available for Linux´s main distributions.
 
 1. Download/Clone this repo
-        git clone -recurse-submodules -j https://github.com/GuilleMira/cub3d.git
+        git clone -recurse-submodules -j https://github.com/guilmira/cub3d.git
 2. `cd` into the root directory
         cd cub3d
 3. `make install` to install all requirements
